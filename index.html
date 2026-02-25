@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PMP Study Hell</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bar:#2f4f60;
+  --text:#0b1220;
+  --muted:#334155;
+  --btn:#2f4f60;
+  --btnHover:#1f3b49;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  color:var(--text);
+  background:#fff;
+}
+
+/* TOP BAR */
+.topbar{
+  height:44px;
+  background:var(--bar);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 18px;
+  font-size:14px;
+}
+
+.topbar .mark{
+  font-size:11px;
+  vertical-align:super;
+}
+
+/* STAGE */
+.stage{
+  max-width:1100px;
+  margin:auto;
+  padding:48px 20px 60px;
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:30px;
+}
+
+.hero img{
+  height:72px;
+}
+
+/* WORDMARK */
+.wordmark{
+  font-size:48px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+}
+
+.wordmark span{
+  font-weight:400;
+}
+
+.wordmark .mark{
+  font-size:14px;
+  vertical-align:super;
+  margin-left:2px;
+}
+
+/* COPY */
+.copy{
+  max-width:880px;
+  font-size:16px;
+  line-height:1.75;
+  color:var(--muted);
+}
+
+.copy strong{
+  color:var(--text);
+}
+
+.copy h3{
+  color:var(--text);
+  margin-top:28px;
+}
+
+/* BUTTON */
+.cta{
+  margin-top:22px;
+}
+
+button{
+  padding:12px 22px;
+  border-radius:8px;
+  border:none;
+  background:var(--btn);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button:hover{
+  background:var(--btnHover);
+}
+
+/* EMAIL */
+.email{
+  margin-top:28px;
+}
+
+.emailbox{
+  display:flex;
+  gap:10px;
+  max-width:520px;
+}
+
+.emailbox input{
+  flex:1;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+.fine{
+  margin-top:16px;
+  font-size:12px;
+  color:#64748b;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  .hero{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .wordmark{
+    font-size:36px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  PMP<span class="mark">®</span> Study Hell<span class="mark">™</span>
+</div>
+
+<div class="stage">
+
+  <div class="hero">
+    <img src="logo.png" alt="logo">
+    <div class="wordmark">
+      PMP<span class="mark">®</span> <span>Study Hell</span><span class="mark">™</span>
+    </div>
+  </div>
+
+  <div class="copy">
+
+    <p><strong>Dear PMP Candidate,</strong></p>
+
+    <p>
+      You are now as close as it gets to the real PMP exam experience.
+      I understand your surprise. A free, ad-free, registration-free simulation sounds impossible.
+    </p>
+
+    <p>But it’s not.</p>
+
+    <p>
+      This experience is prepared by real PMP credential holders, grounded in previous PMP-style exam patterns,
+      aligned with the PMBOK® Guide and the updated Exam Content Outline.
+    </p>
+
+    <p>
+      If you’re ready to face the reality before exam day, click <strong>Start</strong>.
+    </p>
+
+    <h3>About the PMP® Exam</h3>
+
+    <p>
+      The PMP® exam consists of 180 questions and must be completed within 240 minutes.
+      Question types include scenario-based, multiple-response, drag-and-drop, and matching.
+    </p>
+
+    <p>
+      The exam is structured around three domains. People, Process, and Business Environment.
+    </p>
+
+    <p>
+      There are two optional 10-minute breaks. After a break, you cannot return to previous questions.
+    </p>
+
+    <div class="cta">
+      <button onclick="location.href='exam.html'">Start</button>
+    </div>
+
+    <div class="email">
+      <p>
+        If now is not the right time and you don’t want to lose this page, leave your email below.
+        We will remind you to continue your PMP® journey.
+      </p>
+
+      <div class="emailbox">
+        <input type="email" placeholder="Enter your email (optional)">
+        <button>Remind me</button>
+      </div>
+
+      <div class="fine">
+        PMP® is a registered trademark of Project Management Institute, Inc.
+        This platform is independent and not affiliated with or endorsed by PMI.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo Exam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bar:#2f4f60;
+      --bar2:#5f93c2;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --bg:#f3f4f6;
+      --card:#ffffff;
+      --line:#d6dde6;
+      --btn:#2f6ea5;
+      --btn2:#245a87;
+      --warn:#b45309;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+    .app{min-height:100vh;display:flex;flex-direction:column}
+
+    .topbar{
+      height:44px;
+      background:var(--bar);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      padding:0 18px;
+      font-size:14px;
+      line-height:1.2;
+      gap:12px;
+      justify-content:space-between;
+    }
+    .topbar .left{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topbar .right{
+      display:flex;align-items:center;gap:18px;font-size:14px;white-space:nowrap;
+    }
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:2px 8px;border-radius:999px;
+      background:rgba(255,255,255,.12);
+    }
+    .icon{width:16px;height:16px;display:inline-block;vertical-align:-2px}
+
+    .subbar{
+      background:var(--bar2);
+      color:#fff;
+      padding:8px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:14px;
+    }
+    .subbar a{
+      color:#fff;text-decoration:underline;cursor:pointer;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .flag{
+      display:inline-flex;align-items:center;gap:8px;
+      cursor:pointer;
+      user-select:none;
+      font-weight:600;
+    }
+    .flag svg{width:16px;height:16px;display:inline-block}
+    .flag .flagFill{fill:transparent}
+    .flag .flagStroke{stroke:white}
+    .flag.on .flagFill{fill:#d8342a}
+    .flag.on .flagStroke{stroke:#d8342a}
+
+    .main{
+      flex:1;
+      padding:18px 14px 0;
+      background:#fff;
+      border-top:1px solid rgba(255,255,255,.2);
+    }
+    .wrap{
+      max-width:1100px;margin:0 auto;
+      padding:10px 6px 70px;
+    }
+    .hint{color:var(--muted);font-size:14px;margin:6px 0 16px}
+    .qtitle{font-size:15px;margin:10px 0 16px}
+    .question{font-size:16px;margin:0 0 14px}
+    .answers{display:flex;flex-direction:column;gap:10px}
+    .ans{
+      display:flex;align-items:flex-start;gap:10px;
+      padding:6px 0;
+      border-bottom:1px dotted #e5e7eb;
+      max-width:520px;
+    }
+    .ans:last-child{border-bottom:none}
+    .ans input{margin-top:3px}
+    .ans .label{
+      width:18px;font-weight:bold;color:var(--muted)
+    }
+
+    .footer{
+      position:fixed;left:0;right:0;bottom:0;
+      background:var(--bar);
+      padding:10px 14px;
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid rgba(255,255,255,.18);
+      gap:12px;
+    }
+    .footerLeft{min-width:160px}
+    .footerRight{display:flex;align-items:center;gap:10px;margin-left:auto}
+    .navbtn{
+      background:transparent;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.55);
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+      display:flex;align-items:center;gap:10px;
+      white-space:nowrap;
+    }
+    .navbtn:hover{background:rgba(255,255,255,.10)}
+    .navbtn--review{
+      border-color:rgba(255,255,255,.35);
+      background:rgba(255,255,255,.08);
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+    .navbtn--next{
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.7);
+    }
+    .navDivider{
+      width:1px;height:28px;
+      background:rgba(255,255,255,.25);
+      margin:0 2px;
+    }
+    .arrow{
+      width:10px;height:10px;border-top:2px solid #fff;border-right:2px solid #fff;
+      transform:rotate(45deg);
+    }
+    .arrow.left{transform:rotate(-135deg)}
+    .arrow.right{transform:rotate(45deg)}
+
+    .modalBack{
+      position:fixed;inset:0;background:rgba(0,0,0,.45);
+      display:none;align-items:center;justify-content:center;
+      padding:16px;
+    }
+    .modal{
+      width:min(520px, 96vw);
+      background:var(--card);
+      border-radius:10px;
+      box-shadow:0 16px 50px rgba(0,0,0,.25);
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.08);
+    }
+    .modalHead{
+      background:var(--bar);
+      color:#fff;
+      padding:12px 14px;
+      display:flex;justify-content:space-between;align-items:center;
+      font-weight:bold;
+    }
+    .modalBody{padding:14px}
+    .close{
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.25);
+      color:#fff;cursor:pointer;padding:6px 10px;border-radius:8px;
+    }
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;color:var(--muted);font-size:12px}
+    .calcGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .calcGrid input{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px}
+
+    @media (max-width:520px){
+      .topbar{font-size:16px}
+      .topbar .right{font-size:14px;gap:10px}
+      .answers{max-width:100%}
+      .ans{max-width:100%}
+    }
+
+    .calcOverlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.35);
+      display:none;align-items:center;justify-content:center;
+      z-index:9999;padding:24px;
+    }
+    .calcOverlay.open{display:flex}
+    .calcWin{
+      width:320px;max-width:92vw;
+      border-radius:10px;
+      box-shadow:0 18px 45px rgba(0,0,0,.35);
+      background:#3f6ea3;
+      border:1px solid rgba(255,255,255,.35);
+      overflow:hidden;
+    }
+    .calcTitle{
+      height:46px;display:flex;align-items:center;justify-content:space-between;
+      padding:0 12px;color:#fff;font-weight:700;letter-spacing:.2px;
+      background:rgba(0,0,0,.06);
+      border-bottom:1px solid rgba(255,255,255,.25);
+    }
+    .calcTitle .left{display:flex;align-items:center;gap:8px}
+    .calcTitle .miniIcon{width:16px;height:16px;display:inline-block}
+    .calcTitle button{
+      background:transparent;border:0;color:#fff;width:32px;height:32px;border-radius:8px;
+      cursor:pointer;display:grid;place-items:center;
+    }
+    .calcTitle button:hover{background:rgba(255,255,255,.12)}
+    .calcBody{padding:14px 14px 16px}
+    .calcMeta{display:flex;align-items:center;gap:8px;color:#eaf2ff;font-weight:600;margin-bottom:10px}
+    .calcMeta select{border:0;border-radius:8px;padding:6px 10px;font-weight:700;outline:none}
+    .calcDisplay{
+      background:#e9edf3;border-radius:6px;padding:12px 10px;
+      font-size:34px;font-weight:800;text-align:right;color:#111;
+      box-shadow:inset 0 0 0 2px rgba(0,0,0,.12);
+      font-variant-numeric:tabular-nums;line-height:1;
+      overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+    }
+    .calcBrand{display:flex;align-items:center;justify-content:space-between;margin:10px 2px 12px;color:#dfeaff;font-weight:800;letter-spacing:.2px;opacity:.95;user-select:none}
+    .calcBrand small{font-weight:800;opacity:.95}
+    .calcKeys{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .calcBtn{
+      height:44px;border-radius:8px;border:0;cursor:pointer;
+      font-weight:900;font-size:16px;
+      box-shadow:0 4px 0 rgba(0,0,0,.18);
+      transition:transform .04s ease;user-select:none;
+    }
+    .calcBtn:active{transform:translateY(1px)}
+    .calcBtn.red{background:#c63a3a;color:#fff}
+    .calcBtn.gray{background:#f2f4f7;color:#111}
+    .calcBtn.tall{grid-row:span 2;height:98px}
+    .calcBtn.wide{grid-column:span 2}
+
+    .reviewOverlay{
+      position:fixed;inset:0;background:#fff;
+      display:none;z-index:9998;
+    }
+    .reviewOverlay.open{display:block}
+    .reviewTop{
+      height:44px;background:var(--bar);color:#fff;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 18px;font-size:14px;font-weight:600;
+    }
+    .reviewTop .rtLeft{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .reviewTop .rtRight{display:flex;align-items:center;gap:16px}
+    .reviewTop .rtBtn{
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+      color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:700;
+    }
+    .reviewSub{
+      height:34px;background:#97b4dc;color:#fff;
+      display:flex;align-items:center;gap:10px;
+      padding:0 18px;font-weight:700;
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .reviewSub a{color:#fff;text-decoration:underline;cursor:pointer}
+    .reviewCenterTitle{
+      text-align:center;font-size:22px;font-family:Georgia,serif;
+      padding:18px 0 10px;color:#111;
+    }
+    .reviewSectionBar{
+      height:30px;background:#97b4dc;color:#fff;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 18px;font-weight:800;
+      border-top:1px solid rgba(0,0,0,.08);
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .reviewSectionBar .left{display:flex;align-items:center;gap:10px}
+    .reviewSectionBar .right{opacity:.95}
+    .reviewList{padding:0 0 18px}
+    .reviewRow{
+      display:grid;
+      grid-template-columns:48px 1fr 220px;
+      align-items:center;
+      height:34px;
+      border-bottom:1px solid rgba(0,0,0,.25);
+      padding:0 18px;
+      font-size:16px;
+    }
+    .reviewRow .qLink{color:#111;text-decoration:none;cursor:pointer}
+    .reviewRow .status{font-weight:800}
+    .reviewRow .status.incomplete{color:#d8342a}
+    .reviewRow .status.complete{color:#18794e}
+    .reviewRow .status.unseen{color:#d8342a}
+    .flagCell{display:flex;align-items:center;gap:6px}
+    .flagIcon{width:22px;height:22px;cursor:pointer}
+    .flagIcon .pole{stroke:#1f5d95}
+    .flagIcon .outline{stroke:#1f5d95;fill:transparent}
+    .flagIcon.on .outline{stroke:#d8342a}
+    .flagIcon.on .fill{fill:#d8342a}
+    .flagIcon .fill{fill:transparent}
+    .reviewFooter{
+      position:fixed;left:0;right:0;bottom:0;
+      height:44px;
+      background:var(--bar);
+      border-top:1px solid rgba(255,255,255,.18);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 12px;
+      gap:12px;
+    }
+    .reviewFooter .leftActions{display:flex;align-items:center;gap:10px}
+    .reviewFooter .rightActions{display:flex;align-items:center;gap:10px;margin-left:auto}
+    .reviewFooter .rbtn{
+      height:32px;
+      border-radius:0;
+      border:1px solid rgba(255,255,255,.55);
+      background:transparent;
+      color:#fff;
+      cursor:pointer;
+      font-weight:700;
+      padding:0 12px;
+      display:flex;align-items:center;gap:8px;
+      white-space:nowrap;
+    }
+    .reviewFooter .rbtn:hover{background:rgba(255,255,255,.10)}
+    .reviewFooter .rbtn .mini{width:16px;height:16px;display:inline-block}
+    .reviewFooter .secInfo{
+      color:rgba(255,255,255,.75);font-size:12px;padding:0 6px;white-space:nowrap;
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="left" id="examTitle">Demo Exam - Candidate Name</div>
+    <div class="right">
+      <div class="chip" title="Time Remaining">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 7v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
+        </svg>
+        <span>Time Remaining</span>
+        <span id="timeRemaining" style="font-weight:bold;">119:31</span>
+      </div>
+      <div class="chip" title="Question Progress">
+        <span id="qProgress">1 of 0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="subbar">
+    <a id="openCalc">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
+        <path d="M8 6h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 10h3M13 10h3M8 14h3M13 14h3M8 18h3M13 18h3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Calculator
+    </a>
+    <div class="flag" id="flagBtn" role="button" aria-pressed="false" tabindex="0" title="Flag for Review">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path class="flagStroke" d="M6 3v18" stroke-width="2" stroke-linecap="round"/>
+        <path class="flagStroke" d="M6 4h12l-2 4 2 4H6z" stroke-width="2" stroke-linejoin="round"/>
+        <path class="flagFill" d="M6 4h12l-2 4 2 4H6z"/>
+      </svg>
+      Flag for Review
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="wrap">
+      <div class="hint">
+        You are able to select an answer by clicking on the circle to the left of the answer.
+        To change your answer, select another answer.
+      </div>
+      <div class="qtitle">Practice selecting different answers below.</div>
+      <div class="question" id="questionText">Which of the below is NOT an animal</div>
+      <div class="answers" id="answers"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footerLeft"></div>
+    <div class="footerRight">
+      <button class="navbtn navbtn--review" id="openReviewFooter">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="opacity:.85">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        Item Review
+      </button>
+      <div class="navDivider" aria-hidden="true"></div>
+      <button class="navbtn" id="prevBtn">
+        <span class="arrow left" aria-hidden="true"></span>
+        Previous
+      </button>
+      <button class="navbtn navbtn--next" id="nextBtn">
+        Next
+        <span class="arrow right" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Calculator Modal -->
+<div class="calcOverlay" id="calcOverlay" aria-hidden="true">
+  <div class="calcWin" role="dialog" aria-modal="true" aria-label="Calculator">
+    <div class="calcTitle">
+      <div class="left">
+        <svg class="miniIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
+          <path d="M8 6h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Calculator</span>
+      </div>
+      <button id="closeCalc" aria-label="Close calculator">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="calcBody">
+      <div class="calcMeta">
+        <span>Modes</span>
+        <select id="calcMode" aria-label="Calculator mode">
+          <option value="standard" selected>Standard</option>
+        </select>
+      </div>
+      <div class="calcDisplay" id="calcDisplay">0</div>
+      <div class="calcBrand">
+        <small>Texas Instruments</small>
+        <span style="font-size:20px;font-weight:900;">TI-108</span>
+      </div>
+      <div class="calcKeys" id="calcKeys">
+        <button class="calcBtn red" data-action="toggleSign">+/−</button>
+        <button class="calcBtn red" data-action="sqrt">√</button>
+        <button class="calcBtn red" data-action="percent">%</button>
+        <button class="calcBtn red" data-action="divide">÷</button>
+
+        <button class="calcBtn red" data-action="mrc">MRC</button>
+        <button class="calcBtn red" data-action="mMinus">M−</button>
+        <button class="calcBtn red" data-action="mPlus">M+</button>
+        <button class="calcBtn red" data-action="multiply">×</button>
+
+        <button class="calcBtn gray" data-num="7">7</button>
+        <button class="calcBtn gray" data-num="8">8</button>
+        <button class="calcBtn gray" data-num="9">9</button>
+        <button class="calcBtn red" data-action="minus">−</button>
+
+        <button class="calcBtn gray" data-num="4">4</button>
+        <button class="calcBtn gray" data-num="5">5</button>
+        <button class="calcBtn gray" data-num="6">6</button>
+        <button class="calcBtn red" data-action="plus">+</button>
+
+        <button class="calcBtn gray" data-num="1">1</button>
+        <button class="calcBtn gray" data-num="2">2</button>
+        <button class="calcBtn gray" data-num="3">3</button>
+        <button class="calcBtn red tall" data-action="equals">=</button>
+
+        <button class="calcBtn red" data-action="clear">ON/C</button>
+        <button class="calcBtn gray" data-num="0">0</button>
+        <button class="calcBtn gray" data-action="dot">.</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Item Review -->
+<div class="reviewOverlay" id="reviewOverlay" aria-hidden="true">
+  <div class="reviewTop">
+    <div class="rtLeft" id="reviewTitle">Demo Exam - Candidate Name</div>
+    <div class="rtRight">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+          <path d="M12 8v5l3 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
+        </svg>
+        <span>Time Remaining <span id="reviewTime">--:--</span></span>
+      </div>
+      <button class="rtBtn" id="closeReview">Back to Exam</button>
+    </div>
+  </div>
+
+  <div class="reviewSub">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+      <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
+      <path d="M8 6h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 10h8M8 14h8M8 18h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <a id="reviewInstructions">Instructions</a>
+  </div>
+
+  <div class="reviewCenterTitle">Item Review</div>
+
+  <div class="reviewSectionBar">
+    <div class="left">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span id="sectionLabel">Items Section</span>
+    </div>
+    <div class="right" id="sectionSummary">( 0 Unseen/Incomplete )</div>
+  </div>
+
+  <div class="reviewList" id="reviewList"></div>
+
+  <div class="reviewFooter">
+    <div class="leftActions">
+      <button class="rbtn" id="endReviewBtn">
+        <span style="font-weight:900">⟫</span>
+        End Review
+      </button>
+      <button class="rbtn" id="prevSectionBtn">&#9664; Prev</button>
+      <button class="rbtn" id="nextSectionBtn">Next &#9654;</button>
+      <span class="secInfo" id="sectionFooterLeft"></span>
+    </div>
+    <div class="rightActions">
+      <span class="secInfo" id="sectionFooterRight"></span>
+      <button class="rbtn" id="reviewAllBtn">
+        <svg class="mini" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Review All
+      </button>
+      <button class="rbtn" id="reviewIncompleteBtn">
+        <svg class="mini" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Review Incomplete
+      </button>
+      <button class="rbtn" id="reviewFlaggedBtn">
+        <svg class="mini" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 3v18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M6 4h12l-2 4 2 4H6z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Review Flagged
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+let questions = [];
+
+async function loadExam() {
+  try {
+    const response = await fetch("./data/pmp_questions.json");
+    const data = await response.json();
+    questions = data.questions || data;
+    render();
+  } catch (err) {
+    console.error("Exam yüklenemedi:", err);
+    alert("Exam data yüklenemedi.");
+  }
+}
+
+loadExam();
+
+let idx = 0;
+let flagged = new Set();
+let seen = new Set();
+const SECTION_SIZE = 60;
+let selected = {};
+
+// --- Render ---
+function render(){
+  seen.add(idx);
+  const q = questions[idx];
+  document.getElementById("questionText").textContent = q.text;
+
+  const box = document.getElementById("answers");
+  box.innerHTML = "";
+
+  q.answers.forEach((t, i) => {
+    const row = document.createElement("label");
+    row.className = "ans";
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "ans";
+    radio.checked = selected[idx] === i;
+    radio.addEventListener("change", () => { selected[idx] = i; });
+
+    const letter = document.createElement("div");
+    letter.className = "label";
+    letter.textContent = String.fromCharCode(65 + i) + ".";
+
+    const txt = document.createElement("div");
+    txt.textContent = t;
+
+    row.appendChild(radio);
+    row.appendChild(letter);
+    row.appendChild(txt);
+    box.appendChild(row);
+  });
+
+  // DÜZELTME 1: Gerçek soru numarası
+  document.getElementById("qProgress").textContent = `${idx + 1} of ${questions.length}`;
+
+  const flagBtn = document.getElementById("flagBtn");
+  const isOn = flagged.has(idx);
+  flagBtn.classList.toggle("on", isOn);
+  flagBtn.setAttribute("aria-pressed", String(isOn));
+
+  document.getElementById("prevBtn").disabled = idx === 0;
+  document.getElementById("nextBtn").disabled = idx === questions.length - 1;
+}
+
+// --- Flag ---
+const flagBtn = document.getElementById("flagBtn");
+function updateFlagBtn(){
+  const isOn = flagged.has(idx);
+  flagBtn.classList.toggle("on", isOn);
+  flagBtn.setAttribute("aria-pressed", String(isOn));
+}
+function toggleFlag(){
+  if(flagged.has(idx)) flagged.delete(idx);
+  else flagged.add(idx);
+  render();
+}
+flagBtn.addEventListener("click", toggleFlag);
+flagBtn.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggleFlag(); } });
+
+// --- Nav ---
+document.getElementById("prevBtn").addEventListener("click", ()=>{ if(idx>0){ idx--; render(); }});
+document.getElementById("nextBtn").addEventListener("click", ()=>{ if(idx<questions.length-1){ idx++; render(); }});
+
+// --- Timer ---
+let remaining = 119*60 + 31;
+const timeEl = document.getElementById("timeRemaining");
+setInterval(()=>{
+  remaining = Math.max(0, remaining - 1);
+  const mm = Math.floor(remaining/60);
+  const ss = remaining%60;
+  timeEl.textContent = String(mm).padStart(2,"0") + ":" + String(ss).padStart(2,"0");
+}, 1000);
+
+setInterval(()=>{
+  const ro = document.getElementById('reviewOverlay');
+  if (ro && ro.classList.contains('open')){
+    document.getElementById('reviewTime').textContent = timeEl.textContent;
+  }
+}, 500);
+
+
+// ===== Calculator (TI-108) =====
+const calcOverlay = document.getElementById('calcOverlay');
+const calcDisplay = document.getElementById('calcDisplay');
+const calcKeys    = document.getElementById('calcKeys');
+
+let calcMem = 0, calcValue = "0", calcPending = null, calcStored = null, calcFresh = true;
+
+function calcRender(){ calcDisplay.textContent = calcValue; }
+function calcSet(v){ calcValue = v === "" ? "0" : v; calcRender(); }
+function calcNum(){ return Number(calcValue); }
+function calcFormat(n){
+  if (!Number.isFinite(n)) return "Error";
+  let s = String(n);
+  if (s.includes("e")) return s;
+  if (s.includes(".")) s = s.replace(/0+$/,"").replace(/\.$/,"");
+  return s === "" ? "0" : s;
+}
+function calcApplyOp(op, a, b){
+  if (op==="+") return a+b;
+  if (op==="-") return a-b;
+  if (op==="*") return a*b;
+  if (op==="/") return b===0 ? NaN : a/b;
+  return b;
+}
+function calcPressDigit(d){
+  if (calcValue==="Error") calcValue="0";
+  if (calcFresh){ calcValue=d; calcFresh=false; }
+  else { calcValue = calcValue==="0" ? d : calcValue+d; }
+  calcRender();
+}
+function calcPressDot(){
+  if (calcValue==="Error") calcValue="0";
+  if (calcFresh){ calcValue="0."; calcFresh=false; }
+  else if (!calcValue.includes(".")) calcValue+=".";
+  calcRender();
+}
+function calcClear(){ calcValue="0"; calcPending=null; calcStored=null; calcFresh=true; calcRender(); }
+function calcSetOp(op){
+  if (calcValue==="Error") return;
+  const cur=calcNum();
+  if (calcStored===null) calcStored=cur;
+  else if (!calcFresh && calcPending){ calcStored=calcApplyOp(calcPending,calcStored,cur); calcSet(calcFormat(calcStored)); }
+  calcPending=op; calcFresh=true;
+}
+function calcEquals(){
+  if (calcValue==="Error"||calcPending===null||calcStored===null) return;
+  const res=calcApplyOp(calcPending,calcStored,calcNum());
+  calcStored=res; calcPending=null; calcSet(calcFormat(res)); calcFresh=true;
+}
+function calcToggleSign(){
+  if (calcValue==="Error"||calcValue==="0") return;
+  calcValue=calcValue.startsWith("-") ? calcValue.slice(1) : "-"+calcValue; calcRender();
+}
+function calcSqrt(){ if(calcValue==="Error")return; calcSet(calcFormat(Math.sqrt(calcNum()))); calcFresh=true; }
+function calcPercent(){ if(calcValue==="Error")return; calcSet(calcFormat(calcNum()/100)); calcFresh=true; }
+
+document.getElementById('openCalc').addEventListener('click', (e)=>{ e.preventDefault(); calcOverlay.classList.add('open'); calcOverlay.setAttribute('aria-hidden','false'); });
+document.getElementById('closeCalc').addEventListener('click', ()=>{ calcOverlay.classList.remove('open'); calcOverlay.setAttribute('aria-hidden','true'); });
+calcOverlay.addEventListener('click', (e)=>{ if(e.target===calcOverlay){ calcOverlay.classList.remove('open'); calcOverlay.setAttribute('aria-hidden','true'); } });
+document.addEventListener('keydown', (e)=>{ if(calcOverlay.classList.contains('open')&&e.key==="Escape"){ calcOverlay.classList.remove('open'); calcOverlay.setAttribute('aria-hidden','true'); } });
+
+calcKeys.addEventListener('click', (e)=>{
+  const btn=e.target.closest('button');
+  if(!btn) return;
+  const num=btn.getAttribute('data-num');
+  const action=btn.getAttribute('data-action');
+  if(num!==null){ calcPressDigit(num); return; }
+  switch(action){
+    case "dot":        calcPressDot(); break;
+    case "clear":      calcClear(); break;
+    case "plus":       calcSetOp("+"); break;
+    case "minus":      calcSetOp("-"); break;
+    case "multiply":   calcSetOp("*"); break;
+    case "divide":     calcSetOp("/"); break;
+    case "equals":     calcEquals(); break;
+    case "toggleSign": calcToggleSign(); break;
+    case "sqrt":       calcSqrt(); break;
+    case "percent":    calcPercent(); break;
+    case "mrc":
+      if(btn.dataset.mrcState==="recalled"){ calcMem=0; btn.dataset.mrcState=""; }
+      else { calcSet(calcFormat(calcMem)); btn.dataset.mrcState="recalled"; calcFresh=true; }
+      break;
+    case "mPlus":  calcMem+=(calcValue==="Error"?0:calcNum()); document.querySelector('[data-action="mrc"]').dataset.mrcState=""; break;
+    case "mMinus": calcMem-=(calcValue==="Error"?0:calcNum()); document.querySelector('[data-action="mrc"]').dataset.mrcState=""; break;
+  }
+});
+
+
+// ===== Item Review =====
+const reviewOverlay      = document.getElementById('reviewOverlay');
+const reviewList         = document.getElementById('reviewList');
+const sectionLabel       = document.getElementById('sectionLabel');
+const sectionSummary     = document.getElementById('sectionSummary');
+const sectionFooterLeft  = document.getElementById('sectionFooterLeft');
+const sectionFooterRight = document.getElementById('sectionFooterRight');
+const prevSectionBtn     = document.getElementById('prevSectionBtn');
+const nextSectionBtn     = document.getElementById('nextSectionBtn');
+const reviewTime         = document.getElementById('reviewTime');
+
+let reviewFilter = "all";
+let currentSection = 0;
+
+function secCount(){ return Math.max(1, Math.ceil(questions.length / SECTION_SIZE)); }
+function secBounds(s){ return { start: s*SECTION_SIZE, end: Math.min(questions.length, s*SECTION_SIZE+SECTION_SIZE) }; }
+function qStatus(i){
+  if (!seen.has(i)) return "unseen";
+  return selected[i]!==undefined ? "complete" : "incomplete";
+}
+
+function renderReview(){
+  const totalSec = secCount();
+  currentSection = Math.min(Math.max(0, currentSection), totalSec-1);
+  const b = secBounds(currentSection);
+
+  let unseen=0, incomplete=0, answered=0, flaggedCount=0;
+  for (let i=b.start; i<b.end; i++){
+    const st=qStatus(i);
+    if (reviewFilter==="flagged"   && !flagged.has(i))   continue;
+    if (reviewFilter==="incomplete" && st==="complete")  continue;
+    if (st==="unseen") unseen++;
+    else if (st==="incomplete") incomplete++;
+    else answered++;
+    if (flagged.has(i)) flaggedCount++;
+  }
+  sectionSummary.textContent     = `( ${unseen+incomplete} Unseen/Incomplete )`;
+  sectionFooterLeft.textContent  = `Section ${currentSection+1} of ${totalSec}`;
+  sectionFooterRight.textContent = `Answered: ${answered} • Incomplete: ${unseen+incomplete} • Flagged: ${flaggedCount}`;
+
+  // DÜZELTME 2: Listeye de filtre uygulanıyor
+  reviewList.innerHTML = "";
+  for (let i=b.start; i<b.end; i++){
+    const st=qStatus(i);
+    if (reviewFilter==="flagged"    && !flagged.has(i))  continue;
+    if (reviewFilter==="incomplete" && st==="complete")  continue;
+
+    const row = document.createElement("div");
+    row.className = "reviewRow";
+
+    const flagCell = document.createElement("div");
+    flagCell.className = "flagCell";
+    const flagSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+    flagSvg.setAttribute("viewBox","0 0 24 24");
+    flagSvg.classList.add("flagIcon");
+    if (flagged.has(i)) flagSvg.classList.add("on");
+    flagSvg.innerHTML = `
+      <path class="pole" d="M6 3v18" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path class="outline" d="M6 4h12l-2 4 2 4H6z" stroke-width="2" stroke-linejoin="round"/>
+      <path class="fill" d="M6 4h12l-2 4 2 4H6z"/>
+    `;
+    flagSvg.addEventListener("click", (e)=>{
+      e.stopPropagation();
+      flagged.has(i) ? flagged.delete(i) : flagged.add(i);
+      updateFlagBtn();
+      renderReview();
+    });
+    flagCell.appendChild(flagSvg);
+
+    const qLink = document.createElement("div");
+    qLink.className = "qLink";
+    qLink.textContent = `Question ${i+1}`;
+    qLink.addEventListener("click", ()=>{ idx=i; render(); closeReview(); });
+
+    const status = document.createElement("div");
+    status.className = `status ${st==="complete"?"complete":"incomplete"}`;
+    status.textContent = st==="complete" ? "Complete" : "Incomplete";
+
+    row.appendChild(flagCell);
+    row.appendChild(qLink);
+    row.appendChild(status);
+    reviewList.appendChild(row);
+  }
+
+  reviewTime.textContent = timeEl.textContent || "--:--";
+  prevSectionBtn.disabled = currentSection===0;
+  nextSectionBtn.disabled = currentSection===totalSec-1;
+}
+
+function openReview(){
+  reviewFilter="all";
+  reviewOverlay.classList.add("open");
+  reviewOverlay.setAttribute("aria-hidden","false");
+  currentSection=Math.floor(idx/SECTION_SIZE);
+  renderReview();
+}
+function closeReview(){
+  reviewOverlay.classList.remove("open");
+  reviewOverlay.setAttribute("aria-hidden","true");
+}
+
+document.getElementById('openReviewFooter').addEventListener("click", (e)=>{ e.preventDefault(); openReview(); });
+document.getElementById('closeReview').addEventListener("click", closeReview);
+prevSectionBtn.addEventListener("click", ()=>{ currentSection--; renderReview(); });
+nextSectionBtn.addEventListener("click", ()=>{ currentSection++; renderReview(); });
+document.getElementById('endReviewBtn').addEventListener("click", closeReview);
+document.getElementById('reviewAllBtn').addEventListener("click", ()=>{ reviewFilter="all"; renderReview(); });
+document.getElementById('reviewIncompleteBtn').addEventListener("click", ()=>{ reviewFilter="incomplete"; renderReview(); });
+document.getElementById('reviewFlaggedBtn').addEventListener("click", ()=>{ reviewFilter="flagged"; renderReview(); });
+
+updateFlagBtn();
+
+</script>
+</body>
+</html>
