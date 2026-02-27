@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout main)",
+      "Bash(git pull origin main)",
+      "Bash(git merge claude/nice-swanson)",
+      "Bash(git push origin main)",
+      "Bash(git reset --hard origin/main)"
+    ]
+  }
+}
