@@ -253,11 +253,11 @@
     }
     .reviewSub a{color:#fff;text-decoration:underline;cursor:pointer}
     .reviewCenterTitle{
-      text-align:center;font-size:22px;font-family:Georgia,serif;
-      padding:18px 0 10px;color:#111;
+      text-align:center;font-size:20px;font-family:Georgia,serif;
+      padding:8px 0 5px;color:#111;
     }
     .reviewSectionBar{
-      height:30px;background:#97b4dc;color:#fff;
+      height:26px;background:#97b4dc;color:#fff;
       display:flex;align-items:center;justify-content:space-between;
       padding:0 18px;font-weight:800;
       border-top:1px solid rgba(0,0,0,.08);
@@ -265,22 +265,36 @@
     }
     .reviewSectionBar .left{display:flex;align-items:center;gap:10px}
     .reviewSectionBar .right{opacity:.95}
-    .reviewList{padding:0 0 18px}
-    .reviewRow{
+    .reviewList{
       display:grid;
-      grid-template-columns:48px 1fr 220px;
-      align-items:center;
-      height:34px;
-      border-bottom:1px solid rgba(0,0,0,.25);
-      padding:0 18px;
-      font-size:16px;
+      grid-template-columns:repeat(3,1fr);
+      gap:3px;
+      padding:6px 14px 52px;
+      overflow-y:auto;
+      align-content:start;
     }
-    .reviewRow .qLink{color:#111;text-decoration:none;cursor:pointer}
-    .reviewRow .status{font-weight:800}
-    .reviewRow .status.incomplete{color:#d8342a}
-    .reviewRow .status.complete{color:#18794e}
-    .reviewRow .status.unseen{color:#d8342a}
-    .flagCell{display:flex;align-items:center;gap:6px}
+    .reviewRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 8px;
+      height:30px;
+      border-radius:5px;
+      border:1.5px solid;
+      cursor:pointer;
+      font-size:12px;
+      transition:filter .1s;
+    }
+    .reviewRow:hover{filter:brightness(.94)}
+    .reviewRow.row-complete{background:#f0fdf4;border-color:#16a34a}
+    .reviewRow.row-incomplete{background:#fef2f2;border-color:#dc2626}
+    .reviewRow.row-unseen{background:#f9fafb;border-color:#9ca3af}
+    .rrLeft{display:flex;align-items:center;gap:6px;min-width:0}
+    .rrNum{font-size:12px;font-weight:700;color:var(--ink);white-space:nowrap}
+    .rrCheck{font-size:11px;font-weight:700}
+    .row-complete .rrCheck{color:#15803d}
+    .row-incomplete .rrCheck{color:#b91c1c}
+    .row-unseen .rrCheck{color:#9ca3af}
     .flagIcon{width:22px;height:22px;cursor:pointer}
     .flagIcon .pole{stroke:#1f5d95}
     .flagIcon .outline{stroke:#1f5d95;fill:transparent}
@@ -315,9 +329,328 @@
     .reviewFooter .secInfo{
       color:rgba(255,255,255,.75);font-size:12px;padding:0 6px;white-space:nowrap;
     }
+
+    /* ── Start / Break shared overlay ── */
+    .startOverlay,.breakOverlay{
+      position:fixed;inset:0;background:#fff;z-index:10001;
+      display:flex;flex-direction:column;
+    }
+    .breakOverlay{display:none}
+    .breakOverlay.open{display:flex}
+
+    .soTopbar,.boTopbar{
+      height:44px;background:var(--bar);color:#fff;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 18px;font-size:14px;font-weight:600;flex-shrink:0;
+    }
+    .soBody,.boBody{
+      flex:1;display:flex;align-items:center;justify-content:center;
+      background:var(--bg);padding:24px;
+    }
+    .soCard,.boCard{
+      background:var(--card);border-radius:12px;
+      box-shadow:0 8px 36px rgba(0,0,0,.13);
+      padding:38px 42px;max-width:480px;width:100%;text-align:center;
+    }
+    .soTitle{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:6px}
+    .soMeta{font-size:14px;color:var(--muted);margin-bottom:22px}
+    .soList{
+      font-size:14px;color:#374151;line-height:1.75;text-align:left;
+      background:var(--bg);border-radius:8px;padding:14px 16px;margin-bottom:24px;
+    }
+    .soList li{list-style:none;margin-bottom:2px}
+    .soList li::before{content:"• ";color:var(--bar2)}
+    .soStartBtn{
+      width:100%;padding:14px;border-radius:8px;border:none;
+      background:var(--btn);color:#fff;font-size:16px;font-weight:700;
+      cursor:pointer;transition:background .15s;
+    }
+    .soStartBtn:hover{background:var(--btn2)}
+
+    /* Break overlay specifics */
+    .boSubbar{
+      height:34px;background:var(--bar2);color:#fff;
+      display:flex;align-items:center;padding:0 18px;
+      font-weight:700;font-size:14px;flex-shrink:0;
+    }
+    .boTitle{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+    .boClock{
+      font-size:72px;font-weight:800;color:var(--ink);
+      font-variant-numeric:tabular-nums;line-height:1;margin-bottom:16px;
+    }
+    .boDesc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:28px}
+    .boSkipBtn{
+      width:100%;padding:12px;border-radius:8px;
+      border:1.5px solid var(--line);background:var(--card);
+      color:var(--ink);font-size:15px;font-weight:700;cursor:pointer;
+      transition:background .15s;
+    }
+    .boSkipBtn:hover{background:var(--bg)}
+
+    /* ── Section Review ── */
+    .secRevOverlay{
+      position:fixed;inset:0;background:#fff;z-index:10002;
+      display:none;flex-direction:column;
+    }
+    .secRevOverlay.open{display:flex}
+    .secRevWarn{
+      background:#fef3c7;border-bottom:2px solid #d97706;
+      padding:10px 20px;font-size:13px;font-weight:600;color:#92400e;
+      display:flex;align-items:center;gap:8px;flex-shrink:0;
+    }
+    .secRevBody{
+      flex:1;display:flex;flex-direction:column;
+      padding:14px 20px 8px;overflow:hidden;min-height:0;
+    }
+    .secRevHeader{
+      display:flex;align-items:baseline;justify-content:space-between;
+      margin-bottom:10px;flex-shrink:0;
+    }
+    .secRevTitle{font-size:16px;font-weight:800;color:var(--ink)}
+    .secRevStats{display:flex;gap:18px;font-size:13px;font-weight:600;color:var(--muted)}
+    .secRevStats span{display:flex;align-items:center;gap:5px}
+    .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+    .dot-green{background:#16a34a}
+    .dot-red{background:#dc2626}
+    .dot-orange{background:#d97706}
+    .secRevGrid{
+      display:grid;
+      grid-template-columns:repeat(10,1fr);
+      gap:5px;flex:1;min-height:0;align-content:start;
+    }
+    .secRevCell{
+      border-radius:6px;border:2px solid;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      font-size:11px;font-weight:700;padding:5px 2px;gap:2px;
+      position:relative;
+    }
+    .secRevCell.complete{background:#dcfce7;border-color:#16a34a;color:#15803d}
+    .secRevCell.incomplete{background:#fee2e2;border-color:#dc2626;color:#b91c1c}
+    .secRevCell .flagDot{
+      position:absolute;top:2px;right:3px;
+      width:7px;height:7px;border-radius:50%;background:#d97706;
+    }
+    .secRevCell .cellNum{font-size:12px;font-weight:800}
+    .secRevCell .cellStatus{font-size:10px;font-weight:600;opacity:.85}
+    .secRevFoot{
+      height:50px;background:var(--bar);flex-shrink:0;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 14px;gap:10px;
+      border-top:1px solid rgba(255,255,255,.18);
+    }
+
+    /* ── Pause overlay ── */
+    .pauseOverlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.72);
+      z-index:10003;display:none;align-items:center;justify-content:center;
+    }
+    .pauseOverlay.open{display:flex}
+    .pauseCard{
+      background:#fff;border-radius:12px;padding:40px 48px;text-align:center;
+      max-width:380px;width:90%;box-shadow:0 16px 50px rgba(0,0,0,.3);
+    }
+    .pauseIcon{font-size:40px;margin-bottom:12px}
+    .pauseTitle{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:8px}
+    .pauseSub{font-size:14px;color:var(--muted);margin-bottom:28px}
+    .pauseResumeBtn{
+      width:100%;padding:13px;border-radius:8px;border:none;
+      background:var(--btn);color:#fff;font-size:15px;font-weight:700;cursor:pointer;
+    }
+    .pauseResumeBtn:hover{background:var(--btn2)}
+
+    /* Pause chip button in topbar */
+    .pauseChip{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:2px 10px;border-radius:999px;
+      background:rgba(255,255,255,.12);
+      cursor:pointer;border:none;color:#fff;font-size:13px;font-weight:600;
+    }
+    .pauseChip:hover{background:rgba(255,255,255,.2)}
+    .pauseChip svg{width:14px;height:14px}
+
+    /* ── Continue Later modal ── */
+    .clBack{
+      position:fixed;inset:0;background:rgba(0,0,0,.5);
+      z-index:10004;display:none;align-items:center;justify-content:center;padding:16px;
+    }
+    .clBack.open{display:flex}
+    .clModal{
+      width:min(460px,96vw);background:#fff;border-radius:10px;
+      box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;
+    }
+    .clHead{
+      background:var(--bar);color:#fff;
+      padding:14px 18px;font-weight:700;font-size:15px;
+    }
+    .clBody{padding:22px 18px 12px}
+    .clBody p{font-size:14px;line-height:1.65;color:var(--ink);margin-bottom:14px}
+    .clSaved{
+      background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;
+      padding:12px 14px;font-size:13px;color:#15803d;margin-bottom:16px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .clLabel{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+    .clRow{display:flex;gap:8px;margin-bottom:8px}
+    .clRow input{
+      flex:1;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;
+      font-size:14px;outline:none;
+    }
+    .clRow input:focus{border-color:var(--btn)}
+    .clSendBtn{
+      padding:10px 16px;border-radius:8px;border:none;
+      background:var(--btn);color:#fff;font-weight:700;cursor:pointer;white-space:nowrap;
+      font-size:14px;
+    }
+    .clSendBtn:hover{background:var(--btn2)}
+    .clNote{font-size:12px;color:#9ca3af;margin-bottom:4px;line-height:1.5}
+    .clFoot{padding:12px 18px;display:flex;justify-content:flex-end}
+    .clCloseBtn{
+      padding:9px 18px;border-radius:8px;border:1.5px solid var(--line);
+      background:#fff;color:var(--ink);font-weight:600;cursor:pointer;font-size:14px;
+    }
+    .clCloseBtn:hover{background:var(--bg)}
+
+    /* Continue Later footer button */
+    .navbtn--later{
+      background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.35);
+      font-size:13px;
+    }
+
+    /* Report Question button */
+    .reportBtn{
+      display:inline-flex;align-items:center;gap:5px;
+      background:none;border:none;
+      color:#9ca3af;font-size:12px;
+      cursor:pointer;padding:0;
+      opacity:.75;transition:opacity .15s,color .15s;
+      margin-top:14px;
+    }
+    .reportBtn:hover{opacity:1;color:#6b7280}
+    .reportBtn.reported{color:#d97706;opacity:1}
+
+    /* End Exam button */
+    .navbtn--end{
+      background:rgba(220,38,38,.18);
+      border-color:rgba(220,38,38,.55);
+      color:#fca5a5;
+    }
+    .navbtn--end:hover{background:rgba(220,38,38,.32)}
+
+    /* End Exam confirm modal */
+    .confirmBack{
+      position:fixed;inset:0;background:rgba(0,0,0,.5);
+      display:none;align-items:center;justify-content:center;
+      padding:16px;z-index:10000;
+    }
+    .confirmBack.open{display:flex}
+    .confirmModal{
+      width:min(440px,94vw);
+      background:#fff;border-radius:10px;
+      box-shadow:0 20px 60px rgba(0,0,0,.3);
+      overflow:hidden;
+    }
+    .confirmHead{
+      background:var(--bar);color:#fff;
+      padding:14px 18px;
+      font-weight:700;font-size:15px;
+    }
+    .confirmBody{padding:20px 18px 8px}
+    .confirmBody p{font-size:15px;line-height:1.6;color:var(--ink)}
+    .confirmBody .warn{
+      margin-top:12px;padding:10px 14px;
+      background:#fef3c7;border-left:3px solid #d97706;
+      border-radius:4px;font-size:13px;color:#92400e;
+    }
+    .confirmFoot{
+      padding:14px 18px;
+      display:flex;justify-content:flex-end;gap:10px;
+    }
+    .confirmFoot button{
+      padding:9px 18px;border-radius:8px;
+      font-weight:700;cursor:pointer;font-size:14px;border:none;
+    }
+    .confirmFoot .cancelBtn{background:#f3f4f6;color:var(--ink)}
+    .confirmFoot .cancelBtn:hover{background:#e5e7eb}
+    .confirmFoot .submitBtn{background:#dc2626;color:#fff}
+    .confirmFoot .submitBtn:hover{background:#b91c1c}
   </style>
 </head>
 <body>
+
+<!-- ══ Start Screen ══ -->
+<div class="startOverlay" id="startScreen">
+  <div class="soTopbar">
+    PMP<span style="font-size:10px;vertical-align:super">®</span>&nbsp;Study Hell<span style="font-size:10px;vertical-align:super">™</span>
+  </div>
+  <div class="soBody">
+    <div class="soCard">
+      <div class="soTitle">Practice Exam</div>
+      <div class="soMeta">180 Questions &nbsp;•&nbsp; 240 Minutes</div>
+      <ul class="soList">
+        <li>Two optional 10-minute breaks after questions 60 and 120</li>
+        <li>You can end breaks early at any time</li>
+        <li>The timer starts when you click <strong>Start Exam</strong></li>
+      </ul>
+      <button class="soStartBtn" id="startExamBtn">Start Exam</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Section Review ══ -->
+<div class="secRevOverlay" id="secRevOverlay">
+  <div class="boTopbar">
+    <span>PMP<span style="font-size:10px;vertical-align:super">®</span>&nbsp;Study Hell<span style="font-size:10px;vertical-align:super">™</span></span>
+    <span style="display:flex;align-items:center;gap:8px;font-weight:400">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 7v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/></svg>
+      Time Remaining <strong id="secRevTimer">--:--</strong>
+    </span>
+  </div>
+  <div class="secRevWarn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    After proceeding, you <strong>cannot return</strong> to questions in this section.
+  </div>
+  <div class="secRevBody">
+    <div class="secRevHeader">
+      <div class="secRevTitle" id="secRevTitle">Section 1 — Questions 1–60</div>
+      <div class="secRevStats" id="secRevStats"></div>
+    </div>
+    <div class="secRevGrid" id="secRevGrid"></div>
+  </div>
+  <div class="secRevFoot">
+    <button class="rbtn" id="secRevBack">&#8592; Go Back</button>
+    <button class="rbtn" id="secRevProceed" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.6)">
+      Proceed to Break &#8594;
+    </button>
+  </div>
+</div>
+
+<!-- ══ Break Screen ══ -->
+<div class="breakOverlay" id="breakOverlay">
+  <div class="boTopbar">
+    <span>PMP<span style="font-size:10px;vertical-align:super">®</span>&nbsp;Study Hell<span style="font-size:10px;vertical-align:super">™</span></span>
+    <span style="display:flex;align-items:center;gap:8px;font-weight:400">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 7v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
+      </svg>
+      Time Remaining <strong id="mainTimerBreak">--:--</strong>
+    </span>
+  </div>
+  <div class="boSubbar" id="breakLabel">Break 1 of 2</div>
+  <div class="boBody">
+    <div class="boCard">
+      <div class="boTitle">Break Time</div>
+      <div class="boClock" id="breakTimer">10:00</div>
+      <div class="boDesc">
+        You have a 10-minute break. The exam will resume automatically when the timer ends.
+        You can also end the break early.
+      </div>
+      <button class="boSkipBtn" id="endBreakBtn">End Break Early</button>
+    </div>
+  </div>
+</div>
+
 <div class="app">
 
   <div class="topbar">
@@ -329,11 +662,18 @@
           <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
         </svg>
         <span>Time Remaining</span>
-        <span id="timeRemaining" style="font-weight:bold;">119:31</span>
+        <span id="timeRemaining" style="font-weight:bold;">240:00</span>
       </div>
       <div class="chip" title="Question Progress">
         <span id="qProgress">1 of 0</span>
       </div>
+      <button class="pauseChip" id="pauseBtn" title="Pause exam">
+        <svg id="pauseIcon" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+        <span id="pauseLabel">Pause</span>
+      </button>
     </div>
   </div>
 
@@ -365,11 +705,24 @@
       <div class="qtitle">Practice selecting different answers below.</div>
       <div class="question" id="questionText">Which of the below is NOT an animal</div>
       <div class="answers" id="answers"></div>
+      <button class="reportBtn" id="reportBtn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Report this question
+      </button>
     </div>
   </div>
 
   <div class="footer">
-    <div class="footerLeft"></div>
+    <div class="footerLeft" style="display:flex;align-items:center;gap:8px;">
+      <button class="navbtn navbtn--end" id="endExamBtn">
+        End Exam
+      </button>
+      <button class="navbtn navbtn--later" id="continueLaterBtn">
+        Continue Later
+      </button>
+    </div>
     <div class="footerRight">
       <button class="navbtn navbtn--review" id="openReviewFooter">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="opacity:.85">
@@ -389,6 +742,54 @@
     </div>
   </div>
 
+</div>
+
+<!-- End Exam Confirm -->
+<div class="confirmBack" id="confirmBack" aria-hidden="true">
+  <div class="confirmModal" role="dialog" aria-modal="true" aria-label="End Exam">
+    <div class="confirmHead">End Exam &amp; See Results</div>
+    <div class="confirmBody">
+      <p>Are you sure you want to end the exam and view your score report?</p>
+      <div class="warn" id="confirmWarn"></div>
+    </div>
+    <div class="confirmFoot">
+      <button class="cancelBtn" id="confirmCancel">Continue Exam</button>
+      <button class="submitBtn" id="confirmSubmit">End &amp; Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pause Overlay -->
+<div class="pauseOverlay" id="pauseOverlay">
+  <div class="pauseCard">
+    <div class="pauseIcon">⏸</div>
+    <div class="pauseTitle">Exam Paused</div>
+    <div class="pauseSub">The timer is paused. Click Resume to continue.</div>
+    <button class="pauseResumeBtn" id="resumeFromPauseBtn">▶ Resume Exam</button>
+  </div>
+</div>
+
+<!-- Continue Later Modal -->
+<div class="clBack" id="clBack">
+  <div class="clModal">
+    <div class="clHead">Continue Later</div>
+    <div class="clBody">
+      <div class="clSaved">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#16a34a" stroke-width="2"/></svg>
+        Your progress has been saved to this browser.
+      </div>
+      <p>If you don't have time right now, enter your email and we'll send you a link to continue from where you left off.</p>
+      <div class="clLabel">Your email address</div>
+      <div class="clRow">
+        <input type="email" id="clEmailInput" placeholder="you@example.com">
+        <button class="clSendBtn" id="clSendBtn">Send Link</button>
+      </div>
+      <div class="clNote" id="clNote">We'll send you a link that resumes the exam exactly where you paused.</div>
+    </div>
+    <div class="clFoot">
+      <button class="clCloseBtn" id="clCloseBtn">Close &amp; Resume</button>
+    </div>
+  </div>
 </div>
 
 <!-- Calculator Modal -->
@@ -549,6 +950,7 @@ loadExam();
 let idx = 0;
 let flagged = new Set();
 let seen = new Set();
+let reported = new Set();
 const SECTION_SIZE = 60;
 let selected = {};
 
@@ -592,8 +994,28 @@ function render(){
   flagBtn.classList.toggle("on", isOn);
   flagBtn.setAttribute("aria-pressed", String(isOn));
 
-  document.getElementById("prevBtn").disabled = idx === 0;
-  document.getElementById("nextBtn").disabled = idx === questions.length - 1;
+  document.getElementById("prevBtn").disabled = idx === 0 || idx <= lockedBefore;
+
+  // Report button state
+  const reportBtn = document.getElementById("reportBtn");
+  if (reported.has(idx)) {
+    reportBtn.className = "reportBtn reported";
+    reportBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg> Reported ✓`;
+  } else {
+    reportBtn.className = "reportBtn";
+    reportBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Report this question`;
+  }
+
+  const nextBtn = document.getElementById("nextBtn");
+  const isSecEnd = (idx === 59 && !sectionsCompleted.has(1)) || (idx === 119 && !sectionsCompleted.has(2));
+  if (isSecEnd) {
+    const secNum = idx === 59 ? 1 : 2;
+    nextBtn.innerHTML = `Complete Section ${secNum} <span class="arrow right" aria-hidden="true"></span>`;
+    nextBtn.disabled = false;
+  } else {
+    nextBtn.innerHTML = `Next <span class="arrow right" aria-hidden="true"></span>`;
+    nextBtn.disabled = idx === questions.length - 1;
+  }
 }
 
 // --- Flag ---
@@ -611,26 +1033,271 @@ function toggleFlag(){
 flagBtn.addEventListener("click", toggleFlag);
 flagBtn.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggleFlag(); } });
 
+// --- Report Question ---
+document.getElementById("reportBtn").addEventListener("click", ()=>{
+  if (!reported.has(idx)) {
+    reported.add(idx);
+    render();
+  }
+});
+
+// Track which sections have been completed (locked)
+const sectionsCompleted = new Set();
+let lockedBefore = -1; // questions at idx <= lockedBefore are locked
+
 // --- Nav ---
-document.getElementById("prevBtn").addEventListener("click", ()=>{ if(idx>0){ idx--; render(); }});
-document.getElementById("nextBtn").addEventListener("click", ()=>{ if(idx<questions.length-1){ idx++; render(); }});
+document.getElementById("prevBtn").addEventListener("click", ()=>{
+  if(idx > 0 && idx > lockedBefore){
+    idx--;
+    render();
+  }
+});
+
+document.getElementById("nextBtn").addEventListener("click", ()=>{
+  const isSecEnd = (idx === 59 && !sectionsCompleted.has(1)) || (idx === 119 && !sectionsCompleted.has(2));
+  if (isSecEnd) {
+    openSectionReview(idx === 59 ? 1 : 2);
+  } else if (idx < questions.length - 1) {
+    idx++;
+    render();
+  }
+});
 
 // --- Timer ---
-let remaining = 119*60 + 31;
+let remaining = 240*60;
+let timerInterval = null;
+let examPaused = false;
 const timeEl = document.getElementById("timeRemaining");
-setInterval(()=>{
-  remaining = Math.max(0, remaining - 1);
-  const mm = Math.floor(remaining/60);
-  const ss = remaining%60;
-  timeEl.textContent = String(mm).padStart(2,"0") + ":" + String(ss).padStart(2,"0");
-}, 1000);
+timeEl.textContent = fmtSecs(remaining); // initialize display immediately
+
+function fmtSecs(s){ const mm=Math.floor(s/60),ss=s%60; return String(mm).padStart(2,"0")+":"+String(ss).padStart(2,"0"); }
+function startTimer(){ if(timerInterval) return; timerInterval=setInterval(()=>{ remaining=Math.max(0,remaining-1); timeEl.textContent=fmtSecs(remaining); },1000); }
+function pauseTimer(){ clearInterval(timerInterval); timerInterval=null; }
 
 setInterval(()=>{
+  const t = timeEl.textContent;
   const ro = document.getElementById('reviewOverlay');
-  if (ro && ro.classList.contains('open')){
-    document.getElementById('reviewTime').textContent = timeEl.textContent;
-  }
+  if (ro && ro.classList.contains('open')) document.getElementById('reviewTime').textContent = t;
+  const bt = document.getElementById('mainTimerBreak');
+  if (bt) bt.textContent = t;
+  const st = document.getElementById('secRevTimer');
+  if (st) st.textContent = t;
 }, 500);
+
+// --- Pause ---
+const pauseOverlay = document.getElementById('pauseOverlay');
+function setPaused(val) {
+  examPaused = val;
+  const icon = document.getElementById('pauseIcon');
+  const lbl  = document.getElementById('pauseLabel');
+  if (val) {
+    pauseTimer();
+    pauseOverlay.classList.add('open');
+    icon.innerHTML = '<polygon points="5,3 19,12 5,21" fill="white"/>';
+    lbl.textContent = 'Resume';
+  } else {
+    pauseOverlay.classList.remove('open');
+    icon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
+    lbl.textContent = 'Pause';
+    startTimer();
+  }
+}
+document.getElementById('pauseBtn').addEventListener('click', ()=>{ if(!examPaused) setPaused(true); });
+document.getElementById('resumeFromPauseBtn').addEventListener('click', ()=> setPaused(false));
+
+// --- Continue Later ---
+function saveExamState() {
+  const state = {
+    idx, selected,
+    flagged: [...flagged],
+    seen: [...seen],
+    reported: [...reported],
+    remaining,
+    sectionsCompleted: [...sectionsCompleted],
+    lockedBefore,
+    breaksShown: [...breaksShown]
+  };
+  localStorage.setItem('examSavedState', JSON.stringify(state));
+}
+
+function loadExamState() {
+  const raw = localStorage.getItem('examSavedState');
+  if (!raw) return false;
+  try {
+    const s = JSON.parse(raw);
+    idx = s.idx ?? 0;
+    selected = s.selected ?? {};
+    flagged  = new Set(s.flagged ?? []);
+    seen     = new Set(s.seen ?? []);
+    reported = new Set(s.reported ?? []);
+    remaining = s.remaining ?? 240*60;
+    (s.sectionsCompleted ?? []).forEach(n => sectionsCompleted.add(n));
+    lockedBefore = s.lockedBefore ?? -1;
+    (s.breaksShown ?? []).forEach(n => breaksShown.add(n));
+    return true;
+  } catch(e) { return false; }
+}
+
+const clBack = document.getElementById('clBack');
+document.getElementById('continueLaterBtn').addEventListener('click', ()=>{
+  saveExamState();
+  setPaused(true);
+  // Close pause overlay, open CL modal instead
+  pauseOverlay.classList.remove('open');
+  clBack.classList.add('open');
+  document.getElementById('clNote').textContent =
+    'We\'ll send you a link that resumes the exam exactly where you paused.';
+});
+
+document.getElementById('clCloseBtn').addEventListener('click', ()=>{
+  clBack.classList.remove('open');
+  setPaused(false);
+});
+
+document.getElementById('clSendBtn').addEventListener('click', ()=>{
+  const email = document.getElementById('clEmailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('clNote').textContent = 'Please enter a valid email address.';
+    document.getElementById('clNote').style.color = '#dc2626';
+    return;
+  }
+  // UI feedback — actual sending requires backend integration
+  document.getElementById('clSendBtn').textContent = 'Sent ✓';
+  document.getElementById('clSendBtn').style.background = '#16a34a';
+  document.getElementById('clNote').style.color = '#15803d';
+  document.getElementById('clNote').textContent =
+    `A link has been sent to ${email}. You can close this tab safely — your progress is saved.`;
+});
+
+// --- Start Screen ---
+const breaksShown = new Set();
+
+// Check for saved state and show resume option
+(function initStartScreen() {
+  const raw = localStorage.getItem('examSavedState');
+  if (raw) {
+    try {
+      const s = JSON.parse(raw);
+      const pct = Math.round((Object.keys(s.selected || {}).length / 180) * 100);
+      const timeLeft = fmtSecs(s.remaining ?? 14400);
+      const resumeDiv = document.createElement('div');
+      resumeDiv.style.cssText = 'margin-bottom:12px;';
+      resumeDiv.innerHTML = `
+        <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:12px 14px;margin-bottom:12px;text-align:left;font-size:13px;">
+          <div style="font-weight:700;color:#1d4ed8;margin-bottom:4px;">Saved progress found</div>
+          <div style="color:#374151">${pct}% answered &nbsp;•&nbsp; ${timeLeft} remaining</div>
+        </div>
+        <button id="resumeExamBtn" style="width:100%;padding:11px;border-radius:8px;border:1.5px solid #2f6ea5;background:#fff;color:#2f6ea5;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:8px;">Resume Saved Exam</button>
+      `;
+      const card = document.querySelector('.soCard');
+      card.insertBefore(resumeDiv, card.querySelector('.soStartBtn'));
+      document.getElementById('resumeExamBtn').addEventListener('click', ()=>{
+        if (loadExamState()) {
+          document.getElementById('startScreen').style.display = 'none';
+          timeEl.textContent = fmtSecs(remaining);
+          render();
+          startTimer();
+          localStorage.removeItem('examSavedState');
+        }
+      });
+    } catch(e) {}
+  }
+})();
+
+document.getElementById('startExamBtn').addEventListener('click', ()=>{
+  localStorage.removeItem('examSavedState');
+  document.getElementById('startScreen').style.display = 'none';
+  startTimer();
+});
+
+// --- Break ---
+let breakInterval = null;
+let breakRemaining = 600;
+const breakOverlay  = document.getElementById('breakOverlay');
+const breakTimerEl  = document.getElementById('breakTimer');
+const breakLabelEl  = document.getElementById('breakLabel');
+
+function updateBreakClock(){ breakTimerEl.textContent = fmtSecs(breakRemaining); }
+
+function endBreak(){
+  clearInterval(breakInterval); breakInterval = null;
+  breakOverlay.classList.remove('open');
+  startTimer();
+}
+
+function showBreak(num){
+  if(breaksShown.has(num)) return;
+  breaksShown.add(num);
+  pauseTimer();
+  breakRemaining = 600;
+  updateBreakClock();
+  breakLabelEl.textContent = `Break ${num} of 2`;
+  breakOverlay.classList.add('open');
+  breakInterval = setInterval(()=>{
+    breakRemaining = Math.max(0, breakRemaining - 1);
+    updateBreakClock();
+    if(breakRemaining <= 0) endBreak();
+  }, 1000);
+}
+
+document.getElementById('endBreakBtn').addEventListener('click', endBreak);
+
+// ===== Section Review =====
+const secRevOverlay = document.getElementById('secRevOverlay');
+let pendingSectionNum = 0;
+
+function openSectionReview(secNum) {
+  pendingSectionNum = secNum;
+  pauseTimer();
+
+  const start = (secNum - 1) * SECTION_SIZE;
+  const end   = Math.min(questions.length, secNum * SECTION_SIZE);
+
+  document.getElementById('secRevTitle').textContent =
+    `Section ${secNum} — Questions ${start + 1}–${end}`;
+
+  // Stats
+  let answered = 0, unanswered = 0, flaggedCount = 0;
+  for (let i = start; i < end; i++) {
+    if (selected[i] !== undefined) answered++; else unanswered++;
+    if (flagged.has(i)) flaggedCount++;
+  }
+  const statsEl = document.getElementById('secRevStats');
+  statsEl.innerHTML =
+    `<span><span class="dot dot-green"></span>${answered} Answered</span>` +
+    `<span><span class="dot dot-red"></span>${unanswered} Unanswered</span>` +
+    (flaggedCount ? `<span><span class="dot dot-orange"></span>${flaggedCount} Flagged</span>` : '');
+
+  // Grid
+  const grid = document.getElementById('secRevGrid');
+  grid.innerHTML = '';
+  for (let i = start; i < end; i++) {
+    const cell = document.createElement('div');
+    const done = selected[i] !== undefined;
+    cell.className = 'secRevCell ' + (done ? 'complete' : 'incomplete');
+    cell.innerHTML =
+      `<span class="cellNum">${i + 1}</span>` +
+      `<span class="cellStatus">${done ? '✓' : '—'}</span>` +
+      (flagged.has(i) ? '<span class="flagDot"></span>' : '');
+    grid.appendChild(cell);
+  }
+
+  secRevOverlay.classList.add('open');
+}
+
+document.getElementById('secRevBack').addEventListener('click', ()=>{
+  secRevOverlay.classList.remove('open');
+  startTimer();
+});
+
+document.getElementById('secRevProceed').addEventListener('click', ()=>{
+  secRevOverlay.classList.remove('open');
+  sectionsCompleted.add(pendingSectionNum);
+  lockedBefore = pendingSectionNum * SECTION_SIZE - 1;
+  idx = pendingSectionNum * SECTION_SIZE;
+  render();
+  showBreak(pendingSectionNum);
+});
 
 
 // ===== Calculator (TI-108) =====
@@ -769,13 +1436,26 @@ function renderReview(){
     if (reviewFilter==="incomplete" && st==="complete")  continue;
 
     const row = document.createElement("div");
-    row.className = "reviewRow";
+    const stClass = st==="complete" ? "row-complete" : st==="incomplete" ? "row-incomplete" : "row-unseen";
+    row.className = `reviewRow ${stClass}`;
 
-    const flagCell = document.createElement("div");
-    flagCell.className = "flagCell";
+    // Left side: Q number + status check
+    const rrLeft = document.createElement("span");
+    rrLeft.className = "rrLeft";
+    const rrNum = document.createElement("span");
+    rrNum.className = "rrNum";
+    rrNum.textContent = `Q.${i+1}`;
+    const rrCheck = document.createElement("span");
+    rrCheck.className = "rrCheck";
+    rrCheck.textContent = st==="complete" ? "✓" : st==="incomplete" ? "—" : "?";
+    rrLeft.appendChild(rrNum);
+    rrLeft.appendChild(rrCheck);
+
+    // Flag icon (right)
     const flagSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
     flagSvg.setAttribute("viewBox","0 0 24 24");
     flagSvg.classList.add("flagIcon");
+    flagSvg.style.cssText = "width:14px;height:14px;flex-shrink:0";
     if (flagged.has(i)) flagSvg.classList.add("on");
     flagSvg.innerHTML = `
       <path class="pole" d="M6 3v18" stroke-width="2" stroke-linecap="round" fill="none"/>
@@ -788,20 +1468,12 @@ function renderReview(){
       updateFlagBtn();
       renderReview();
     });
-    flagCell.appendChild(flagSvg);
 
-    const qLink = document.createElement("div");
-    qLink.className = "qLink";
-    qLink.textContent = `Question ${i+1}`;
-    qLink.addEventListener("click", ()=>{ idx=i; render(); closeReview(); });
-
-    const status = document.createElement("div");
-    status.className = `status ${st==="complete"?"complete":"incomplete"}`;
-    status.textContent = st==="complete" ? "Complete" : "Incomplete";
-
-    row.appendChild(flagCell);
-    row.appendChild(qLink);
-    row.appendChild(status);
+    row.appendChild(rrLeft);
+    row.appendChild(flagSvg);
+    row.addEventListener("click", (e)=>{
+      if (!e.target.closest(".flagIcon")) { idx=i; render(); closeReview(); }
+    });
     reviewList.appendChild(row);
   }
 
@@ -832,6 +1504,91 @@ document.getElementById('reviewIncompleteBtn').addEventListener("click", ()=>{ r
 document.getElementById('reviewFlaggedBtn').addEventListener("click", ()=>{ reviewFilter="flagged"; renderReview(); });
 
 updateFlagBtn();
+
+// ===== End Exam =====
+const confirmBack   = document.getElementById('confirmBack');
+const confirmWarn   = document.getElementById('confirmWarn');
+const confirmCancel = document.getElementById('confirmCancel');
+const confirmSubmit = document.getElementById('confirmSubmit');
+
+document.getElementById('endExamBtn').addEventListener('click', () => {
+  const answered   = Object.keys(selected).length;
+  const unanswered = questions.length - answered;
+  confirmWarn.textContent = unanswered > 0
+    ? `⚠ You have ${unanswered} unanswered question${unanswered !== 1 ? 's' : ''}. Unanswered questions will be marked as incorrect.`
+    : '✓ All questions have been answered.';
+  confirmBack.classList.add('open');
+  confirmBack.setAttribute('aria-hidden', 'false');
+});
+
+confirmCancel.addEventListener('click', () => {
+  confirmBack.classList.remove('open');
+  confirmBack.setAttribute('aria-hidden', 'true');
+});
+confirmBack.addEventListener('click', (e) => {
+  if (e.target === confirmBack) {
+    confirmBack.classList.remove('open');
+    confirmBack.setAttribute('aria-hidden', 'true');
+  }
+});
+
+confirmSubmit.addEventListener('click', () => {
+  const total      = questions.length;
+  const answered   = Object.keys(selected).length;
+  const unanswered = total - answered;
+  const timeUsed   = 240 * 60 - remaining; // seconds elapsed
+
+  // Score: requires correct answers in question data (q.correct = 0-3 index).
+  // Falls back to answered% if no correct answers are present.
+  let correct = 0;
+  if (questions[0] && questions[0].correct !== undefined) {
+    for (let i = 0; i < total; i++) {
+      if (selected[i] !== undefined && selected[i] === questions[i].correct) correct++;
+    }
+  } else {
+    // Placeholder: treat answered as correct (update when answers are added)
+    correct = answered;
+  }
+
+  const incorrect = answered - correct;
+  const score     = Math.round((correct / total) * 100);
+
+  // Domain split (equal thirds by default; override when domain field is added to questions)
+  const domainSize = Math.ceil(total / 3);
+  function domainScore(start, end) {
+    let c = 0, t = 0;
+    for (let i = start; i < Math.min(end, total); i++) {
+      t++;
+      if (selected[i] !== undefined) {
+        if (questions[0].correct !== undefined) {
+          if (selected[i] === questions[i].correct) c++;
+        } else {
+          c++;
+        }
+      }
+    }
+    return t > 0 ? Math.round((c / t) * 100) : 0;
+  }
+
+  const result = {
+    score,
+    correct,
+    incorrect,
+    unanswered,
+    total,
+    timeUsed,
+    timeTotal: 240 * 60,
+    date: new Date().toISOString(),
+    domains: {
+      people:   { score: domainScore(0, 60),   label: "People",               weight: "42%" },
+      process:  { score: domainScore(60, 150),  label: "Process",              weight: "50%" },
+      business: { score: domainScore(150, 180), label: "Business Environment", weight: "8%"  }
+    }
+  };
+
+  try { localStorage.setItem('pmpResult', JSON.stringify(result)); } catch(e) {}
+  location.href = 'result.html';
+});
 
 </script>
 </body>
