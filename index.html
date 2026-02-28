@@ -32,6 +32,26 @@ body{
   align-items:center;
   padding:0 18px;
   font-size:14px;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.topbar-nav{
+  display:flex;
+  gap:16px;
+  flex:1;
+  justify-content:flex-end;
+}
+
+.topbar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  transition:opacity 0.2s;
+}
+
+.topbar a:hover{
+  opacity:0.8;
 }
 
 .topbar .mark{
@@ -151,7 +171,14 @@ button:hover{
 <body>
 
 <div class="topbar">
-  PMP<span class="mark">®</span> Study Hell<span class="mark">™</span>
+  <span>PMP<span class="mark">®</span> Study Hell<span class="mark">™</span></span>
+  <div class="topbar-nav">
+    <a href="dictionary.html">Dictionary</a>
+    <a href="flashcard.html">Flashcards</a>
+    <a href="practice.html">Practice</a>
+    <a href="story-mode.html">Story Mode</a>
+    <a href="exam.html">Full Exam</a>
+  </div>
 </div>
 
 <div class="stage">
@@ -180,8 +207,23 @@ button:hover{
     </p>
 
     <p>
-      If you’re ready to face the reality before exam day, click <strong>Start</strong>.
+      Choose your learning path:
     </p>
+
+    <div class="cta" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:500px;margin-top:20px">
+      <button onclick="location.href=’dictionary.html’" style="background:#5f93c2">📚 Dictionary</button>
+      <button onclick="location.href=’flashcard.html’" style="background:#5f93c2">🎴 Flashcards</button>
+      <button onclick="location.href=’practice.html’" style="background:#5f93c2">✏️ Practice</button>
+      <button onclick="location.href=’story-mode.html’" style="background:#5f93c2">📖 Story Mode</button>
+    </div>
+
+    <p style="margin-top:28px">
+      Ready for the full exam experience?
+    </p>
+
+    <div class="cta">
+      <button onclick="location.href=’exam.html’">Start Full Exam</button>
+    </div>
 
     <h3>About the PMP® Exam</h3>
 
