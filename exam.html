@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Demo Exam</title>
+  <title>PMP® Practice Exam — Study Hell™</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -17,11 +17,16 @@
       --btn:#2f6ea5;
       --btn2:#245a87;
       --warn:#b45309;
+      --correct:#15803d;
+      --wrong:#b91c1c;
+      --correct-bg:#f0fdf4;
+      --wrong-bg:#fef2f2;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink)}
     .app{min-height:100vh;display:flex;flex-direction:column}
 
+    /* ── TOPBAR ── */
     .topbar{
       height:44px;
       background:var(--bar);
@@ -32,662 +37,307 @@
       font-size:14px;
       line-height:1.2;
       gap:12px;
-      justify-content:space-between;
+      flex-shrink:0;
     }
-    .topbar .left{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .topbar .right{
-      display:flex;align-items:center;gap:18px;font-size:14px;white-space:nowrap;
+    .topbar .t-brand{
+      flex-shrink:0;
+      font-weight:700;
+      text-decoration:none;
+      color:#fff;
+      white-space:nowrap;
+    }
+    .topbar .t-brand sup{font-size:9px;vertical-align:super}
+    .topbar .t-left{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .topbar .t-right{
+      flex-shrink:0;
+      display:flex;align-items:center;gap:12px;font-size:13px;white-space:nowrap;
     }
     .chip{
-      display:inline-flex;align-items:center;gap:8px;
+      display:inline-flex;align-items:center;gap:6px;
       padding:2px 8px;border-radius:999px;
       background:rgba(255,255,255,.12);
+      font-size:13px;
     }
-    .icon{width:16px;height:16px;display:inline-block;vertical-align:-2px}
+    .icon{width:15px;height:15px;display:inline-block;vertical-align:-2px}
 
+    /* ── SUBBAR ── */
     .subbar{
       background:var(--bar2);
       color:#fff;
-      padding:8px 14px;
+      padding:6px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      font-size:14px;
+      font-size:13px;
+      flex-shrink:0;
     }
-    .subbar a{
-      color:#fff;text-decoration:underline;cursor:pointer;
-      display:inline-flex;align-items:center;gap:8px;
-    }
-    .flag{
-      display:inline-flex;align-items:center;gap:8px;
-      cursor:pointer;
-      user-select:none;
-      font-weight:600;
-    }
-    .flag svg{width:16px;height:16px;display:inline-block}
+    .subbar a{color:#fff;text-decoration:underline;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+    .flag{display:inline-flex;align-items:center;gap:6px;cursor:pointer;user-select:none;font-weight:600;}
+    .flag svg{width:15px;height:15px}
     .flag .flagFill{fill:transparent}
     .flag .flagStroke{stroke:white}
     .flag.on .flagFill{fill:#d8342a}
     .flag.on .flagStroke{stroke:#d8342a}
 
-    .main{
-      flex:1;
-      padding:18px 14px 0;
-      background:#fff;
-      border-top:1px solid rgba(255,255,255,.2);
-    }
-    .wrap{
-      max-width:1100px;margin:0 auto;
-      padding:10px 6px 70px;
-    }
-    .hint{color:var(--muted);font-size:14px;margin:6px 0 16px}
-    .qtitle{font-size:15px;margin:10px 0 16px}
-    .question{font-size:16px;margin:0 0 14px}
-    .answers{display:flex;flex-direction:column;gap:10px}
+    /* ── MAIN CONTENT ── */
+    .main{flex:1;padding:16px 14px 0;background:#fff;border-top:1px solid rgba(255,255,255,.2);}
+    .wrap{max-width:1100px;margin:0 auto;padding:10px 6px 90px;}
+    .hint{color:var(--muted);font-size:13px;margin:6px 0 14px}
+    .qtitle{font-size:14px;margin:8px 0 14px;color:var(--muted)}
+    .question{font-size:16px;margin:0 0 18px;line-height:1.6}
+    .answers{display:flex;flex-direction:column;gap:8px}
     .ans{
       display:flex;align-items:flex-start;gap:10px;
-      padding:6px 0;
-      border-bottom:1px dotted #e5e7eb;
-      max-width:520px;
+      padding:10px 14px;
+      border-radius:8px;
+      border:1px solid var(--line);
+      max-width:640px;
+      cursor:pointer;
+      transition:border-color .15s, background .15s;
+      background:#fff;
     }
-    .ans:last-child{border-bottom:none}
-    .ans input{margin-top:3px}
-    .ans .label{
-      width:18px;font-weight:bold;color:var(--muted)
-    }
+    .ans:hover:not(.locked){border-color:var(--bar2);background:#f0f8ff}
+    .ans.selected{border-color:var(--btn);background:#eff6ff}
+    .ans.correct{border-color:var(--correct);background:var(--correct-bg)}
+    .ans.wrong{border-color:var(--wrong);background:var(--wrong-bg)}
+    .ans.show-correct{border-color:var(--correct);background:var(--correct-bg)}
+    .ans input{margin-top:2px;flex-shrink:0}
+    .ans .label{width:18px;font-weight:bold;color:var(--muted);flex-shrink:0}
+    .ans .ans-icon{margin-left:auto;font-size:16px;flex-shrink:0}
 
+    /* ── EXPLANATION ── */
+    .explanation-box{
+      max-width:640px;
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:8px;
+      border:1px solid;
+      font-size:14px;
+      line-height:1.6;
+    }
+    .explanation-box.correct{border-color:#86efac;background:#f0fdf4;color:#14532d}
+    .explanation-box.wrong{border-color:#fca5a5;background:#fef2f2;color:#7f1d1d}
+    .explanation-box strong{display:block;margin-bottom:4px}
+    #checkBtn{
+      margin-top:16px;
+      padding:10px 22px;
+      border-radius:8px;
+      background:var(--btn);
+      color:#fff;
+      border:none;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      display:none;
+    }
+    #checkBtn:hover{background:var(--btn2)}
+
+    /* ── FOOTER ── */
     .footer{
       position:fixed;left:0;right:0;bottom:0;
       background:var(--bar);
-      padding:10px 14px;
+      padding:8px 14px;
       display:flex;justify-content:space-between;align-items:center;
       border-top:1px solid rgba(255,255,255,.18);
       gap:12px;
     }
-    .footerLeft{min-width:160px}
-    .footerRight{display:flex;align-items:center;gap:10px;margin-left:auto}
+    .footerLeft{min-width:100px;font-size:12px;color:rgba(255,255,255,.7)}
+    .footerRight{display:flex;align-items:center;gap:8px;margin-left:auto}
     .navbtn{
       background:transparent;
       color:#fff;
       border:1px solid rgba(255,255,255,.55);
-      padding:10px 14px;
+      padding:8px 14px;
       border-radius:8px;
       cursor:pointer;
       font-weight:700;
-      display:flex;align-items:center;gap:10px;
+      font-size:13px;
+      display:flex;align-items:center;gap:8px;
       white-space:nowrap;
     }
     .navbtn:hover{background:rgba(255,255,255,.10)}
-    .navbtn--review{
-      border-color:rgba(255,255,255,.35);
-      background:rgba(255,255,255,.08);
-      font-weight:600;
-      letter-spacing:.01em;
-    }
-    .navbtn--next{
-      background:rgba(255,255,255,.12);
-      border-color:rgba(255,255,255,.7);
-    }
-    .navDivider{
-      width:1px;height:28px;
-      background:rgba(255,255,255,.25);
-      margin:0 2px;
-    }
-    .arrow{
-      width:10px;height:10px;border-top:2px solid #fff;border-right:2px solid #fff;
-      transform:rotate(45deg);
-    }
+    .navbtn--next{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7);}
+    .navbtn--review{background:rgba(255,255,255,.08);font-weight:600;}
+    .navDivider{width:1px;height:26px;background:rgba(255,255,255,.25);margin:0 2px;}
+    .arrow{width:9px;height:9px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(45deg)}
     .arrow.left{transform:rotate(-135deg)}
-    .arrow.right{transform:rotate(45deg)}
 
-    .modalBack{
-      position:fixed;inset:0;background:rgba(0,0,0,.45);
-      display:none;align-items:center;justify-content:center;
-      padding:16px;
+    /* ── START SCREEN ── */
+    #startScreen{
+      position:fixed;inset:0;background:var(--bg);z-index:9000;
+      display:flex;align-items:center;justify-content:center;padding:24px;
     }
-    .modal{
-      width:min(520px, 96vw);
-      background:var(--card);
-      border-radius:10px;
-      box-shadow:0 16px 50px rgba(0,0,0,.25);
+    .start-card{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 16px 50px rgba(0,0,0,.15);
+      width:min(580px,96vw);
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.08);
     }
-    .modalHead{
+    .start-head{
       background:var(--bar);
       color:#fff;
-      padding:12px 14px;
-      display:flex;justify-content:space-between;align-items:center;
-      font-weight:bold;
+      padding:28px 28px 24px;
     }
-    .modalBody{padding:14px}
-    .close{
-      background:rgba(255,255,255,.15);
-      border:1px solid rgba(255,255,255,.25);
-      color:#fff;cursor:pointer;padding:6px 10px;border-radius:8px;
-    }
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;color:var(--muted);font-size:12px}
-    .calcGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-    .calcGrid input{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px}
-
-    @media (max-width:520px){
-      .topbar{font-size:16px}
-      .topbar .right{font-size:14px;gap:10px}
-      .answers{max-width:100%}
-      .ans{max-width:100%}
-    }
-
-    .calcOverlay{
-      position:fixed;inset:0;background:rgba(0,0,0,.35);
-      display:none;align-items:center;justify-content:center;
-      z-index:9999;padding:24px;
-    }
-    .calcOverlay.open{display:flex}
-    .calcWin{
-      width:320px;max-width:92vw;
+    .start-head h1{font-size:22px;font-weight:800;margin-bottom:4px}
+    .start-head p{font-size:14px;opacity:.75}
+    .start-body{padding:24px 28px}
+    .mode-label{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+    .mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+    .mode-card{
+      border:2px solid var(--line);
       border-radius:10px;
-      box-shadow:0 18px 45px rgba(0,0,0,.35);
-      background:#3f6ea3;
-      border:1px solid rgba(255,255,255,.35);
-      overflow:hidden;
+      padding:16px;
+      cursor:pointer;
+      transition:border-color .15s,background .15s;
+      text-align:center;
     }
-    .calcTitle{
-      height:46px;display:flex;align-items:center;justify-content:space-between;
-      padding:0 12px;color:#fff;font-weight:700;letter-spacing:.2px;
-      background:rgba(0,0,0,.06);
-      border-bottom:1px solid rgba(255,255,255,.25);
+    .mode-card:hover{border-color:var(--btn)}
+    .mode-card.selected{border-color:var(--btn);background:#eff6ff}
+    .mode-card .mc-icon{font-size:28px;margin-bottom:6px}
+    .mode-card .mc-title{font-size:14px;font-weight:700}
+    .mode-card .mc-desc{font-size:12px;color:var(--muted);margin-top:2px}
+    .cat-select-wrap{margin-bottom:20px}
+    .cat-select-wrap select{
+      width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:8px;
+      font-size:14px;font-family:inherit;outline:none;
     }
+    .start-btn{
+      width:100%;padding:14px;border-radius:10px;background:var(--btn);color:#fff;
+      border:none;font-size:16px;font-weight:800;cursor:pointer;transition:background .15s;
+    }
+    .start-btn:hover{background:var(--btn2)}
+    .start-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+    /* ── RESULTS SCREEN ── */
+    #resultsScreen{
+      position:fixed;inset:0;background:var(--bg);z-index:9001;
+      display:none;align-items:center;justify-content:center;padding:24px;overflow-y:auto;
+    }
+    #resultsScreen.open{display:flex}
+    .results-card{
+      background:#fff;border-radius:14px;box-shadow:0 16px 50px rgba(0,0,0,.15);
+      width:min(580px,96vw);overflow:hidden;
+    }
+    .results-head{background:var(--bar);color:#fff;padding:24px 28px}
+    .results-head h2{font-size:22px;font-weight:800;margin-bottom:4px}
+    .results-body{padding:24px 28px}
+    .score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+    .score-box{text-align:center;padding:14px;background:var(--bg);border-radius:10px;border:1px solid var(--line)}
+    .score-box .snum{font-size:28px;font-weight:800}
+    .score-box .snum.green{color:var(--correct)}
+    .score-box .snum.red{color:var(--wrong)}
+    .score-box .snum.blue{color:var(--btn)}
+    .score-box .slbl{font-size:12px;color:var(--muted);margin-top:2px}
+    .cat-breakdown{margin-bottom:20px}
+    .cat-breakdown h3{font-size:14px;font-weight:700;margin-bottom:10px}
+    .cat-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:13px}
+    .cat-row .cat-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .cat-bar-track{flex:2;height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+    .cat-bar-fill{height:100%;background:var(--correct);border-radius:999px}
+    .cat-pct{font-weight:700;width:36px;text-align:right;font-size:12px}
+    .results-btns{display:flex;gap:10px}
+    .results-btn{flex:1;padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}
+    .results-btn.primary{background:var(--btn);color:#fff;border:none}
+    .results-btn.primary:hover{background:var(--btn2)}
+    .results-btn.secondary{background:transparent;color:var(--btn);border:1px solid var(--btn)}
+    .results-btn.secondary:hover{background:#eff6ff}
+
+    /* ── CALCULATOR (unchanged) ── */
+    .calcOverlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px;}
+    .calcOverlay.open{display:flex}
+    .calcWin{width:320px;max-width:92vw;border-radius:10px;box-shadow:0 18px 45px rgba(0,0,0,.35);background:#3f6ea3;border:1px solid rgba(255,255,255,.35);overflow:hidden;}
+    .calcTitle{height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;color:#fff;font-weight:700;background:rgba(0,0,0,.06);border-bottom:1px solid rgba(255,255,255,.25);}
     .calcTitle .left{display:flex;align-items:center;gap:8px}
-    .calcTitle .miniIcon{width:16px;height:16px;display:inline-block}
-    .calcTitle button{
-      background:transparent;border:0;color:#fff;width:32px;height:32px;border-radius:8px;
-      cursor:pointer;display:grid;place-items:center;
-    }
+    .calcTitle .miniIcon{width:16px;height:16px}
+    .calcTitle button{background:transparent;border:0;color:#fff;width:32px;height:32px;border-radius:8px;cursor:pointer;display:grid;place-items:center;}
     .calcTitle button:hover{background:rgba(255,255,255,.12)}
     .calcBody{padding:14px 14px 16px}
     .calcMeta{display:flex;align-items:center;gap:8px;color:#eaf2ff;font-weight:600;margin-bottom:10px}
     .calcMeta select{border:0;border-radius:8px;padding:6px 10px;font-weight:700;outline:none}
-    .calcDisplay{
-      background:#e9edf3;border-radius:6px;padding:12px 10px;
-      font-size:34px;font-weight:800;text-align:right;color:#111;
-      box-shadow:inset 0 0 0 2px rgba(0,0,0,.12);
-      font-variant-numeric:tabular-nums;line-height:1;
-      overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
-    }
-    .calcBrand{display:flex;align-items:center;justify-content:space-between;margin:10px 2px 12px;color:#dfeaff;font-weight:800;letter-spacing:.2px;opacity:.95;user-select:none}
-    .calcBrand small{font-weight:800;opacity:.95}
+    .calcDisplay{background:#e9edf3;border-radius:6px;padding:12px 10px;font-size:34px;font-weight:800;text-align:right;color:#111;box-shadow:inset 0 0 0 2px rgba(0,0,0,.12);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+    .calcBrand{display:flex;align-items:center;justify-content:space-between;margin:10px 2px 12px;color:#dfeaff;font-weight:800;opacity:.95;user-select:none}
     .calcKeys{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .calcBtn{
-      height:44px;border-radius:8px;border:0;cursor:pointer;
-      font-weight:900;font-size:16px;
-      box-shadow:0 4px 0 rgba(0,0,0,.18);
-      transition:transform .04s ease;user-select:none;
-    }
+    .calcBtn{height:44px;border-radius:8px;border:0;cursor:pointer;font-weight:900;font-size:16px;box-shadow:0 4px 0 rgba(0,0,0,.18);user-select:none;}
     .calcBtn:active{transform:translateY(1px)}
     .calcBtn.red{background:#c63a3a;color:#fff}
     .calcBtn.gray{background:#f2f4f7;color:#111}
     .calcBtn.tall{grid-row:span 2;height:98px}
-    .calcBtn.wide{grid-column:span 2}
 
-    .reviewOverlay{
-      position:fixed;inset:0;background:#fff;
-      display:none;z-index:9998;
-    }
+    /* ── REVIEW OVERLAY (unchanged) ── */
+    .reviewOverlay{position:fixed;inset:0;background:#fff;display:none;z-index:9998;}
     .reviewOverlay.open{display:block}
-    .reviewTop{
-      height:44px;background:var(--bar);color:#fff;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 18px;font-size:14px;font-weight:600;
-    }
-    .reviewTop .rtLeft{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .reviewTop .rtRight{display:flex;align-items:center;gap:16px}
-    .reviewTop .rtBtn{
-      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-      color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:700;
-    }
-    .reviewSub{
-      height:34px;background:#97b4dc;color:#fff;
-      display:flex;align-items:center;gap:10px;
-      padding:0 18px;font-weight:700;
-      border-bottom:1px solid rgba(0,0,0,.08);
-    }
+    .reviewTop{height:44px;background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:13px;font-weight:600;}
+    .reviewTop .rtLeft{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .reviewTop .rtRight{flex-shrink:0;display:flex;align-items:center;gap:16px}
+    .reviewTop .rtBtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:8px;padding:5px 10px;cursor:pointer;font-weight:700;font-size:13px;}
+    .reviewSub{height:32px;background:#97b4dc;color:#fff;display:flex;align-items:center;gap:10px;padding:0 18px;font-weight:700;border-bottom:1px solid rgba(0,0,0,.08);}
     .reviewSub a{color:#fff;text-decoration:underline;cursor:pointer}
-    .reviewCenterTitle{
-      text-align:center;font-size:20px;font-family:Georgia,serif;
-      padding:8px 0 5px;color:#111;
-    }
-    .reviewSectionBar{
-      height:26px;background:#97b4dc;color:#fff;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 18px;font-weight:800;
-      border-top:1px solid rgba(0,0,0,.08);
-      border-bottom:1px solid rgba(0,0,0,.08);
-    }
+    .reviewCenterTitle{text-align:center;font-size:20px;font-family:Georgia,serif;padding:16px 0 8px;color:#111;}
+    .reviewSectionBar{height:28px;background:#97b4dc;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-weight:800;border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08);}
     .reviewSectionBar .left{display:flex;align-items:center;gap:10px}
-    .reviewSectionBar .right{opacity:.95}
-    .reviewList{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:3px;
-      padding:6px 14px 52px;
-      overflow-y:auto;
-      align-content:start;
-    }
-    .reviewRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 8px;
-      height:30px;
-      border-radius:5px;
-      border:1.5px solid;
-      cursor:pointer;
-      font-size:12px;
-      transition:filter .1s;
-    }
-    .reviewRow:hover{filter:brightness(.94)}
-    .reviewRow.row-complete{background:#f0fdf4;border-color:#16a34a}
-    .reviewRow.row-incomplete{background:#fef2f2;border-color:#dc2626}
-    .reviewRow.row-unseen{background:#f9fafb;border-color:#9ca3af}
-    .rrLeft{display:flex;align-items:center;gap:6px;min-width:0}
-    .rrNum{font-size:12px;font-weight:700;color:var(--ink);white-space:nowrap}
-    .rrCheck{font-size:11px;font-weight:700}
-    .row-complete .rrCheck{color:#15803d}
-    .row-incomplete .rrCheck{color:#b91c1c}
-    .row-unseen .rrCheck{color:#9ca3af}
-    .flagIcon{width:22px;height:22px;cursor:pointer}
+    .reviewList{padding:0 0 16px}
+    .reviewRow{display:grid;grid-template-columns:40px 1fr 180px;align-items:center;height:32px;border-bottom:1px solid rgba(0,0,0,.2);padding:0 18px;font-size:14px;}
+    .reviewRow .qLink{color:#111;cursor:pointer}
+    .reviewRow .status{font-weight:800}
+    .reviewRow .status.incomplete{color:#d8342a}
+    .reviewRow .status.complete{color:#18794e}
+    .reviewRow .status.unseen{color:#d8342a}
+    .flagCell{display:flex;align-items:center;gap:4px}
+    .flagIcon{width:20px;height:20px;cursor:pointer}
     .flagIcon .pole{stroke:#1f5d95}
     .flagIcon .outline{stroke:#1f5d95;fill:transparent}
     .flagIcon.on .outline{stroke:#d8342a}
     .flagIcon.on .fill{fill:#d8342a}
     .flagIcon .fill{fill:transparent}
-    .reviewFooter{
-      position:fixed;left:0;right:0;bottom:0;
-      height:44px;
-      background:var(--bar);
-      border-top:1px solid rgba(255,255,255,.18);
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 12px;
-      gap:12px;
-    }
-    .reviewFooter .leftActions{display:flex;align-items:center;gap:10px}
-    .reviewFooter .rightActions{display:flex;align-items:center;gap:10px;margin-left:auto}
-    .reviewFooter .rbtn{
-      height:32px;
-      border-radius:0;
-      border:1px solid rgba(255,255,255,.55);
-      background:transparent;
-      color:#fff;
-      cursor:pointer;
-      font-weight:700;
-      padding:0 12px;
-      display:flex;align-items:center;gap:8px;
-      white-space:nowrap;
-    }
+    .reviewFooter{position:fixed;left:0;right:0;bottom:0;height:42px;background:var(--bar);border-top:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:space-between;padding:0 12px;gap:10px;}
+    .reviewFooter .leftActions{display:flex;align-items:center;gap:8px}
+    .reviewFooter .rightActions{display:flex;align-items:center;gap:8px;margin-left:auto}
+    .reviewFooter .rbtn{height:30px;border-radius:0;border:1px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer;font-weight:700;padding:0 10px;display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:12px;}
     .reviewFooter .rbtn:hover{background:rgba(255,255,255,.10)}
-    .reviewFooter .rbtn .mini{width:16px;height:16px;display:inline-block}
-    .reviewFooter .secInfo{
-      color:rgba(255,255,255,.75);font-size:12px;padding:0 6px;white-space:nowrap;
-    }
+    .reviewFooter .secInfo{color:rgba(255,255,255,.75);font-size:11px;padding:0 4px}
 
-    /* ── Start / Break shared overlay ── */
-    .startOverlay,.breakOverlay{
-      position:fixed;inset:0;background:#fff;z-index:10001;
-      display:flex;flex-direction:column;
+    @media(max-width:520px){
+      .topbar{font-size:13px}
+      .topbar .t-right{font-size:12px;gap:8px}
+      .ans{max-width:100%}
+      .mode-cards{grid-template-columns:1fr}
+      .score-grid{grid-template-columns:1fr 1fr 1fr}
     }
-    .breakOverlay{display:none}
-    .breakOverlay.open{display:flex}
-
-    .soTopbar,.boTopbar{
-      height:44px;background:var(--bar);color:#fff;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 18px;font-size:14px;font-weight:600;flex-shrink:0;
-    }
-    .soBody,.boBody{
-      flex:1;display:flex;align-items:center;justify-content:center;
-      background:var(--bg);padding:24px;
-    }
-    .soCard,.boCard{
-      background:var(--card);border-radius:12px;
-      box-shadow:0 8px 36px rgba(0,0,0,.13);
-      padding:38px 42px;max-width:480px;width:100%;text-align:center;
-    }
-    .soTitle{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:6px}
-    .soMeta{font-size:14px;color:var(--muted);margin-bottom:22px}
-    .soList{
-      font-size:14px;color:#374151;line-height:1.75;text-align:left;
-      background:var(--bg);border-radius:8px;padding:14px 16px;margin-bottom:24px;
-    }
-    .soList li{list-style:none;margin-bottom:2px}
-    .soList li::before{content:"• ";color:var(--bar2)}
-    .soStartBtn{
-      width:100%;padding:14px;border-radius:8px;border:none;
-      background:var(--btn);color:#fff;font-size:16px;font-weight:700;
-      cursor:pointer;transition:background .15s;
-    }
-    .soStartBtn:hover{background:var(--btn2)}
-
-    /* Break overlay specifics */
-    .boSubbar{
-      height:34px;background:var(--bar2);color:#fff;
-      display:flex;align-items:center;padding:0 18px;
-      font-weight:700;font-size:14px;flex-shrink:0;
-    }
-    .boTitle{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
-    .boClock{
-      font-size:72px;font-weight:800;color:var(--ink);
-      font-variant-numeric:tabular-nums;line-height:1;margin-bottom:16px;
-    }
-    .boDesc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:28px}
-    .boSkipBtn{
-      width:100%;padding:12px;border-radius:8px;
-      border:1.5px solid var(--line);background:var(--card);
-      color:var(--ink);font-size:15px;font-weight:700;cursor:pointer;
-      transition:background .15s;
-    }
-    .boSkipBtn:hover{background:var(--bg)}
-
-    /* ── Section Review ── */
-    .secRevOverlay{
-      position:fixed;inset:0;background:#fff;z-index:10002;
-      display:none;flex-direction:column;
-    }
-    .secRevOverlay.open{display:flex}
-    .secRevWarn{
-      background:#fef3c7;border-bottom:2px solid #d97706;
-      padding:10px 20px;font-size:13px;font-weight:600;color:#92400e;
-      display:flex;align-items:center;gap:8px;flex-shrink:0;
-    }
-    .secRevBody{
-      flex:1;display:flex;flex-direction:column;
-      padding:14px 20px 8px;overflow:hidden;min-height:0;
-    }
-    .secRevHeader{
-      display:flex;align-items:baseline;justify-content:space-between;
-      margin-bottom:10px;flex-shrink:0;
-    }
-    .secRevTitle{font-size:16px;font-weight:800;color:var(--ink)}
-    .secRevStats{display:flex;gap:18px;font-size:13px;font-weight:600;color:var(--muted)}
-    .secRevStats span{display:flex;align-items:center;gap:5px}
-    .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
-    .dot-green{background:#16a34a}
-    .dot-red{background:#dc2626}
-    .dot-orange{background:#d97706}
-    .secRevGrid{
-      display:grid;
-      grid-template-columns:repeat(10,1fr);
-      gap:5px;flex:1;min-height:0;align-content:start;
-    }
-    .secRevCell{
-      border-radius:6px;border:2px solid;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      font-size:11px;font-weight:700;padding:5px 2px;gap:2px;
-      position:relative;
-    }
-    .secRevCell.complete{background:#dcfce7;border-color:#16a34a;color:#15803d}
-    .secRevCell.incomplete{background:#fee2e2;border-color:#dc2626;color:#b91c1c}
-    .secRevCell .flagDot{
-      position:absolute;top:2px;right:3px;
-      width:7px;height:7px;border-radius:50%;background:#d97706;
-    }
-    .secRevCell .cellNum{font-size:12px;font-weight:800}
-    .secRevCell .cellStatus{font-size:10px;font-weight:600;opacity:.85}
-    .secRevFoot{
-      height:50px;background:var(--bar);flex-shrink:0;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 14px;gap:10px;
-      border-top:1px solid rgba(255,255,255,.18);
-    }
-
-    /* ── Pause overlay ── */
-    .pauseOverlay{
-      position:fixed;inset:0;background:rgba(0,0,0,.72);
-      z-index:10003;display:none;align-items:center;justify-content:center;
-    }
-    .pauseOverlay.open{display:flex}
-    .pauseCard{
-      background:#fff;border-radius:12px;padding:40px 48px;text-align:center;
-      max-width:380px;width:90%;box-shadow:0 16px 50px rgba(0,0,0,.3);
-    }
-    .pauseIcon{font-size:40px;margin-bottom:12px}
-    .pauseTitle{font-size:22px;font-weight:800;color:var(--ink);margin-bottom:8px}
-    .pauseSub{font-size:14px;color:var(--muted);margin-bottom:28px}
-    .pauseResumeBtn{
-      width:100%;padding:13px;border-radius:8px;border:none;
-      background:var(--btn);color:#fff;font-size:15px;font-weight:700;cursor:pointer;
-    }
-    .pauseResumeBtn:hover{background:var(--btn2)}
-
-    /* Pause chip button in topbar */
-    .pauseChip{
-      display:inline-flex;align-items:center;gap:6px;
-      padding:2px 10px;border-radius:999px;
-      background:rgba(255,255,255,.12);
-      cursor:pointer;border:none;color:#fff;font-size:13px;font-weight:600;
-    }
-    .pauseChip:hover{background:rgba(255,255,255,.2)}
-    .pauseChip svg{width:14px;height:14px}
-
-    /* ── Continue Later modal ── */
-    .clBack{
-      position:fixed;inset:0;background:rgba(0,0,0,.5);
-      z-index:10004;display:none;align-items:center;justify-content:center;padding:16px;
-    }
-    .clBack.open{display:flex}
-    .clModal{
-      width:min(460px,96vw);background:#fff;border-radius:10px;
-      box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden;
-    }
-    .clHead{
-      background:var(--bar);color:#fff;
-      padding:14px 18px;font-weight:700;font-size:15px;
-    }
-    .clBody{padding:22px 18px 12px}
-    .clBody p{font-size:14px;line-height:1.65;color:var(--ink);margin-bottom:14px}
-    .clSaved{
-      background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;
-      padding:12px 14px;font-size:13px;color:#15803d;margin-bottom:16px;
-      display:flex;align-items:center;gap:8px;
-    }
-    .clLabel{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
-    .clRow{display:flex;gap:8px;margin-bottom:8px}
-    .clRow input{
-      flex:1;padding:10px 12px;border:1.5px solid var(--line);border-radius:8px;
-      font-size:14px;outline:none;
-    }
-    .clRow input:focus{border-color:var(--btn)}
-    .clSendBtn{
-      padding:10px 16px;border-radius:8px;border:none;
-      background:var(--btn);color:#fff;font-weight:700;cursor:pointer;white-space:nowrap;
-      font-size:14px;
-    }
-    .clSendBtn:hover{background:var(--btn2)}
-    .clNote{font-size:12px;color:#9ca3af;margin-bottom:4px;line-height:1.5}
-    .clFoot{padding:12px 18px;display:flex;justify-content:flex-end}
-    .clCloseBtn{
-      padding:9px 18px;border-radius:8px;border:1.5px solid var(--line);
-      background:#fff;color:var(--ink);font-weight:600;cursor:pointer;font-size:14px;
-    }
-    .clCloseBtn:hover{background:var(--bg)}
-
-    /* Continue Later footer button */
-    .navbtn--later{
-      background:rgba(255,255,255,.08);
-      border-color:rgba(255,255,255,.35);
-      font-size:13px;
-    }
-
-    /* Report Question button */
-    .reportBtn{
-      display:inline-flex;align-items:center;gap:5px;
-      background:none;border:none;
-      color:#9ca3af;font-size:12px;
-      cursor:pointer;padding:0;
-      opacity:.75;transition:opacity .15s,color .15s;
-      margin-top:14px;
-    }
-    .reportBtn:hover{opacity:1;color:#6b7280}
-    .reportBtn.reported{color:#d97706;opacity:1}
-
-    /* End Exam button */
-    .navbtn--end{
-      background:rgba(220,38,38,.18);
-      border-color:rgba(220,38,38,.55);
-      color:#fca5a5;
-    }
-    .navbtn--end:hover{background:rgba(220,38,38,.32)}
-
-    /* End Exam confirm modal */
-    .confirmBack{
-      position:fixed;inset:0;background:rgba(0,0,0,.5);
-      display:none;align-items:center;justify-content:center;
-      padding:16px;z-index:10000;
-    }
-    .confirmBack.open{display:flex}
-    .confirmModal{
-      width:min(440px,94vw);
-      background:#fff;border-radius:10px;
-      box-shadow:0 20px 60px rgba(0,0,0,.3);
-      overflow:hidden;
-    }
-    .confirmHead{
-      background:var(--bar);color:#fff;
-      padding:14px 18px;
-      font-weight:700;font-size:15px;
-    }
-    .confirmBody{padding:20px 18px 8px}
-    .confirmBody p{font-size:15px;line-height:1.6;color:var(--ink)}
-    .confirmBody .warn{
-      margin-top:12px;padding:10px 14px;
-      background:#fef3c7;border-left:3px solid #d97706;
-      border-radius:4px;font-size:13px;color:#92400e;
-    }
-    .confirmFoot{
-      padding:14px 18px;
-      display:flex;justify-content:flex-end;gap:10px;
-    }
-    .confirmFoot button{
-      padding:9px 18px;border-radius:8px;
-      font-weight:700;cursor:pointer;font-size:14px;border:none;
-    }
-    .confirmFoot .cancelBtn{background:#f3f4f6;color:var(--ink)}
-    .confirmFoot .cancelBtn:hover{background:#e5e7eb}
-    .confirmFoot .submitBtn{background:#dc2626;color:#fff}
-    .confirmFoot .submitBtn:hover{background:#b91c1c}
   </style>
 </head>
 <body>
+<div class="app" id="appRoot">
 
-<!-- ══ Start Screen ══ -->
-<div class="startOverlay" id="startScreen">
-  <div class="soTopbar">
-    PMP<span style="font-size:10px;vertical-align:super">®</span>&nbsp;Study Hell<span style="font-size:10px;vertical-align:super">™</span>
-  </div>
-  <div class="soBody">
-    <div class="soCard">
-      <div class="soTitle">Practice Exam</div>
-      <div class="soMeta">180 Questions &nbsp;•&nbsp; 240 Minutes</div>
-      <ul class="soList">
-        <li>Two optional 10-minute breaks after questions 60 and 120</li>
-        <li>You can end breaks early at any time</li>
-        <li>The timer starts when you click <strong>Start Exam</strong></li>
-      </ul>
-      <button class="soStartBtn" id="startExamBtn">Start Exam</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ Section Review ══ -->
-<div class="secRevOverlay" id="secRevOverlay">
-  <div class="boTopbar">
-    <span>PMP<span style="font-size:10px;vertical-align:super">®</span>&nbsp;Study Hell<span style="font-size:10px;vertical-align:super">™</span></span>
-    <span style="display:flex;align-items:center;gap:8px;font-weight:400">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 7v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/></svg>
-      Time Remaining <strong id="secRevTimer">--:--</strong>
-    </span>
-  </div>
-  <div class="secRevWarn">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#92400e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    After proceeding, you <strong>cannot return</strong> to questions in this section.
-  </div>
-  <div class="secRevBody">
-    <div class="secRevHeader">
-      <div class="secRevTitle" id="secRevTitle">Section 1 — Questions 1–60</div>
-      <div class="secRevStats" id="secRevStats"></div>
-    </div>
-    <div class="secRevGrid" id="secRevGrid"></div>
-  </div>
-  <div class="secRevFoot">
-    <button class="rbtn" id="secRevBack">&#8592; Go Back</button>
-    <button class="rbtn" id="secRevProceed" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.6)">
-      Proceed to Break &#8594;
-    </button>
-  </div>
-</div>
-
-<!-- ══ Break Screen ══ -->
-<div class="breakOverlay" id="breakOverlay">
-  <div class="boTopbar">
-    <span>PMP<span style="font-size:10px;vertical-align:super">®</span>&nbsp;Study Hell<span style="font-size:10px;vertical-align:super">™</span></span>
-    <span style="display:flex;align-items:center;gap:8px;font-weight:400">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 7v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
-      </svg>
-      Time Remaining <strong id="mainTimerBreak">--:--</strong>
-    </span>
-  </div>
-  <div class="boSubbar" id="breakLabel">Break 1 of 2</div>
-  <div class="boBody">
-    <div class="boCard">
-      <div class="boTitle">Break Time</div>
-      <div class="boClock" id="breakTimer">10:00</div>
-      <div class="boDesc">
-        You have a 10-minute break. The exam will resume automatically when the timer ends.
-        You can also end the break early.
-      </div>
-      <button class="boSkipBtn" id="endBreakBtn">End Break Early</button>
-    </div>
-  </div>
-</div>
-
-<div class="app">
-
+  <!-- TOPBAR -->
   <div class="topbar">
-    <div class="left" id="examTitle">Demo Exam - Candidate Name</div>
-    <div class="right">
+    <a class="t-brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
+    <div class="t-left" id="examTitle"></div>
+    <div class="t-right">
       <div class="chip" title="Time Remaining">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24" fill="none">
           <path d="M12 7v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
         </svg>
-        <span>Time Remaining</span>
-        <span id="timeRemaining" style="font-weight:bold;">240:00</span>
+        <span id="timeRemaining" style="font-weight:bold;">--:--</span>
       </div>
-      <div class="chip" title="Question Progress">
-        <span id="qProgress">1 of 0</span>
+      <div class="chip">
+        <span id="qProgress">- of -</span>
       </div>
-      <button class="pauseChip" id="pauseBtn" title="Pause exam">
-        <svg id="pauseIcon" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-          <rect x="6" y="4" width="4" height="16" rx="1"/>
-          <rect x="14" y="4" width="4" height="16" rx="1"/>
-        </svg>
-        <span id="pauseLabel">Pause</span>
-      </button>
     </div>
   </div>
 
+  <!-- SUBBAR -->
   <div class="subbar">
     <a id="openCalc">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg class="icon" viewBox="0 0 24 24" fill="none">
         <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
-        <path d="M8 6h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        <path d="M8 10h3M13 10h3M8 14h3M13 14h3M8 18h3M13 18h3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 6h8M8 10h3M13 10h3M8 14h3M13 14h3M8 18h3M13 18h3" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
       Calculator
     </a>
-    <div class="flag" id="flagBtn" role="button" aria-pressed="false" tabindex="0" title="Flag for Review">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <div class="flag" id="flagBtn" role="button" tabindex="0" title="Flag for Review">
+      <svg class="icon" viewBox="0 0 24 24" fill="none">
         <path class="flagStroke" d="M6 3v18" stroke-width="2" stroke-linecap="round"/>
         <path class="flagStroke" d="M6 4h12l-2 4 2 4H6z" stroke-width="2" stroke-linejoin="round"/>
         <path class="flagFill" d="M6 4h12l-2 4 2 4H6z"/>
@@ -696,115 +346,104 @@
     </div>
   </div>
 
-  <div class="main">
+  <!-- MAIN -->
+  <div class="main" id="mainArea">
     <div class="wrap">
-      <div class="hint">
-        You are able to select an answer by clicking on the circle to the left of the answer.
-        To change your answer, select another answer.
-      </div>
-      <div class="qtitle">Practice selecting different answers below.</div>
-      <div class="question" id="questionText">Which of the below is NOT an animal</div>
+      <div class="hint" id="mainHint">Select an answer and click Check Answer to see the explanation.</div>
+      <div class="qtitle" id="qtitle"></div>
+      <div class="question" id="questionText"></div>
       <div class="answers" id="answers"></div>
-      <button class="reportBtn" id="reportBtn">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Report this question
-      </button>
+      <button id="checkBtn" onclick="checkAnswer()">Check Answer</button>
+      <div id="explanationBox" style="display:none"></div>
     </div>
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
-    <div class="footerLeft" style="display:flex;align-items:center;gap:8px;">
-      <button class="navbtn navbtn--end" id="endExamBtn">
-        End Exam
-      </button>
-      <button class="navbtn navbtn--later" id="continueLaterBtn">
-        Continue Later
-      </button>
-    </div>
+    <div class="footerLeft" id="footerScore"></div>
     <div class="footerRight">
       <button class="navbtn navbtn--review" id="openReviewFooter">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="opacity:.85">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
           <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
         </svg>
-        Item Review
+        Review
       </button>
-      <div class="navDivider" aria-hidden="true"></div>
-      <button class="navbtn" id="prevBtn">
-        <span class="arrow left" aria-hidden="true"></span>
-        Previous
-      </button>
-      <button class="navbtn navbtn--next" id="nextBtn">
-        Next
-        <span class="arrow right" aria-hidden="true"></span>
-      </button>
+      <div class="navDivider"></div>
+      <button class="navbtn" id="prevBtn"><span class="arrow left"></span> Prev</button>
+      <button class="navbtn navbtn--next" id="nextBtn">Next <span class="arrow right"></span></button>
+      <button class="navbtn" id="endExamBtn" style="background:rgba(255,100,100,.2);border-color:rgba(255,150,150,.6)">End Exam</button>
     </div>
   </div>
 
 </div>
 
-<!-- End Exam Confirm -->
-<div class="confirmBack" id="confirmBack" aria-hidden="true">
-  <div class="confirmModal" role="dialog" aria-modal="true" aria-label="End Exam">
-    <div class="confirmHead">End Exam &amp; See Results</div>
-    <div class="confirmBody">
-      <p>Are you sure you want to end the exam and view your score report?</p>
-      <div class="warn" id="confirmWarn"></div>
+<!-- ══════════ START SCREEN ══════════ -->
+<div id="startScreen">
+  <div class="start-card">
+    <div class="start-head">
+      <h1>PMP® Practice Exam</h1>
+      <p>Free · Ad-free · Registration-free</p>
     </div>
-    <div class="confirmFoot">
-      <button class="cancelBtn" id="confirmCancel">Continue Exam</button>
-      <button class="submitBtn" id="confirmSubmit">End &amp; Submit</button>
-    </div>
-  </div>
-</div>
-
-<!-- Pause Overlay -->
-<div class="pauseOverlay" id="pauseOverlay">
-  <div class="pauseCard">
-    <div class="pauseIcon">⏸</div>
-    <div class="pauseTitle">Exam Paused</div>
-    <div class="pauseSub">The timer is paused. Click Resume to continue.</div>
-    <button class="pauseResumeBtn" id="resumeFromPauseBtn">▶ Resume Exam</button>
-  </div>
-</div>
-
-<!-- Continue Later Modal -->
-<div class="clBack" id="clBack">
-  <div class="clModal">
-    <div class="clHead">Continue Later</div>
-    <div class="clBody">
-      <div class="clSaved">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#16a34a" stroke-width="2"/></svg>
-        Your progress has been saved to this browser.
+    <div class="start-body">
+      <div class="mode-label">Choose Mode</div>
+      <div class="mode-cards">
+        <div class="mode-card selected" id="modeFullCard" onclick="selectMode('full')">
+          <div class="mc-icon">📝</div>
+          <div class="mc-title">Full Exam</div>
+          <div class="mc-desc">180 questions · 240 min</div>
+        </div>
+        <div class="mode-card" id="modeCatCard" onclick="selectMode('category')">
+          <div class="mc-icon">🎯</div>
+          <div class="mc-title">Category Practice</div>
+          <div class="mc-desc">Up to 30 questions by topic</div>
+        </div>
       </div>
-      <p>If you don't have time right now, enter your email and we'll send you a link to continue from where you left off.</p>
-      <div class="clLabel">Your email address</div>
-      <div class="clRow">
-        <input type="email" id="clEmailInput" placeholder="you@example.com">
-        <button class="clSendBtn" id="clSendBtn">Send Link</button>
+
+      <div class="cat-select-wrap" id="catSelectWrap" style="display:none">
+        <select id="catSelectStart">
+          <option value="">— Select a category —</option>
+        </select>
       </div>
-      <div class="clNote" id="clNote">We'll send you a link that resumes the exam exactly where you paused.</div>
-    </div>
-    <div class="clFoot">
-      <button class="clCloseBtn" id="clCloseBtn">Close &amp; Resume</button>
+
+      <button class="start-btn" id="startBtn" onclick="startExam()">Start Exam →</button>
+      <div class="start-note">
+        PMP® is a registered trademark of PMI, Inc. This platform is independent and not endorsed by PMI.
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Calculator Modal -->
-<div class="calcOverlay" id="calcOverlay" aria-hidden="true">
-  <div class="calcWin" role="dialog" aria-modal="true" aria-label="Calculator">
+<!-- ══════════ RESULTS SCREEN ══════════ -->
+<div id="resultsScreen">
+  <div class="results-card">
+    <div class="results-head">
+      <h2 id="resultsTitle">Exam Complete</h2>
+      <p id="resultsSubtitle"></p>
+    </div>
+    <div class="results-body">
+      <div class="score-grid" id="scoreGrid"></div>
+      <div class="cat-breakdown" id="catBreakdown"></div>
+      <div class="results-btns">
+        <button class="results-btn primary" onclick="restartExam()">↩ Restart</button>
+        <button class="results-btn secondary" onclick="reviewExam()">Review Answers</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CALCULATOR ══════════ -->
+<div class="calcOverlay" id="calcOverlay">
+  <div class="calcWin">
     <div class="calcTitle">
       <div class="left">
-        <svg class="miniIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg class="miniIcon" viewBox="0 0 24 24" fill="none">
           <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
           <path d="M8 6h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <span>Calculator</span>
       </div>
-      <button id="closeCalc" aria-label="Close calculator">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+      <button id="closeCalc">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
           <path d="M6 6l12 12M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
@@ -812,41 +451,31 @@
     <div class="calcBody">
       <div class="calcMeta">
         <span>Modes</span>
-        <select id="calcMode" aria-label="Calculator mode">
-          <option value="standard" selected>Standard</option>
-        </select>
+        <select id="calcMode"><option value="standard">Standard</option></select>
       </div>
       <div class="calcDisplay" id="calcDisplay">0</div>
-      <div class="calcBrand">
-        <small>Texas Instruments</small>
-        <span style="font-size:20px;font-weight:900;">TI-108</span>
-      </div>
+      <div class="calcBrand"><small>Texas Instruments</small><span style="font-size:20px;font-weight:900;">TI-108</span></div>
       <div class="calcKeys" id="calcKeys">
         <button class="calcBtn red" data-action="toggleSign">+/−</button>
         <button class="calcBtn red" data-action="sqrt">√</button>
         <button class="calcBtn red" data-action="percent">%</button>
         <button class="calcBtn red" data-action="divide">÷</button>
-
         <button class="calcBtn red" data-action="mrc">MRC</button>
         <button class="calcBtn red" data-action="mMinus">M−</button>
         <button class="calcBtn red" data-action="mPlus">M+</button>
         <button class="calcBtn red" data-action="multiply">×</button>
-
         <button class="calcBtn gray" data-num="7">7</button>
         <button class="calcBtn gray" data-num="8">8</button>
         <button class="calcBtn gray" data-num="9">9</button>
         <button class="calcBtn red" data-action="minus">−</button>
-
         <button class="calcBtn gray" data-num="4">4</button>
         <button class="calcBtn gray" data-num="5">5</button>
         <button class="calcBtn gray" data-num="6">6</button>
         <button class="calcBtn red" data-action="plus">+</button>
-
         <button class="calcBtn gray" data-num="1">1</button>
         <button class="calcBtn gray" data-num="2">2</button>
         <button class="calcBtn gray" data-num="3">3</button>
         <button class="calcBtn red tall" data-action="equals">=</button>
-
         <button class="calcBtn red" data-action="clear">ON/C</button>
         <button class="calcBtn gray" data-num="0">0</button>
         <button class="calcBtn gray" data-action="dot">.</button>
@@ -855,741 +484,527 @@
   </div>
 </div>
 
-<!-- Item Review -->
-<div class="reviewOverlay" id="reviewOverlay" aria-hidden="true">
+<!-- ══════════ ITEM REVIEW ══════════ -->
+<div class="reviewOverlay" id="reviewOverlay">
   <div class="reviewTop">
-    <div class="rtLeft" id="reviewTitle">Demo Exam - Candidate Name</div>
+    <div class="rtLeft" id="reviewTitle">PMP® Practice Exam</div>
     <div class="rtRight">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-          <path d="M12 8v5l3 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+          <path d="M12 8v5l3 2" stroke="white" stroke-width="2" stroke-linecap="round"/>
           <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="white" stroke-width="2"/>
         </svg>
-        <span>Time Remaining <span id="reviewTime">--:--</span></span>
+        <span id="reviewTime">--:--</span>
       </div>
       <button class="rtBtn" id="closeReview">Back to Exam</button>
     </div>
   </div>
-
   <div class="reviewSub">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
       <path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
-      <path d="M8 6h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      <path d="M8 10h8M8 14h8M8 18h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 6h8M8 10h8M8 14h8M8 18h8" stroke="white" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    <a id="reviewInstructions">Instructions</a>
+    Item Review
   </div>
-
   <div class="reviewCenterTitle">Item Review</div>
-
   <div class="reviewSectionBar">
-    <div class="left">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-        <path d="M4 7h16M4 12h16M4 17h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <span id="sectionLabel">Items Section</span>
-    </div>
-    <div class="right" id="sectionSummary">( 0 Unseen/Incomplete )</div>
+    <div class="left"><span id="sectionLabel">Items</span></div>
+    <div id="sectionSummary">( 0 Incomplete )</div>
   </div>
-
   <div class="reviewList" id="reviewList"></div>
-
   <div class="reviewFooter">
     <div class="leftActions">
-      <button class="rbtn" id="endReviewBtn">
-        <span style="font-weight:900">⟫</span>
-        End Review
-      </button>
-      <button class="rbtn" id="prevSectionBtn">&#9664; Prev</button>
-      <button class="rbtn" id="nextSectionBtn">Next &#9654;</button>
+      <button class="rbtn" id="endReviewBtn">⟫ End Review</button>
+      <button class="rbtn" id="prevSectionBtn">◀ Prev</button>
+      <button class="rbtn" id="nextSectionBtn">Next ▶</button>
       <span class="secInfo" id="sectionFooterLeft"></span>
     </div>
     <div class="rightActions">
       <span class="secInfo" id="sectionFooterRight"></span>
-      <button class="rbtn" id="reviewAllBtn">
-        <svg class="mini" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Review All
-      </button>
-      <button class="rbtn" id="reviewIncompleteBtn">
-        <svg class="mini" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6 6l12 12M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Review Incomplete
-      </button>
-      <button class="rbtn" id="reviewFlaggedBtn">
-        <svg class="mini" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6 3v18" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M6 4h12l-2 4 2 4H6z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-        </svg>
-        Review Flagged
-      </button>
+      <button class="rbtn" id="reviewAllBtn">Review All</button>
+      <button class="rbtn" id="reviewIncompleteBtn">Incomplete</button>
+      <button class="rbtn" id="reviewFlaggedBtn">Flagged</button>
     </div>
   </div>
 </div>
 
 <script>
+// ═══════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════
+let allQuestions = [];   // full loaded list
+let questions = [];      // active exam questions
+let idx = 0;
+let flagged = new Set();
+let seen    = new Set();
+let selected = {};       // idx -> chosen shuffled index
+let checked  = {};       // idx -> true if user clicked Check Answer
+let correctCount = 0;
+let mode = 'full';       // 'full' | 'category'
+let activeCat = '';
+const SECTION_SIZE = 60;
 
-let questions = [];
+// Shuffle cache: stores per-question shuffled answer order
+const shuffleCache = {};
 
+// ═══════════════════════════════════════
+//  LOAD
+// ═══════════════════════════════════════
 async function loadExam() {
   try {
-    const response = await fetch("./data/pmp_questions.json");
-    const data = await response.json();
-    questions = data.questions || data;
-    render();
-  } catch (err) {
-    console.error("Exam yüklenemedi:", err);
-    alert("Exam data yüklenemedi.");
+    const res = await fetch("./data/pmp_questions.json");
+    const data = await res.json();
+    allQuestions = data.questions || data;
+    populateCatSelect();
+  } catch(e) {
+    console.error("Load failed:", e);
+    alert("Could not load exam data.");
+  }
+}
+loadExam();
+
+function populateCatSelect() {
+  const cats = [...new Set(allQuestions.map(q => q.category).filter(Boolean))].sort();
+  const sel = document.getElementById('catSelectStart');
+  cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    sel.appendChild(opt);
+  });
+  if (cats.length === 0) {
+    sel.innerHTML = '<option value="">Categories coming soon — questions being categorized</option>';
   }
 }
 
-loadExam();
+// ═══════════════════════════════════════
+//  START SCREEN
+// ═══════════════════════════════════════
+function selectMode(m) {
+  mode = m;
+  document.getElementById('modeFullCard').classList.toggle('selected', m === 'full');
+  document.getElementById('modeCatCard').classList.toggle('selected', m === 'category');
+  document.getElementById('catSelectWrap').style.display = m === 'category' ? 'block' : 'none';
+}
 
-let idx = 0;
-let flagged = new Set();
-let seen = new Set();
-let reported = new Set();
-const SECTION_SIZE = 60;
-let selected = {};
+function startExam() {
+  if (mode === 'full') {
+    questions = shuffleArray([...allQuestions]).slice(0, 180);
+  } else {
+    activeCat = document.getElementById('catSelectStart').value;
+    let pool = activeCat
+      ? allQuestions.filter(q => q.category === activeCat)
+      : [...allQuestions];
+    if (pool.length === 0) {
+      alert('No questions available for this category yet. Please select another category or try Full Exam mode.');
+      return;
+    }
+    questions = shuffleArray(pool).slice(0, 30);
+  }
 
-// --- Render ---
-function render(){
+  idx = 0;
+  flagged = new Set(); seen = new Set(); selected = {}; checked = {};
+  Object.keys(shuffleCache).forEach(k => delete shuffleCache[k]);
+
+  const label = mode === 'full' ? `Full Practice Exam (${questions.length} questions)` : `Category Practice: ${activeCat || 'Mixed'} (${questions.length} questions)`;
+  document.getElementById('examTitle').textContent = label;
+  document.getElementById('reviewTitle').textContent = label;
+
+  // Start timer
+  if (mode === 'full') startTimer(240 * 60);
+  else startTimer(questions.length * 2 * 60);
+
+  document.getElementById('startScreen').style.display = 'none';
+  render();
+}
+
+// ═══════════════════════════════════════
+//  SHUFFLE HELPERS
+// ═══════════════════════════════════════
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getShuffled(i) {
+  if (!shuffleCache[i]) {
+    const q = questions[i];
+    const correctIdx = (typeof q.correct === 'number') ? q.correct : 1;
+    const correctText = q.answers[correctIdx];
+    const shuffled = shuffleArray([...q.answers]);
+    const newCorrectIdx = shuffled.indexOf(correctText);
+    shuffleCache[i] = { answers: shuffled, correct: newCorrectIdx };
+  }
+  return shuffleCache[i];
+}
+
+// ═══════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════
+function render() {
+  if (!questions.length) return;
   seen.add(idx);
   const q = questions[idx];
-  document.getElementById("questionText").textContent = q.text;
+  const { answers, correct } = getShuffled(idx);
+  const isChecked = checked[idx];
 
-  const box = document.getElementById("answers");
-  box.innerHTML = "";
+  document.getElementById('questionText').textContent = q.text;
+  document.getElementById('qtitle').textContent = `Question ${idx + 1} of ${questions.length}${q.category ? '  ·  ' + q.category : ''}`;
 
-  q.answers.forEach((t, i) => {
-    const row = document.createElement("label");
-    row.className = "ans";
+  const box = document.getElementById('answers');
+  box.innerHTML = '';
 
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = "ans";
+  answers.forEach((text, i) => {
+    const row = document.createElement('label');
+    row.className = 'ans' + (selected[idx] === i ? ' selected' : '');
+    if (isChecked) {
+      if (i === correct) row.classList.add('show-correct');
+      if (i === selected[idx] && i !== correct) row.classList.add('wrong');
+    }
+    if (isChecked) row.classList.add('locked');
+
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'ans';
     radio.checked = selected[idx] === i;
-    radio.addEventListener("change", () => { selected[idx] = i; });
+    if (!isChecked) {
+      radio.addEventListener('change', () => {
+        selected[idx] = i;
+        updateCheckBtn();
+        renderAnswerStyles();
+      });
+    } else {
+      radio.disabled = true;
+    }
 
-    const letter = document.createElement("div");
-    letter.className = "label";
-    letter.textContent = String.fromCharCode(65 + i) + ".";
+    const letter = document.createElement('div');
+    letter.className = 'label';
+    letter.textContent = String.fromCharCode(65 + i) + '.';
 
-    const txt = document.createElement("div");
-    txt.textContent = t;
+    const txt = document.createElement('div');
+    txt.textContent = text;
+    txt.style.flex = '1';
 
-    row.appendChild(radio);
-    row.appendChild(letter);
-    row.appendChild(txt);
+    if (isChecked) {
+      const icon = document.createElement('span');
+      icon.className = 'ans-icon';
+      if (i === correct) icon.textContent = '✓';
+      else if (i === selected[idx]) icon.textContent = '✗';
+      row.appendChild(radio);
+      row.appendChild(letter);
+      row.appendChild(txt);
+      row.appendChild(icon);
+    } else {
+      row.appendChild(radio);
+      row.appendChild(letter);
+      row.appendChild(txt);
+    }
+
     box.appendChild(row);
   });
 
-  // DÜZELTME 1: Gerçek soru numarası
-  document.getElementById("qProgress").textContent = `${idx + 1} of ${questions.length}`;
+  // Check button
+  const checkBtn = document.getElementById('checkBtn');
+  checkBtn.style.display = (selected[idx] !== undefined && !isChecked) ? 'inline-block' : 'none';
 
-  const flagBtn = document.getElementById("flagBtn");
-  const isOn = flagged.has(idx);
-  flagBtn.classList.toggle("on", isOn);
-  flagBtn.setAttribute("aria-pressed", String(isOn));
+  // Explanation
+  renderExplanation();
 
-  document.getElementById("prevBtn").disabled = idx === 0 || idx <= lockedBefore;
+  // Progress
+  document.getElementById('qProgress').textContent = `${idx + 1} of ${questions.length}`;
 
-  // Report button state
-  const reportBtn = document.getElementById("reportBtn");
-  if (reported.has(idx)) {
-    reportBtn.className = "reportBtn reported";
-    reportBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg> Reported ✓`;
-  } else {
-    reportBtn.className = "reportBtn";
-    reportBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Report this question`;
-  }
+  // Flag button
+  const flagBtn = document.getElementById('flagBtn');
+  const on = flagged.has(idx);
+  flagBtn.classList.toggle('on', on);
+  flagBtn.setAttribute('aria-pressed', String(on));
 
-  const nextBtn = document.getElementById("nextBtn");
-  const isSecEnd = (idx === 59 && !sectionsCompleted.has(1)) || (idx === 119 && !sectionsCompleted.has(2));
-  if (isSecEnd) {
-    const secNum = idx === 59 ? 1 : 2;
-    nextBtn.innerHTML = `Complete Section ${secNum} <span class="arrow right" aria-hidden="true"></span>`;
-    nextBtn.disabled = false;
-  } else {
-    nextBtn.innerHTML = `Next <span class="arrow right" aria-hidden="true"></span>`;
-    nextBtn.disabled = idx === questions.length - 1;
-  }
+  // Nav buttons
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === questions.length - 1;
+
+  // Footer score
+  const answered = Object.keys(checked).length;
+  document.getElementById('footerScore').textContent = answered > 0 ? `✓ ${correctCount} correct of ${answered} checked` : '';
+
+  // Hint
+  document.getElementById('mainHint').textContent = isChecked
+    ? 'Answer revealed. Use Next to continue.'
+    : 'Select an answer, then click Check Answer.';
 }
 
-// --- Flag ---
-const flagBtn = document.getElementById("flagBtn");
-function updateFlagBtn(){
-  const isOn = flagged.has(idx);
-  flagBtn.classList.toggle("on", isOn);
-  flagBtn.setAttribute("aria-pressed", String(isOn));
+function renderAnswerStyles() {
+  const rows = document.querySelectorAll('.ans');
+  rows.forEach((row, i) => {
+    row.classList.toggle('selected', selected[idx] === i);
+  });
 }
-function toggleFlag(){
-  if(flagged.has(idx)) flagged.delete(idx);
-  else flagged.add(idx);
+
+function renderExplanation() {
+  const expBox = document.getElementById('explanationBox');
+  const q = questions[idx];
+  if (!checked[idx]) { expBox.style.display = 'none'; return; }
+  const { correct } = getShuffled(idx);
+  const userCorrect = selected[idx] === correct;
+  expBox.style.display = 'block';
+  expBox.innerHTML = '';
+  const div = document.createElement('div');
+  div.className = 'explanation-box ' + (userCorrect ? 'correct' : 'wrong');
+  const title = document.createElement('strong');
+  title.textContent = userCorrect ? '✓ Correct!' : '✗ Incorrect';
+  div.appendChild(title);
+  const { answers } = getShuffled(idx);
+  const correctText = document.createElement('div');
+  correctText.style.marginBottom = '6px';
+  correctText.innerHTML = userCorrect ? '' : `<span style="color:#15803d;font-weight:600;">Correct answer: ${String.fromCharCode(65 + correct)}. ${answers[correct]}</span>`;
+  if (!userCorrect) div.appendChild(correctText);
+  if (q.explanation) {
+    const expl = document.createElement('div');
+    expl.textContent = q.explanation;
+    div.appendChild(expl);
+  } else {
+    const na = document.createElement('div');
+    na.style.fontStyle = 'italic';
+    na.style.opacity = '.7';
+    na.textContent = 'Detailed explanation coming soon.';
+    div.appendChild(na);
+  }
+  expBox.appendChild(div);
+}
+
+function updateCheckBtn() {
+  const btn = document.getElementById('checkBtn');
+  btn.style.display = (selected[idx] !== undefined && !checked[idx]) ? 'inline-block' : 'none';
+}
+
+function checkAnswer() {
+  if (selected[idx] === undefined || checked[idx]) return;
+  checked[idx] = true;
+  const { correct } = getShuffled(idx);
+  if (selected[idx] === correct) correctCount++;
   render();
 }
-flagBtn.addEventListener("click", toggleFlag);
-flagBtn.addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggleFlag(); } });
 
-// --- Report Question ---
-document.getElementById("reportBtn").addEventListener("click", ()=>{
-  if (!reported.has(idx)) {
-    reported.add(idx);
-    render();
-  }
+// ═══════════════════════════════════════
+//  FLAG
+// ═══════════════════════════════════════
+const flagBtn = document.getElementById('flagBtn');
+flagBtn.addEventListener('click', () => {
+  if (flagged.has(idx)) flagged.delete(idx); else flagged.add(idx);
+  render();
+});
+flagBtn.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flagBtn.click(); } });
+
+// ═══════════════════════════════════════
+//  NAVIGATION
+// ═══════════════════════════════════════
+document.getElementById('prevBtn').addEventListener('click', () => { if(idx>0){ idx--; render(); } });
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (idx < questions.length - 1) { idx++; render(); }
+  else { showResults(); }
+});
+document.getElementById('endExamBtn').addEventListener('click', () => {
+  if (confirm('End the exam and see your results?')) showResults();
 });
 
-// Track which sections have been completed (locked)
-const sectionsCompleted = new Set();
-let lockedBefore = -1; // questions at idx <= lockedBefore are locked
-
-// --- Nav ---
-document.getElementById("prevBtn").addEventListener("click", ()=>{
-  if(idx > 0 && idx > lockedBefore){
-    idx--;
-    render();
-  }
-});
-
-document.getElementById("nextBtn").addEventListener("click", ()=>{
-  const isSecEnd = (idx === 59 && !sectionsCompleted.has(1)) || (idx === 119 && !sectionsCompleted.has(2));
-  if (isSecEnd) {
-    openSectionReview(idx === 59 ? 1 : 2);
-  } else if (idx < questions.length - 1) {
-    idx++;
-    render();
-  }
-});
-
-// --- Timer ---
-let remaining = 240*60;
+// ═══════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════
 let timerInterval = null;
-let examPaused = false;
-const timeEl = document.getElementById("timeRemaining");
-timeEl.textContent = fmtSecs(remaining); // initialize display immediately
+let remaining = 0;
+const timeEl = document.getElementById('timeRemaining');
+function startTimer(seconds) {
+  remaining = seconds;
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    remaining = Math.max(0, remaining - 1);
+    const mm = Math.floor(remaining / 60);
+    const ss = remaining % 60;
+    timeEl.textContent = String(mm).padStart(2,'0') + ':' + String(ss).padStart(2,'0');
+    if (remaining === 0) { clearInterval(timerInterval); showResults(); }
+  }, 1000);
+  const mm = Math.floor(remaining / 60);
+  const ss = remaining % 60;
+  timeEl.textContent = String(mm).padStart(2,'0') + ':' + String(ss).padStart(2,'0');
+}
 
-function fmtSecs(s){ const mm=Math.floor(s/60),ss=s%60; return String(mm).padStart(2,"0")+":"+String(ss).padStart(2,"0"); }
-function startTimer(){ if(timerInterval) return; timerInterval=setInterval(()=>{ remaining=Math.max(0,remaining-1); timeEl.textContent=fmtSecs(remaining); },1000); }
-function pauseTimer(){ clearInterval(timerInterval); timerInterval=null; }
-
-setInterval(()=>{
-  const t = timeEl.textContent;
+// Sync review time
+setInterval(() => {
   const ro = document.getElementById('reviewOverlay');
-  if (ro && ro.classList.contains('open')) document.getElementById('reviewTime').textContent = t;
-  const bt = document.getElementById('mainTimerBreak');
-  if (bt) bt.textContent = t;
-  const st = document.getElementById('secRevTimer');
-  if (st) st.textContent = t;
+  if (ro.classList.contains('open')) {
+    document.getElementById('reviewTime').textContent = timeEl.textContent;
+  }
 }, 500);
 
-// --- Pause ---
-const pauseOverlay = document.getElementById('pauseOverlay');
-function setPaused(val) {
-  examPaused = val;
-  const icon = document.getElementById('pauseIcon');
-  const lbl  = document.getElementById('pauseLabel');
-  if (val) {
-    pauseTimer();
-    pauseOverlay.classList.add('open');
-    icon.innerHTML = '<polygon points="5,3 19,12 5,21" fill="white"/>';
-    lbl.textContent = 'Resume';
+// ═══════════════════════════════════════
+//  RESULTS
+// ═══════════════════════════════════════
+function showResults() {
+  if (timerInterval) clearInterval(timerInterval);
+  const total = questions.length;
+  const answeredCount = Object.keys(checked).length;
+  const pct = answeredCount > 0 ? Math.round(correctCount / answeredCount * 100) : 0;
+
+  document.getElementById('resultsTitle').textContent = pct >= 61 ? '🎉 Well Done!' : '📖 Keep Studying';
+  document.getElementById('resultsSubtitle').textContent = `You answered ${answeredCount} of ${total} questions and scored ${pct}%.`;
+
+  // Score grid
+  const grid = document.getElementById('scoreGrid');
+  grid.innerHTML = `
+    <div class="score-box"><div class="snum green">${correctCount}</div><div class="slbl">Correct</div></div>
+    <div class="score-box"><div class="snum red">${answeredCount - correctCount}</div><div class="slbl">Incorrect</div></div>
+    <div class="score-box"><div class="snum blue">${pct}%</div><div class="slbl">Score</div></div>`;
+
+  // Category breakdown
+  const catStats = {};
+  questions.forEach((q, i) => {
+    if (!checked[i]) return;
+    const cat = q.category || 'Uncategorized';
+    if (!catStats[cat]) catStats[cat] = { correct: 0, total: 0 };
+    catStats[cat].total++;
+    const { correct } = getShuffled(i);
+    if (selected[i] === correct) catStats[cat].correct++;
+  });
+
+  const breakdown = document.getElementById('catBreakdown');
+  const cats = Object.keys(catStats);
+  if (cats.length > 0) {
+    breakdown.innerHTML = '<h3>By Category</h3>';
+    cats.sort().forEach(cat => {
+      const s = catStats[cat];
+      const p = Math.round(s.correct / s.total * 100);
+      breakdown.innerHTML += `
+        <div class="cat-row">
+          <span class="cat-name">${cat}</span>
+          <div class="cat-bar-track"><div class="cat-bar-fill" style="width:${p}%"></div></div>
+          <span class="cat-pct">${p}%</span>
+        </div>`;
+    });
   } else {
-    pauseOverlay.classList.remove('open');
-    icon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
-    lbl.textContent = 'Pause';
-    startTimer();
-  }
-}
-document.getElementById('pauseBtn').addEventListener('click', ()=>{ if(!examPaused) setPaused(true); });
-document.getElementById('resumeFromPauseBtn').addEventListener('click', ()=> setPaused(false));
-
-// --- Continue Later ---
-function saveExamState() {
-  const state = {
-    idx, selected,
-    flagged: [...flagged],
-    seen: [...seen],
-    reported: [...reported],
-    remaining,
-    sectionsCompleted: [...sectionsCompleted],
-    lockedBefore,
-    breaksShown: [...breaksShown]
-  };
-  localStorage.setItem('examSavedState', JSON.stringify(state));
-}
-
-function loadExamState() {
-  const raw = localStorage.getItem('examSavedState');
-  if (!raw) return false;
-  try {
-    const s = JSON.parse(raw);
-    idx = s.idx ?? 0;
-    selected = s.selected ?? {};
-    flagged  = new Set(s.flagged ?? []);
-    seen     = new Set(s.seen ?? []);
-    reported = new Set(s.reported ?? []);
-    remaining = s.remaining ?? 240*60;
-    (s.sectionsCompleted ?? []).forEach(n => sectionsCompleted.add(n));
-    lockedBefore = s.lockedBefore ?? -1;
-    (s.breaksShown ?? []).forEach(n => breaksShown.add(n));
-    return true;
-  } catch(e) { return false; }
-}
-
-const clBack = document.getElementById('clBack');
-document.getElementById('continueLaterBtn').addEventListener('click', ()=>{
-  saveExamState();
-  setPaused(true);
-  // Close pause overlay, open CL modal instead
-  pauseOverlay.classList.remove('open');
-  clBack.classList.add('open');
-  document.getElementById('clNote').textContent =
-    'We\'ll send you a link that resumes the exam exactly where you paused.';
-});
-
-document.getElementById('clCloseBtn').addEventListener('click', ()=>{
-  clBack.classList.remove('open');
-  setPaused(false);
-});
-
-document.getElementById('clSendBtn').addEventListener('click', ()=>{
-  const email = document.getElementById('clEmailInput').value.trim();
-  if (!email || !email.includes('@')) {
-    document.getElementById('clNote').textContent = 'Please enter a valid email address.';
-    document.getElementById('clNote').style.color = '#dc2626';
-    return;
-  }
-  // UI feedback — actual sending requires backend integration
-  document.getElementById('clSendBtn').textContent = 'Sent ✓';
-  document.getElementById('clSendBtn').style.background = '#16a34a';
-  document.getElementById('clNote').style.color = '#15803d';
-  document.getElementById('clNote').textContent =
-    `A link has been sent to ${email}. You can close this tab safely — your progress is saved.`;
-});
-
-// --- Start Screen ---
-const breaksShown = new Set();
-
-// Check for saved state and show resume option
-(function initStartScreen() {
-  const raw = localStorage.getItem('examSavedState');
-  if (raw) {
-    try {
-      const s = JSON.parse(raw);
-      const pct = Math.round((Object.keys(s.selected || {}).length / 180) * 100);
-      const timeLeft = fmtSecs(s.remaining ?? 14400);
-      const resumeDiv = document.createElement('div');
-      resumeDiv.style.cssText = 'margin-bottom:12px;';
-      resumeDiv.innerHTML = `
-        <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:8px;padding:12px 14px;margin-bottom:12px;text-align:left;font-size:13px;">
-          <div style="font-weight:700;color:#1d4ed8;margin-bottom:4px;">Saved progress found</div>
-          <div style="color:#374151">${pct}% answered &nbsp;•&nbsp; ${timeLeft} remaining</div>
-        </div>
-        <button id="resumeExamBtn" style="width:100%;padding:11px;border-radius:8px;border:1.5px solid #2f6ea5;background:#fff;color:#2f6ea5;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:8px;">Resume Saved Exam</button>
-      `;
-      const card = document.querySelector('.soCard');
-      card.insertBefore(resumeDiv, card.querySelector('.soStartBtn'));
-      document.getElementById('resumeExamBtn').addEventListener('click', ()=>{
-        if (loadExamState()) {
-          document.getElementById('startScreen').style.display = 'none';
-          timeEl.textContent = fmtSecs(remaining);
-          render();
-          startTimer();
-          localStorage.removeItem('examSavedState');
-        }
-      });
-    } catch(e) {}
-  }
-})();
-
-document.getElementById('startExamBtn').addEventListener('click', ()=>{
-  localStorage.removeItem('examSavedState');
-  document.getElementById('startScreen').style.display = 'none';
-  startTimer();
-});
-
-// --- Break ---
-let breakInterval = null;
-let breakRemaining = 600;
-const breakOverlay  = document.getElementById('breakOverlay');
-const breakTimerEl  = document.getElementById('breakTimer');
-const breakLabelEl  = document.getElementById('breakLabel');
-
-function updateBreakClock(){ breakTimerEl.textContent = fmtSecs(breakRemaining); }
-
-function endBreak(){
-  clearInterval(breakInterval); breakInterval = null;
-  breakOverlay.classList.remove('open');
-  startTimer();
-}
-
-function showBreak(num){
-  if(breaksShown.has(num)) return;
-  breaksShown.add(num);
-  pauseTimer();
-  breakRemaining = 600;
-  updateBreakClock();
-  breakLabelEl.textContent = `Break ${num} of 2`;
-  breakOverlay.classList.add('open');
-  breakInterval = setInterval(()=>{
-    breakRemaining = Math.max(0, breakRemaining - 1);
-    updateBreakClock();
-    if(breakRemaining <= 0) endBreak();
-  }, 1000);
-}
-
-document.getElementById('endBreakBtn').addEventListener('click', endBreak);
-
-// ===== Section Review =====
-const secRevOverlay = document.getElementById('secRevOverlay');
-let pendingSectionNum = 0;
-
-function openSectionReview(secNum) {
-  pendingSectionNum = secNum;
-  pauseTimer();
-
-  const start = (secNum - 1) * SECTION_SIZE;
-  const end   = Math.min(questions.length, secNum * SECTION_SIZE);
-
-  document.getElementById('secRevTitle').textContent =
-    `Section ${secNum} — Questions ${start + 1}–${end}`;
-
-  // Stats
-  let answered = 0, unanswered = 0, flaggedCount = 0;
-  for (let i = start; i < end; i++) {
-    if (selected[i] !== undefined) answered++; else unanswered++;
-    if (flagged.has(i)) flaggedCount++;
-  }
-  const statsEl = document.getElementById('secRevStats');
-  statsEl.innerHTML =
-    `<span><span class="dot dot-green"></span>${answered} Answered</span>` +
-    `<span><span class="dot dot-red"></span>${unanswered} Unanswered</span>` +
-    (flaggedCount ? `<span><span class="dot dot-orange"></span>${flaggedCount} Flagged</span>` : '');
-
-  // Grid
-  const grid = document.getElementById('secRevGrid');
-  grid.innerHTML = '';
-  for (let i = start; i < end; i++) {
-    const cell = document.createElement('div');
-    const done = selected[i] !== undefined;
-    cell.className = 'secRevCell ' + (done ? 'complete' : 'incomplete');
-    cell.innerHTML =
-      `<span class="cellNum">${i + 1}</span>` +
-      `<span class="cellStatus">${done ? '✓' : '—'}</span>` +
-      (flagged.has(i) ? '<span class="flagDot"></span>' : '');
-    grid.appendChild(cell);
+    breakdown.innerHTML = '';
   }
 
-  secRevOverlay.classList.add('open');
+  document.getElementById('resultsScreen').classList.add('open');
 }
 
-document.getElementById('secRevBack').addEventListener('click', ()=>{
-  secRevOverlay.classList.remove('open');
-  startTimer();
-});
+function restartExam() {
+  document.getElementById('resultsScreen').classList.remove('open');
+  document.getElementById('startScreen').style.display = 'flex';
+}
 
-document.getElementById('secRevProceed').addEventListener('click', ()=>{
-  secRevOverlay.classList.remove('open');
-  sectionsCompleted.add(pendingSectionNum);
-  lockedBefore = pendingSectionNum * SECTION_SIZE - 1;
-  idx = pendingSectionNum * SECTION_SIZE;
+function reviewExam() {
+  document.getElementById('resultsScreen').classList.remove('open');
+  idx = 0;
   render();
-  showBreak(pendingSectionNum);
-});
+}
 
-
-// ===== Calculator (TI-108) =====
+// ═══════════════════════════════════════
+//  CALCULATOR (unchanged logic)
+// ═══════════════════════════════════════
 const calcOverlay = document.getElementById('calcOverlay');
 const calcDisplay = document.getElementById('calcDisplay');
-const calcKeys    = document.getElementById('calcKeys');
-
-let calcMem = 0, calcValue = "0", calcPending = null, calcStored = null, calcFresh = true;
-
-function calcRender(){ calcDisplay.textContent = calcValue; }
-function calcSet(v){ calcValue = v === "" ? "0" : v; calcRender(); }
+const calcKeysEl  = document.getElementById('calcKeys');
+let calcMem=0,calcValue="0",calcPending=null,calcStored=null,calcFresh=true;
+function calcRender(){ calcDisplay.textContent=calcValue; }
+function calcSet(v){ calcValue=v===""?"0":v; calcRender(); }
 function calcNum(){ return Number(calcValue); }
-function calcFormat(n){
-  if (!Number.isFinite(n)) return "Error";
-  let s = String(n);
-  if (s.includes("e")) return s;
-  if (s.includes(".")) s = s.replace(/0+$/,"").replace(/\.$/,"");
-  return s === "" ? "0" : s;
-}
-function calcApplyOp(op, a, b){
-  if (op==="+") return a+b;
-  if (op==="-") return a-b;
-  if (op==="*") return a*b;
-  if (op==="/") return b===0 ? NaN : a/b;
-  return b;
-}
-function calcPressDigit(d){
-  if (calcValue==="Error") calcValue="0";
-  if (calcFresh){ calcValue=d; calcFresh=false; }
-  else { calcValue = calcValue==="0" ? d : calcValue+d; }
-  calcRender();
-}
-function calcPressDot(){
-  if (calcValue==="Error") calcValue="0";
-  if (calcFresh){ calcValue="0."; calcFresh=false; }
-  else if (!calcValue.includes(".")) calcValue+=".";
-  calcRender();
-}
-function calcClear(){ calcValue="0"; calcPending=null; calcStored=null; calcFresh=true; calcRender(); }
-function calcSetOp(op){
-  if (calcValue==="Error") return;
-  const cur=calcNum();
-  if (calcStored===null) calcStored=cur;
-  else if (!calcFresh && calcPending){ calcStored=calcApplyOp(calcPending,calcStored,cur); calcSet(calcFormat(calcStored)); }
-  calcPending=op; calcFresh=true;
-}
-function calcEquals(){
-  if (calcValue==="Error"||calcPending===null||calcStored===null) return;
-  const res=calcApplyOp(calcPending,calcStored,calcNum());
-  calcStored=res; calcPending=null; calcSet(calcFormat(res)); calcFresh=true;
-}
-function calcToggleSign(){
-  if (calcValue==="Error"||calcValue==="0") return;
-  calcValue=calcValue.startsWith("-") ? calcValue.slice(1) : "-"+calcValue; calcRender();
-}
-function calcSqrt(){ if(calcValue==="Error")return; calcSet(calcFormat(Math.sqrt(calcNum()))); calcFresh=true; }
-function calcPercent(){ if(calcValue==="Error")return; calcSet(calcFormat(calcNum()/100)); calcFresh=true; }
-
-document.getElementById('openCalc').addEventListener('click', (e)=>{ e.preventDefault(); calcOverlay.classList.add('open'); calcOverlay.setAttribute('aria-hidden','false'); });
-document.getElementById('closeCalc').addEventListener('click', ()=>{ calcOverlay.classList.remove('open'); calcOverlay.setAttribute('aria-hidden','true'); });
-calcOverlay.addEventListener('click', (e)=>{ if(e.target===calcOverlay){ calcOverlay.classList.remove('open'); calcOverlay.setAttribute('aria-hidden','true'); } });
-document.addEventListener('keydown', (e)=>{ if(calcOverlay.classList.contains('open')&&e.key==="Escape"){ calcOverlay.classList.remove('open'); calcOverlay.setAttribute('aria-hidden','true'); } });
-
-calcKeys.addEventListener('click', (e)=>{
-  const btn=e.target.closest('button');
-  if(!btn) return;
-  const num=btn.getAttribute('data-num');
-  const action=btn.getAttribute('data-action');
-  if(num!==null){ calcPressDigit(num); return; }
+function calcFormat(n){ if(!Number.isFinite(n))return"Error"; let s=String(n); if(s.includes("e"))return s; if(s.includes("."))s=s.replace(/0+$/,"").replace(/\.$/,""); return s===""?"0":s; }
+function calcApplyOp(op,a,b){ if(op==="+")return a+b; if(op==="-")return a-b; if(op==="*")return a*b; if(op==="/")return b===0?NaN:a/b; return b; }
+function calcPressDigit(d){ if(calcValue==="Error")calcValue="0"; if(calcFresh){calcValue=d;calcFresh=false;}else{calcValue=calcValue==="0"?d:calcValue+d;} calcRender(); }
+function calcPressDot(){ if(calcValue==="Error")calcValue="0"; if(calcFresh){calcValue="0.";calcFresh=false;}else if(!calcValue.includes("."))calcValue+="."; calcRender(); }
+function calcClear(){ calcValue="0";calcPending=null;calcStored=null;calcFresh=true;calcRender(); }
+function calcSetOp(op){ if(calcValue==="Error")return; const cur=calcNum(); if(calcStored===null)calcStored=cur; else if(!calcFresh&&calcPending){calcStored=calcApplyOp(calcPending,calcStored,cur);calcSet(calcFormat(calcStored));} calcPending=op;calcFresh=true; }
+function calcEquals(){ if(calcValue==="Error"||calcPending===null||calcStored===null)return; const res=calcApplyOp(calcPending,calcStored,calcNum()); calcStored=res;calcPending=null;calcSet(calcFormat(res));calcFresh=true; }
+function calcToggleSign(){ if(calcValue==="Error"||calcValue==="0")return; calcValue=calcValue.startsWith("-")?calcValue.slice(1):"-"+calcValue;calcRender(); }
+function calcSqrt(){ if(calcValue==="Error")return; calcSet(calcFormat(Math.sqrt(calcNum())));calcFresh=true; }
+function calcPercent(){ if(calcValue==="Error")return; calcSet(calcFormat(calcNum()/100));calcFresh=true; }
+document.getElementById('openCalc').addEventListener('click',e=>{e.preventDefault();calcOverlay.classList.add('open');});
+document.getElementById('closeCalc').addEventListener('click',()=>calcOverlay.classList.remove('open'));
+calcOverlay.addEventListener('click',e=>{if(e.target===calcOverlay)calcOverlay.classList.remove('open');});
+document.addEventListener('keydown',e=>{if(calcOverlay.classList.contains('open')&&e.key==="Escape")calcOverlay.classList.remove('open');});
+calcKeysEl.addEventListener('click',e=>{
+  const btn=e.target.closest('button'); if(!btn)return;
+  const num=btn.getAttribute('data-num'); const action=btn.getAttribute('data-action');
+  if(num!==null){calcPressDigit(num);return;}
   switch(action){
-    case "dot":        calcPressDot(); break;
-    case "clear":      calcClear(); break;
-    case "plus":       calcSetOp("+"); break;
-    case "minus":      calcSetOp("-"); break;
-    case "multiply":   calcSetOp("*"); break;
-    case "divide":     calcSetOp("/"); break;
-    case "equals":     calcEquals(); break;
-    case "toggleSign": calcToggleSign(); break;
-    case "sqrt":       calcSqrt(); break;
-    case "percent":    calcPercent(); break;
-    case "mrc":
-      if(btn.dataset.mrcState==="recalled"){ calcMem=0; btn.dataset.mrcState=""; }
-      else { calcSet(calcFormat(calcMem)); btn.dataset.mrcState="recalled"; calcFresh=true; }
-      break;
-    case "mPlus":  calcMem+=(calcValue==="Error"?0:calcNum()); document.querySelector('[data-action="mrc"]').dataset.mrcState=""; break;
-    case "mMinus": calcMem-=(calcValue==="Error"?0:calcNum()); document.querySelector('[data-action="mrc"]').dataset.mrcState=""; break;
+    case"dot":calcPressDot();break; case"clear":calcClear();break; case"plus":calcSetOp("+");break;
+    case"minus":calcSetOp("-");break; case"multiply":calcSetOp("*");break; case"divide":calcSetOp("/");break;
+    case"equals":calcEquals();break; case"toggleSign":calcToggleSign();break; case"sqrt":calcSqrt();break;
+    case"percent":calcPercent();break;
+    case"mrc": if(btn.dataset.mrcState==="recalled"){calcMem=0;btn.dataset.mrcState="";} else{calcSet(calcFormat(calcMem));btn.dataset.mrcState="recalled";calcFresh=true;} break;
+    case"mPlus": calcMem+=(calcValue==="Error"?0:calcNum());document.querySelector('[data-action="mrc"]').dataset.mrcState="";break;
+    case"mMinus": calcMem-=(calcValue==="Error"?0:calcNum());document.querySelector('[data-action="mrc"]').dataset.mrcState="";break;
   }
 });
 
-
-// ===== Item Review =====
-const reviewOverlay      = document.getElementById('reviewOverlay');
-const reviewList         = document.getElementById('reviewList');
-const sectionLabel       = document.getElementById('sectionLabel');
-const sectionSummary     = document.getElementById('sectionSummary');
-const sectionFooterLeft  = document.getElementById('sectionFooterLeft');
-const sectionFooterRight = document.getElementById('sectionFooterRight');
-const prevSectionBtn     = document.getElementById('prevSectionBtn');
-const nextSectionBtn     = document.getElementById('nextSectionBtn');
-const reviewTime         = document.getElementById('reviewTime');
-
-let reviewFilter = "all";
-let currentSection = 0;
-
-function secCount(){ return Math.max(1, Math.ceil(questions.length / SECTION_SIZE)); }
-function secBounds(s){ return { start: s*SECTION_SIZE, end: Math.min(questions.length, s*SECTION_SIZE+SECTION_SIZE) }; }
-function qStatus(i){
-  if (!seen.has(i)) return "unseen";
-  return selected[i]!==undefined ? "complete" : "incomplete";
-}
-
+// ═══════════════════════════════════════
+//  ITEM REVIEW (unchanged logic)
+// ═══════════════════════════════════════
+const reviewOverlay=document.getElementById('reviewOverlay');
+const reviewList=document.getElementById('reviewList');
+const sectionLabel=document.getElementById('sectionLabel');
+const sectionSummary=document.getElementById('sectionSummary');
+const sectionFooterLeft=document.getElementById('sectionFooterLeft');
+const sectionFooterRight=document.getElementById('sectionFooterRight');
+const prevSectionBtn=document.getElementById('prevSectionBtn');
+const nextSectionBtn=document.getElementById('nextSectionBtn');
+let reviewFilter="all"; let currentSection=0;
+function secCount(){ return Math.max(1,Math.ceil(questions.length/SECTION_SIZE)); }
+function secBounds(s){ return{start:s*SECTION_SIZE,end:Math.min(questions.length,s*SECTION_SIZE+SECTION_SIZE)}; }
+function qStatus(i){ if(!seen.has(i))return"unseen"; return selected[i]!==undefined?"complete":"incomplete"; }
 function renderReview(){
-  const totalSec = secCount();
-  currentSection = Math.min(Math.max(0, currentSection), totalSec-1);
-  const b = secBounds(currentSection);
-
-  let unseen=0, incomplete=0, answered=0, flaggedCount=0;
-  for (let i=b.start; i<b.end; i++){
+  const totalSec=secCount();
+  currentSection=Math.min(Math.max(0,currentSection),totalSec-1);
+  const b=secBounds(currentSection);
+  let unseen=0,incomplete=0,answered=0,flaggedCount=0;
+  for(let i=b.start;i<b.end;i++){
     const st=qStatus(i);
-    if (reviewFilter==="flagged"   && !flagged.has(i))   continue;
-    if (reviewFilter==="incomplete" && st==="complete")  continue;
-    if (st==="unseen") unseen++;
-    else if (st==="incomplete") incomplete++;
-    else answered++;
-    if (flagged.has(i)) flaggedCount++;
+    if(reviewFilter==="flagged"&&!flagged.has(i))continue;
+    if(reviewFilter==="incomplete"&&st==="complete")continue;
+    if(st==="unseen")unseen++; else if(st==="incomplete")incomplete++; else answered++;
+    if(flagged.has(i))flaggedCount++;
   }
-  sectionSummary.textContent     = `( ${unseen+incomplete} Unseen/Incomplete )`;
-  sectionFooterLeft.textContent  = `Section ${currentSection+1} of ${totalSec}`;
-  sectionFooterRight.textContent = `Answered: ${answered} • Incomplete: ${unseen+incomplete} • Flagged: ${flaggedCount}`;
-
-  // DÜZELTME 2: Listeye de filtre uygulanıyor
-  reviewList.innerHTML = "";
-  for (let i=b.start; i<b.end; i++){
+  sectionSummary.textContent=`( ${unseen+incomplete} Unseen/Incomplete )`;
+  sectionFooterLeft.textContent=`Section ${currentSection+1} of ${totalSec}`;
+  sectionFooterRight.textContent=`Answered: ${answered} · Incomplete: ${unseen+incomplete} · Flagged: ${flaggedCount}`;
+  reviewList.innerHTML="";
+  for(let i=b.start;i<b.end;i++){
     const st=qStatus(i);
-    if (reviewFilter==="flagged"    && !flagged.has(i))  continue;
-    if (reviewFilter==="incomplete" && st==="complete")  continue;
-
-    const row = document.createElement("div");
-    const stClass = st==="complete" ? "row-complete" : st==="incomplete" ? "row-incomplete" : "row-unseen";
-    row.className = `reviewRow ${stClass}`;
-
-    // Left side: Q number + status check
-    const rrLeft = document.createElement("span");
-    rrLeft.className = "rrLeft";
-    const rrNum = document.createElement("span");
-    rrNum.className = "rrNum";
-    rrNum.textContent = `Q.${i+1}`;
-    const rrCheck = document.createElement("span");
-    rrCheck.className = "rrCheck";
-    rrCheck.textContent = st==="complete" ? "✓" : st==="incomplete" ? "—" : "?";
-    rrLeft.appendChild(rrNum);
-    rrLeft.appendChild(rrCheck);
-
-    // Flag icon (right)
-    const flagSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-    flagSvg.setAttribute("viewBox","0 0 24 24");
-    flagSvg.classList.add("flagIcon");
-    flagSvg.style.cssText = "width:14px;height:14px;flex-shrink:0";
-    if (flagged.has(i)) flagSvg.classList.add("on");
-    flagSvg.innerHTML = `
-      <path class="pole" d="M6 3v18" stroke-width="2" stroke-linecap="round" fill="none"/>
-      <path class="outline" d="M6 4h12l-2 4 2 4H6z" stroke-width="2" stroke-linejoin="round"/>
-      <path class="fill" d="M6 4h12l-2 4 2 4H6z"/>
-    `;
-    flagSvg.addEventListener("click", (e)=>{
-      e.stopPropagation();
-      flagged.has(i) ? flagged.delete(i) : flagged.add(i);
-      updateFlagBtn();
-      renderReview();
-    });
-
-    row.appendChild(rrLeft);
-    row.appendChild(flagSvg);
-    row.addEventListener("click", (e)=>{
-      if (!e.target.closest(".flagIcon")) { idx=i; render(); closeReview(); }
-    });
+    if(reviewFilter==="flagged"&&!flagged.has(i))continue;
+    if(reviewFilter==="incomplete"&&st==="complete")continue;
+    const row=document.createElement("div"); row.className="reviewRow";
+    const flagCell=document.createElement("div"); flagCell.className="flagCell";
+    const fsvg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    fsvg.setAttribute("viewBox","0 0 24 24"); fsvg.classList.add("flagIcon");
+    if(flagged.has(i))fsvg.classList.add("on");
+    fsvg.innerHTML=`<path class="pole" d="M6 3v18" stroke-width="2" stroke-linecap="round" fill="none"/><path class="outline" d="M6 4h12l-2 4 2 4H6z" stroke-width="2" stroke-linejoin="round"/><path class="fill" d="M6 4h12l-2 4 2 4H6z"/>`;
+    fsvg.addEventListener("click",e=>{e.stopPropagation();flagged.has(i)?flagged.delete(i):flagged.add(i);renderReview();});
+    flagCell.appendChild(fsvg);
+    const qLink=document.createElement("div"); qLink.className="qLink"; qLink.textContent=`Q${i+1}`;
+    qLink.addEventListener("click",()=>{idx=i;render();closeReview();});
+    const status=document.createElement("div");
+    status.className=`status ${st==="complete"?"complete":"incomplete"}`;
+    status.textContent=st==="complete"?"Complete":"Incomplete";
+    row.appendChild(flagCell); row.appendChild(qLink); row.appendChild(status);
     reviewList.appendChild(row);
   }
-
-  reviewTime.textContent = timeEl.textContent || "--:--";
-  prevSectionBtn.disabled = currentSection===0;
-  nextSectionBtn.disabled = currentSection===totalSec-1;
+  document.getElementById('reviewTime').textContent=timeEl.textContent;
+  prevSectionBtn.disabled=currentSection===0;
+  nextSectionBtn.disabled=currentSection===totalSec-1;
 }
-
-function openReview(){
-  reviewFilter="all";
-  reviewOverlay.classList.add("open");
-  reviewOverlay.setAttribute("aria-hidden","false");
-  currentSection=Math.floor(idx/SECTION_SIZE);
-  renderReview();
-}
-function closeReview(){
-  reviewOverlay.classList.remove("open");
-  reviewOverlay.setAttribute("aria-hidden","true");
-}
-
-document.getElementById('openReviewFooter').addEventListener("click", (e)=>{ e.preventDefault(); openReview(); });
-document.getElementById('closeReview').addEventListener("click", closeReview);
-prevSectionBtn.addEventListener("click", ()=>{ currentSection--; renderReview(); });
-nextSectionBtn.addEventListener("click", ()=>{ currentSection++; renderReview(); });
-document.getElementById('endReviewBtn').addEventListener("click", closeReview);
-document.getElementById('reviewAllBtn').addEventListener("click", ()=>{ reviewFilter="all"; renderReview(); });
-document.getElementById('reviewIncompleteBtn').addEventListener("click", ()=>{ reviewFilter="incomplete"; renderReview(); });
-document.getElementById('reviewFlaggedBtn').addEventListener("click", ()=>{ reviewFilter="flagged"; renderReview(); });
-
-updateFlagBtn();
-
-// ===== End Exam =====
-const confirmBack   = document.getElementById('confirmBack');
-const confirmWarn   = document.getElementById('confirmWarn');
-const confirmCancel = document.getElementById('confirmCancel');
-const confirmSubmit = document.getElementById('confirmSubmit');
-
-document.getElementById('endExamBtn').addEventListener('click', () => {
-  const answered   = Object.keys(selected).length;
-  const unanswered = questions.length - answered;
-  confirmWarn.textContent = unanswered > 0
-    ? `⚠ You have ${unanswered} unanswered question${unanswered !== 1 ? 's' : ''}. Unanswered questions will be marked as incorrect.`
-    : '✓ All questions have been answered.';
-  confirmBack.classList.add('open');
-  confirmBack.setAttribute('aria-hidden', 'false');
-});
-
-confirmCancel.addEventListener('click', () => {
-  confirmBack.classList.remove('open');
-  confirmBack.setAttribute('aria-hidden', 'true');
-});
-confirmBack.addEventListener('click', (e) => {
-  if (e.target === confirmBack) {
-    confirmBack.classList.remove('open');
-    confirmBack.setAttribute('aria-hidden', 'true');
-  }
-});
-
-confirmSubmit.addEventListener('click', () => {
-  const total      = questions.length;
-  const answered   = Object.keys(selected).length;
-  const unanswered = total - answered;
-  const timeUsed   = 240 * 60 - remaining; // seconds elapsed
-
-  // Score: requires correct answers in question data (q.correct = 0-3 index).
-  // Falls back to answered% if no correct answers are present.
-  let correct = 0;
-  if (questions[0] && questions[0].correct !== undefined) {
-    for (let i = 0; i < total; i++) {
-      if (selected[i] !== undefined && selected[i] === questions[i].correct) correct++;
-    }
-  } else {
-    // Placeholder: treat answered as correct (update when answers are added)
-    correct = answered;
-  }
-
-  const incorrect = answered - correct;
-  const score     = Math.round((correct / total) * 100);
-
-  // Domain split (equal thirds by default; override when domain field is added to questions)
-  const domainSize = Math.ceil(total / 3);
-  function domainScore(start, end) {
-    let c = 0, t = 0;
-    for (let i = start; i < Math.min(end, total); i++) {
-      t++;
-      if (selected[i] !== undefined) {
-        if (questions[0].correct !== undefined) {
-          if (selected[i] === questions[i].correct) c++;
-        } else {
-          c++;
-        }
-      }
-    }
-    return t > 0 ? Math.round((c / t) * 100) : 0;
-  }
-
-  const result = {
-    score,
-    correct,
-    incorrect,
-    unanswered,
-    total,
-    timeUsed,
-    timeTotal: 240 * 60,
-    date: new Date().toISOString(),
-    domains: {
-      people:   { score: domainScore(0, 60),   label: "People",               weight: "42%" },
-      process:  { score: domainScore(60, 150),  label: "Process",              weight: "50%" },
-      business: { score: domainScore(150, 180), label: "Business Environment", weight: "8%"  }
-    }
-  };
-
-  try { localStorage.setItem('pmpResult', JSON.stringify(result)); } catch(e) {}
-  location.href = 'result.html';
-});
-
+function openReview(){ reviewFilter="all"; reviewOverlay.classList.add("open"); currentSection=Math.floor(idx/SECTION_SIZE); renderReview(); }
+function closeReview(){ reviewOverlay.classList.remove("open"); }
+document.getElementById('openReviewFooter').addEventListener("click",e=>{e.preventDefault();openReview();});
+document.getElementById('closeReview').addEventListener("click",closeReview);
+prevSectionBtn.addEventListener("click",()=>{currentSection--;renderReview();});
+nextSectionBtn.addEventListener("click",()=>{currentSection++;renderReview();});
+document.getElementById('endReviewBtn').addEventListener("click",closeReview);
+document.getElementById('reviewAllBtn').addEventListener("click",()=>{reviewFilter="all";renderReview();});
+document.getElementById('reviewIncompleteBtn').addEventListener("click",()=>{reviewFilter="incomplete";renderReview();});
+document.getElementById('reviewFlaggedBtn').addEventListener("click",()=>{reviewFilter="flagged";renderReview();});
 </script>
 </body>
 </html>

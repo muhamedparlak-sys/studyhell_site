@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards — PMP® Study Hell™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #2f4f60;
+  --primary-dark: #1f3b49;
+  --primary-light: #5f93c2;
+  --accent: #3b7bc8;
+  --text: #0b1220;
+  --muted: #334155;
+  --light: #64748b;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --radius: 14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Inter, system-ui, sans-serif; color: var(--text); background: var(--bg); min-height: 100vh; display: flex; flex-direction: column; }
+
+/* NAV */
+.navbar { background: var(--primary); height: 56px; display: flex; align-items: center; padding: 0 24px; gap: 24px; position: sticky; top: 0; z-index: 1000; }
+.brand { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; flex-shrink: 0; }
+.brand sup { font-size: 9px; vertical-align: super; }
+.nav-links { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.nav-links a { color: rgba(255,255,255,.85); text-decoration: none; padding: 6px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; transition: background .15s; }
+.nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,.15); color: #fff; }
+.nav-links a.active { font-weight: 700; }
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:transparent; border:none; cursor:pointer; padding:4px; margin-left:auto; }
+.hamburger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; }
+
+/* HEADER */
+.page-header { background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%); color: #fff; padding: 32px 24px 28px; }
+.page-header .inner { max-width: 900px; margin: 0 auto; }
+.page-header h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 800; margin-bottom: 6px; }
+.page-header p { font-size: 14px; color: rgba(255,255,255,.7); }
+
+/* CONTROLS */
+.controls { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 24px; }
+.controls .inner { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.controls select {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+}
+.ctrl-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s;
+}
+.ctrl-btn:hover { border-color: var(--primary); color: var(--primary); }
+.progress-text { font-size: 13px; color: var(--light); margin-left: auto; }
+
+/* FLASHCARD STAGE */
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  gap: 24px;
+}
+
+/* PROGRESS BAR */
+.progress-bar-wrap { width: 100%; max-width: 600px; }
+.progress-bar-track {
+  background: var(--border);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  border-radius: 999px;
+  transition: width .3s ease;
+}
+.progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--light); margin-top: 5px; }
+
+/* CARD FLIP */
+.card-scene {
+  width: 100%;
+  max-width: 600px;
+  height: 320px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+.card-flip {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .45s cubic-bezier(.4,0,.2,1);
+}
+.card-flip.flipped { transform: rotateY(180deg); }
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+}
+.card-front { background: #fff; }
+.card-back { background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%); color: #fff; transform: rotateY(180deg); }
+
+.face-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: .55;
+}
+.term-text { font-size: clamp(20px, 4vw, 28px); font-weight: 800; line-height: 1.2; }
+.cat-badge {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--light);
+}
+.def-text {
+  font-size: clamp(13px, 2vw, 15px);
+  line-height: 1.65;
+  opacity: .9;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.flip-hint { font-size: 12px; opacity: .5; margin-top: 12px; }
+
+/* NAV BUTTONS */
+.nav-row { display: flex; align-items: center; gap: 12px; }
+.nav-card-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  transition: all .15s;
+}
+.nav-card-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.nav-card-btn:disabled { opacity: .35; cursor: default; }
+.nav-card-btn:disabled:hover { background: #fff; color: var(--text); border-color: var(--border); }
+.flip-btn {
+  padding: 12px 28px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+}
+.flip-btn:hover { background: var(--primary-dark); }
+
+/* KNOWN/UNKNOWN */
+.mark-row { display: flex; gap: 10px; }
+.mark-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+}
+.mark-btn.know { border-color: #86efac; background: #f0fdf4; color: #15803d; }
+.mark-btn.know:hover { background: #dcfce7; }
+.mark-btn.review { border-color: #fca5a5; background: #fef2f2; color: #b91c1c; }
+.mark-btn.review:hover { background: #fee2e2; }
+
+/* COMPLETE STATE */
+.complete-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+}
+.complete-card h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+.complete-card p { font-size: 15px; color: var(--light); margin-bottom: 24px; }
+.score-row { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; }
+.score-box { text-align: center; }
+.score-box .num { font-size: 32px; font-weight: 800; }
+.score-box .num.green { color: #15803d; }
+.score-box .num.red { color: #b91c1c; }
+.score-box .lbl { font-size: 12px; color: var(--light); }
+.restart-btn {
+  padding: 13px 28px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.restart-btn:hover { background: var(--primary-dark); }
+
+@media (max-width: 640px) {
+  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--primary-dark); flex-direction: column; padding: 12px 16px 16px; gap: 4px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 14px; font-size: 15px; }
+  .hamburger { display: flex; }
+  .card-scene { height: 280px; }
+  .card-face { padding: 22px; }
+  .nav-card-btn { padding: 10px 16px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
+  <div class="nav-links" id="navLinks">
+    <a href="exam.html">Practice Exam</a>
+    <a href="glossary.html">Dictionary</a>
+    <a href="flashcards.html" class="active">Flashcards</a>
+    <a href="blog.html">Blog</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-header">
+  <div class="inner">
+    <h1>🃏 Flashcards</h1>
+    <p>Click any card to reveal the definition. Mark what you know — what you don't will come back.</p>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="inner">
+    <select id="catSelect" aria-label="Filter by category">
+      <option value="All">All Categories</option>
+    </select>
+    <button class="ctrl-btn" id="shuffleBtn">🔀 Shuffle</button>
+    <button class="ctrl-btn" id="restartBtn">↩ Restart</button>
+    <span class="progress-text" id="progressText"></span>
+  </div>
+</div>
+
+<div class="stage" id="stage">
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-label"><span id="progressLeft"></span><span id="progressRight"></span></div>
+  </div>
+
+  <div class="card-scene" id="cardScene" role="button" aria-label="Flip card" tabindex="0">
+    <div class="card-flip" id="cardFlip">
+      <div class="card-face card-front">
+        <div class="face-label">Term</div>
+        <div class="term-text" id="termText">Loading…</div>
+        <div class="cat-badge" id="catBadge"></div>
+        <div class="flip-hint">Click to reveal definition</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="face-label" style="color:rgba(255,255,255,.5)">Definition</div>
+        <div class="def-text" id="defText"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mark-row" id="markRow" style="display:none">
+    <button class="mark-btn know" id="knowBtn">✓ Got it</button>
+    <button class="mark-btn review" id="reviewCardBtn">✗ Review again</button>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-card-btn" id="prevCard">← Prev</button>
+    <button class="flip-btn" id="flipBtn">Flip</button>
+    <button class="nav-card-btn" id="nextCard">Next →</button>
+  </div>
+</div>
+
+<script>
+// NAV
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+// STATE
+let allTerms = [], deck = [], idx = 0, flipped = false;
+let known = new Set(), toReview = new Set();
+
+// LOAD
+fetch("data/glossary.json")
+  .then(r => r.json())
+  .then(data => {
+    allTerms = data.terms;
+    buildCatSelect();
+    buildDeck("All");
+  });
+
+function buildCatSelect() {
+  const cats = [...new Set(allTerms.map(t => t.category))].sort();
+  const sel = document.getElementById('catSelect');
+  cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c; opt.textContent = c;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', () => { buildDeck(sel.value); });
+}
+
+function buildDeck(cat) {
+  deck = cat === "All" ? [...allTerms] : allTerms.filter(t => t.category === cat);
+  shuffle(deck);
+  idx = 0; flipped = false;
+  known.clear(); toReview.clear();
+  render();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function render() {
+  if (deck.length === 0) return;
+
+  const t = deck[idx];
+  document.getElementById('termText').textContent = t.term;
+  document.getElementById('catBadge').textContent = t.category;
+  document.getElementById('defText').textContent = t.definition;
+
+  // Reset flip
+  document.getElementById('cardFlip').classList.remove('flipped');
+  flipped = false;
+  document.getElementById('markRow').style.display = 'none';
+
+  // Progress
+  const done = known.size + toReview.size;
+  const pct = deck.length ? (done / deck.length * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLeft').textContent = `${idx + 1} of ${deck.length}`;
+  document.getElementById('progressRight').textContent = `✓ ${known.size}  ✗ ${toReview.size}`;
+  document.getElementById('progressText').textContent = `${deck.length} cards`;
+
+  document.getElementById('prevCard').disabled = idx === 0;
+  document.getElementById('nextCard').disabled = idx === deck.length - 1;
+}
+
+function flip() {
+  flipped = !flipped;
+  document.getElementById('cardFlip').classList.toggle('flipped', flipped);
+  document.getElementById('markRow').style.display = flipped ? 'flex' : 'none';
+}
+
+document.getElementById('cardScene').addEventListener('click', flip);
+document.getElementById('cardScene').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+document.getElementById('flipBtn').addEventListener('click', e => { e.stopPropagation(); flip(); });
+
+document.getElementById('prevCard').addEventListener('click', () => { if (idx > 0) { idx--; render(); } });
+document.getElementById('nextCard').addEventListener('click', () => { if (idx < deck.length - 1) { idx++; render(); } });
+
+document.getElementById('knowBtn').addEventListener('click', () => {
+  known.add(idx);
+  toReview.delete(idx);
+  if (idx < deck.length - 1) { idx++; render(); } else renderComplete();
+});
+document.getElementById('reviewCardBtn').addEventListener('click', () => {
+  toReview.add(idx);
+  known.delete(idx);
+  if (idx < deck.length - 1) { idx++; render(); } else renderComplete();
+});
+
+document.getElementById('shuffleBtn').addEventListener('click', () => {
+  shuffle(deck); idx = 0; flipped = false; known.clear(); toReview.clear(); render();
+});
+document.getElementById('restartBtn').addEventListener('click', () => {
+  idx = 0; flipped = false; known.clear(); toReview.clear(); render();
+  document.getElementById('stage').innerHTML = '';
+  // Re-render stage
+  location.reload();
+});
+
+function renderComplete() {
+  const stage = document.getElementById('stage');
+  stage.innerHTML = `
+    <div class="complete-card">
+      <h2>🎉 Deck Complete!</h2>
+      <p>You've gone through all ${deck.length} cards.</p>
+      <div class="score-row">
+        <div class="score-box"><div class="num green">${known.size}</div><div class="lbl">Got it</div></div>
+        <div class="score-box"><div class="num red">${toReview.size}</div><div class="lbl">Review again</div></div>
+      </div>
+      <button class="restart-btn" id="doRestart">Start Over</button>
+    </div>`;
+  document.getElementById('doRestart').addEventListener('click', () => location.reload());
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft' && idx > 0) { idx--; render(); }
+  if (e.key === 'ArrowRight' && idx < deck.length - 1) { idx++; render(); }
+  if (e.key === ' ' || e.key === 'f') { e.preventDefault(); flip(); }
+});
+</script>
+</body>
+</html>

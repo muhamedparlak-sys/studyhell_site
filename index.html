@@ -3,267 +3,458 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PMP Study Hell</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<title>PMP® Study Hell™ — Free PMP Exam Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bar:#2f4f60;
-  --text:#0b1220;
-  --muted:#334155;
-  --btn:#2f4f60;
-  --btnHover:#1f3b49;
+:root {
+  --primary: #2f4f60;
+  --primary-dark: #1f3b49;
+  --primary-light: #5f93c2;
+  --accent: #3b7bc8;
+  --text: #0b1220;
+  --muted: #334155;
+  --light: #64748b;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --radius: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
 }
 
-body{
-  margin:0;
-  font-family:Inter,system-ui;
-  color:var(--text);
-  background:#fff;
+/* ── NAV ── */
+.navbar {
+  background: var(--primary);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.brand {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.brand sup { font-size: 9px; vertical-align: super; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.nav-links a {
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+}
+.nav-links a.nav-exam {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  font-weight: 600;
+}
+.nav-links a.nav-exam:hover {
+  background: rgba(255,255,255,.22);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all .2s;
 }
 
-/* TOP BAR */
-.topbar{
-  height:44px;
-  background:var(--bar);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  padding:0 18px;
-  font-size:14px;
-  justify-content:space-between;
-  gap:20px;
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
+  color: #fff;
+  padding: 72px 24px 80px;
+  text-align: center;
+}
+.hero-logo {
+  height: 80px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
+  opacity: .92;
+}
+.hero h1 {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero h1 sup { font-size: 0.4em; vertical-align: super; font-weight: 600; }
+.hero p {
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255,255,255,.8);
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+.btn-primary { background: #fff; color: var(--primary); }
+.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.6); }
+.btn-outline:hover { background: rgba(255,255,255,.1); }
+
+/* ── FEATURES ── */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--light);
+  margin-bottom: 36px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+  border-color: var(--primary-light);
+}
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.card-icon.blue   { background: #dbeafe; }
+.card-icon.green  { background: #d1fae5; }
+.card-icon.purple { background: #ede9fe; }
+.card-icon.orange { background: #ffedd5; }
+.card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+.card p {
+  font-size: 14px;
+  color: var(--light);
+  flex: 1;
+}
+.card-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
 }
 
-.topbar-nav{
-  display:flex;
-  gap:16px;
-  flex:1;
-  justify-content:flex-end;
+/* ── ABOUT ── */
+.about {
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.about h2 { font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+.about p { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.stat-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.stat-box .num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+}
+.stat-box .lbl {
+  font-size: 13px;
+  color: var(--light);
+  margin-top: 2px;
 }
 
-.topbar a{
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
-  transition:opacity 0.2s;
+/* ── EMAIL ── */
+.email-section {
+  text-align: center;
+}
+.email-section h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.email-section p {
+  font-size: 15px;
+  color: var(--light);
+  margin-bottom: 24px;
+}
+.email-form {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.email-form input {
+  flex: 1;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .15s;
+}
+.email-form input:focus { border-color: var(--primary-light); }
+.btn-dark { background: var(--primary); color: #fff; }
+.btn-dark:hover { background: var(--primary-dark); }
+.fine {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #94a3b8;
 }
 
-.topbar a:hover{
-  opacity:0.8;
+/* ── FOOTER ── */
+footer {
+  background: var(--primary);
+  color: rgba(255,255,255,.7);
+  text-align: center;
+  padding: 24px;
+  font-size: 13px;
 }
+footer strong { color: #fff; }
 
-.topbar .mark{
-  font-size:11px;
-  vertical-align:super;
-}
-
-/* STAGE */
-.stage{
-  max-width:1100px;
-  margin:auto;
-  padding:48px 20px 60px;
-}
-
-/* HERO */
-.hero{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  margin-bottom:30px;
-}
-
-.hero img{
-  height:72px;
-}
-
-/* WORDMARK */
-.wordmark{
-  font-size:48px;
-  font-weight:600;
-  letter-spacing:-0.02em;
-}
-
-.wordmark span{
-  font-weight:400;
-}
-
-.wordmark .mark{
-  font-size:14px;
-  vertical-align:super;
-  margin-left:2px;
-}
-
-/* COPY */
-.copy{
-  max-width:880px;
-  font-size:16px;
-  line-height:1.75;
-  color:var(--muted);
-}
-
-.copy strong{
-  color:var(--text);
-}
-
-.copy h3{
-  color:var(--text);
-  margin-top:28px;
-}
-
-/* BUTTON */
-.cta{
-  margin-top:22px;
-}
-
-button{
-  padding:12px 22px;
-  border-radius:8px;
-  border:none;
-  background:var(--btn);
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-}
-
-button:hover{
-  background:var(--btnHover);
-}
-
-/* EMAIL */
-.email{
-  margin-top:28px;
-}
-
-.emailbox{
-  display:flex;
-  gap:10px;
-  max-width:520px;
-}
-
-.emailbox input{
-  flex:1;
-  padding:12px;
-  border-radius:6px;
-  border:1px solid #ccc;
-}
-
-.fine{
-  margin-top:16px;
-  font-size:12px;
-  color:#64748b;
-}
-
-/* MOBILE */
-@media(max-width:700px){
-  .hero{
-    flex-direction:column;
-    align-items:flex-start;
+/* ── MOBILE MENU ── */
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--primary-dark);
+    flex-direction: column;
+    padding: 12px 16px 16px;
+    gap: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
   }
-  .wordmark{
-    font-size:36px;
-  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 14px; font-size: 15px; }
+  .hamburger { display: flex; }
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .email-form { flex-direction: column; }
+}
+@media (max-width: 400px) {
+  .stat-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-
 <body>
 
-<div class="topbar">
-  <span>PMP<span class="mark">®</span> Study Hell<span class="mark">™</span></span>
-  <div class="topbar-nav">
-    <a href="dictionary.html">Dictionary</a>
-    <a href="flashcard.html">Flashcards</a>
-    <a href="practice.html">Practice</a>
-    <a href="story-mode.html">Story Mode</a>
-    <a href="exam.html">Full Exam</a>
+<nav class="navbar">
+  <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
+  <div class="nav-links" id="navLinks">
+    <a href="exam.html" class="nav-exam">▶ Practice Exam</a>
+    <a href="glossary.html">Glossary</a>
+    <a href="flashcards.html">Flashcards</a>
+    <a href="blog.html">Blog</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="logo.png" alt="Study Hell logo">
+  <h1>PMP<sup>®</sup> Study Hell<sup>™</sup></h1>
+  <p>Free, ad-free, registration-free PMP exam preparation. Built by real credential holders.</p>
+  <div class="hero-btns">
+    <a href="exam.html" class="btn btn-primary">▶ Start Practice Exam</a>
+    <a href="glossary.html" class="btn btn-outline">Browse Glossary</a>
+  </div>
+</section>
+
+<!-- FEATURE CARDS -->
+<div class="section">
+  <div class="section-title">Everything You Need to Pass</div>
+  <div class="section-sub">Four tools. Zero cost. No registration.</div>
+  <div class="cards">
+
+    <a class="card" href="exam.html">
+      <div class="card-icon blue">📝</div>
+      <h3>Practice Exam</h3>
+      <p>180-question simulation with a real exam interface — timer, flag for review, and item review panel included.</p>
+      <span class="card-link">Start exam →</span>
+    </a>
+
+    <a class="card" href="glossary.html">
+      <div class="card-icon green">📖</div>
+      <h3>Glossary</h3>
+      <p>150+ PMBOK® Guide 8th edition terms, principles, and performance domains — searchable and filterable.</p>
+      <span class="card-link">Browse terms →</span>
+    </a>
+
+    <a class="card" href="flashcards.html">
+      <div class="card-icon purple">🃏</div>
+      <h3>Flashcards</h3>
+      <p>Flip-card study for every key concept. Filter by category, shuffle the deck, and track your progress.</p>
+      <span class="card-link">Study flashcards →</span>
+    </a>
+
+    <a class="card" href="blog.html">
+      <div class="card-icon orange">✍️</div>
+      <h3>Blog</h3>
+      <p>Practical tips, study strategies, and breakdowns of PMP exam domains — written by credential holders.</p>
+      <span class="card-link">Read articles →</span>
+    </a>
+
   </div>
 </div>
 
-<div class="stage">
-
-  <div class="hero">
-    <img src="logo.png" alt="logo">
-    <div class="wordmark">
-      PMP<span class="mark">®</span> <span>Study Hell</span><span class="mark">™</span>
-    </div>
-  </div>
-
-  <div class="copy">
-
-    <p><strong>Dear PMP Candidate,</strong></p>
-
-    <p>
-      You are now as close as it gets to the real PMP exam experience.
-      I understand your surprise. A free, ad-free, registration-free simulation sounds impossible.
-    </p>
-
-    <p>But it’s not.</p>
-
-    <p>
-      This experience is prepared by real PMP credential holders, grounded in previous PMP-style exam patterns,
-      aligned with the PMBOK® Guide and the updated Exam Content Outline.
-    </p>
-
-    <p>
-      Choose your learning path:
-    </p>
-
-    <div class="cta" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:500px;margin-top:20px">
-      <button onclick="location.href=’dictionary.html’" style="background:#5f93c2">📚 Dictionary</button>
-      <button onclick="location.href=’flashcard.html’" style="background:#5f93c2">🎴 Flashcards</button>
-      <button onclick="location.href=’practice.html’" style="background:#5f93c2">✏️ Practice</button>
-      <button onclick="location.href=’story-mode.html’" style="background:#5f93c2">📖 Story Mode</button>
-    </div>
-
-    <p style="margin-top:28px">
-      Ready for the full exam experience?
-    </p>
-
-    <div class="cta">
-      <button onclick="location.href=’exam.html’">Start Full Exam</button>
-    </div>
-
-    <h3>About the PMP® Exam</h3>
-
-    <p>
-      The PMP® exam consists of 180 questions and must be completed within 240 minutes.
-      Question types include scenario-based, multiple-response, drag-and-drop, and matching.
-    </p>
-
-    <p>
-      The exam is structured around three domains. People, Process, and Business Environment.
-    </p>
-
-    <p>
-      There are two optional 10-minute breaks. After a break, you cannot return to previous questions.
-    </p>
-
-    <div class="cta">
-      <button onclick="location.href='exam.html'">Start</button>
-    </div>
-
-    <div class="email">
-      <p>
-        If now is not the right time and you don’t want to lose this page, leave your email below.
-        We will remind you to continue your PMP® journey.
-      </p>
-
-      <div class="emailbox">
-        <input type="email" placeholder="Enter your email (optional)">
-        <button>Remind me</button>
+<!-- ABOUT -->
+<div class="about">
+  <div class="section">
+    <div class="about-grid">
+      <div>
+        <h2>The Real Exam. For Free.</h2>
+        <p>PMP® Study Hell was built because great exam prep shouldn't cost $400. Every question, every term, and every flashcard here reflects the actual exam content outline and the PMBOK® Guide 8th edition.</p>
+        <p>No logins. No ads. No paywalls. Just the hardest PMP prep you can find online.</p>
+        <div class="stat-row">
+          <div class="stat-box"><div class="num">180</div><div class="lbl">Exam Questions</div></div>
+          <div class="stat-box"><div class="num">150+</div><div class="lbl">Glossary Terms</div></div>
+          <div class="stat-box"><div class="num">3</div><div class="lbl">Exam Domains</div></div>
+          <div class="stat-box"><div class="num">0</div><div class="lbl">Cost to You</div></div>
+        </div>
       </div>
-
-      <div class="fine">
-        PMP® is a registered trademark of Project Management Institute, Inc.
-        This platform is independent and not affiliated with or endorsed by PMI.
+      <div>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;">
+          <div style="font-weight:700;font-size:15px;margin-bottom:16px;color:var(--text)">About the PMP® Exam</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--muted)">
+            <div>📋 <strong>180 questions</strong> — multiple choice, drag-and-drop, matching</div>
+            <div>⏱ <strong>240 minutes</strong> — two optional 10-min breaks available</div>
+            <div>🎯 <strong>3 domains</strong> — People, Process, Business Environment</div>
+            <div>📚 <strong>Aligned</strong> with PMBOK® Guide 8th edition &amp; ECO 2021</div>
+            <div>🔁 <strong>Hybrid focus</strong> — ~50% agile, ~50% predictive/hybrid</div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
-
 </div>
 
+<!-- EMAIL -->
+<div class="section email-section">
+  <h2>Stay on Track</h2>
+  <p>Leave your email and we'll remind you to continue your PMP® prep journey.</p>
+  <div class="email-form">
+    <input type="email" placeholder="Enter your email (optional)">
+    <a href="#" class="btn btn-dark">Remind me</a>
+  </div>
+  <div class="fine">
+    PMP® is a registered trademark of Project Management Institute, Inc.
+    This platform is independent and not affiliated with or endorsed by PMI.
+  </div>
+</div>
+
+<footer>
+  <strong>PMP® Study Hell™</strong> — Free, independent PMP exam preparation.<br>
+  PMP® is a registered trademark of Project Management Institute, Inc. This site is not affiliated with PMI.
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', String(open));
+});
+// Close menu on link click
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
 </body>
 </html>
