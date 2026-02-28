@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PM Simulation — PMP® Study Hell™</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --primary:      #2f4f60;
+  --primary-dark: #1f3b49;
+  --primary-light:#5f93c2;
+  --accent:       #3b7bc8;
+  --green:        #059669;
+  --yellow:       #d97706;
+  --red:          #dc2626;
+  --text:         #0b1220;
+  --muted:        #334155;
+  --light:        #64748b;
+  --bg:           #f0f4f8;
+  --card:         #ffffff;
+  --border:       #e2e8f0;
+  --radius:       12px;
+  --radius-sm:    8px;
+  --shadow:       0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Inter, system-ui, sans-serif; color: var(--text); background: var(--bg); min-height: 100vh; }
+button { cursor: pointer; font-family: inherit; }
+a { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════════════════════ */
+.navbar {
+  background: var(--primary);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.brand      { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; }
+.brand sup  { font-size: 9px; vertical-align: super; }
+.nav-back   { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; margin-left: auto; padding: 5px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,.25); transition: all .15s; }
+.nav-back:hover { background: rgba(255,255,255,.1); color: #fff; }
+.nav-tag    { background: rgba(255,255,255,.15); color: rgba(255,255,255,.9); font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; letter-spacing: .05em; text-transform: uppercase; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCREEN SYSTEM
+═══════════════════════════════════════════════════════════════ */
+.screen { min-height: calc(100vh - 52px); }
+.screen.hidden { display: none !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+═══════════════════════════════════════════════════════════════ */
+.hidden { display: none !important; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 700;
+  transition: background .15s, transform .1s;
+}
+.btn-primary:hover { background: #2c69b5; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .15s;
+}
+.btn-secondary:hover { background: var(--accent); color: #fff; }
+
+/* Status colours */
+.on-track { color: var(--green); }
+.warning  { color: var(--yellow); }
+.critical { color: var(--red); }
+
+/* ═══════════════════════════════════════════════════════════════
+   NOTIFICATIONS
+═══════════════════════════════════════════════════════════════ */
+#notification-container {
+  position: fixed;
+  top: 64px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 340px;
+  pointer-events: none;
+}
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity .25s, transform .25s;
+  pointer-events: auto;
+  border-left: 4px solid #475569;
+}
+.notification.n-visible   { opacity: 1; transform: translateX(0); }
+.notification.n-hiding    { opacity: 0; transform: translateX(20px); }
+.n-info    { border-left-color: var(--accent); }
+.n-success { border-left-color: var(--green); }
+.n-warning { border-left-color: var(--yellow); }
+.n-danger  { border-left-color: var(--red); }
+.n-icon    { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.n-msg     { flex: 1; }
+.n-close   { background: none; border: none; color: rgba(255,255,255,.5); font-size: 18px; line-height: 1; padding: 0 0 0 8px; flex-shrink: 0; }
+.n-close:hover { color: #fff; }
+
+/* ═══════════════════════════════════════════════════════════════
+   LOBBY SCREEN
+═══════════════════════════════════════════════════════════════ */
+#screen-lobby { }
+
+.lobby-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
+  color: #fff;
+  padding: 48px 24px 40px;
+  text-align: center;
+}
+.lobby-hero h1 { font-size: clamp(26px, 5vw, 42px); font-weight: 800; margin-bottom: 10px; }
+.lobby-hero p  { font-size: 16px; color: rgba(255,255,255,.75); max-width: 580px; margin: 0 auto; line-height: 1.6; }
+
+.lobby-section { padding: 40px 24px; max-width: 1100px; margin: 0 auto; }
+.lobby-section h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--text); }
+
+#lobby-scenarios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.scenario-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow);
+  transition: box-shadow .15s, border-color .15s;
+}
+.scenario-card:hover { box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+
+.sc-header { display: flex; justify-content: space-between; align-items: center; }
+.diff-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.diff-easy { background: #d1fae5; color: #065f46; }
+.diff-med  { background: #fef3c7; color: #92400e; }
+.diff-hard { background: #fce7f3; color: #9d174d; }
+
+.sc-weeks  { font-size: 12px; color: var(--light); }
+.sc-title  { font-size: 17px; font-weight: 700; color: var(--text); }
+.sc-desc   { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+.sc-tags   { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag-chip  { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eff6ff; color: var(--accent); border: 1px solid #dbeafe; }
+
+.btn-play {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  transition: background .15s;
+}
+.btn-play:hover { background: var(--accent); }
+
+/* About section */
+.lobby-about {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.lobby-about h2 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.lobby-about p  { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+.concept-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
+.concept-item   { background: var(--bg); border-radius: var(--radius-sm); padding: 12px; font-size: 13px; }
+.concept-item strong { display: block; font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCENARIO INTRO SCREEN
+═══════════════════════════════════════════════════════════════ */
+#screen-scenario-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.intro-wrapper {
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intro-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 30px;
+}
+.intro-header h1 { font-size: clamp(20px, 4vw, 28px); font-weight: 800; margin-bottom: 8px; }
+.intro-header p  { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.65; }
+
+.intro-details-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.intro-kv { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.intro-kv:last-child { border-bottom: none; }
+.intro-kv span { color: var(--light); }
+.intro-kv strong { color: var(--text); }
+
+.intro-role-card {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #1e40af;
+  line-height: 1.6;
+}
+.intro-role-card::before { content: '🎯 Your Role: '; font-weight: 700; }
+
+.intro-actions { display: flex; gap: 12px; justify-content: flex-end; }
+
+/* ═══════════════════════════════════════════════════════════════
+   WEEK SCREEN (main gameplay)
+═══════════════════════════════════════════════════════════════ */
+#screen-week { }
+
+/* Week top bar */
+.week-topbar {
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.week-badge {
+  background: rgba(255,255,255,.15);
+  border-radius: var(--radius-sm);
+  padding: 5px 14px;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.week-date-label { font-size: 13px; color: rgba(255,255,255,.65); }
+.week-bar-wrap   { flex: 1; min-width: 120px; display: flex; align-items: center; gap: 8px; }
+.week-bar-track  { flex: 1; height: 6px; background: rgba(255,255,255,.2); border-radius: 3px; overflow: hidden; }
+.week-bar-fill   { height: 100%; background: var(--primary-light); border-radius: 3px; transition: width .4s ease; }
+.week-pct-label  { font-size: 12px; color: rgba(255,255,255,.65); white-space: nowrap; }
+
+/* Two-column layout */
+.week-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left: narrative + decision */
+.week-main { display: flex; flex-direction: column; gap: 20px; }
+
+.narrative-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.narrative-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--light); margin-bottom: 10px; }
+#week-narrative { font-size: 15px; color: var(--muted); line-height: 1.75; }
+
+.decision-card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: border-color .2s;
+}
+.decision-card:focus-within { border-color: var(--accent); }
+.decision-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 12px; }
+#decision-question { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 18px; line-height: 1.55; }
+
+#decision-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+
+.decision-option {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.decision-option::before {
+  content: '○';
+  font-size: 16px;
+  color: var(--border);
+  flex-shrink: 0;
+  transition: color .15s;
+}
+.decision-option:hover {
+  border-color: var(--accent);
+  background: #eff6ff;
+  color: var(--text);
+}
+.decision-option.selected {
+  border-color: var(--accent);
+  background: #eff6ff;
+}
+.decision-option.selected::before {
+  content: '●';
+  color: var(--accent);
+}
+.opt-label { flex: 1; }
+
+.no-decision { color: var(--light); font-size: 14px; padding: 12px 0; }
+
+/* Right: metrics panel */
+.metrics-panel { display: flex; flex-direction: column; gap: 16px; }
+
+.metrics-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.metrics-card h4 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--light);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Metric rows */
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-label { color: var(--muted); }
+.metric-value { font-weight: 600; display: flex; align-items: center; gap: 5px; }
+.metric-on-track .metric-value { color: var(--green); }
+.metric-warning  .metric-value { color: var(--yellow); }
+.metric-critical .metric-value { color: var(--red); }
+
+/* Budget bar */
+.budget-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+.prog-bar   { height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; margin: 4px 0; }
+.prog-fill  { height: 100%; border-radius: 4px; transition: width .4s ease; }
+.prog-on-track { background: var(--green); }
+.prog-warning  { background: var(--yellow); }
+.prog-critical { background: var(--red); }
+
+/* Soft metrics */
+.soft-metric { margin-bottom: 12px; }
+.soft-metric:last-child { margin-bottom: 0; }
+.soft-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+.soft-label span { color: var(--muted); }
+.soft-label strong { font-weight: 700; }
+
+/* Risk badges */
+#metric-risks { display: flex; flex-wrap: wrap; gap: 5px; }
+.risk-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.risk-threat { background: #fce7f3; color: #9d174d; }
+.risk-opp    { background: #d1fae5; color: #065f46; }
+.no-risks    { font-size: 12px; color: var(--light); }
+
+/* ═══════════════════════════════════════════════════════════════
+   CONSEQUENCE SCREEN
+═══════════════════════════════════════════════════════════════ */
+#screen-consequence {
+  padding: 32px 20px;
+}
+
+.consequence-wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.consequence-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+.consequence-header h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.consequence-header p  { font-size: 13px; color: rgba(255,255,255,.65); }
+
+.feedback-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.feedback-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--light); margin-bottom: 10px; }
+.feedback-text    { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+.feedback-concept { font-size: 13px; color: var(--accent); }
+
+.effect-line { font-size: 13px; color: var(--muted); padding: 3px 0; }
+
+.events-card { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 16px; }
+.events-card h4 { font-size: 12px; font-weight: 700; color: #92400e; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
+.event-card { background: #fff; border: 1px solid #fde68a; border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 8px; }
+.event-card:last-child { margin-bottom: 0; }
+.event-card strong { font-size: 14px; color: #92400e; display: block; margin-bottom: 4px; }
+.event-card p { font-size: 13px; color: var(--muted); }
+
+.metrics-summary-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; }
+.metrics-summary-card h4 { font-size: 12px; font-weight: 700; color: var(--light); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
+#consequence-metrics-summary { display: flex; flex-wrap: wrap; gap: 12px; }
+.cm-item { font-size: 13px; color: var(--muted); }
+.cm-item strong { color: var(--text); font-weight: 700; }
+
+.warnings-card { background: #fff7ed; border: 1px solid #fed7aa; border-radius: var(--radius); padding: 14px 18px; }
+.warnings-card h4 { font-size: 12px; font-weight: 700; color: #c2410c; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.warn-line { font-size: 13px; color: #92400e; padding: 3px 0; }
+
+.consequence-actions { display: flex; justify-content: flex-end; padding-top: 4px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   GAME OVER SCREEN
+═══════════════════════════════════════════════════════════════ */
+#screen-game-over {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #1a0a0a 0%, #2d1212 100%);
+  min-height: calc(100vh - 52px);
+}
+
+.gameover-box {
+  max-width: 560px;
+  width: 100%;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,100,100,.3);
+  border-radius: var(--radius);
+  padding: 40px;
+  text-align: center;
+}
+.gameover-icon { font-size: 64px; margin-bottom: 20px; display: block; }
+.gameover-box h1 { font-size: 32px; font-weight: 800; color: #fca5a5; margin-bottom: 10px; }
+#gameover-reason { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 16px; }
+#gameover-metric { font-size: 13px; color: rgba(255,100,100,.7); margin-bottom: 6px; }
+#gameover-week   { font-size: 13px; color: rgba(255,255,255,.4); margin-bottom: 28px; }
+#gameover-metric strong { color: #fca5a5; }
+
+/* ═══════════════════════════════════════════════════════════════
+   DEBRIEF SCREEN
+═══════════════════════════════════════════════════════════════ */
+#screen-debrief { padding: 32px 20px; }
+
+.debrief-wrapper { max-width: 900px; margin: 0 auto; }
+
+.debrief-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.debrief-header h1 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+
+.grade-row { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 14px 0; }
+#debrief-grade {
+  font-size: 56px;
+  font-weight: 800;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.12);
+}
+.grade-pass { background: rgba(5,150,105,.3) !important; }
+.grade-fail { background: rgba(220,38,38,.3) !important; }
+
+#debrief-score  { font-size: 28px; font-weight: 700; }
+#debrief-result { font-size: 16px; margin-top: 4px; }
+
+.debrief-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.debrief-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.debrief-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--light); margin-bottom: 14px; }
+
+/* Score breakdown rows */
+.debrief-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.debrief-row:last-child { border-bottom: none; }
+.dr-label { flex: 1; color: var(--muted); }
+.dr-raw   { font-weight: 600; color: var(--text); min-width: 50px; text-align: right; }
+.dr-pts   { color: var(--accent); font-weight: 700; min-width: 55px; text-align: right; }
+
+/* EVM final grid */
+.debrief-evm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.evm-cell { text-align: center; padding: 10px; background: var(--bg); border-radius: var(--radius-sm); }
+.evm-cell span { display: block; font-size: 11px; color: var(--light); margin-bottom: 4px; }
+.evm-val   { font-size: 18px; font-weight: 800; }
+
+/* Log items */
+.log-item { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.log-item:last-child { border-bottom: none; }
+.log-week  { font-size: 11px; font-weight: 700; color: var(--accent); background: #eff6ff; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
+.log-label { color: var(--muted); line-height: 1.5; }
+.empty     { font-size: 13px; color: var(--light); text-align: center; padding: 12px 0; }
+
+.debrief-actions { display: flex; justify-content: center; gap: 14px; margin-top: 28px; padding-bottom: 40px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .week-layout     { grid-template-columns: 1fr; }
+  .metrics-panel   { display: grid; grid-template-columns: 1fr 1fr; }
+  .debrief-grid    { grid-template-columns: 1fr; }
+  .debrief-evm-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .week-layout     { padding: 16px; gap: 16px; }
+  .metrics-panel   { grid-template-columns: 1fr; }
+  .intro-actions   { flex-direction: column; }
+  .debrief-evm-grid{ grid-template-columns: repeat(2, 1fr); }
+  .grade-row       { flex-direction: column; gap: 10px; }
+  .lobby-hero      { padding: 32px 16px 28px; }
+  .lobby-section   { padding: 24px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
+  <span class="nav-tag">Simulation</span>
+  <a class="nav-back" href="index.html">← Back to Hub</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCREEN 1 — LOBBY
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-lobby" class="screen">
+
+  <div class="lobby-hero">
+    <h1>🏗️ PM Simulation</h1>
+    <p>Manage real projects. Make tough decisions. Learn Earned Value Management the hard way.</p>
+  </div>
+
+  <div class="lobby-section">
+    <h2>Choose a Scenario</h2>
+    <div id="lobby-scenarios">
+      <!-- Populated by Engine via UIBridge.renderLobby() -->
+      <div class="scenario-card" style="opacity:.5;pointer-events:none">
+        <div class="sc-header"><span class="diff-badge diff-easy">Loading…</span></div>
+        <h3 class="sc-title">Loading scenarios…</h3>
+        <p class="sc-desc">Please wait.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lobby-about container" style="margin-bottom:0;padding:24px">
+    <h2>What You'll Practice</h2>
+    <p>Each scenario puts you in the PM's seat. Every week you face a real decision — budget trade-offs, scope changes, team issues, stakeholder pressure. Your choices drive EVM metrics in real time.</p>
+    <div class="concept-grid">
+      <div class="concept-item"><strong>CPI / SPI</strong>Cost & Schedule Performance Indices updated every week based on your choices.</div>
+      <div class="concept-item"><strong>EAC / VAC</strong>Forecast-at-completion updates as your project drifts from the plan.</div>
+      <div class="concept-item"><strong>Risk Management</strong>Threats and opportunities materialise based on your decisions and probability rolls.</div>
+      <div class="concept-item"><strong>Stakeholder Mgmt</strong>Keep sponsors happy while managing team morale and delivery.</div>
+      <div class="concept-item"><strong>Servant Leadership</strong>How you respond to team issues directly affects morale and throughput.</div>
+      <div class="concept-item"><strong>Scope & Quality</strong>Trade-off decisions create scope creep and quality debt — just like real projects.</div>
+    </div>
+  </div>
+  <div style="height:40px"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCREEN 2 — SCENARIO INTRO
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-scenario-intro" class="screen hidden">
+  <div style="padding:32px 20px;display:flex;justify-content:center">
+    <div class="intro-wrapper">
+
+      <div class="intro-header">
+        <h1 id="intro-title">Scenario Title</h1>
+        <p id="intro-description">Loading…</p>
+      </div>
+
+      <div class="intro-details-card">
+        <div id="intro-details"><!-- populated --></div>
+      </div>
+
+      <div class="intro-role-card" id="intro-role">
+        You are the Project Manager.
+      </div>
+
+      <div class="intro-actions">
+        <a href="#" onclick="Engine.returnToLobby();return false;" class="btn-secondary">← Back</a>
+        <button class="btn-primary" id="btn-start-scenario">Start Project →</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCREEN 3 — WEEK (main gameplay)
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-week" class="screen hidden">
+
+  <!-- Top progress bar -->
+  <div class="week-topbar">
+    <div class="week-badge" id="week-label">Week 1 of 12</div>
+    <span class="week-date-label" id="week-date"></span>
+    <div class="week-bar-wrap">
+      <div class="week-bar-track">
+        <div class="week-bar-fill" id="week-progress-bar" style="width:0%"></div>
+      </div>
+      <span class="week-pct-label" id="week-progress">0%</span>
+    </div>
+  </div>
+
+  <!-- Two-column layout -->
+  <div class="week-layout">
+
+    <!-- LEFT: narrative + decision -->
+    <div class="week-main">
+
+      <!-- Narrative -->
+      <div class="narrative-card">
+        <h3>📰 This Week</h3>
+        <p id="week-narrative">Loading…</p>
+      </div>
+
+      <!-- Decision card -->
+      <div class="decision-card" id="decision-panel">
+        <h3>⚡ Decision Required</h3>
+        <p id="decision-question"></p>
+        <div id="decision-options"></div>
+        <div id="decision-actions"></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: metrics panel -->
+    <aside class="metrics-panel">
+
+      <div class="metrics-card">
+        <h4>📊 EVM Metrics</h4>
+        <div id="metric-cpi"><!-- populated --></div>
+      </div>
+
+      <div class="metrics-card">
+        <h4>💰 Budget</h4>
+        <div id="metric-budget"><!-- populated --></div>
+      </div>
+
+      <div class="metrics-card">
+        <h4>🧑‍🤝‍🧑 People</h4>
+        <div id="metric-soft"><!-- populated --></div>
+      </div>
+
+      <div class="metrics-card">
+        <h4>⚠️ Active Risks</h4>
+        <div id="metric-risks"><!-- populated --></div>
+      </div>
+
+    </aside>
+
+  </div><!-- /week-layout -->
+</div><!-- /screen-week -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCREEN 4 — CONSEQUENCE
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-consequence" class="screen hidden">
+  <div class="consequence-wrapper">
+
+    <div class="consequence-header">
+      <h2>📋 Week Result</h2>
+      <p>Here's what happened after your decision.</p>
+    </div>
+
+    <!-- Decision feedback -->
+    <div class="feedback-card">
+      <h4>Your Decision</h4>
+      <div id="consequence-feedback"></div>
+      <div id="consequence-effects"></div>
+    </div>
+
+    <!-- Random events (shown only if any triggered) -->
+    <div id="consequence-events-section" class="events-card hidden">
+      <h4>🎲 Random Events This Week</h4>
+      <div id="consequence-events"></div>
+    </div>
+
+    <!-- Metrics summary -->
+    <div class="metrics-summary-card">
+      <h4>Current Metrics</h4>
+      <div id="consequence-metrics-summary"></div>
+    </div>
+
+    <!-- Warnings (shown only if any) -->
+    <div id="consequence-warnings-section" class="warnings-card hidden">
+      <h4>⚠️ Warnings</h4>
+      <div id="consequence-warnings"></div>
+    </div>
+
+    <div class="consequence-actions">
+      <button class="btn-primary" id="btn-continue">Next Week →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCREEN 5 — GAME OVER
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-game-over" class="screen hidden">
+  <div class="gameover-box">
+    <span class="gameover-icon">💀</span>
+    <h1>Project Failed</h1>
+    <p id="gameover-reason">Your project has been terminated.</p>
+    <p id="gameover-metric"></p>
+    <p id="gameover-week"></p>
+    <button class="btn-primary" id="btn-see-debrief">See Full Debrief →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCREEN 6 — DEBRIEF
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-debrief" class="screen hidden">
+  <div class="debrief-wrapper">
+
+    <div class="debrief-header">
+      <h1>📊 Project Debrief</h1>
+      <div class="grade-row">
+        <div id="debrief-grade">—</div>
+        <div>
+          <div id="debrief-score">—</div>
+          <div id="debrief-result">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="debrief-grid">
+
+      <div class="debrief-card">
+        <h3>Score Breakdown</h3>
+        <div id="debrief-breakdown"><!-- populated --></div>
+      </div>
+
+      <div class="debrief-card">
+        <h3>Final EVM Snapshot</h3>
+        <div id="debrief-evm"><!-- populated --></div>
+      </div>
+
+      <div class="debrief-card">
+        <h3>Decision History</h3>
+        <div id="debrief-decisions"><!-- populated --></div>
+      </div>
+
+      <div class="debrief-card">
+        <h3>Events That Occurred</h3>
+        <div id="debrief-events"><!-- populated --></div>
+      </div>
+
+    </div>
+
+    <div class="debrief-actions">
+      <a href="exam.html" class="btn-secondary">Practice Exam</a>
+      <button class="btn-primary" id="btn-return-lobby">▶ Play Again</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ENGINE SCRIPTS (order matters — dependencies first)
+══════════════════════════════════════════════════════════════ -->
+<script src="engine/utils.js"></script>
+<script src="engine/event-bus.js"></script>
+<script src="engine/store.js"></script>
+<script src="engine/state-machine.js"></script>
+<script src="engine/metrics-engine.js"></script>
+<script src="engine/scenario-loader.js"></script>
+<script src="engine/decision-resolver.js"></script>
+<script src="engine/consequence-engine.js"></script>
+<script src="engine/notification-manager.js"></script>
+<script src="engine/ui-bridge.js"></script>
+<script src="engine/engine.js"></script>
+
+<script>
+  // Boot the game when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => Engine.init());
+</script>
+
+</body>
+</html>
