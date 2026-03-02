@@ -583,8 +583,8 @@ a{color:inherit;text-decoration:none}
       Bir daha sorma
     </label>
     <div class="confirm-actions">
-      <button class="btn-cancel" onclick="Game.closeConfirm()">İptal</button>
-      <button class="btn-send" onclick="Game.confirmSend()">
+      <button class="btn-cancel" id="btn-cancel-confirm">İptal</button>
+      <button class="btn-send" id="btn-confirm-send">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         Gönder
       </button>
@@ -907,6 +907,25 @@ var Game; Game = (() => {
     // PM name input updates career ready state
     document.getElementById('inp-pm-name')?.addEventListener('input', checkCareerReady);
 
+    // Compose pane: option selection + send (event delegation — no inline onclick needed)
+    document.getElementById('notif-compose').addEventListener('click', e => {
+      // Option button click
+      const optBtn = e.target.closest('[data-opt-key]');
+      if (optBtn && !optBtn.disabled) {
+        selectOption(+optBtn.dataset.optId, optBtn.dataset.optKey);
+        return;
+      }
+      // Send button click
+      const sendBtn = e.target.closest('[data-send-id]');
+      if (sendBtn && !sendBtn.disabled) {
+        sendSelected(+sendBtn.dataset.sendId);
+      }
+    });
+
+    // Confirm dialog buttons
+    document.getElementById('btn-cancel-confirm').onclick = closeConfirm;
+    document.getElementById('btn-confirm-send').onclick   = confirmSend;
+
     // Auth butonlarını güncelle (topbar)
 
     // Keyboard navigation
@@ -1179,7 +1198,7 @@ var Game; Game = (() => {
       }
       if(isUnavailable && !isChosen) cls += ' cmp-unavail';
       const disabled = !!ans || isUnavailable;
-      h += `<button class="${cls}" ${disabled?'disabled':''} onclick="Game.selectOption(${n.id},'${o.key}')">
+      h += `<button class="${cls}" ${disabled?'disabled':''} data-opt-id="${n.id}" data-opt-key="${o.key}">
         <input type="radio" name="cmp-r-${n.id}" ${(isPending||isChosen)?'checked':''} ${disabled?'disabled':''} tabindex="-1">
         <span class="cmp-opt-text">${esc(o.text)}${isUnavailable&&!isChosen?' <em style="font-size:10px;color:#94a3b8">(mevcut değil)</em>':''}</span>
       </button>`;
@@ -1201,7 +1220,7 @@ var Game; Game = (() => {
 
     const canSend = !ans && !!pendingKey;
     h += `<div class="compose-footer">
-      <button class="btn-compose-send" id="btn-compose-send" ${!canSend?'disabled':''} onclick="Game.sendSelected(${n.id})">
+      <button class="btn-compose-send" id="btn-compose-send" ${!canSend?'disabled':''} data-send-id="${n.id}">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         Gönder
       </button>
