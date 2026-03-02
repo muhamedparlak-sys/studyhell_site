@@ -117,6 +117,13 @@ a{color:inherit;text-decoration:none}
 .resume-meta{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
 .btn-outline-welcome{width:100%;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-size:14px;font-weight:600;padding:11px;border-radius:8px;cursor:pointer;transition:all .15s;margin-top:4px}
 .btn-outline-welcome:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8)}
+.save-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;max-height:260px;overflow-y:auto}
+.save-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:12px 14px}
+.save-info{flex:1;text-align:left;min-width:0}
+.save-title{font-size:14px;font-weight:600;color:rgba(255,255,255,.85);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.save-meta{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px}
+.btn-resume-item{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.35);color:#93c5fd;font-size:12px;font-weight:600;padding:7px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.btn-resume-item:hover{background:rgba(59,130,246,.3);border-color:#3b82f6;color:#fff}
 .mode-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:36px;width:100%;max-width:560px}
 .mode-card h2{font-size:20px;font-weight:700;margin-bottom:6px}
 .mode-card>p{font-size:13px;color:var(--dim);margin-bottom:24px}
@@ -756,7 +763,7 @@ var Game; Game = (() => {
     const key = getSaveKey();
     if(!key) return;
     const data = {
-      scenarioId: S.scenario.id, sectionId: S.sectionId,
+      scenarioId: S.scenario.id, scenarioTitle: S.scenario.title || S.scenario.id, sectionId: S.sectionId,
       answered: S.answered, xp: S.xp, dCount: S.dCount,
       shuffles: S.shuffles, pendingKey: S.pendingKey,
       dayBatches: S.dayBatches, dayIndex: S.dayIndex,
@@ -934,21 +941,31 @@ var Game; Game = (() => {
     S.name = session.displayName;
 
     if (saves.length > 0) {
-      const latest = saves[0];
-      const d = new Date(latest.savedAt);
-      const dateStr = d.toLocaleDateString('tr-TR', { day:'numeric', month:'long' }) + ' ' +
-                      d.toLocaleTimeString('tr-TR', { hour:'2-digit', minute:'2-digit' });
-      const scenarioLabel = (S.scenario?.title) || latest.scenarioId || 'Senaryo';
+      const saveItemsHTML = saves.map((sv, idx) => {
+        const d    = new Date(sv.savedAt);
+        const date = d.toLocaleDateString('tr-TR', { day:'numeric', month:'short', year:'numeric' });
+        const totalSlots = (sv.dayBatches||[]).flat().length;
+        const done  = Object.values(sv.answered||{}).filter(v => v !== 'READ').length;
+        const pct   = totalSlots > 0 ? Math.round((done / totalSlots) * 100) : 0;
+        const title = sv.scenarioTitle || sv.scenarioId || 'Senaryo';
+        return `<div class="save-item">
+          <div class="save-info">
+            <div class="save-title">${title}</div>
+            <div class="save-meta">${date} · %${pct} tamamlandı · ${sv.xp||0} XP</div>
+          </div>
+          <button class="btn-resume-item" data-idx="${idx}">▶ Devam</button>
+        </div>`;
+      }).join('');
+
       card.innerHTML = `
         <div class="welcome-icon">📬</div>
         <h1 class="welcome-title">Hoş geldin, ${session.displayName}!</h1>
-        <div class="resume-box">
-          <div class="resume-label">Son kayıt</div>
-          <div class="resume-meta">${dateStr} · %${Math.round((Object.keys(latest.answered||{}).length / Math.max(1,(latest.dayBatches||[]).flat().length))*100)} tamamlandı · ${latest.xp||0} XP</div>
-          <button id="btn-resume" class="btn-primary" style="margin-top:14px">▶ Kaldığın Yerden Devam Et</button>
-        </div>
+        <div class="save-list">${saveItemsHTML}</div>
         <button id="btn-new-game" class="btn-outline-welcome">Yeni Oyun Başlat</button>`;
-      document.getElementById('btn-resume').onclick   = () => resumeSave(latest);
+
+      card.querySelectorAll('.btn-resume-item').forEach(btn => {
+        btn.onclick = () => resumeSave(saves[+btn.dataset.idx]);
+      });
       document.getElementById('btn-new-game').onclick = () => show('screen-mode');
     } else {
       card.innerHTML = `
