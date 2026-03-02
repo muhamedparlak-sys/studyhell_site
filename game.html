@@ -758,9 +758,10 @@ const Game = (() => {
 
   // ── SAVE / LOAD ───────────────────────────────────────────────────────────
   function getSaveKey() {
+    if(!S.scenario) return null;
     const session = authGetSession();
-    if(!session || !S.scenario) return null;
-    return `pmSim_save_${session.username}_${S.scenario.id}`;
+    const userKey = session ? session.username : (S.name || 'guest');
+    return `pmSim_save_${userKey}_${S.scenario.id}`;
   }
   function saveGame() {
     const key = getSaveKey();
