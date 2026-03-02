@@ -662,6 +662,7 @@ footer strong { color: #fff; }
     <div class="auth-tabs">
       <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Giriş Yap</button>
       <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Kayıt Ol</button>
+      <button class="auth-tab" id="tab-forgot" onclick="switchTab('forgot')">Şifremi Unuttum</button>
     </div>
 
     <!-- LOGIN -->
@@ -678,6 +679,8 @@ footer strong { color: #fff; }
       <button class="btn-auth-submit" onclick="doLogin()">Giriş Yap →</button>
       <div style="text-align:center;margin-top:12px;font-size:12px;color:#64748b">
         Hesabın yok mu? <button style="background:none;border:none;color:#3b82f6;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit" onclick="switchTab('register')">Kayıt Ol</button>
+        &nbsp;·&nbsp;
+        <button style="background:none;border:none;color:#94a3b8;font-size:12px;cursor:pointer;text-decoration:underline;font-family:inherit" onclick="switchTab('forgot')">Şifremi unuttum</button>
       </div>
     </div>
 
@@ -703,6 +706,32 @@ footer strong { color: #fff; }
       <button class="btn-auth-submit" onclick="doRegister()">Kayıt Ol →</button>
       <div style="text-align:center;margin-top:12px;font-size:12px;color:#64748b">
         Zaten hesabın var mı? <button style="background:none;border:none;color:#3b82f6;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit" onclick="switchTab('login')">Giriş Yap</button>
+      </div>
+    </div>
+
+    <!-- ŞİFREMİ UNUTTUM -->
+    <div id="form-forgot" class="hidden">
+      <div style="font-size:13px;color:#64748b;margin-bottom:16px;line-height:1.5;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px 14px">
+        ⚠️ Verileriniz bu tarayıcıda saklanmaktadır. Kayıtlı e-posta adresinizi girerek şifrenizi sıfırlayabilirsiniz.
+      </div>
+      <div class="auth-field">
+        <label>Kayıtlı E-posta</label>
+        <input class="auth-input" id="inp-forgot-email" type="email" placeholder="kayıtlı@mail.com" autocomplete="email">
+      </div>
+      <div id="forgot-new-pass-wrap" class="hidden">
+        <div class="auth-field" style="margin-top:12px">
+          <label>Yeni Şifre <span id="forgot-username-hint" style="color:#3b82f6;font-weight:600"></span></label>
+          <input class="auth-input" id="inp-forgot-newpass" type="password" placeholder="en az 6 karakter">
+        </div>
+        <div class="auth-field">
+          <label>Yeni Şifre Tekrar</label>
+          <input class="auth-input" id="inp-forgot-newpass2" type="password" placeholder="••••••">
+        </div>
+      </div>
+      <div class="auth-error hidden" id="err-forgot"></div>
+      <button class="btn-auth-submit" id="btn-forgot-submit" onclick="doForgot()">E-postayı Doğrula →</button>
+      <div style="text-align:center;margin-top:12px;font-size:12px;color:#64748b">
+        <button style="background:none;border:none;color:#3b82f6;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit" onclick="switchTab('login')">← Giriş Yap</button>
       </div>
     </div>
   </div>
@@ -769,10 +798,54 @@ function closeAuth() {
   document.getElementById('auth-overlay').classList.add('hidden');
 }
 function switchTab(tab) {
-  document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
-  document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
-  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
-  document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+  ['login','register','forgot'].forEach(t => {
+    document.getElementById('form-' + t).classList.toggle('hidden', tab !== t);
+    document.getElementById('tab-' + t).classList.toggle('active', tab === t);
+  });
+  // Reset forgot form state on open
+  if (tab === 'forgot') {
+    document.getElementById('forgot-new-pass-wrap').classList.add('hidden');
+    document.getElementById('inp-forgot-email').value = '';
+    document.getElementById('btn-forgot-submit').textContent = 'E-postayı Doğrula →';
+    document.getElementById('btn-forgot-submit').dataset.step = 'verify';
+    hideErr('err-forgot');
+  }
+}
+
+let _forgotUser = null;
+function doForgot() {
+  const step = document.getElementById('btn-forgot-submit').dataset.step || 'verify';
+  if (step === 'verify') {
+    const email = (document.getElementById('inp-forgot-email').value || '').trim().toLowerCase();
+    if (!email) { showErr('err-forgot', 'E-posta adresinizi girin'); return; }
+    const user = authGetUsers().find(u => u.email && u.email.toLowerCase() === email);
+    if (!user) { showErr('err-forgot', 'Bu e-posta adresiyle kayıtlı hesap bulunamadı'); return; }
+    _forgotUser = user;
+    hideErr('err-forgot');
+    document.getElementById('forgot-username-hint').textContent = '(@' + user.username + ')';
+    document.getElementById('forgot-new-pass-wrap').classList.remove('hidden');
+    document.getElementById('inp-forgot-email').disabled = true;
+    document.getElementById('btn-forgot-submit').textContent = 'Şifreyi Sıfırla →';
+    document.getElementById('btn-forgot-submit').dataset.step = 'reset';
+  } else {
+    const newPass  = document.getElementById('inp-forgot-newpass').value;
+    const newPass2 = document.getElementById('inp-forgot-newpass2').value;
+    if (newPass.length < 6) { showErr('err-forgot', 'Şifre en az 6 karakter olmalı'); return; }
+    if (newPass !== newPass2) { showErr('err-forgot', 'Şifreler eşleşmiyor'); return; }
+    const users = authGetUsers();
+    const idx = users.findIndex(u => u.username === _forgotUser.username);
+    if (idx === -1) { showErr('err-forgot', 'Hesap bulunamadı'); return; }
+    users[idx].password = newPass;
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    _forgotUser = null;
+    hideErr('err-forgot');
+    switchTab('login');
+    // Show success hint in login tab
+    const loginErr = document.getElementById('err-login');
+    loginErr.textContent = '✓ Şifreniz güncellendi. Şimdi giriş yapabilirsiniz.';
+    loginErr.style.color = '#22c55e';
+    loginErr.classList.remove('hidden');
+  }
 }
 
 function showErr(id, msg) {
@@ -795,6 +868,7 @@ function afterAuth(user) {
 function doLogin() {
   const username = (document.getElementById('inp-login-user').value || '').trim();
   const password = document.getElementById('inp-login-pass').value;
+  document.getElementById('err-login').style.color = ''; // reset success color
   if (!username || !password) { showErr('err-login', 'Tüm alanları doldurun'); return; }
   const user = authGetUsers().find(u => u.username.toLowerCase() === username.toLowerCase() && u.password === password);
   if (!user) { showErr('err-login', 'Kullanıcı adı veya şifre hatalı'); return; }
