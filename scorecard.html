@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yetkinlik Kartı – PMP Study Hell</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;
+  --s1:#161b22;
+  --s2:#21262d;
+  --border:rgba(255,255,255,.08);
+  --text:#e6edf3;
+  --muted:#7d8590;
+  --dim:#484f58;
+  --topbar-h:48px;
+}
+body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.4}
+a{color:inherit;text-decoration:none}
+button{border:none;cursor:pointer;font-family:inherit}
+
+/* TOPBAR */
+#topbar{
+  position:sticky;top:0;height:var(--topbar-h);
+  background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;padding:0 20px;z-index:100
+}
+.brand{font-weight:700;font-size:14px}
+.brand sup{font-size:9px;opacity:.4}
+.t-sep{width:1px;height:16px;background:var(--border);flex-shrink:0}
+.t-title{font-size:12px;color:var(--muted)}
+.btn-back{
+  margin-left:auto;
+  background:transparent;border:1px solid var(--border);
+  color:var(--muted);font-size:12px;border-radius:6px;
+  padding:5px 13px;transition:border-color .15s,color .15s
+}
+.btn-back:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+
+/* PAGE */
+.page{max-width:1040px;margin:0 auto;padding:20px 16px 64px}
+
+/* PROFILE CARD */
+.profile-card{
+  background:var(--s1);border:1px solid var(--border);
+  border-radius:8px;padding:20px 24px;
+  display:flex;align-items:flex-start;gap:18px;
+  margin-bottom:12px;
+}
+.pav{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--s2);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;font-weight:700;color:rgba(255,255,255,.55);
+  flex-shrink:0;
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.pav-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
+}
+.pav-overlay{
+  position:absolute;inset:0;border-radius:50%;
+  background:rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .15s;pointer-events:none;
+}
+.pav:hover .pav-overlay{opacity:1}
+.pav-overlay svg{opacity:.9}
+.pinfo{flex:1;min-width:0}
+.pname{font-size:18px;font-weight:700}
+.psub{font-size:11px;color:var(--muted);margin-top:3px}
+.pmeta{display:flex;gap:24px;margin-top:14px;flex-wrap:wrap}
+.pmeta-item{display:flex;flex-direction:column;gap:3px}
+.pmeta-val{font-size:14px;font-weight:700}
+.pmeta-lbl{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.c-gold{color:#c9960c}
+.pright{text-align:right;flex-shrink:0}
+.plevel-num{font-size:38px;font-weight:800;color:#c9960c;line-height:1;font-variant-numeric:tabular-nums}
+.plevel-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-top:4px}
+.plevel-title{font-size:11px;color:#c9960c;margin-top:3px}
+
+/* MAIN LAYOUT */
+.main-grid{display:grid;grid-template-columns:1fr 256px;gap:10px;align-items:start}
+
+/* ATTRIBUTE PANEL — FM style */
+.attr-panel{background:var(--s1);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.area-block{border-bottom:1px solid var(--border)}
+.area-block:last-child{border-bottom:none}
+.area-head{
+  padding:8px 16px;
+  background:var(--s2);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.area-head-name{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.area-head-weight{font-size:10px;color:var(--dim)}
+
+/* Two-column skill rows */
+.skill-pair{display:flex;border-bottom:1px solid rgba(255,255,255,.04)}
+.skill-pair:last-child{border-bottom:none}
+.skill-cell{
+  flex:1;display:flex;align-items:center;justify-content:space-between;
+  padding:9px 16px;min-width:0;
+}
+.skill-cell+.skill-cell{border-left:1px solid rgba(255,255,255,.04)}
+.skill-cell.sk-solo{max-width:50%}
+.skill-label{
+  font-size:13px;color:rgba(255,255,255,.58);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  padding-right:10px;flex:1;min-width:0;
+}
+.skill-num{
+  font-size:15px;font-weight:700;
+  font-variant-numeric:tabular-nums;
+  flex-shrink:0;min-width:24px;text-align:right;
+}
+
+/* Stat value colors — FM palette */
+.sv-none      {color:var(--dim)}
+.sv-weak      {color:#cf4444}
+.sv-developing{color:#d97a1e}
+.sv-competent {color:#c9960c}
+.sv-proficient{color:#7cba8a}
+.sv-expert    {color:#27a357}
+
+/* RIGHT PANEL */
+.right-panel{display:flex;flex-direction:column;gap:10px}
+
+.info-panel{background:var(--s1);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.panel-head{
+  padding:8px 14px;
+  background:var(--s2);border-bottom:1px solid var(--border);
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)
+}
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;
+}
+.info-row:last-child{border-bottom:none}
+.ir-label{color:var(--muted)}
+.ir-val{font-weight:600;font-variant-numeric:tabular-nums;color:var(--text)}
+.ir-gold{color:#c9960c}
+.ir-green{color:#27a357}
+.ir-red{color:#cf4444}
+
+/* ECO area breakdown rows */
+.eco-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;
+}
+.eco-row:last-child{border-bottom:none}
+.eco-name{color:var(--muted)}
+.eco-val{font-weight:600;font-variant-numeric:tabular-nums;color:var(--text)}
+
+/* Development needs */
+.dev-item{padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.04)}
+.dev-item:last-child{border-bottom:none}
+.dev-name{font-size:13px;color:rgba(255,255,255,.5)}
+.dev-stat{font-size:11px;color:#cf4444;margin-top:2px}
+
+/* Reset button */
+.btn-reset{
+  width:100%;background:transparent;
+  border:1px solid var(--border);
+  color:var(--dim);font-size:12px;padding:9px;
+  border-radius:8px;transition:border-color .15s,color .15s;
+}
+.btn-reset:hover{border-color:rgba(207,68,68,.4);color:#cf4444}
+
+/* Empty state */
+.empty-note{
+  background:var(--s1);border:1px solid var(--border);border-radius:8px;
+  padding:36px 20px;text-align:center;
+}
+.empty-note h3{font-size:14px;font-weight:600;color:rgba(255,255,255,.35);margin-bottom:6px}
+.empty-note p{font-size:12px;color:var(--dim);line-height:1.7}
+.btn-play{
+  display:inline-block;margin-top:14px;
+  background:#142040;border:1px solid #2355a0;
+  color:#93c5fd;font-size:13px;font-weight:600;
+  padding:9px 22px;border-radius:6px;transition:background .15s
+}
+.btn-play:hover{background:#1a2f5a}
+
+@media(max-width:680px){
+  .main-grid{grid-template-columns:1fr}
+  .skill-cell.sk-solo{max-width:100%}
+  .skill-pair{flex-direction:column}
+  .skill-cell+.skill-cell{border-left:none;border-top:1px solid rgba(255,255,255,.04)}
+  .profile-card{flex-wrap:wrap}
+  .pright{width:100%;text-align:left;margin-top:4px;display:flex;align-items:baseline;gap:10px}
+  .plevel-num{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
+  <div class="t-sep"></div>
+  <span class="t-title">Yetkinlik Kartı</span>
+  <button class="btn-back" onclick="history.back()">Geri</button>
+</div>
+
+<div class="page">
+
+  <!-- PROFILE CARD -->
+  <div class="profile-card">
+    <div class="pav" id="sc-av" title="Fotoğraf değiştir" onclick="document.getElementById('photo-input').click()">
+      <span id="sc-av-letter">?</span>
+      <div class="pav-overlay">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+    </div>
+    <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="handlePhotoUpload(this)">
+    <div class="pinfo">
+      <div class="pname" id="sc-name">PM</div>
+      <div class="psub" id="sc-sub">PM Kariyer Yolculuğu</div>
+      <div class="pmeta">
+        <div class="pmeta-item">
+          <span class="pmeta-val" id="sc-scenarios">0</span>
+          <span class="pmeta-lbl">Senaryo</span>
+        </div>
+        <div class="pmeta-item">
+          <span class="pmeta-val" id="sc-decisions">0</span>
+          <span class="pmeta-lbl">Karar</span>
+        </div>
+        <div class="pmeta-item">
+          <span class="pmeta-val" id="sc-accuracy">—</span>
+          <span class="pmeta-lbl">İsabetli</span>
+        </div>
+        <div class="pmeta-item">
+          <span class="pmeta-val c-gold" id="sc-xp">0 XP</span>
+          <span class="pmeta-lbl">Toplam XP</span>
+        </div>
+      </div>
+    </div>
+    <div class="pright">
+      <div class="plevel-num" id="sc-level">1</div>
+      <div class="plevel-lbl">Kariyer Seviyesi</div>
+      <div class="plevel-title" id="sc-level-title">PM Stajyeri</div>
+    </div>
+  </div>
+
+  <div class="main-grid" id="main-grid">
+    <!-- populated by JS -->
+  </div>
+
+</div>
+
+<script>
+/* ── Competency map: each concept measured individually ─────── */
+const AREAS = [
+  {
+    id: 'people',
+    label: 'PEOPLE / İNSAN',
+    weight: 33,
+    skills: [
+      { label: 'Çatışma Çözümü',          module: 'teamResources' },
+      { label: 'Hizmetkar Liderlik',       module: 'teamResources' },
+      { label: 'Psikolojik Güvenlik',      module: 'teamResources' },
+      { label: 'Empati',                   module: 'stakeholders'  },
+      { label: 'Beklenti Yönetimi',        module: 'stakeholders'  },
+      { label: 'İletişim',                 module: 'stakeholders'  },
+    ]
+  },
+  {
+    id: 'process',
+    label: 'PROCESS / SÜREÇ',
+    weight: 41,
+    skills: [
+      { label: 'MVP',                      module: 'scope'      },
+      { label: 'Bitti Tanımı (DoD)',       module: 'scope'      },
+      { label: 'Kapsam Kayması',           module: 'scope'      },
+      { label: 'WIP Limitleri',            module: 'schedule'   },
+      { label: 'Kanban',                   module: 'schedule'   },
+      { label: 'Göreceli Tahminleme',      module: 'schedule'   },
+      { label: 'Belirsizlik Yönetimi',     module: 'risk'       },
+      { label: 'Fırsat/Tehdit Stratejisi', module: 'risk'       },
+      { label: 'Öğrenilmiş Dersler',       module: 'governance' },
+      { label: 'Aşama Geçitleri',          module: 'governance' },
+    ]
+  },
+  {
+    id: 'business',
+    label: 'BUSINESS ENV. / İŞ ORTAMI',
+    weight: 26,
+    skills: [
+      { label: 'Çeviklik',                 module: 'projectMindset' },
+      { label: 'Değer Teslimi',            module: 'projectMindset' },
+      { label: 'Uyarlama (Tailoring)',     module: 'projectMindset' },
+      { label: 'Kazanılmış Değer (EVM)',   module: 'finance'        },
+      { label: 'Performans Metrikleri',    module: 'finance'        },
+    ]
+  }
+];
+
+const MODULE_MAX = {
+  teamResources:17, stakeholders:16,
+  scope:11, schedule:10, risk:10, governance:10,
+  projectMindset:13, finance:13,
+};
+
+/* How many skills each module's XP is distributed across */
+const MOD_SKILL_COUNT = {};
+for (const area of AREAS)
+  for (const sk of area.skills)
+    MOD_SKILL_COUNT[sk.module] = (MOD_SKILL_COUNT[sk.module] || 0) + 1;
+
+function skillStat(moduleId, moduleXP) {
+  const maxXP = MODULE_MAX[moduleId] || 10;
+  const count = MOD_SKILL_COUNT[moduleId] || 1;
+  // Each skill in the module gets an equal share of the module XP
+  const share    = moduleXP / count;
+  const shareMax = maxXP / count;
+  return Math.min(20, Math.round((share / (shareMax * 1.5)) * 20));
+}
+
+function statClass(s) {
+  if (s >= 17) return 'sv-expert';
+  if (s >= 13) return 'sv-proficient';
+  if (s >= 8)  return 'sv-competent';
+  if (s >= 4)  return 'sv-developing';
+  if (s >= 1)  return 'sv-weak';
+  return 'sv-none';
+}
+
+function statTier(s) {
+  if (s >= 17) return 'Uzman';
+  if (s >= 13) return 'Yetkin';
+  if (s >= 8)  return 'Gelişiyor';
+  if (s >= 4)  return 'Temel';
+  if (s >= 1)  return 'Zayıf';
+  return 'Eğitimsiz';
+}
+
+function careerLevel(xp) {
+  if (xp >= 120) return { n:5, t:'Kıdemli PM' };
+  if (xp >= 80)  return { n:4, t:'PM Lideri' };
+  if (xp >= 50)  return { n:3, t:'Proje Yöneticisi' };
+  if (xp >= 20)  return { n:2, t:'Junior PM' };
+  return { n:1, t:'PM Stajyeri' };
+}
+
+const CAREER_KEY  = 'pmp_career_competency';
+const SESSION_KEY = 'pmSim_session';
+
+function loadCareer() {
+  try {
+    const raw = localStorage.getItem(CAREER_KEY);
+    if (!raw) return defaultCareer();
+    const c = defaultCareer();
+    Object.assign(c, JSON.parse(raw));
+    for (const mod of Object.keys(MODULE_MAX)) if (c.xp[mod] === undefined) c.xp[mod] = 0;
+    return c;
+  } catch { return defaultCareer(); }
+}
+function defaultCareer() {
+  const xp = {};
+  for (const mod of Object.keys(MODULE_MAX)) xp[mod] = 0;
+  return { xp, totalDecisions:0, goodDecisions:0, scenariosCompleted:0 };
+}
+
+/* ── Profile photo ──────────────────────────────────────────── */
+const PHOTO_KEY = 'pmSim_profile_photo';
+
+function handlePhotoUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    localStorage.setItem(PHOTO_KEY, e.target.result);
+    applyAvatar(e.target.result, null);
+  };
+  reader.readAsDataURL(file);
+}
+
+function applyAvatar(photoDataUrl, fallbackLetter) {
+  const av     = document.getElementById('sc-av');
+  const letter = document.getElementById('sc-av-letter');
+  let img      = av.querySelector('.pav-img');
+  if (photoDataUrl) {
+    if (!img) {
+      img = document.createElement('img');
+      img.className = 'pav-img';
+      av.insertBefore(img, av.firstChild);
+    }
+    img.src = photoDataUrl;
+    if (letter) letter.style.visibility = 'hidden';
+  } else {
+    if (img) img.remove();
+    if (letter) {
+      letter.style.visibility = '';
+      if (fallbackLetter) letter.textContent = fallbackLetter;
+    }
+  }
+}
+
+/* ── Render ─────────────────────────────────────────────────── */
+function render() {
+  const career  = loadCareer();
+  const session = (() => { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); } catch { return null; } })();
+  const name    = session?.displayName || session?.username || 'PM';
+
+  /* Profile header — avatar */
+  const photo = localStorage.getItem(PHOTO_KEY);
+  applyAvatar(photo, (name[0] || '?').toUpperCase());
+  document.getElementById('sc-name').textContent       = name;
+  document.getElementById('sc-scenarios').textContent  = career.scenariosCompleted || 0;
+  document.getElementById('sc-decisions').textContent  = career.totalDecisions || 0;
+  const acc = career.totalDecisions > 0
+    ? Math.round((career.goodDecisions / career.totalDecisions) * 100) + '%' : '—';
+  document.getElementById('sc-accuracy').textContent = acc;
+
+  const totalXP = Object.values(career.xp).reduce((a, b) => a + b, 0);
+  document.getElementById('sc-xp').textContent = totalXP + ' XP';
+
+  const lvl = careerLevel(totalXP);
+  document.getElementById('sc-level').textContent       = lvl.n;
+  document.getElementById('sc-level-title').textContent = lvl.t;
+  document.getElementById('sc-sub').textContent         = 'Kariyer Seviyesi ' + lvl.n + ' · ' + lvl.t;
+
+  /* ── LEFT: Attribute panel ─────────────────────────────── */
+  let attrHTML = '<div class="attr-panel">';
+  for (const area of AREAS) {
+    attrHTML += `
+      <div class="area-block">
+        <div class="area-head">
+          <span class="area-head-name">${area.label}</span>
+          <span class="area-head-weight">%${area.weight} ECO</span>
+        </div>`;
+
+    const skills = area.skills;
+    for (let i = 0; i < skills.length; i += 2) {
+      const s1 = skills[i];
+      const s2 = skills[i + 1];
+      const st1  = skillStat(s1.module, career.xp[s1.module] || 0);
+      const d1   = st1 === 0 ? '—' : st1;
+
+      attrHTML += `<div class="skill-pair">`;
+      attrHTML += `<div class="skill-cell${!s2 ? ' sk-solo' : ''}">
+        <span class="skill-label">${s1.label}</span>
+        <span class="skill-num ${statClass(st1)}">${d1}</span>
+      </div>`;
+
+      if (s2) {
+        const st2 = skillStat(s2.module, career.xp[s2.module] || 0);
+        const d2  = st2 === 0 ? '—' : st2;
+        attrHTML += `<div class="skill-cell">
+          <span class="skill-label">${s2.label}</span>
+          <span class="skill-num ${statClass(st2)}">${d2}</span>
+        </div>`;
+      }
+
+      attrHTML += `</div>`;
+    }
+    attrHTML += `</div>`;
+  }
+  attrHTML += '</div>';
+
+  /* ── RIGHT: Stats ──────────────────────────────────────── */
+  const statsHTML = `
+    <div class="info-panel">
+      <div class="panel-head">Kariyer İstatistikleri</div>
+      <div class="info-row"><span class="ir-label">Toplam XP</span><span class="ir-val ir-gold">${totalXP}</span></div>
+      <div class="info-row"><span class="ir-label">Kariyer Seviyesi</span><span class="ir-val ir-gold">Seviye ${lvl.n} · ${lvl.t}</span></div>
+      <div class="info-row"><span class="ir-label">Tamamlanan Senaryo</span><span class="ir-val">${career.scenariosCompleted||0}</span></div>
+      <div class="info-row"><span class="ir-label">Verilen Karar</span><span class="ir-val">${career.totalDecisions||0}</span></div>
+      <div class="info-row"><span class="ir-label">İsabetli Karar</span><span class="ir-val ir-green">${acc}</span></div>
+    </div>`;
+
+  /* ECO area breakdown */
+  let ecoHTML = '<div class="info-panel"><div class="panel-head">ECO Alan Performansı</div>';
+  for (const area of AREAS) {
+    const seen = new Set();
+    let aXP = 0, aMax = 0;
+    for (const sk of area.skills) {
+      if (!seen.has(sk.module)) {
+        seen.add(sk.module);
+        aXP  += career.xp[sk.module] || 0;
+        aMax += MODULE_MAX[sk.module];
+      }
+    }
+    const pct = aMax > 0 ? Math.min(100, Math.round((aXP / (aMax * 1.5)) * 100)) : 0;
+    ecoHTML += `<div class="eco-row">
+      <span class="eco-name">${area.label.split('/')[0].trim()}</span>
+      <span class="eco-val">${pct > 0 ? pct + '%' : '—'}</span>
+    </div>`;
+  }
+  ecoHTML += '</div>';
+
+  /* Development needs — skills with at least 1 XP but stat < 4 */
+  const weakSkills = [];
+  for (const area of AREAS) {
+    for (const sk of area.skills) {
+      const st = skillStat(sk.module, career.xp[sk.module] || 0);
+      if (st >= 1 && st < 4) weakSkills.push({ label: sk.label, stat: st });
+    }
+  }
+  let devHTML = '';
+  if (weakSkills.length > 0) {
+    devHTML = '<div class="info-panel"><div class="panel-head">Gelişim Alanları</div>';
+    for (const sk of weakSkills) {
+      devHTML += `<div class="dev-item">
+        <div class="dev-name">${sk.label}</div>
+        <div class="dev-stat">${sk.stat} / 20 · ${statTier(sk.stat)}</div>
+      </div>`;
+    }
+    devHTML += '</div>';
+  }
+
+  /* Empty note */
+  const emptyHTML = totalXP === 0 ? `
+    <div class="empty-note">
+      <h3>Henüz veri yok</h3>
+      <p>Oyunu oyna ve kararlar ver.<br>Her karar yetkinlik skoruna yansır.</p>
+      <a href="game.html" class="btn-play">Oyunu Başlat</a>
+    </div>` : '';
+
+  const resetHTML = `<button class="btn-reset" onclick="resetCareer()">Kariyer İstatistiklerini Sıfırla</button>`;
+
+  const grid = document.getElementById('main-grid');
+  grid.innerHTML = `
+    <div>${attrHTML}</div>
+    <div class="right-panel">${statsHTML}${ecoHTML}${devHTML}${emptyHTML}${resetHTML}</div>`;
+}
+
+function resetCareer() {
+  if (!confirm('Tüm kariyer istatistiklerin silinecek. Emin misin?')) return;
+  localStorage.removeItem(CAREER_KEY);
+  render();
+}
+
+document.addEventListener('DOMContentLoaded', render);
+</script>
+
+</body>
+</html>

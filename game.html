@@ -14,7 +14,7 @@
   --accent:#3b82f6;--accent-dark:#2563eb;
   --green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;
   --text:#1e293b;--text-inv:#f1f5f9;--muted:#64748b;--dim:#94a3b8;
-  --nav-w:200px;--list-w:300px;--topbar-h:48px;
+  --nav-w:0px;--list-w:360px;--topbar-h:52px;
   --r:10px;--r-sm:6px;
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text-inv);min-height:100vh;overflow:hidden}
@@ -22,14 +22,25 @@ button{border:none;cursor:pointer;font-family:inherit;background:none;color:inhe
 a{color:inherit;text-decoration:none}
 
 /* TOPBAR */
-#topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--nav-bg);border-bottom:1px solid var(--nav-border);display:flex;align-items:center;gap:12px;padding:0 16px;z-index:100}
+#topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--nav-bg);border-bottom:1px solid var(--nav-border);display:flex;align-items:center;gap:10px;padding:0 14px;z-index:100}
 .brand{font-weight:700;font-size:15px}
 .brand sup{font-size:9px;opacity:.6}
-.topbar-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
-#topbar-title{font-size:13px;color:var(--dim);flex:1}
-.topbar-right{display:flex;align-items:center;gap:8px}
-.player-badge{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border-radius:20px;padding:4px 12px 4px 4px;font-size:13px}
-.player-av{width:28px;height:28px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.topbar-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.btn-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:6px;background:transparent;border:none;cursor:pointer;border-radius:6px;transition:background .15s;flex-shrink:0}
+.btn-hamburger:hover{background:rgba(255,255,255,.1)}
+.btn-hamburger span{display:block;width:18px;height:2px;background:rgba(255,255,255,.75);border-radius:2px;transition:all .2s}
+.topbar-menu{position:absolute;top:calc(var(--topbar-h) + 6px);left:10px;background:#1b2539;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:6px;min-width:230px;z-index:300;box-shadow:0 10px 32px rgba(0,0,0,.5)}
+.topbar-menu.hidden{display:none}
+.menu-user{display:flex;align-items:center;gap:10px;padding:10px 8px 12px;cursor:default}
+.menu-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0;color:#fff;overflow:hidden}
+.menu-user-info{min-width:0}
+.menu-name{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.menu-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+.menu-divider{height:1px;background:rgba(255,255,255,.08);margin:4px 0}
+.menu-item{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;font-size:13px;color:rgba(255,255,255,.75);background:transparent;border:none;border-radius:6px;cursor:pointer;text-decoration:none;transition:background .15s;text-align:left}
+.menu-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.menu-item svg{flex-shrink:0;opacity:.65}
+.menu-item:hover svg{opacity:1}
 .xp-badge{background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:#fbbf24;font-size:11px;font-weight:700;border-radius:10px;padding:2px 8px}
 .btn-hub{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--text-inv);font-size:12px;border-radius:6px;padding:6px 12px;transition:background .15s}
 .btn-hub:hover{background:rgba(255,255,255,.14)}
@@ -60,7 +71,7 @@ a{color:inherit;text-decoration:none}
 
 /* COMMON BUTTONS */
 .field-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);text-align:left;margin-bottom:6px}
-.btn-primary{width:100%;background:var(--accent);color:#fff;font-size:15px;font-weight:700;padding:13px;border-radius:8px;transition:background .15s;margin-top:10px}
+.btn-primary{width:100%;background:var(--accent);color:#fff;font-size:17px;font-weight:700;padding:15px;border-radius:8px;transition:background .15s;margin-top:10px}
 .btn-primary:hover:not(:disabled){background:var(--accent-dark)}
 .btn-primary:disabled{opacity:.45;cursor:default}
 .welcome-hint{font-size:12px;color:var(--muted);margin-top:10px}
@@ -116,7 +127,7 @@ a{color:inherit;text-decoration:none}
 .setup-row:last-of-type{border-bottom:none}
 .setup-row-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.4)}
 .opt-group{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
-.opt-cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:5px;padding:9px 6px;font-size:12px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;text-align:center;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.opt-cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:5px;padding:11px 8px;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;text-align:center;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .opt-cell:hover{background:rgba(255,255,255,.09);color:var(--text-inv);border-color:rgba(255,255,255,.2)}
 .opt-cell.selected{background:rgba(59,130,246,.18);border-color:var(--accent);color:#93c5fd;font-weight:600}
 .opt-cell.opt-random{border-style:dashed;color:rgba(255,255,255,.3)}
@@ -140,7 +151,7 @@ a{color:inherit;text-decoration:none}
 .diff-chip.selected{background:rgba(59,130,246,.15);border-color:var(--accent);color:#93c5fd}
 
 /* FM 3-PANEL */
-.fm-layout{display:grid;grid-template-columns:var(--nav-w) var(--list-w) 1fr;height:100%;overflow:hidden}
+.fm-layout{display:grid;grid-template-columns:var(--list-w) 1fr;height:100%;overflow:hidden}
 .fm-nav{background:var(--nav-bg);border-right:1px solid var(--nav-border);display:flex;flex-direction:column;overflow:hidden}
 .fm-nav-section{padding:12px 12px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3)}
 .fm-nav-item{display:flex;align-items:center;gap:9px;padding:9px 14px;font-size:13px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .12s;border-left:2px solid transparent}
@@ -153,31 +164,31 @@ a{color:inherit;text-decoration:none}
 .fm-nav-xp span:last-child{color:#fbbf24;font-weight:700}
 
 .fm-list{background:var(--list-bg);border-right:1px solid var(--list-border);display:flex;flex-direction:column;overflow:hidden}
-.fm-list-header{padding:14px 16px 10px;border-bottom:1px solid var(--list-border);flex-shrink:0}
-.fm-list-header h2{font-size:13px;font-weight:700;color:var(--text-inv);margin-bottom:2px}
-.fm-list-header p{font-size:11px;color:rgba(255,255,255,.35)}
+.fm-list-header{padding:16px 18px 12px;border-bottom:1px solid var(--list-border);flex-shrink:0}
+.fm-list-header h2{font-size:16px;font-weight:700;color:var(--text-inv);margin-bottom:3px}
+.fm-list-header p{font-size:13px;color:rgba(255,255,255,.45)}
 .fm-list-body{flex:1;overflow-y:auto;padding:4px 0}
 .fm-list-body::-webkit-scrollbar{width:3px}
 .fm-list-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
 
-.notif-item{padding:10px 12px;cursor:pointer;border:1.5px solid transparent;border-radius:6px;margin:2px 6px;transition:all .12s;position:relative}
+.notif-item{padding:13px 14px;cursor:pointer;border:1.5px solid transparent;border-radius:6px;margin:3px 6px;transition:all .12s;position:relative}
 .notif-item:hover{background:rgba(255,255,255,.04)}
 .notif-item.active{background:rgba(34,197,94,.07);border-color:var(--green)!important}
 .notif-item.unread .ni-from{font-weight:700;color:var(--text-inv)}
 .notif-item.read{opacity:.45}
 .notif-item.decision-item .ni-subject::before{content:'⚡ ';font-size:9px;opacity:.7}
-.ni-from{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ni-subject{font-size:11px;color:rgba(255,255,255,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ni-snippet{font-size:10px;color:rgba(255,255,255,.22);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-.ni-meta{display:flex;align-items:center;gap:6px;margin-top:3px}
-.ni-time{font-size:10px;color:rgba(255,255,255,.18)}
+.ni-from{font-size:15px;color:rgba(255,255,255,.85);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ni-subject{font-size:13px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ni-snippet{font-size:12px;color:rgba(255,255,255,.28);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.ni-meta{display:flex;align-items:center;gap:6px;margin-top:4px}
+.ni-time{font-size:12px;color:rgba(255,255,255,.25)}
 .ni-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
-.sec-divider{padding:6px 14px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.22);background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.05)}
+.sec-divider{padding:8px 14px 5px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.05)}
 
 /* FM DETAIL: SPLIT LAYOUT */
-.fm-detail{background:#fff;display:grid;grid-template-rows:1fr 300px;overflow:hidden;height:100%}
+.fm-detail{background:#fff;display:grid;grid-template-rows:1fr 1fr;overflow:hidden;height:100%}
 /* TOP: received email */
-.fm-email-pane{overflow-y:auto;padding:22px 28px 16px;background:#fff;border-bottom:2px solid #e2e8f0}
+.fm-email-pane{overflow-y:auto;padding:28px 36px 20px;background:#fff;border-bottom:2px solid #e2e8f0}
 .fm-email-pane::-webkit-scrollbar{width:5px}
 .fm-email-pane::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
 
@@ -189,48 +200,48 @@ a{color:inherit;text-decoration:none}
 .nd-header{display:flex;align-items:flex-start;gap:14px;padding-bottom:14px;border-bottom:1px solid #e2e8f0;margin-bottom:16px}
 .sender-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
 .nd-meta{flex:1;min-width:0}
-.nd-subject{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
-.nd-from{font-size:12px;color:var(--muted)}
+.nd-subject{font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
+.nd-from{font-size:14px;color:var(--muted)}
 .nd-from b{color:#374151}
-.nd-body{font-size:13px;color:#374151;line-height:1.75;white-space:pre-line;margin-bottom:14px}
-.nd-sig{padding-top:12px;border-top:1px dashed #e2e8f0;font-size:12px}
+.nd-body{font-size:16px;color:#374151;line-height:1.8;white-space:pre-line;margin-bottom:16px}
+.nd-sig{padding-top:14px;border-top:1px dashed #e2e8f0;font-size:14px}
 .sig-name{font-weight:700;color:#1e293b;margin-bottom:1px}
 .sig-role{color:#64748b}
 .sig-company{color:#94a3b8;font-size:11px}
 
 /* BOTTOM: compose reply */
 .fm-compose-pane{display:flex;flex-direction:column;background:#f8fafc;overflow:hidden}
-.compose-header{padding:8px 16px;background:#fff;border-bottom:1px solid #e2e8f0;flex-shrink:0}
-.compose-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;padding-bottom:6px;border-bottom:1px solid #f1f5f9;margin-bottom:4px}
-.compose-row{display:flex;align-items:baseline;gap:8px;padding:2px 0;font-size:12px}
-.cmp-label{color:#94a3b8;font-weight:600;width:64px;flex-shrink:0;font-size:10px;text-transform:uppercase;letter-spacing:.05em}
-.cmp-val{color:#374151;font-weight:500;flex:1;font-size:12px}
+.compose-header{padding:12px 18px;background:#fff;border-bottom:1px solid #e2e8f0;flex-shrink:0}
+.compose-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid #f1f5f9;margin-bottom:6px}
+.compose-row{display:flex;align-items:baseline;gap:10px;padding:3px 0;font-size:14px}
+.cmp-label{color:#94a3b8;font-weight:600;width:74px;flex-shrink:0;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.cmp-val{color:#374151;font-weight:500;flex:1;font-size:14px}
 .cmp-badge{background:#dbeafe;color:#1e40af;font-size:9px;font-weight:700;padding:1px 6px;border-radius:10px;margin-left:5px;vertical-align:middle}
 
-.compose-opts{flex:1;overflow-y:auto;padding:6px 10px;display:flex;flex-direction:column;gap:4px}
+.compose-opts{flex:1;overflow-y:auto;padding:8px 12px;display:flex;flex-direction:column;gap:6px}
 .compose-opts::-webkit-scrollbar{width:3px}
 .compose-opts::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
-.cmp-opt{display:flex;align-items:flex-start;gap:9px;padding:8px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;cursor:pointer;transition:all .12s;width:100%;text-align:left}
+.cmp-opt{display:flex;align-items:flex-start;gap:11px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .12s;width:100%;text-align:left}
 .cmp-opt:hover:not([disabled]):not(.cmp-unavail){border-color:#93c5fd;background:#f0f7ff}
-.cmp-opt input[type=radio]{margin-top:2px;flex-shrink:0;accent-color:var(--accent);cursor:pointer;width:14px;height:14px}
+.cmp-opt input[type=radio]{margin-top:3px;flex-shrink:0;accent-color:var(--accent);cursor:pointer;width:17px;height:17px}
 .cmp-opt.cmp-chosen{border-color:var(--accent)!important;background:#eff6ff!important}
 .cmp-opt.cmp-sent-good{border-color:var(--green)!important;background:#f0fdf4!important}
 .cmp-opt.cmp-sent-bad{border-color:var(--red)!important;background:#fef2f2!important}
 .cmp-opt.cmp-sent-mid{border-color:var(--amber)!important;background:#fffbeb!important}
 .cmp-opt.cmp-unavail{opacity:.38;cursor:not-allowed}
 .cmp-opt[disabled]{cursor:default;pointer-events:none}
-.cmp-opt-text{font-size:12px;color:#374151;line-height:1.5;flex:1}
+.cmp-opt-text{font-size:17px;color:#374151;line-height:1.6;flex:1}
 
-.compose-feedback-bar{padding:7px 14px;font-size:12px;display:flex;align-items:flex-start;gap:8px;line-height:1.5;flex-shrink:0}
+.compose-feedback-bar{padding:10px 16px;font-size:14px;display:flex;align-items:flex-start;gap:8px;line-height:1.55;flex-shrink:0}
 .cfb-good{background:#f0fdf4;border-top:1px solid #bbf7d0;color:#166534}
 .cfb-ok{background:#fffbeb;border-top:1px solid #fde68a;color:#92400e}
 .cfb-bad{background:#fef2f2;border-top:1px solid #fecaca;color:#991b1b}
 
-.compose-footer{padding:8px 12px;background:#fff;border-top:1px solid #e2e8f0;flex-shrink:0;display:flex;align-items:center;gap:10px}
-.btn-compose-send{background:var(--accent);color:#fff;font-size:13px;font-weight:700;padding:8px 18px;border-radius:7px;transition:all .15s;display:flex;align-items:center;gap:7px}
+.compose-footer{padding:12px 16px;background:#fff;border-top:1px solid #e2e8f0;flex-shrink:0;display:flex;align-items:center;gap:12px}
+.btn-compose-send{background:var(--accent);color:#fff;font-size:17px;font-weight:700;padding:13px 28px;border-radius:8px;transition:all .15s;display:flex;align-items:center;gap:8px}
 .btn-compose-send:hover:not(:disabled){background:var(--accent-dark)}
 .btn-compose-send:disabled{opacity:.35;cursor:default}
-.compose-hint{font-size:11px;color:#94a3b8}
+.compose-hint{font-size:13px;color:#94a3b8}
 
 .story-ack{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:#94a3b8;text-align:center;padding:20px}
 .story-ack-icon{font-size:26px;opacity:.5}
@@ -241,15 +252,15 @@ a{color:inherit;text-decoration:none}
 .game-clock{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;color:rgba(255,255,255,.65);font-variant-numeric:tabular-nums;letter-spacing:.01em}
 
 /* TOPBAR CONTINUE BUTTON */
-.btn-continue-top{background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:6px;transition:all .15s;display:flex;align-items:center;gap:6px}
+.btn-continue-top{background:var(--accent);color:#fff;font-size:15px;font-weight:700;padding:9px 20px;border-radius:6px;transition:all .15s;display:flex;align-items:center;gap:6px}
 .btn-continue-top:hover:not(:disabled){background:var(--accent-dark)}
 .btn-continue-top:disabled{opacity:.35;cursor:default}
 .btn-continue-top kbd{background:rgba(255,255,255,.2);border-radius:4px;padding:1px 5px;font-size:10px}
 
 /* DECISION ACTION CARDS */
-.dec-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #e2e8f0}
-.action-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.action-card{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:13px 16px;cursor:pointer;transition:all .15s;width:100%;text-align:left}
+.dec-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #e2e8f0}
+.action-list{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.action-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 22px;cursor:pointer;transition:all .15s;width:100%;text-align:left}
 .action-card:hover:not([disabled]):not(.ac-chosen):not(.ac-chosen-bad){border-color:#93c5fd;background:#f0f7ff;transform:translateX(3px)}
 .action-card[disabled]{cursor:default}
 .action-card.ac-chosen{border-color:var(--green)!important;background:#f0fdf4!important}
@@ -260,7 +271,7 @@ a{color:inherit;text-decoration:none}
 .action-card.ac-chosen .ac-plane{color:var(--green)}
 .action-card.ac-chosen-bad .ac-plane{color:var(--red)}
 .action-card.ac-neutral .ac-plane{color:var(--amber)}
-.ac-text{font-size:13px;color:#374151;line-height:1.55;flex:1}
+.ac-text{font-size:17px;color:#374151;line-height:1.6;flex:1}
 .ac-disabled{opacity:.38;cursor:not-allowed!important}
 .ac-disabled:hover{transform:none!important;border-color:#e2e8f0!important;background:#fff!important}
 
@@ -288,7 +299,7 @@ a{color:inherit;text-decoration:none}
 .dt-date{font-size:32px;font-weight:900;color:#fff;letter-spacing:.02em}
 .dt-quote{font-size:13px;color:rgba(255,255,255,.5);max-width:380px;text-align:center;font-style:italic;line-height:1.6}
 .dt-bar{width:240px;height:2px;background:rgba(255,255,255,.12);border-radius:1px;overflow:hidden;margin-top:8px}
-.dt-bar-fill{height:100%;background:var(--accent);animation:dt-fill 1.7s linear forwards}
+.dt-bar-fill{height:100%;background:var(--accent);animation:dt-fill 3.2s linear forwards}
 @keyframes dt-fill{from{width:0}to{width:100%}}
 
 /* CONFIRM MODAL */
@@ -359,15 +370,11 @@ a{color:inherit;text-decoration:none}
 <body>
 
 <div id="topbar">
+  <button id="btn-hamburger" class="btn-hamburger">
+    <span></span><span></span><span></span>
+  </button>
   <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
-  <div class="topbar-sep"></div>
-  <span id="topbar-title">PM Simülasyonu</span>
   <div class="topbar-right">
-    <div id="player-badge" class="player-badge hidden">
-      <div class="player-av" id="player-av">?</div>
-      <span id="player-name-disp"></span>
-      <span class="xp-badge" id="xp-disp">0 XP</span>
-    </div>
     <div id="game-clock" class="game-clock hidden">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       <span id="game-date">-</span>
@@ -375,16 +382,43 @@ a{color:inherit;text-decoration:none}
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span id="game-time">-</span>
     </div>
-    <div id="save-hint" class="save-hint hidden">
-      <kbd>Ctrl+S</kbd> Kaydet
-    </div>
-    <button id="btn-continue-top" class="btn-continue-top hidden" disabled onclick="Game.advance()">
+    <button id="btn-continue-top" class="btn-continue-top hidden" disabled>
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      Devam Et <kbd>Space</kbd>
+      Devam Et
     </button>
-    <button id="btn-login-topbar" class="btn-hub" onclick="Game.openAuthOverlay()" style="display:none">Giriş Yap</button>
-    <button id="btn-logout" class="btn-logout" style="display:none" onclick="Game.doLogout()">Çıkış</button>
-    <a href="index.html" id="hub-link" class="btn-hub">← Hub</a>
+  </div>
+  <!-- Açılır Menü -->
+  <div id="topbar-menu" class="topbar-menu hidden">
+    <div class="menu-user">
+      <div class="menu-av" id="menu-av">?</div>
+      <div class="menu-user-info">
+        <div class="menu-name" id="menu-name">Giriş yapılmadı</div>
+        <div class="menu-sub" id="menu-sub"></div>
+      </div>
+    </div>
+    <div class="menu-divider"></div>
+    <button class="menu-item" id="menu-auth-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Giriş / Kayıt
+    </button>
+    <div class="menu-divider"></div>
+    <button class="menu-item" id="menu-save-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Kaydet
+    </button>
+    <button class="menu-item" id="menu-save-exit-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Kaydet ve Çık
+    </button>
+    <div class="menu-divider"></div>
+    <a class="menu-item" href="scorecard.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Yetkinlik Kartı
+    </a>
+    <button class="menu-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Ayarlar
+    </button>
   </div>
 </div>
 
@@ -403,49 +437,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- AUTH OVERLAY (site-wide, accessible from topbar) -->
-<div id="auth-overlay" class="hidden">
-  <div class="auth-card">
-    <button class="auth-close" onclick="Game.closeAuthOverlay()">✕</button>
-    <div class="auth-logo">📬</div>
-    <h1 class="auth-title">PM Simülasyonu</h1>
-    <p class="auth-sub">Gerçek bir PM olarak çalış. Kararlar ver, projeyi tamamla.</p>
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tab-login" onclick="Game.switchAuthTab('login')">Giriş Yap</button>
-      <button class="auth-tab" id="tab-register" onclick="Game.switchAuthTab('register')">Hesap Oluştur</button>
-    </div>
-    <!-- LOGIN -->
-    <div id="auth-login-form">
-      <div class="auth-field">
-        <label>Kullanıcı Adı</label>
-        <input id="inp-login-user" class="field-input" type="text" placeholder="kullanıcı adınız..." autocomplete="username">
-      </div>
-      <div class="auth-field">
-        <label>Şifre</label>
-        <input id="inp-login-pass" class="field-input" type="password" placeholder="••••••••" autocomplete="current-password">
-      </div>
-      <div id="auth-login-err" class="auth-error hidden"></div>
-      <button class="btn-primary" onclick="Game.doLogin()">Giriş Yap →</button>
-    </div>
-    <!-- REGISTER -->
-    <div id="auth-register-form" class="hidden">
-      <div class="auth-field">
-        <label>Kullanıcı Adı</label>
-        <input id="inp-reg-user" class="field-input" type="text" placeholder="benzersiz bir kullanıcı adı..." autocomplete="username">
-      </div>
-      <div class="auth-field">
-        <label>Adınız Soyadınız</label>
-        <input id="inp-reg-name" class="field-input" type="text" placeholder="Oyun içinde görünecek adınız..." autocomplete="name">
-      </div>
-      <div class="auth-field">
-        <label>Şifre <span style="font-weight:400;text-transform:none;letter-spacing:0">(en az 4 karakter)</span></label>
-        <input id="inp-reg-pass" class="field-input" type="password" placeholder="••••••••" autocomplete="new-password">
-      </div>
-      <div id="auth-reg-err" class="auth-error hidden"></div>
-      <button class="btn-primary" onclick="Game.doRegister()">Hesap Oluştur →</button>
-    </div>
-  </div>
-</div>
+<!-- AUTH: managed centrally in index.html -->
 
 <!-- MODE SELECT -->
 <div id="screen-mode" class="screen hidden">
@@ -533,19 +525,6 @@ a{color:inherit;text-decoration:none}
 <!-- INBOX/PLAY -->
 <div id="screen-inbox" class="screen hidden">
   <div class="fm-layout">
-    <nav class="fm-nav">
-      <div class="fm-nav-section">Navigasyon</div>
-      <div class="fm-nav-item active">
-        <span class="nav-icon">📥</span><span>Bildirimler</span>
-      </div>
-      <div class="fm-nav-item">
-        <span class="nav-icon">📅</span><span id="nav-iter">İterasyon 1</span>
-      </div>
-      <div class="fm-nav-spacer"></div>
-      <div class="fm-nav-footer">
-        <div class="fm-nav-xp"><span>Toplam XP</span><span id="nav-xp">0</span></div>
-      </div>
-    </nav>
     <div class="fm-list">
       <div class="fm-list-header">
         <h2 id="list-title">Bildirimler</h2>
@@ -639,13 +618,14 @@ a{color:inherit;text-decoration:none}
     <div class="karne-comp-title" id="karne-comp-label" style="display:none">Senaryo Yetkinlik Alanları</div>
     <div class="comp-grid" id="comp-grid"></div>
     <div class="karne-footer">
-      <button class="btn-restart" onclick="Game.restart()">Yeniden Oyna</button>
+      <button class="btn-restart" onclick="Game.restart()">🔄 Yeniden Oyna</button>
+      <a href="index.html" class="btn-restart" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);text-decoration:none">← Ana Sayfa</a>
     </div>
   </div>
 </div>
 
 <script>
-const Game = (() => {
+var Game; Game = (() => {
   const S = {
     name:'', mode:'', setup:{}, scenario:null,
     notifs:[], answered:{}, xp:0, dCount:0, activeId:null, sectionId:1,
@@ -657,10 +637,13 @@ const Game = (() => {
   let _pendingLeave = null;
   const SCREENS = ['screen-welcome','screen-mode','screen-career','screen-perf','screen-inbox','screen-result'];
   const show = id => {
-    SCREENS.forEach(s => document.getElementById(s).classList.toggle('hidden', s!==id));
+    SCREENS.forEach(s => {
+      const el = document.getElementById(s);
+      if (s === id) { el.classList.remove('hidden'); el.style.display = ''; }
+      else { el.classList.add('hidden'); }
+    });
     const inInbox = id === 'screen-inbox';
     document.getElementById('btn-continue-top').classList.toggle('hidden', !inInbox);
-    document.getElementById('save-hint').classList.toggle('hidden', !inInbox);
     updateAuthButtons();
   };
 
@@ -678,10 +661,7 @@ const Game = (() => {
     localStorage.setItem(SESSION_KEY, JSON.stringify({ username: user.username, displayName: user.displayName }));
   }
   function afterAuth(user) {
-    // Update player badge
-    document.getElementById('player-name-disp').textContent = user.displayName;
-    document.getElementById('player-av').textContent = (user.displayName||'?')[0].toUpperCase();
-    document.getElementById('player-badge').classList.remove('hidden');
+    updateAuthButtons();
     // Pre-fill name inputs if empty
     const nameEl = document.getElementById('inp-name');
     if(nameEl && !nameEl.value) nameEl.value = user.displayName;
@@ -693,58 +673,61 @@ const Game = (() => {
     closeAuthOverlay();
     showToast('✓ Hoş geldin, ' + user.displayName + '!');
   }
+  function toggleMenu() {
+    const menu = document.getElementById('topbar-menu');
+    if (menu) menu.classList.toggle('hidden');
+  }
+  function closeMenu() {
+    const menu = document.getElementById('topbar-menu');
+    if (menu) menu.classList.add('hidden');
+  }
   function updateAuthButtons() {
     const session = authGetSession();
-    const loginBtn = document.getElementById('btn-login-topbar');
-    const logoutBtn = document.getElementById('btn-logout');
-    if(loginBtn) loginBtn.style.display = session ? 'none' : '';
-    if(logoutBtn) logoutBtn.style.display = session ? '' : 'none';
+    const menuAv   = document.getElementById('menu-av');
+    const menuName = document.getElementById('menu-name');
+    const menuSub  = document.getElementById('menu-sub');
+    const authBtn  = document.getElementById('menu-auth-btn');
+    const profilePhoto = localStorage.getItem('pmSim_profile_photo');
+    if (session) {
+      if (menuAv) {
+        if (profilePhoto) {
+          menuAv.innerHTML = `<img src="${profilePhoto}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+        } else {
+          menuAv.textContent = (session.displayName || '?')[0].toUpperCase();
+        }
+      }
+      if (menuName) menuName.textContent = session.displayName || session.username;
+      if (menuSub)  menuSub.textContent = session.email ? session.email : '@' + session.username;
+      if (authBtn) {
+        authBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Çıkış Yap`;
+        authBtn.setAttribute('onclick', 'Game.doLogout()');
+      }
+    } else {
+      if (menuAv) {
+        if (profilePhoto) {
+          menuAv.innerHTML = `<img src="${profilePhoto}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+        } else {
+          menuAv.textContent = '?';
+        }
+      }
+      if (menuName) menuName.textContent = 'Giriş yapılmadı';
+      if (menuSub)  menuSub.textContent = '';
+      if (authBtn) {
+        authBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Giriş / Kayıt`;
+        authBtn.setAttribute('onclick', 'Game.openAuthOverlay()');
+      }
+    }
   }
   function openAuthOverlay() {
-    document.getElementById('auth-overlay').classList.remove('hidden');
+    // Auth yönetimi index.html'de — oyunu koruyarak giriş sayfasına yönlendir
+    window.location.href = 'index.html?auth=1&return=game.html';
   }
-  function closeAuthOverlay() {
-    document.getElementById('auth-overlay').classList.add('hidden');
-  }
-  function switchAuthTab(tab) {
-    document.getElementById('auth-login-form').classList.toggle('hidden', tab !== 'login');
-    document.getElementById('auth-register-form').classList.toggle('hidden', tab !== 'register');
-    document.getElementById('tab-login').classList.toggle('active', tab === 'login');
-    document.getElementById('tab-register').classList.toggle('active', tab === 'register');
-  }
-  function doLogin() {
-    const username = (document.getElementById('inp-login-user').value||'').trim();
-    const password = document.getElementById('inp-login-pass').value;
-    const errEl = document.getElementById('auth-login-err');
-    if(!username || !password) { showAuthErr(errEl,'Tüm alanları doldurun'); return; }
-    const user = authGetUsers().find(u => u.username.toLowerCase()===username.toLowerCase() && u.password===password);
-    if(!user) { showAuthErr(errEl,'Kullanıcı adı veya şifre hatalı'); return; }
-    errEl.classList.add('hidden');
-    authSaveSession(user);
-    afterAuth(user);
-  }
-  function doRegister() {
-    const username = (document.getElementById('inp-reg-user').value||'').trim();
-    const displayName = (document.getElementById('inp-reg-name').value||'').trim();
-    const password = document.getElementById('inp-reg-pass').value;
-    const errEl = document.getElementById('auth-reg-err');
-    if(!username || !displayName || !password) { showAuthErr(errEl,'Tüm alanları doldurun'); return; }
-    if(username.length < 3) { showAuthErr(errEl,'Kullanıcı adı en az 3 karakter olmalı'); return; }
-    if(password.length < 4) { showAuthErr(errEl,'Şifre en az 4 karakter olmalı'); return; }
-    const users = authGetUsers();
-    if(users.find(u => u.username.toLowerCase()===username.toLowerCase())) { showAuthErr(errEl,'Bu kullanıcı adı zaten kullanımda'); return; }
-    const user = { username, displayName, password, createdAt: new Date().toISOString() };
-    users.push(user);
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    authSaveSession(user);
-    errEl.classList.add('hidden');
-    afterAuth(user);
-  }
+  function closeAuthOverlay() { /* index.html'de yönetilir */ }
   function doLogout() {
     const doIt = () => {
       localStorage.removeItem(SESSION_KEY);
       S.name = ''; S.hasUnsavedChanges = false;
-      document.getElementById('player-badge').classList.add('hidden');
+      closeMenu();
       updateAuthButtons();
       showToast('Çıkış yapıldı');
     };
@@ -754,7 +737,6 @@ const Game = (() => {
       doIt();
     }
   }
-  function showAuthErr(el, msg) { el.textContent = msg; el.classList.remove('hidden'); }
 
   // ── SAVE / LOAD ───────────────────────────────────────────────────────────
   function getSaveKey() {
@@ -886,10 +868,8 @@ const Game = (() => {
   function init() {
     // Check existing session
     const session = authGetSession();
+    updateAuthButtons();
     if(session) {
-      document.getElementById('player-name-disp').textContent = session.displayName;
-      document.getElementById('player-av').textContent = (session.displayName||'?')[0].toUpperCase();
-      document.getElementById('player-badge').classList.remove('hidden');
       const nameEl = document.getElementById('inp-name');
       if(nameEl) nameEl.value = session.displayName;
       const pmEl = document.getElementById('inp-pm-name');
@@ -898,6 +878,16 @@ const Game = (() => {
     }
     updateAuthButtons();
 
+    // Hamburger menü
+    document.getElementById('btn-hamburger').onclick = e => { e.stopPropagation(); toggleMenu(); };
+    document.getElementById('menu-auth-btn').onclick = () => { closeMenu(); openAuthOverlay(); };
+    document.getElementById('menu-save-btn').onclick = () => { saveGame(); closeMenu(); };
+    document.getElementById('menu-save-exit-btn').onclick = () => saveAndLeave();
+    document.addEventListener('click', e => {
+      if (!e.target.closest('#topbar-menu') && !e.target.closest('#btn-hamburger')) closeMenu();
+    });
+
+    document.getElementById('btn-continue-top').onclick = advance;
     document.getElementById('btn-next').onclick = onNext;
     document.getElementById('inp-name').onkeydown = e => { if(e.key==='Enter') onNext(); };
     document.getElementById('btn-career').onclick = () => { S.mode='career'; show('screen-career'); };
@@ -917,10 +907,7 @@ const Game = (() => {
     // PM name input updates career ready state
     document.getElementById('inp-pm-name')?.addEventListener('input', checkCareerReady);
 
-    // Login/register keyboard shortcuts in auth overlay
-    document.getElementById('inp-login-pass')?.addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-    document.getElementById('inp-login-user')?.addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-    document.getElementById('inp-reg-pass')?.addEventListener('keydown', e => { if(e.key==='Enter') doRegister(); });
+    // Auth butonlarını güncelle (topbar)
 
     // Keyboard navigation
     document.addEventListener('keydown', e => {
@@ -954,9 +941,7 @@ const Game = (() => {
     const n = document.getElementById('inp-name').value.trim();
     if(!n) return document.getElementById('inp-name').focus();
     S.name = n;
-    document.getElementById('player-name-disp').textContent = n;
-    document.getElementById('player-av').textContent = n[0].toUpperCase();
-    document.getElementById('player-badge').classList.remove('hidden');
+    updateAuthButtons();
     // Also pre-fill PM name
     const pmEl = document.getElementById('inp-pm-name');
     if(pmEl && !pmEl.value) pmEl.value = n;
@@ -973,8 +958,7 @@ const Game = (() => {
   function startCareer() {
     const pmName = (document.getElementById('inp-pm-name')?.value||'').trim() || S.name || 'PM';
     S.name = pmName;
-    document.getElementById('player-name-disp').textContent = pmName;
-    document.getElementById('player-av').textContent = pmName[0].toUpperCase();
+    updateAuthButtons();
     const get = g => (document.querySelector('#grp-'+g+' .opt-cell.selected')||{}).dataset?.v || 'random';
     S.setup = {difficulty:get('difficulty'),sector:get('sector'),culture:get('culture'),method:get('method')};
     loadScenario('star-top-bank');
@@ -1017,7 +1001,7 @@ const Game = (() => {
     S.revealedIds = new Set(); S.dayBatches = []; S.dayIndex = 0;
     S.hasUnsavedChanges = false;
     S.gameDate = new Date(2025, 0, 6); // Mon Jan 6 2025
-    document.getElementById('topbar-title').textContent = S.scenario.title||'Simülasyon';
+    document.title = (S.scenario.title||'Simülasyon') + ' – PMP Study Hell™';
     document.getElementById('game-clock').classList.remove('hidden');
     updateXP();
     loadSection((S.scenario.sections||[{id:1}])[0].id);
@@ -1077,7 +1061,7 @@ const Game = (() => {
     const sec = (S.scenario.sections||[]).find(s=>s.id===secId);
     document.getElementById('list-title').textContent = S.scenario.title || 'Bildirimler';
     document.getElementById('list-sub').textContent = sec?.iteration || '';
-    document.getElementById('nav-iter').textContent = sec?.iteration || ('İterasyon '+secId);
+    document.getElementById('nav-iter')?.textContent && (document.getElementById('nav-iter').textContent = sec?.iteration || ('İterasyon '+secId));
     const sectionNotifs = S.notifs.filter(n=>n.section===secId);
     S.dayBatches = computeBatches(sectionNotifs);
     S.dayIndex = 0;
@@ -1300,6 +1284,12 @@ const Game = (() => {
     const opt=(n.options||[]).find(o=>o.key===key);
     if(opt){ S.xp+=(opt.xp||0); if(key==='D') S.dCount++; updateXP(); }
     renderDetail(n); refreshItem(id);
+    // Otomatik kayıt: her 3 karar sonrası
+    const decCount = Object.values(S.answered).filter(v => v !== 'READ').length;
+    if(decCount > 0 && decCount % 3 === 0) {
+      saveGame();
+      showToast('Otomatik kaydedildi 💾');
+    }
   }
 
   function updateContinueBtn() {
@@ -1347,7 +1337,7 @@ const Game = (() => {
     setTimeout(() => {
       overlay.classList.add('hidden');
       callback();
-    }, 1900);
+    }, 3400);
   }
 
   function advance() {
@@ -1386,8 +1376,9 @@ const Game = (() => {
   }
 
   function updateXP(){
-    document.getElementById('nav-xp').textContent=S.xp;
-    document.getElementById('xp-disp').textContent=S.xp+' XP';
+    // XP is shown on the scorecard page (player badge → scorecard.html)
+    // Save XP to localStorage so scorecard can read it
+    try { localStorage.setItem('pmSim_session_xp', S.xp); } catch(e){}
   }
 
   const TALENT_AREAS = [
@@ -1497,23 +1488,16 @@ const Game = (() => {
     const prevName = session?.displayName || '';
     Object.assign(S,{name:prevName,mode:'',setup:{},scenario:null,notifs:[],answered:{},xp:0,dCount:0,activeId:null,sectionId:1,skipConfirm:false,shuffles:{},pendingKey:{},revealedIds:new Set(),dayBatches:[],dayIndex:0,gameDate:null,hasUnsavedChanges:false});
     document.getElementById('game-clock').classList.add('hidden');
-    document.getElementById('xp-disp').textContent='0 XP';
-    document.getElementById('nav-xp').textContent='0';
+    try { localStorage.setItem('pmSim_session_xp', 0); } catch(e){}
     const nameEl = document.getElementById('inp-name');
     if(nameEl) nameEl.value = prevName;
     const pmEl = document.getElementById('inp-pm-name');
     if(pmEl) pmEl.value = prevName;
-    if(session) {
-      document.getElementById('player-name-disp').textContent = session.displayName;
-      document.getElementById('player-av').textContent = (session.displayName||'?')[0].toUpperCase();
-      document.getElementById('player-badge').classList.remove('hidden');
-    } else {
-      document.getElementById('player-badge').classList.add('hidden');
-    }
+    updateAuthButtons();
     show('screen-welcome');
   }
 
-  document.addEventListener('DOMContentLoaded',init);
+  document.addEventListener('DOMContentLoaded', init);
   return {
     tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart,
     // Auth
@@ -1521,9 +1505,14 @@ const Game = (() => {
     // Save
     saveGame,
     // Unsaved dialog
-    closeUnsaved, leaveWithoutSave, saveAndLeave
+    closeUnsaved, leaveWithoutSave, saveAndLeave,
+    // Menu
+    toggleMenu, closeMenu,
+    // Result
+    buildKarne
   };
 })();
+window.Game = Game;
 </script>
 </body>
 </html>

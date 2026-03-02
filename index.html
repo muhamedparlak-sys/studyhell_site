@@ -303,6 +303,209 @@ footer {
 }
 footer strong { color: #fff; }
 
+/* ── NAVBAR AUTH ── */
+.nav-auth-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+.btn-nav-login {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.28);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.btn-nav-login:hover { background: rgba(255,255,255,.24); }
+.nav-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #3b7bc8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.nav-username {
+  color: rgba(255,255,255,.9);
+  font-size: 13px;
+  font-weight: 600;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btn-nav-play {
+  background: #3b7bc8;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 7px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.btn-nav-play:hover { background: #2563eb; }
+.btn-nav-logout {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.55);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.btn-nav-logout:hover { border-color: rgba(239,68,68,.5); color: #fca5a5; background: rgba(239,68,68,.08); }
+
+/* ── AUTH MODAL ── */
+#auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,14,23,.88);
+  backdrop-filter: blur(12px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#auth-overlay.hidden { display: none; }
+#form-login.hidden, #form-register.hidden { display: none; }
+.auth-card {
+  background: #141d2e;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 36px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  color: #f1f5f9;
+}
+.auth-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg,#3b82f6,#6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 24px rgba(59,130,246,.3);
+}
+.auth-title { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 4px; }
+.auth-sub { font-size: 13px; color: #94a3b8; text-align: center; margin-bottom: 20px; }
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  background: rgba(255,255,255,.06);
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 22px;
+}
+.auth-tab {
+  flex: 1;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: rgba(255,255,255,.4);
+  transition: all .15s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.auth-tab.active { background: #3b82f6; color: #fff; }
+.auth-field { margin-bottom: 12px; }
+.auth-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 5px;
+}
+.auth-input {
+  width: 100%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 11px 13px;
+  color: #f1f5f9;
+  font-size: 14px;
+  outline: none;
+  transition: border .15s;
+  font-family: inherit;
+}
+.auth-input:focus { border-color: #3b82f6; }
+.auth-error {
+  background: rgba(239,68,68,.1);
+  border: 1px solid rgba(239,68,68,.3);
+  color: #fca5a5;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+.auth-error.hidden { display: none; }
+.btn-auth-submit {
+  width: 100%;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px;
+  border-radius: 8px;
+  transition: background .15s;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-auth-submit:hover { background: #2563eb; }
+.auth-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,.07);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.4);
+  cursor: pointer;
+  font-size: 16px;
+  transition: all .15s;
+  border: none;
+  font-family: inherit;
+}
+.auth-close:hover { background: rgba(255,255,255,.12); color: #f1f5f9; }
+
 /* ── MOBILE MENU ── */
 @media (max-width: 640px) {
   .nav-links {
@@ -323,6 +526,7 @@ footer strong { color: #fff; }
   .about-grid { grid-template-columns: 1fr; gap: 24px; }
   .stat-row { grid-template-columns: 1fr 1fr; }
   .email-form { flex-direction: column; }
+  .nav-username { display: none; }
 }
 @media (max-width: 400px) {
   .stat-row { grid-template-columns: 1fr; }
@@ -339,6 +543,9 @@ footer strong { color: #fff; }
     <a href="flashcards.html">Flashcards</a>
     <a href="blog.html">Blog</a>
     <a href="game.html">🏗️ Simulation</a>
+  </div>
+  <div class="nav-auth-group" id="navAuthGroup">
+    <!-- populated by JS -->
   </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -445,25 +652,203 @@ footer strong { color: #fff; }
   </div>
 </div>
 
+<!-- AUTH MODAL -->
+<div id="auth-overlay" class="hidden">
+  <div class="auth-card">
+    <button class="auth-close" onclick="closeAuth()" title="Kapat">✕</button>
+    <div class="auth-logo">🏗️</div>
+    <div class="auth-title">PM Simülasyonu</div>
+    <div class="auth-sub">Profilini oluştur, kariyer istatistiklerini takip et.</div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Giriş Yap</button>
+      <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Kayıt Ol</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="form-login">
+      <div class="auth-field">
+        <label>Kullanıcı Adı</label>
+        <input class="auth-input" id="inp-login-user" type="text" placeholder="kullanici_adi" autocomplete="username">
+      </div>
+      <div class="auth-field">
+        <label>Şifre</label>
+        <input class="auth-input" id="inp-login-pass" type="password" placeholder="••••••" autocomplete="current-password">
+      </div>
+      <div class="auth-error hidden" id="err-login"></div>
+      <button class="btn-auth-submit" onclick="doLogin()">Giriş Yap →</button>
+      <div style="text-align:center;margin-top:12px;font-size:12px;color:#64748b">
+        Hesabın yok mu? <button style="background:none;border:none;color:#3b82f6;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit" onclick="switchTab('register')">Kayıt Ol</button>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="form-register" class="hidden">
+      <div class="auth-field">
+        <label>Kullanıcı Adı</label>
+        <input class="auth-input" id="inp-reg-user" type="text" placeholder="kullanici_adi" autocomplete="username">
+      </div>
+      <div class="auth-field">
+        <label>Görünen Ad</label>
+        <input class="auth-input" id="inp-reg-name" type="text" placeholder="Adın Soyadın" autocomplete="name">
+      </div>
+      <div class="auth-field">
+        <label>E-posta <span style="color:#ef4444;font-size:10px">zorunlu</span></label>
+        <input class="auth-input" id="inp-reg-email" type="email" placeholder="ornek@mail.com" autocomplete="email">
+      </div>
+      <div class="auth-field">
+        <label>Şifre</label>
+        <input class="auth-input" id="inp-reg-pass" type="password" placeholder="en az 6 karakter" autocomplete="new-password">
+      </div>
+      <div class="auth-error hidden" id="err-register"></div>
+      <button class="btn-auth-submit" onclick="doRegister()">Kayıt Ol →</button>
+      <div style="text-align:center;margin-top:12px;font-size:12px;color:#64748b">
+        Zaten hesabın var mı? <button style="background:none;border:none;color:#3b82f6;font-size:12px;font-weight:600;cursor:pointer;text-decoration:underline;font-family:inherit" onclick="switchTab('login')">Giriş Yap</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <strong>PMP® Study Hell™</strong> — Free, independent PMP exam preparation.<br>
   PMP® is a registered trademark of Project Management Institute, Inc. This site is not affiliated with PMI.
 </footer>
 
 <script>
+// ── HAMBURGER MENU ────────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   hamburger.setAttribute('aria-expanded', String(open));
 });
-// Close menu on link click
 navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     navLinks.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   });
 });
+
+// ── AUTH STORAGE ──────────────────────────────────────────────────────────────
+const USERS_KEY   = 'pmSim_users';
+const SESSION_KEY = 'pmSim_session';
+
+function authGetUsers() {
+  try { return JSON.parse(localStorage.getItem(USERS_KEY) || '[]'); } catch { return []; }
+}
+function authGetSession() {
+  try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch { return null; }
+}
+function authSaveSession(user) {
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ username: user.username, displayName: user.displayName }));
+}
+
+// ── NAVBAR UPDATE ─────────────────────────────────────────────────────────────
+function updateNavAuth() {
+  const group = document.getElementById('navAuthGroup');
+  const session = authGetSession();
+  if (session) {
+    const av = (session.displayName || '?')[0].toUpperCase();
+    group.innerHTML = `
+      <div class="nav-player">
+        <div class="nav-av">${av}</div>
+        <span class="nav-username">${session.displayName}</span>
+        <a href="game.html" class="btn-nav-play">▶ Oyna</a>
+        <button class="btn-nav-logout" onclick="doLogout()">Çıkış</button>
+      </div>`;
+  } else {
+    group.innerHTML = `<button class="btn-nav-login" onclick="openAuth()">Giriş Yap / Kayıt Ol</button>`;
+  }
+}
+
+// ── AUTH MODAL ────────────────────────────────────────────────────────────────
+function openAuth(tab) {
+  document.getElementById('auth-overlay').classList.remove('hidden');
+  switchTab(tab || 'login');
+}
+function closeAuth() {
+  document.getElementById('auth-overlay').classList.add('hidden');
+}
+function switchTab(tab) {
+  document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
+  document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+}
+
+function showErr(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+function hideErr(id) { document.getElementById(id).classList.add('hidden'); }
+
+function afterAuth(user) {
+  authSaveSession(user);
+  closeAuth();
+  updateNavAuth();
+  // game.html'den yönlendirilmişse geri dön
+  const params = new URLSearchParams(window.location.search);
+  const ret = params.get('return');
+  if (ret) window.location.href = ret;
+}
+
+function doLogin() {
+  const username = (document.getElementById('inp-login-user').value || '').trim();
+  const password = document.getElementById('inp-login-pass').value;
+  if (!username || !password) { showErr('err-login', 'Tüm alanları doldurun'); return; }
+  const user = authGetUsers().find(u => u.username.toLowerCase() === username.toLowerCase() && u.password === password);
+  if (!user) { showErr('err-login', 'Kullanıcı adı veya şifre hatalı'); return; }
+  hideErr('err-login');
+  afterAuth(user);
+}
+
+function doRegister() {
+  const username    = (document.getElementById('inp-reg-user').value || '').trim();
+  const displayName = (document.getElementById('inp-reg-name').value || '').trim();
+  const email       = (document.getElementById('inp-reg-email').value || '').trim();
+  const password    = document.getElementById('inp-reg-pass').value;
+  if (!username || !displayName || !email || !password) { showErr('err-register', 'Tüm alanları doldurun'); return; }
+  if (username.length < 3)  { showErr('err-register', 'Kullanıcı adı en az 3 karakter olmalı'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-register', 'Geçerli bir e-posta adresi girin'); return; }
+  if (password.length < 6)  { showErr('err-register', 'Şifre en az 6 karakter olmalı'); return; }
+  const users = authGetUsers();
+  if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
+    showErr('err-register', 'Bu kullanıcı adı zaten kullanımda'); return;
+  }
+  if (users.find(u => u.email && u.email.toLowerCase() === email.toLowerCase())) {
+    showErr('err-register', 'Bu e-posta adresi zaten kayıtlı'); return;
+  }
+  const user = { username, displayName, email, password, createdAt: new Date().toISOString() };
+  users.push(user);
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  hideErr('err-register');
+  afterAuth(user);
+}
+
+function doLogout() {
+  localStorage.removeItem(SESSION_KEY);
+  updateNavAuth();
+}
+
+// Close overlay when clicking backdrop
+document.getElementById('auth-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('auth-overlay')) closeAuth();
+});
+
+// Keyboard shortcuts inside auth modal
+document.getElementById('inp-login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+document.getElementById('inp-login-user').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+document.getElementById('inp-reg-email').addEventListener('keydown', e => { if (e.key === 'Enter') doRegister(); });
+document.getElementById('inp-reg-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doRegister(); });
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+updateNavAuth();
+
+// ?auth=1 parametresi varsa overlay otomatik aç (game.html'den yönlendirme)
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('auth') === '1') openAuth('login');
+})();
 </script>
 </body>
 </html>
