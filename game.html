@@ -107,6 +107,16 @@ a{color:inherit;text-decoration:none}
 
 /* MODE SELECT */
 #screen-mode{background:linear-gradient(135deg,#0f1520,#141d2e);display:flex;align-items:center;justify-content:center;padding:20px}
+.welcome-wrap{background:linear-gradient(135deg,#0f1520 0%,#141d2e 60%,#0d1823 100%);display:flex;align-items:center;justify-content:center;height:100%;padding:20px}
+.welcome-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:40px 36px;width:100%;max-width:420px;text-align:center}
+.welcome-icon{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(59,130,246,.3)}
+.welcome-title{font-size:24px;font-weight:800;margin-bottom:8px}
+.welcome-sub{font-size:14px;color:var(--dim);margin-bottom:28px;line-height:1.6}
+.resume-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 18px;margin-bottom:12px;text-align:left}
+.resume-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:4px}
+.resume-meta{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+.btn-outline-welcome{width:100%;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-size:14px;font-weight:600;padding:11px;border-radius:8px;cursor:pointer;transition:all .15s;margin-top:4px}
+.btn-outline-welcome:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8)}
 .mode-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:36px;width:100%;max-width:560px}
 .mode-card h2{font-size:20px;font-weight:700;margin-bottom:6px}
 .mode-card>p{font-size:13px;color:var(--dim);margin-bottom:24px}
@@ -424,15 +434,12 @@ a{color:inherit;text-decoration:none}
 
 <!-- WELCOME -->
 <div id="screen-welcome" class="screen">
-  <div style="background:linear-gradient(135deg,#0f1520 0%,#141d2e 60%,#0d1823 100%);display:flex;align-items:center;justify-content:center;height:100%;padding:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:40px 36px;width:100%;max-width:420px;text-align:center">
-      <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#3b82f6,#6366f1);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px;box-shadow:0 8px 24px rgba(59,130,246,.3)">📬</div>
-      <h1 style="font-size:24px;font-weight:800;margin-bottom:8px">PM İş Simülasyonu</h1>
-      <p style="font-size:14px;color:var(--dim);margin-bottom:28px;line-height:1.6">Gerçek bir PM olarak çalış. Bildirimlerini yönet, kararlar ver, projeyi tamamla.</p>
-      <div class="field-label">ADINIZ</div>
-      <input id="inp-name" class="field-input" type="text" placeholder="Adınızı girin..." maxlength="30" autocomplete="off">
-      <button id="btn-next" class="btn-primary">Devam Et →</button>
-      <p style="font-size:12px;color:var(--muted);margin-top:10px">Adınız senaryolardaki bildirimlere dahil edilecek.</p>
+  <div class="welcome-wrap">
+    <div class="welcome-card">
+      <!-- filled dynamically by renderWelcomeScreen() -->
+      <div class="welcome-icon">📬</div>
+      <h1 class="welcome-title">PM İş Simülasyonu</h1>
+      <p class="welcome-sub">Yükleniyor…</p>
     </div>
   </div>
 </div>
@@ -865,18 +872,107 @@ var Game; Game = (() => {
 
   function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-  function init() {
-    // Check existing session
+  /* ── Save helpers ─────────────────────────────────────────── */
+  function findUserSaves() {
     const session = authGetSession();
-    updateAuthButtons();
-    if(session) {
-      const nameEl = document.getElementById('inp-name');
-      if(nameEl) nameEl.value = session.displayName;
-      const pmEl = document.getElementById('inp-pm-name');
-      if(pmEl) pmEl.value = session.displayName;
-      S.name = session.displayName;
+    if (!session) return [];
+    const prefix = `pmSim_save_${session.username}_`;
+    const saves = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith(prefix)) {
+        try { const d = JSON.parse(localStorage.getItem(key)); if (d) saves.push(d); } catch {}
+      }
     }
+    return saves.sort((a, b) => new Date(b.savedAt) - new Date(a.savedAt));
+  }
+
+  async function resumeSave(saveData) {
+    try {
+      const r = await fetch(`data/scenarios/${saveData.scenarioId}.json`);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      S.scenario    = await r.json();
+      S.notifs      = S.scenario.notifications || [];
+      S.name        = saveData.name || S.name;
+      S.setup       = saveData.setup || {};
+      S.sectionId   = saveData.sectionId || 1;
+      S.answered    = saveData.answered || {};
+      S.xp          = saveData.xp || 0;
+      S.dCount      = saveData.dCount || 0;
+      S.shuffles    = saveData.shuffles || {};
+      S.pendingKey  = saveData.pendingKey || {};
+      S.dayBatches  = saveData.dayBatches || [];
+      S.dayIndex    = saveData.dayIndex || 0;
+      S.gameDate    = saveData.gameDate ? new Date(saveData.gameDate) : new Date(2025, 0, 6);
+      S.revealedIds = new Set(saveData.revealedIds || []);
+      S.activeId    = saveData.activeId || null;
+      S.hasUnsavedChanges = false;
+      S.skipConfirm = false;
+      document.title = (S.scenario.title || 'Simülasyon') + ' – PMP Study Hell™';
+      document.getElementById('game-clock').classList.remove('hidden');
+      updateXP(); updateAuthButtons();
+      const visible = S.notifs.filter(n => S.revealedIds.has(n.id));
+      renderList(visible);
+      // Restore clock
+      const curBatch = S.dayBatches[Math.min(S.dayIndex, S.dayBatches.length - 1)] || [];
+      const lastN = S.notifs.find(n => n.id === curBatch[curBatch.length - 1]);
+      updateClockDisplay(lastN?.time);
+      // Select active notif
+      const target = S.activeId ? S.notifs.find(x => x.id === S.activeId)
+                   : S.notifs.find(n => S.revealedIds.has(n.id) && !S.answered[n.id]);
+      if (target) selectNotif(target);
+      updateContinueBtn();
+      show('screen-inbox');
+    } catch(e) { alert('Kayıt yüklenemedi: ' + e.message); }
+  }
+
+  function renderWelcomeScreen(session, saves) {
+    const card = document.querySelector('#screen-welcome .welcome-card');
+    if (!card) return;
+    const pmEl = document.getElementById('inp-pm-name');
+    if (pmEl) pmEl.value = session.displayName;
+    S.name = session.displayName;
+
+    if (saves.length > 0) {
+      const latest = saves[0];
+      const d = new Date(latest.savedAt);
+      const dateStr = d.toLocaleDateString('tr-TR', { day:'numeric', month:'long' }) + ' ' +
+                      d.toLocaleTimeString('tr-TR', { hour:'2-digit', minute:'2-digit' });
+      const scenarioLabel = (S.scenario?.title) || latest.scenarioId || 'Senaryo';
+      card.innerHTML = `
+        <div class="welcome-icon">📬</div>
+        <h1 class="welcome-title">Hoş geldin, ${session.displayName}!</h1>
+        <div class="resume-box">
+          <div class="resume-label">Son kayıt</div>
+          <div class="resume-meta">${dateStr} · %${Math.round((Object.keys(latest.answered||{}).length / Math.max(1,(latest.dayBatches||[]).flat().length))*100)} tamamlandı · ${latest.xp||0} XP</div>
+          <button id="btn-resume" class="btn-primary" style="margin-top:14px">▶ Kaldığın Yerden Devam Et</button>
+        </div>
+        <button id="btn-new-game" class="btn-outline-welcome">Yeni Oyun Başlat</button>`;
+      document.getElementById('btn-resume').onclick   = () => resumeSave(latest);
+      document.getElementById('btn-new-game').onclick = () => show('screen-mode');
+    } else {
+      card.innerHTML = `
+        <div class="welcome-icon">📬</div>
+        <h1 class="welcome-title">Hoş geldin, ${session.displayName}!</h1>
+        <p class="welcome-sub">Gerçek bir PM olarak çalış. Bildirimlerini yönet, kararlar ver, projeyi tamamla.</p>
+        <button id="btn-start-new" class="btn-primary">Başla →</button>`;
+      document.getElementById('btn-start-new').onclick = () => show('screen-mode');
+    }
+  }
+
+  function init() {
+    // ── Auth gate: login required ──────────────────────────────
+    const session = authGetSession();
+    if (!session) {
+      window.location.href = 'index.html?auth=1&return=game.html';
+      return;
+    }
+    S.name = session.displayName;
     updateAuthButtons();
+
+    // Find existing saves and render welcome accordingly
+    const saves = findUserSaves();
+    renderWelcomeScreen(session, saves);
 
     // Hamburger menü
     document.getElementById('btn-hamburger').onclick = e => { e.stopPropagation(); toggleMenu(); };
@@ -888,8 +984,6 @@ var Game; Game = (() => {
     });
 
     document.getElementById('btn-continue-top').onclick = advance;
-    document.getElementById('btn-next').onclick = onNext;
-    document.getElementById('inp-name').onkeydown = e => { if(e.key==='Enter') onNext(); };
     document.getElementById('btn-career').onclick = () => { S.mode='career'; show('screen-career'); };
     document.getElementById('btn-perf').onclick = () => { S.mode='perf'; buildPerfGrid(); show('screen-perf'); };
     document.getElementById('btn-career-go').onclick = startCareer;
@@ -942,8 +1036,8 @@ var Game; Game = (() => {
       }
     });
 
-    // Hub link unsaved guard
-    document.getElementById('hub-link').addEventListener('click', e => {
+    // Brand link unsaved guard
+    document.querySelector('#topbar .brand')?.addEventListener('click', e => {
       if(S.hasUnsavedChanges && S.scenario) {
         e.preventDefault();
         showUnsavedDialog(() => { window.location.href = 'index.html'; });
@@ -957,13 +1051,7 @@ var Game; Game = (() => {
   }
 
   function onNext() {
-    const n = document.getElementById('inp-name').value.trim();
-    if(!n) return document.getElementById('inp-name').focus();
-    S.name = n;
-    updateAuthButtons();
-    // Also pre-fill PM name
-    const pmEl = document.getElementById('inp-pm-name');
-    if(pmEl && !pmEl.value) pmEl.value = n;
+    // Name comes from session (auth required); just go to mode select
     show('screen-mode');
   }
 
@@ -1508,17 +1596,19 @@ var Game; Game = (() => {
     Object.assign(S,{name:prevName,mode:'',setup:{},scenario:null,notifs:[],answered:{},xp:0,dCount:0,activeId:null,sectionId:1,skipConfirm:false,shuffles:{},pendingKey:{},revealedIds:new Set(),dayBatches:[],dayIndex:0,gameDate:null,hasUnsavedChanges:false});
     document.getElementById('game-clock').classList.add('hidden');
     try { localStorage.setItem('pmSim_session_xp', 0); } catch(e){}
-    const nameEl = document.getElementById('inp-name');
-    if(nameEl) nameEl.value = prevName;
     const pmEl = document.getElementById('inp-pm-name');
     if(pmEl) pmEl.value = prevName;
     updateAuthButtons();
+    if (session) {
+      const saves = findUserSaves();
+      renderWelcomeScreen(session, saves);
+    }
     show('screen-welcome');
   }
 
   document.addEventListener('DOMContentLoaded', init);
   return {
-    tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart,
+    tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart, resumeSave,
     // Auth
     switchAuthTab, doLogin, doRegister, doLogout, openAuthOverlay, closeAuthOverlay,
     // Save
