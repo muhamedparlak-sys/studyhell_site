@@ -78,6 +78,20 @@ button{border:none;cursor:pointer;font-family:inherit}
 .pmeta-lbl{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
 .c-gold{color:#c9960c}
 .pright{text-align:right;flex-shrink:0}
+
+/* TECRÜBE SKORU CARD */
+.exp-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:8px;
+  padding:14px 20px;margin-bottom:12px;
+  display:flex;align-items:center;gap:20px;
+}
+.exp-left{flex:1;min-width:0}
+.exp-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.exp-sub{font-size:11px;color:var(--dim);margin-top:3px}
+.exp-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;min-width:160px}
+.exp-pct{font-size:22px;font-weight:800;color:#3b82f6;font-variant-numeric:tabular-nums;line-height:1}
+.exp-bar-wrap{width:140px;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.exp-bar-fill{height:100%;background:linear-gradient(90deg,#1d4ed8,#3b82f6);border-radius:3px;transition:width .6s ease}
 .plevel-num{font-size:38px;font-weight:800;color:#c9960c;line-height:1;font-variant-numeric:tabular-nums}
 .plevel-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-top:4px}
 .plevel-title{font-size:11px;color:#c9960c;margin-top:3px}
@@ -245,6 +259,20 @@ button{border:none;cursor:pointer;font-family:inherit}
     </div>
   </div>
 
+  <!-- TECRÜBE SKORU -->
+  <div class="exp-card" id="exp-card">
+    <div class="exp-left">
+      <div class="exp-title">Tecrübe Skoru</div>
+      <div class="exp-sub" id="exp-sub">Bilgi evreni yükleniyor…</div>
+    </div>
+    <div class="exp-right">
+      <div class="exp-pct" id="exp-pct">—</div>
+      <div class="exp-bar-wrap">
+        <div class="exp-bar-fill" id="exp-bar-fill" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="main-grid" id="main-grid">
     <!-- populated by JS -->
   </div>
@@ -348,6 +376,44 @@ function careerLevel(xp) {
 const CAREER_KEY  = 'pmp_career_competency';
 const SESSION_KEY = 'pmSim_session';
 
+/* ── Experience score (cross-scenario, difficulty-weighted) ─── */
+async function loadManifest() {
+  try {
+    const r = await fetch('data/scenarios/manifest.json');
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+function computeExperienceScore(session, manifest) {
+  // Numerator: sum of (answered decisions * difficultyWeight) across all user saves
+  let earned = 0;
+  if (session) {
+    const prefix = `pmSim_save_${session.username}_`;
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key?.startsWith(prefix)) continue;
+      try {
+        const save = JSON.parse(localStorage.getItem(key));
+        if (!save) continue;
+        const answered = Object.values(save.answered || {}).filter(v => v !== 'READ').length;
+        const w = save.difficultyWeight || 3; // legacy saves default to medium
+        earned += answered * w;
+      } catch {}
+    }
+  }
+  // Denominator: total decision score of all scenarios at medium standard (×3)
+  const universeScore = manifest
+    ? manifest.scenarios.reduce((s, sc) => s + sc.decisions * 3, 0)
+    : 0;
+  const pct = universeScore > 0 ? Math.min(100, Math.round(earned / universeScore * 100)) : 0;
+  return { pct, earned, universeScore };
+}
+
+function diffWeightLabel(w) {
+  return w === 1 ? 'Kolay' : w === 5 ? 'Zor' : 'Orta';
+}
+
 function loadCareer() {
   try {
     const raw = localStorage.getItem(CAREER_KEY);
@@ -400,9 +466,10 @@ function applyAvatar(photoDataUrl, fallbackLetter) {
 }
 
 /* ── Render ─────────────────────────────────────────────────── */
-function render() {
-  const career  = loadCareer();
-  const session = (() => { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); } catch { return null; } })();
+async function render() {
+  const career   = loadCareer();
+  const session  = (() => { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); } catch { return null; } })();
+  const manifest = await loadManifest();
   const name    = session?.displayName || session?.username || 'PM';
 
   /* Profile header — avatar */
@@ -422,6 +489,26 @@ function render() {
   document.getElementById('sc-level').textContent       = lvl.n;
   document.getElementById('sc-level-title').textContent = lvl.t;
   document.getElementById('sc-sub').textContent         = 'Kariyer Seviyesi ' + lvl.n + ' · ' + lvl.t;
+
+  /* ── TECRÜBE SKORU ──────────────────────────────────────── */
+  const exp = computeExperienceScore(session, manifest);
+  document.getElementById('exp-pct').textContent = exp.pct + '%';
+  document.getElementById('exp-bar-fill').style.width = exp.pct + '%';
+  if (manifest) {
+    const universeDesc = manifest.scenarios.reduce((s, sc) => s + sc.decisions, 0);
+    document.getElementById('exp-sub').textContent =
+      `Kazanılan: ${exp.earned} puan  ·  Bilgi evreni: ${universeDesc} karar (${exp.universeScore} puan)`;
+  } else {
+    document.getElementById('exp-sub').textContent = 'Kazanılan: ' + exp.earned + ' puan';
+  }
+  // Color coding for exp pct
+  const expEl = document.getElementById('exp-pct');
+  expEl.style.color = exp.pct >= 70 ? '#27a357' : exp.pct >= 40 ? '#3b82f6' : exp.pct >= 15 ? '#c9960c' : '#7d8590';
+  document.querySelector('.exp-bar-fill').style.background =
+    exp.pct >= 70 ? 'linear-gradient(90deg,#166534,#27a357)' :
+    exp.pct >= 40 ? 'linear-gradient(90deg,#1d4ed8,#3b82f6)' :
+    exp.pct >= 15 ? 'linear-gradient(90deg,#854d0e,#c9960c)' :
+    'linear-gradient(90deg,#374151,#6b7280)';
 
   /* ── LEFT: Attribute panel ─────────────────────────────── */
   let attrHTML = '<div class="attr-panel">';

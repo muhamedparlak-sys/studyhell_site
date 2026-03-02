@@ -339,6 +339,7 @@ footer strong { color: #fff; }
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  overflow: hidden;
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -776,10 +777,13 @@ function updateNavAuth() {
   const group = document.getElementById('navAuthGroup');
   const session = authGetSession();
   if (session) {
-    const av = (session.displayName || '?')[0].toUpperCase();
+    const photo = localStorage.getItem('pmSim_profile_photo');
+    const avContent = photo
+      ? `<img src="${photo}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+      : (session.displayName || '?')[0].toUpperCase();
     group.innerHTML = `
       <div class="nav-player">
-        <div class="nav-av">${av}</div>
+        <div class="nav-av">${avContent}</div>
         <span class="nav-username">${session.displayName}</span>
         <a href="game.html" class="btn-nav-play">▶ Oyna</a>
         <button class="btn-nav-logout" onclick="doLogout()">Çıkış</button>

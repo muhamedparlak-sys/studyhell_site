@@ -756,6 +756,12 @@ var Game; Game = (() => {
     }
   }
 
+  // ── DIFFICULTY WEIGHT ────────────────────────────────────────────────────
+  // beginner=1, intermediate=3, advanced=5  (random → treat as medium=3)
+  function getDifficultyWeight(difficulty) {
+    return { beginner: 1, intermediate: 3, advanced: 5 }[difficulty] || 3;
+  }
+
   // ── SAVE / LOAD ───────────────────────────────────────────────────────────
   function getSaveKey() {
     if(!S.scenario) return null;
@@ -769,6 +775,7 @@ var Game; Game = (() => {
     const data = {
       scenarioId: S.scenario.id, scenarioTitle: S.scenario.title || S.scenario.id, sectionId: S.sectionId,
       totalDecisions: S.notifs.filter(n => n.type === 'decision').length,
+      difficultyWeight: getDifficultyWeight(S.setup?.difficulty),
       answered: S.answered, xp: S.xp, dCount: S.dCount,
       shuffles: S.shuffles, pendingKey: S.pendingKey,
       dayBatches: S.dayBatches, dayIndex: S.dayIndex,
