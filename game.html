@@ -1,181 +1,634 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PM Simulation — PMP® Study Hell™</title>
+<title>PM Simülasyonu — PMP® Study Hell™</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════════════════
    DESIGN TOKENS
 ═══════════════════════════════════════════════════════════════ */
 :root {
-  --primary:      #2f4f60;
-  --primary-dark: #1f3b49;
-  --primary-light:#5f93c2;
-  --accent:       #3b7bc8;
-  --green:        #059669;
-  --yellow:       #d97706;
-  --red:          #dc2626;
-  --text:         #0b1220;
-  --muted:        #334155;
-  --light:        #64748b;
-  --bg:           #f0f4f8;
-  --card:         #ffffff;
-  --border:       #e2e8f0;
-  --radius:       12px;
-  --radius-sm:    8px;
-  --shadow:       0 2px 12px rgba(0,0,0,.08);
-  --shadow-lg:    0 8px 32px rgba(0,0,0,.12);
+  /* FM Dark Palette */
+  --nav-bg:       #0f1520;
+  --nav-hover:    rgba(255,255,255,.07);
+  --nav-active:   rgba(79,142,247,.18);
+  --nav-border:   rgba(255,255,255,.07);
+  --list-bg:      #171e2e;
+  --list-hover:   #1e2840;
+  --list-active:  #243050;
+  --list-border:  rgba(255,255,255,.06);
+  --ch-header-bg: rgba(255,255,255,.03);
+  --detail-bg:    #f2f5f9;
+  --card-bg:      #ffffff;
+  --card-border:  #e2e8f0;
+  --accent:       #4f8ef7;
+  --accent-dark:  #3a78e8;
+  --accent-glow:  rgba(79,142,247,.15);
+  --green:        #10b981;
+  --green-bg:     rgba(16,185,129,.12);
+  --yellow:       #f59e0b;
+  --yellow-bg:    rgba(245,158,11,.12);
+  --red:          #ef4444;
+  --red-bg:       rgba(239,68,68,.12);
+  --text:         #0d1421;
+  --muted:        #475569;
+  --light:        #94a3b8;
+  --nav-text:     rgba(255,255,255,.85);
+  --nav-muted:    rgba(255,255,255,.45);
+  --nav-dim:      rgba(255,255,255,.22);
+  --list-text:    rgba(255,255,255,.88);
+  --list-muted:   rgba(255,255,255,.5);
+  --list-dim:     rgba(255,255,255,.28);
+  --nav-w:        220px;
+  --list-w:       320px;
+  --topbar-h:     48px;
+  --r:            10px;
+  --r-sm:         6px;
+  --shadow:       0 2px 10px rgba(0,0,0,.08);
+  --shadow-lg:    0 8px 28px rgba(0,0,0,.14);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Inter, system-ui, sans-serif; color: var(--text); background: var(--bg); min-height: 100vh; }
-button { cursor: pointer; font-family: inherit; }
-a { color: var(--accent); }
+html, body { height: 100%; overflow: hidden; }
+body { font-family: Inter, system-ui, sans-serif; color: var(--text); background: var(--nav-bg); }
+button { cursor: pointer; font-family: inherit; border: none; }
+a { color: var(--accent); text-decoration: none; }
+.hidden { display: none !important; }
 
 /* ═══════════════════════════════════════════════════════════════
-   NAVBAR
+   TOP BAR
 ═══════════════════════════════════════════════════════════════ */
-.navbar {
-  background: var(--primary);
-  height: 52px;
+#topbar {
+  height: var(--topbar-h);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  gap: 16px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  padding: 0 16px;
+  gap: 12px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
 }
-.brand      { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; }
-.brand sup  { font-size: 9px; vertical-align: super; }
-.nav-back   { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; margin-left: auto; padding: 5px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,.25); transition: all .15s; }
-.nav-back:hover { background: rgba(255,255,255,.1); color: #fff; }
-.nav-tag    { background: rgba(255,255,255,.15); color: rgba(255,255,255,.9); font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; letter-spacing: .05em; text-transform: uppercase; }
+.brand { color: var(--nav-text); font-weight: 800; font-size: 15px; letter-spacing: -.01em; }
+.brand sup { font-size: 9px; vertical-align: super; font-weight: 600; }
+.topbar-sep { width: 1px; height: 22px; background: var(--nav-border); }
+.topbar-title { color: var(--nav-muted); font-size: 13px; flex: 1; }
+.topbar-back {
+  color: var(--nav-muted);
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--nav-border);
+  transition: all .15s;
+}
+.topbar-back:hover { background: var(--nav-hover); color: var(--nav-text); }
+
+/* Player badge in topbar */
+#topbar-player {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--nav-muted);
+  font-size: 12px;
+}
+#topbar-player .avatar {
+  width: 26px; height: 26px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 11px; font-weight: 700;
+  flex-shrink: 0;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    SCREEN SYSTEM
 ═══════════════════════════════════════════════════════════════ */
-.screen { min-height: calc(100vh - 52px); }
-.screen.hidden { display: none !important; }
+.screen {
+  position: fixed;
+  inset: var(--topbar-h) 0 0 0;
+  overflow: hidden;
+}
 
 /* ═══════════════════════════════════════════════════════════════
-   UTILITY CLASSES
+   SCREEN: WELCOME
 ═══════════════════════════════════════════════════════════════ */
-.hidden { display: none !important; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
-
-.btn-primary {
+#screen-welcome {
+  background: linear-gradient(135deg, #0f1520 0%, #141d2e 60%, #0d1823 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.welcome-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 44px 48px;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,.4);
+}
+.welcome-logo {
+  width: 64px; height: 64px;
+  background: var(--accent);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 22px;
+  box-shadow: 0 8px 24px rgba(79,142,247,.35);
+}
+.welcome-card h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--nav-text);
+  margin-bottom: 8px;
+}
+.welcome-card p {
+  font-size: 14px;
+  color: var(--nav-muted);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.welcome-field {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.welcome-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nav-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 8px;
+}
+.welcome-field input {
+  width: 100%;
+  background: rgba(255,255,255,.07);
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: var(--r-sm);
+  padding: 11px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--nav-text);
+  outline: none;
+  transition: border-color .15s, background .15s;
+}
+.welcome-field input::placeholder { color: var(--nav-dim); }
+.welcome-field input:focus {
+  border-color: var(--accent);
+  background: rgba(79,142,247,.07);
+}
+.btn-welcome {
+  width: 100%;
   background: var(--accent);
   color: #fff;
-  border: none;
-  padding: 12px 28px;
-  border-radius: var(--radius-sm);
   font-size: 15px;
   font-weight: 700;
+  padding: 13px;
+  border-radius: var(--r-sm);
   transition: background .15s, transform .1s;
+  box-shadow: 0 4px 16px rgba(79,142,247,.3);
 }
-.btn-primary:hover { background: #2c69b5; transform: translateY(-1px); }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--accent);
-  border: 1.5px solid var(--accent);
-  padding: 10px 24px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  transition: all .15s;
-}
-.btn-secondary:hover { background: var(--accent); color: #fff; }
-
-/* Status colours */
-.on-track { color: var(--green); }
-.warning  { color: var(--yellow); }
-.critical { color: var(--red); }
+.btn-welcome:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.btn-welcome:disabled { opacity: .45; transform: none; cursor: default; }
+.welcome-hint { font-size: 12px; color: var(--nav-dim); margin-top: 14px; }
 
 /* ═══════════════════════════════════════════════════════════════
-   NOTIFICATIONS
+   FM 3-PANEL LAYOUT (used by inbox + playing screens)
 ═══════════════════════════════════════════════════════════════ */
-#notification-container {
-  position: fixed;
-  top: 64px;
-  right: 16px;
-  z-index: 9999;
+.fm-layout {
+  display: grid;
+  grid-template-columns: var(--nav-w) var(--list-w) 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Left Nav ── */
+.fm-nav {
+  background: var(--nav-bg);
+  border-right: 1px solid var(--nav-border);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-width: 340px;
-  pointer-events: none;
+  overflow: hidden;
 }
-.notification {
+.fm-nav-section {
+  padding: 14px 12px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--nav-dim);
+}
+.fm-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 14px;
+  border-radius: 7px;
+  margin: 1px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--nav-muted);
+  cursor: pointer;
+  transition: background .12s, color .12s;
+  user-select: none;
+}
+.fm-nav-item:hover { background: var(--nav-hover); color: var(--nav-text); }
+.fm-nav-item.active { background: var(--nav-active); color: var(--accent); font-weight: 600; }
+.fm-nav-item .nav-icon { font-size: 15px; flex-shrink: 0; width: 18px; text-align: center; }
+.fm-nav-item .nav-badge {
+  margin-left: auto;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px;
+  min-width: 18px;
+  text-align: center;
+}
+.fm-nav-spacer { flex: 1; }
+.fm-nav-footer {
+  padding: 12px 14px;
+  border-top: 1px solid var(--nav-border);
+}
+.fm-nav-xp {
+  font-size: 11px;
+  color: var(--nav-muted);
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.xp-bar-track {
+  height: 4px;
+  background: rgba(255,255,255,.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.xp-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+
+/* ── Message List Panel ── */
+.fm-list {
+  background: var(--list-bg);
+  border-right: 1px solid var(--list-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.fm-list-header {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--list-border);
+  flex-shrink: 0;
+}
+.fm-list-header h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--list-text);
+  margin-bottom: 2px;
+}
+.fm-list-header p {
+  font-size: 11px;
+  color: var(--list-muted);
+}
+.fm-list-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0;
+}
+.fm-list-body::-webkit-scrollbar { width: 4px; }
+.fm-list-body::-webkit-scrollbar-track { background: transparent; }
+.fm-list-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+
+/* Chapter header in list */
+.list-chapter {
+  padding: 8px 14px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--nav-dim);
+  background: var(--ch-header-bg);
+  border-top: 1px solid var(--list-border);
+  border-bottom: 1px solid var(--list-border);
+  margin: 6px 0 2px;
+}
+.list-chapter:first-child { margin-top: 0; border-top: none; }
+
+/* Message row in list */
+.list-msg {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 14px 9px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  cursor: pointer;
+  transition: background .1s;
+  position: relative;
+}
+.list-msg:hover { background: var(--list-hover); }
+.list-msg.active { background: var(--list-active); }
+.list-msg.unread .msg-subject { font-weight: 700; color: var(--list-text); }
+.list-msg.locked { opacity: .38; pointer-events: none; }
+
+.msg-from {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--list-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.msg-subject {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--list-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.msg-preview {
+  font-size: 11px;
+  color: var(--list-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: none; /* shown on hover? or always hidden for cleaner look */
+}
+.msg-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1px;
+}
+.msg-type-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.type-story    { background: rgba(100,116,139,.25); color: #94a3b8; }
+.type-decision { background: rgba(79,142,247,.25); color: var(--accent); }
+.type-done     { background: rgba(16,185,129,.2); color: #10b981; }
+.type-locked   { background: rgba(255,255,255,.07); color: var(--nav-dim); }
+.msg-unread-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ── Detail Panel ── */
+.fm-detail {
+  background: var(--detail-bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.fm-detail-inner {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 32px 40px;
+}
+.fm-detail-inner::-webkit-scrollbar { width: 6px; }
+.fm-detail-inner::-webkit-scrollbar-track { background: transparent; }
+.fm-detail-inner::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* Placeholder (nothing selected) */
+.detail-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--muted);
+  text-align: center;
+  gap: 10px;
+}
+.detail-placeholder .ph-icon { font-size: 48px; opacity: .3; }
+.detail-placeholder p { font-size: 14px; opacity: .6; }
+
+/* Email detail */
+.email-header {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--card-border);
+}
+.email-subject {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.email-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.email-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.email-from-info { flex: 1; min-width: 0; }
+.email-from-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.email-from-role { font-size: 12px; color: var(--muted); margin-top: 1px; }
+.email-timestamp { font-size: 11px; color: var(--light); white-space: nowrap; }
+
+.email-body {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+.email-body strong { color: var(--text); }
+.email-body em { color: var(--muted); font-style: normal; }
+
+/* Story next button */
+.btn-story-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: var(--r-sm);
+  transition: background .15s, transform .1s;
+  box-shadow: 0 3px 12px rgba(79,142,247,.25);
+}
+.btn-story-next:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+/* Decision options */
+.decision-section { margin-top: 24px; }
+.decision-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--light);
+  margin-bottom: 12px;
+}
+.option-list { display: flex; flex-direction: column; gap: 8px; }
+.option-btn {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--r-sm);
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  background: #1e293b;
-  color: #f1f5f9;
-  padding: 12px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  line-height: 1.45;
-  box-shadow: var(--shadow-lg);
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity .25s, transform .25s;
-  pointer-events: auto;
-  border-left: 4px solid #475569;
+  transition: all .12s;
 }
-.notification.n-visible   { opacity: 1; transform: translateX(0); }
-.notification.n-hiding    { opacity: 0; transform: translateX(20px); }
-.n-info    { border-left-color: var(--accent); }
-.n-success { border-left-color: var(--green); }
-.n-warning { border-left-color: var(--yellow); }
-.n-danger  { border-left-color: var(--red); }
-.n-icon    { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.n-msg     { flex: 1; }
-.n-close   { background: none; border: none; color: rgba(255,255,255,.5); font-size: 18px; line-height: 1; padding: 0 0 0 8px; flex-shrink: 0; }
-.n-close:hover { color: #fff; }
+.option-btn:hover {
+  border-color: var(--accent);
+  background: #eff6ff;
+  transform: translateX(2px);
+}
+.option-btn:disabled { pointer-events: none; }
+.opt-key {
+  width: 22px; height: 22px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.option-btn:hover .opt-key { background: var(--accent); color: #fff; }
+.opt-text { flex: 1; }
+
+/* Option states after choice */
+.option-btn.opt-chosen {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  pointer-events: none;
+}
+.option-btn.opt-chosen .opt-key { background: var(--accent); color: #fff; }
+.option-btn.opt-unchosen { opacity: .45; pointer-events: none; }
+
+/* XP badge */
+.xp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.xp-pos  { background: var(--green-bg); color: var(--green); }
+.xp-zero { background: var(--yellow-bg); color: var(--yellow); }
+.xp-neg  { background: var(--red-bg); color: var(--red); }
+
+/* Feedback box */
+.feedback-box {
+  margin-top: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.feedback-box.fb-unethical {
+  border-left-color: var(--red);
+  background: #fff5f5;
+}
+.feedback-box strong { color: var(--text); font-size: 13px; }
+
+/* Next message button (after decision) */
+.btn-next-after {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  background: var(--text);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--r-sm);
+  transition: background .15s;
+}
+.btn-next-after:hover { background: #1e3a5f; }
 
 /* ═══════════════════════════════════════════════════════════════
-   LOBBY SCREEN
+   SCREEN: INBOX (scenario selection)
 ═══════════════════════════════════════════════════════════════ */
-#screen-lobby { }
-
-.lobby-hero {
-  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
-  color: #fff;
-  padding: 48px 24px 40px;
-  text-align: center;
+#screen-inbox { }
+.inbox-detail-wrap { padding: 32px; }
+.inbox-welcome-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
 }
-.lobby-hero h1 { font-size: clamp(26px, 5vw, 42px); font-weight: 800; margin-bottom: 10px; }
-.lobby-hero p  { font-size: 16px; color: rgba(255,255,255,.75); max-width: 580px; margin: 0 auto; line-height: 1.6; }
+.inbox-welcome-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
 
-.lobby-section { padding: 40px 24px; max-width: 1100px; margin: 0 auto; }
-.lobby-section h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--text); }
-
-#lobby-scenarios {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.scenario-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px;
+.scenario-cards { display: flex; flex-direction: column; gap: 14px; max-width: 640px; }
+.sc-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--r);
+  padding: 20px 22px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: var(--shadow);
-  transition: box-shadow .15s, border-color .15s;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color .15s, box-shadow .15s;
 }
-.scenario-card:hover { box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
-
-.sc-header { display: flex; justify-content: space-between; align-items: center; }
+.sc-card:hover { border-color: var(--accent); box-shadow: var(--shadow-lg); }
+.sc-card-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: #eff6ff;
+  color: var(--accent);
+  font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sc-card-body { flex: 1; min-width: 0; }
+.sc-card-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.sc-card-desc  { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 10px; }
+.sc-card-tags  { display: flex; flex-wrap: wrap; gap: 5px; }
+.sc-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #dbeafe;
+  background: #eff6ff;
+  color: var(--accent);
+  font-weight: 500;
+}
 .diff-badge {
   font-size: 11px;
   font-weight: 700;
@@ -187,698 +640,926 @@ a { color: var(--accent); }
 .diff-easy { background: #d1fae5; color: #065f46; }
 .diff-med  { background: #fef3c7; color: #92400e; }
 .diff-hard { background: #fce7f3; color: #9d174d; }
+.diff-locked { background: #f1f5f9; color: #94a3b8; }
 
-.sc-weeks  { font-size: 12px; color: var(--light); }
-.sc-title  { font-size: 17px; font-weight: 700; color: var(--text); }
-.sc-desc   { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
-.sc-tags   { display: flex; flex-wrap: wrap; gap: 5px; }
-.tag-chip  { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: #eff6ff; color: var(--accent); border: 1px solid #dbeafe; }
-
-.btn-play {
-  background: var(--primary);
+.btn-play-sc {
+  flex-shrink: 0;
+  background: var(--accent);
   color: #fff;
-  border: none;
-  padding: 10px 0;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  width: 100%;
+  padding: 9px 18px;
+  border-radius: var(--r-sm);
   transition: background .15s;
+  white-space: nowrap;
+  align-self: center;
 }
-.btn-play:hover { background: var(--accent); }
-
-/* About section */
-.lobby-about {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  max-width: 1100px;
-  margin: 0 auto 40px;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-.lobby-about h2 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
-.lobby-about p  { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
-.concept-grid   { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
-.concept-item   { background: var(--bg); border-radius: var(--radius-sm); padding: 12px; font-size: 13px; }
-.concept-item strong { display: block; font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+.btn-play-sc:hover { background: var(--accent-dark); }
+.btn-play-sc:disabled { background: #e2e8f0; color: #94a3b8; cursor: default; }
 
 /* ═══════════════════════════════════════════════════════════════
-   SCENARIO INTRO SCREEN
+   SCREEN: RESULT
 ═══════════════════════════════════════════════════════════════ */
-#screen-scenario-intro {
+#screen-result {
+  background: var(--detail-bg);
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 40px 20px;
+  overflow-y: auto;
+  padding: 36px 20px 60px;
 }
-
-.intro-wrapper {
-  max-width: 700px;
+.result-card {
+  max-width: 620px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
-
-.intro-header {
-  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: 30px;
-}
-.intro-header h1 { font-size: clamp(20px, 4vw, 28px); font-weight: 800; margin-bottom: 8px; }
-.intro-header p  { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.65; }
-
-.intro-details-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-.intro-kv { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-.intro-kv:last-child { border-bottom: none; }
-.intro-kv span { color: var(--light); }
-.intro-kv strong { color: var(--text); }
-
-.intro-role-card {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  font-size: 14px;
-  color: #1e40af;
-  line-height: 1.6;
-}
-.intro-role-card::before { content: '🎯 Your Role: '; font-weight: 700; }
-
-.intro-actions { display: flex; gap: 12px; justify-content: flex-end; }
-
-/* ═══════════════════════════════════════════════════════════════
-   WEEK SCREEN (main gameplay)
-═══════════════════════════════════════════════════════════════ */
-#screen-week { }
-
-/* Week top bar */
-.week-topbar {
-  background: var(--primary-dark);
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.week-badge {
-  background: rgba(255,255,255,.15);
-  border-radius: var(--radius-sm);
-  padding: 5px 14px;
-  font-weight: 700;
-  font-size: 14px;
-  white-space: nowrap;
-}
-.week-date-label { font-size: 13px; color: rgba(255,255,255,.65); }
-.week-bar-wrap   { flex: 1; min-width: 120px; display: flex; align-items: center; gap: 8px; }
-.week-bar-track  { flex: 1; height: 6px; background: rgba(255,255,255,.2); border-radius: 3px; overflow: hidden; }
-.week-bar-fill   { height: 100%; background: var(--primary-light); border-radius: 3px; transition: width .4s ease; }
-.week-pct-label  { font-size: 12px; color: rgba(255,255,255,.65); white-space: nowrap; }
-
-/* Two-column layout */
-.week-layout {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 20px;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 24px;
-  align-items: start;
-}
-
-/* Left: narrative + decision */
-.week-main { display: flex; flex-direction: column; gap: 20px; }
-
-.narrative-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px;
-}
-.narrative-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--light); margin-bottom: 10px; }
-#week-narrative { font-size: 15px; color: var(--muted); line-height: 1.75; }
-
-.decision-card {
-  background: var(--card);
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px;
-  transition: border-color .2s;
-}
-.decision-card:focus-within { border-color: var(--accent); }
-.decision-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 12px; }
-#decision-question { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 18px; line-height: 1.55; }
-
-#decision-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-
-.decision-option {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.5;
-  transition: all .15s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.decision-option::before {
-  content: '○';
-  font-size: 16px;
-  color: var(--border);
-  flex-shrink: 0;
-  transition: color .15s;
-}
-.decision-option:hover {
-  border-color: var(--accent);
-  background: #eff6ff;
-  color: var(--text);
-}
-.decision-option.selected {
-  border-color: var(--accent);
-  background: #eff6ff;
-}
-.decision-option.selected::before {
-  content: '●';
-  color: var(--accent);
-}
-.opt-label { flex: 1; }
-
-.no-decision { color: var(--light); font-size: 14px; padding: 12px 0; }
-
-/* Right: metrics panel */
-.metrics-panel { display: flex; flex-direction: column; gap: 16px; }
-
-.metrics-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-}
-.metrics-card h4 {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .07em;
-  color: var(--light);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Metric rows */
-.metric-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-.metric-row:last-child { border-bottom: none; }
-.metric-label { color: var(--muted); }
-.metric-value { font-weight: 600; display: flex; align-items: center; gap: 5px; }
-.metric-on-track .metric-value { color: var(--green); }
-.metric-warning  .metric-value { color: var(--yellow); }
-.metric-critical .metric-value { color: var(--red); }
-
-/* Budget bar */
-.budget-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
-.prog-bar   { height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; margin: 4px 0; }
-.prog-fill  { height: 100%; border-radius: 4px; transition: width .4s ease; }
-.prog-on-track { background: var(--green); }
-.prog-warning  { background: var(--yellow); }
-.prog-critical { background: var(--red); }
-
-/* Soft metrics */
-.soft-metric { margin-bottom: 12px; }
-.soft-metric:last-child { margin-bottom: 0; }
-.soft-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
-.soft-label span { color: var(--muted); }
-.soft-label strong { font-weight: 700; }
-
-/* Risk badges */
-#metric-risks { display: flex; flex-wrap: wrap; gap: 5px; }
-.risk-badge {
-  font-size: 11px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-weight: 600;
-}
-.risk-threat { background: #fce7f3; color: #9d174d; }
-.risk-opp    { background: #d1fae5; color: #065f46; }
-.no-risks    { font-size: 12px; color: var(--light); }
-
-/* ═══════════════════════════════════════════════════════════════
-   CONSEQUENCE SCREEN
-═══════════════════════════════════════════════════════════════ */
-#screen-consequence {
-  padding: 32px 20px;
-}
-
-.consequence-wrapper {
-  max-width: 760px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.consequence-header {
-  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: 22px 24px;
-}
-.consequence-header h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-.consequence-header p  { font-size: 13px; color: rgba(255,255,255,.65); }
-
-.feedback-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-.feedback-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--light); margin-bottom: 10px; }
-.feedback-text    { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
-.feedback-concept { font-size: 13px; color: var(--accent); }
-
-.effect-line { font-size: 13px; color: var(--muted); padding: 3px 0; }
-
-.events-card { background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius); padding: 16px; }
-.events-card h4 { font-size: 12px; font-weight: 700; color: #92400e; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
-.event-card { background: #fff; border: 1px solid #fde68a; border-radius: var(--radius-sm); padding: 12px 14px; margin-bottom: 8px; }
-.event-card:last-child { margin-bottom: 0; }
-.event-card strong { font-size: 14px; color: #92400e; display: block; margin-bottom: 4px; }
-.event-card p { font-size: 13px; color: var(--muted); }
-
-.metrics-summary-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; }
-.metrics-summary-card h4 { font-size: 12px; font-weight: 700; color: var(--light); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
-#consequence-metrics-summary { display: flex; flex-wrap: wrap; gap: 12px; }
-.cm-item { font-size: 13px; color: var(--muted); }
-.cm-item strong { color: var(--text); font-weight: 700; }
-
-.warnings-card { background: #fff7ed; border: 1px solid #fed7aa; border-radius: var(--radius); padding: 14px 18px; }
-.warnings-card h4 { font-size: 12px; font-weight: 700; color: #c2410c; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-.warn-line { font-size: 13px; color: #92400e; padding: 3px 0; }
-
-.consequence-actions { display: flex; justify-content: flex-end; padding-top: 4px; }
-
-/* ═══════════════════════════════════════════════════════════════
-   GAME OVER SCREEN
-═══════════════════════════════════════════════════════════════ */
-#screen-game-over {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #1a0a0a 0%, #2d1212 100%);
-  min-height: calc(100vh - 52px);
-}
-
-.gameover-box {
-  max-width: 560px;
-  width: 100%;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,100,100,.3);
-  border-radius: var(--radius);
-  padding: 40px;
+.result-hero {
+  background: linear-gradient(135deg, #0f1520 0%, #14213d 100%);
+  border-radius: var(--r) var(--r) 0 0;
+  padding: 32px;
   text-align: center;
-}
-.gameover-icon { font-size: 64px; margin-bottom: 20px; display: block; }
-.gameover-box h1 { font-size: 32px; font-weight: 800; color: #fca5a5; margin-bottom: 10px; }
-#gameover-reason { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 16px; }
-#gameover-metric { font-size: 13px; color: rgba(255,100,100,.7); margin-bottom: 6px; }
-#gameover-week   { font-size: 13px; color: rgba(255,255,255,.4); margin-bottom: 28px; }
-#gameover-metric strong { color: #fca5a5; }
-
-/* ═══════════════════════════════════════════════════════════════
-   DEBRIEF SCREEN
-═══════════════════════════════════════════════════════════════ */
-#screen-debrief { padding: 32px 20px; }
-
-.debrief-wrapper { max-width: 900px; margin: 0 auto; }
-
-.debrief-header {
-  background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
   color: #fff;
-  border-radius: var(--radius);
-  padding: 28px;
-  text-align: center;
-  margin-bottom: 24px;
 }
-.debrief-header h1 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
-
-.grade-row { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 14px 0; }
-#debrief-grade {
-  font-size: 56px;
-  font-weight: 800;
-  width: 90px;
-  height: 90px;
+.result-grade-circle {
+  width: 88px; height: 88px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,.12);
+  border: 4px solid rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0 auto 14px;
 }
-.grade-pass { background: rgba(5,150,105,.3) !important; }
-.grade-fail { background: rgba(220,38,38,.3) !important; }
+.grade-A { border-color: #10b981; color: #10b981; }
+.grade-B { border-color: #4f8ef7; color: #4f8ef7; }
+.grade-C { border-color: #f59e0b; color: #f59e0b; }
+.grade-D { border-color: #f97316; color: #f97316; }
+.grade-F { border-color: #ef4444; color: #ef4444; }
+.result-hero h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+.result-hero p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.6; }
 
-#debrief-score  { font-size: 28px; font-weight: 700; }
-#debrief-result { font-size: 16px; margin-top: 4px; }
-
-.debrief-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 24px;
+.result-body {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: none;
+  border-radius: 0 0 var(--r) var(--r);
+  padding: 24px;
 }
-
-.debrief-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-.debrief-card h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--light); margin-bottom: 14px; }
-
-/* Score breakdown rows */
-.debrief-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-.debrief-row:last-child { border-bottom: none; }
-.dr-label { flex: 1; color: var(--muted); }
-.dr-raw   { font-weight: 600; color: var(--text); min-width: 50px; text-align: right; }
-.dr-pts   { color: var(--accent); font-weight: 700; min-width: 55px; text-align: right; }
-
-/* EVM final grid */
-.debrief-evm-grid {
+.result-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 22px;
 }
-.evm-cell { text-align: center; padding: 10px; background: var(--bg); border-radius: var(--radius-sm); }
-.evm-cell span { display: block; font-size: 11px; color: var(--light); margin-bottom: 4px; }
-.evm-val   { font-size: 18px; font-weight: 800; }
+.stat-cell {
+  text-align: center;
+  background: var(--detail-bg);
+  border-radius: var(--r-sm);
+  padding: 14px 10px;
+}
+.stat-val { font-size: 24px; font-weight: 800; color: var(--text); }
+.stat-lbl { font-size: 11px; color: var(--light); margin-top: 3px; text-transform: uppercase; letter-spacing: .04em; }
 
-/* Log items */
-.log-item { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-.log-item:last-child { border-bottom: none; }
-.log-week  { font-size: 11px; font-weight: 700; color: var(--accent); background: #eff6ff; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
-.log-label { color: var(--muted); line-height: 1.5; }
-.empty     { font-size: 13px; color: var(--light); text-align: center; padding: 12px 0; }
+.result-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--light);
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.result-decision-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 13px;
+}
+.result-decision-row:last-child { border-bottom: none; }
+.rd-num { color: var(--light); min-width: 22px; flex-shrink: 0; }
+.rd-text { flex: 1; color: var(--muted); line-height: 1.5; }
+.rd-xp   { font-weight: 700; flex-shrink: 0; }
+.rd-xp.pos { color: var(--green); }
+.rd-xp.neg { color: var(--red); }
 
-.debrief-actions { display: flex; justify-content: center; gap: 14px; margin-top: 28px; padding-bottom: 40px; }
+.result-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+.btn-result-primary {
+  flex: 1;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: var(--r-sm);
+  transition: background .15s;
+}
+.btn-result-primary:hover { background: var(--accent-dark); }
+.btn-result-secondary {
+  flex: 1;
+  background: var(--detail-bg);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--card-border);
+  transition: all .15s;
+}
+.btn-result-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ═══════════════════════════════════════════════════════════════
+   NOTIFICATIONS
+═══════════════════════════════════════════════════════════════ */
+#notif-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  max-width: 320px;
+  pointer-events: none;
+}
+.notif {
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 11px 14px;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: var(--shadow-lg);
+  border-left: 4px solid #475569;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .22s, transform .22s;
+  pointer-events: auto;
+}
+.notif.visible   { opacity: 1; transform: translateY(0); }
+.notif.hiding    { opacity: 0; transform: translateY(10px); }
+.notif.n-info    { border-left-color: var(--accent); }
+.notif.n-success { border-left-color: var(--green); }
+.notif.n-warn    { border-left-color: var(--yellow); }
+.notif.n-danger  { border-left-color: var(--red); }
 
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .week-layout     { grid-template-columns: 1fr; }
-  .metrics-panel   { display: grid; grid-template-columns: 1fr 1fr; }
-  .debrief-grid    { grid-template-columns: 1fr; }
-  .debrief-evm-grid{ grid-template-columns: repeat(2, 1fr); }
+  :root { --nav-w: 0px; --list-w: 260px; }
+  .fm-nav { overflow: hidden; }
 }
-@media (max-width: 600px) {
-  .week-layout     { padding: 16px; gap: 16px; }
-  .metrics-panel   { grid-template-columns: 1fr; }
-  .intro-actions   { flex-direction: column; }
-  .debrief-evm-grid{ grid-template-columns: repeat(2, 1fr); }
-  .grade-row       { flex-direction: column; gap: 10px; }
-  .lobby-hero      { padding: 32px 16px 28px; }
-  .lobby-section   { padding: 24px 16px; }
+@media (max-width: 640px) {
+  :root { --list-w: 200px; }
+  .fm-detail-inner { padding: 18px 16px 28px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAVBAR ═══ -->
-<nav class="navbar">
+<!-- ═══ TOP BAR ═══ -->
+<div id="topbar">
   <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
-  <span class="nav-tag">Simulation</span>
-  <a class="nav-back" href="index.html">← Back to Hub</a>
-</nav>
-
-<!-- ══════════════════════════════════════════════════════════════
-     SCREEN 1 — LOBBY
-══════════════════════════════════════════════════════════════ -->
-<div id="screen-lobby" class="screen">
-
-  <div class="lobby-hero">
-    <h1>🏗️ PM Simulation</h1>
-    <p>Manage real projects. Make tough decisions. Learn Earned Value Management the hard way.</p>
+  <div class="topbar-sep"></div>
+  <span class="topbar-title" id="topbar-title">PM Simülasyonu</span>
+  <div id="topbar-player" class="hidden">
+    <div class="avatar" id="player-avatar">?</div>
+    <span id="player-name-display"></span>
   </div>
-
-  <div class="lobby-section">
-    <h2>Choose a Scenario</h2>
-    <div id="lobby-scenarios">
-      <!-- Populated by Engine via UIBridge.renderLobby() -->
-      <div class="scenario-card" style="opacity:.5;pointer-events:none">
-        <div class="sc-header"><span class="diff-badge diff-easy">Loading…</span></div>
-        <h3 class="sc-title">Loading scenarios…</h3>
-        <p class="sc-desc">Please wait.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="lobby-about container" style="margin-bottom:0;padding:24px">
-    <h2>What You'll Practice</h2>
-    <p>Each scenario puts you in the PM's seat. Every week you face a real decision — budget trade-offs, scope changes, team issues, stakeholder pressure. Your choices drive EVM metrics in real time.</p>
-    <div class="concept-grid">
-      <div class="concept-item"><strong>CPI / SPI</strong>Cost & Schedule Performance Indices updated every week based on your choices.</div>
-      <div class="concept-item"><strong>EAC / VAC</strong>Forecast-at-completion updates as your project drifts from the plan.</div>
-      <div class="concept-item"><strong>Risk Management</strong>Threats and opportunities materialise based on your decisions and probability rolls.</div>
-      <div class="concept-item"><strong>Stakeholder Mgmt</strong>Keep sponsors happy while managing team morale and delivery.</div>
-      <div class="concept-item"><strong>Servant Leadership</strong>How you respond to team issues directly affects morale and throughput.</div>
-      <div class="concept-item"><strong>Scope & Quality</strong>Trade-off decisions create scope creep and quality debt — just like real projects.</div>
-    </div>
-  </div>
-  <div style="height:40px"></div>
+  <a class="topbar-back" href="index.html">← Hub</a>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════════
-     SCREEN 2 — SCENARIO INTRO
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 1 — WELCOME (name entry)
 ══════════════════════════════════════════════════════════════ -->
-<div id="screen-scenario-intro" class="screen hidden">
-  <div style="padding:32px 20px;display:flex;justify-content:center">
-    <div class="intro-wrapper">
-
-      <div class="intro-header">
-        <h1 id="intro-title">Scenario Title</h1>
-        <p id="intro-description">Loading…</p>
-      </div>
-
-      <div class="intro-details-card">
-        <div id="intro-details"><!-- populated --></div>
-      </div>
-
-      <div class="intro-role-card" id="intro-role">
-        You are the Project Manager.
-      </div>
-
-      <div class="intro-actions">
-        <a href="#" onclick="Engine.returnToLobby();return false;" class="btn-secondary">← Back</a>
-        <button class="btn-primary" id="btn-start-scenario">Start Project →</button>
-      </div>
-
+<div id="screen-welcome" class="screen">
+  <div class="welcome-card">
+    <div class="welcome-logo">📬</div>
+    <h1>PM İş Simülasyonu</h1>
+    <p>Gerçek bir PM olarak çalış. Gelen kutunu yönet, kararlar ver, projeyi tamamla.</p>
+    <div class="welcome-field">
+      <label for="input-name">Adın</label>
+      <input type="text" id="input-name" placeholder="Adını gir..." maxlength="32" autocomplete="off">
     </div>
+    <button class="btn-welcome" id="btn-enter" disabled>Gelen Kutusuna Gir →</button>
+    <p class="welcome-hint">Adın senaryolarda e-postalara dahil edilecek.</p>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════════
-     SCREEN 3 — WEEK (main gameplay)
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 2 — INBOX (scenario selection)
 ══════════════════════════════════════════════════════════════ -->
-<div id="screen-week" class="screen hidden">
+<div id="screen-inbox" class="screen hidden">
+  <div class="fm-layout">
 
-  <!-- Top progress bar -->
-  <div class="week-topbar">
-    <div class="week-badge" id="week-label">Week 1 of 12</div>
-    <span class="week-date-label" id="week-date"></span>
-    <div class="week-bar-wrap">
-      <div class="week-bar-track">
-        <div class="week-bar-fill" id="week-progress-bar" style="width:0%"></div>
+    <!-- Left Nav -->
+    <nav class="fm-nav">
+      <div class="fm-nav-section">Menü</div>
+      <div class="fm-nav-item active">
+        <span class="nav-icon">📥</span>
+        <span>Senaryo Seç</span>
       </div>
-      <span class="week-pct-label" id="week-progress">0%</span>
-    </div>
-  </div>
-
-  <!-- Two-column layout -->
-  <div class="week-layout">
-
-    <!-- LEFT: narrative + decision -->
-    <div class="week-main">
-
-      <!-- Narrative -->
-      <div class="narrative-card">
-        <h3>📰 This Week</h3>
-        <p id="week-narrative">Loading…</p>
+      <div class="fm-nav-item" onclick="Game.changePlayer()">
+        <span class="nav-icon">👤</span>
+        <span>Profil Değiştir</span>
       </div>
-
-      <!-- Decision card -->
-      <div class="decision-card" id="decision-panel">
-        <h3>⚡ Decision Required</h3>
-        <p id="decision-question"></p>
-        <div id="decision-options"></div>
-        <div id="decision-actions"></div>
+      <div class="fm-nav-spacer"></div>
+      <div class="fm-nav-footer">
+        <div class="fm-nav-xp">
+          <span>Toplam XP</span>
+          <span id="inbox-total-xp">0</span>
+        </div>
       </div>
+    </nav>
 
-    </div>
-
-    <!-- RIGHT: metrics panel -->
-    <aside class="metrics-panel">
-
-      <div class="metrics-card">
-        <h4>📊 EVM Metrics</h4>
-        <div id="metric-cpi"><!-- populated --></div>
+    <!-- List panel: scenario list -->
+    <div class="fm-list">
+      <div class="fm-list-header">
+        <h2>Senaryolar</h2>
+        <p id="inbox-greeting">Hoş geldin!</p>
       </div>
-
-      <div class="metrics-card">
-        <h4>💰 Budget</h4>
-        <div id="metric-budget"><!-- populated --></div>
+      <div class="fm-list-body" id="inbox-list">
+        <!-- populated by JS -->
       </div>
-
-      <div class="metrics-card">
-        <h4>🧑‍🤝‍🧑 People</h4>
-        <div id="metric-soft"><!-- populated --></div>
-      </div>
-
-      <div class="metrics-card">
-        <h4>⚠️ Active Risks</h4>
-        <div id="metric-risks"><!-- populated --></div>
-      </div>
-
-    </aside>
-
-  </div><!-- /week-layout -->
-</div><!-- /screen-week -->
-
-<!-- ══════════════════════════════════════════════════════════════
-     SCREEN 4 — CONSEQUENCE
-══════════════════════════════════════════════════════════════ -->
-<div id="screen-consequence" class="screen hidden">
-  <div class="consequence-wrapper">
-
-    <div class="consequence-header">
-      <h2>📋 Week Result</h2>
-      <p>Here's what happened after your decision.</p>
     </div>
 
-    <!-- Decision feedback -->
-    <div class="feedback-card">
-      <h4>Your Decision</h4>
-      <div id="consequence-feedback"></div>
-      <div id="consequence-effects"></div>
-    </div>
-
-    <!-- Random events (shown only if any triggered) -->
-    <div id="consequence-events-section" class="events-card hidden">
-      <h4>🎲 Random Events This Week</h4>
-      <div id="consequence-events"></div>
-    </div>
-
-    <!-- Metrics summary -->
-    <div class="metrics-summary-card">
-      <h4>Current Metrics</h4>
-      <div id="consequence-metrics-summary"></div>
-    </div>
-
-    <!-- Warnings (shown only if any) -->
-    <div id="consequence-warnings-section" class="warnings-card hidden">
-      <h4>⚠️ Warnings</h4>
-      <div id="consequence-warnings"></div>
-    </div>
-
-    <div class="consequence-actions">
-      <button class="btn-primary" id="btn-continue">Next Week →</button>
-    </div>
-
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════════
-     SCREEN 5 — GAME OVER
-══════════════════════════════════════════════════════════════ -->
-<div id="screen-game-over" class="screen hidden">
-  <div class="gameover-box">
-    <span class="gameover-icon">💀</span>
-    <h1>Project Failed</h1>
-    <p id="gameover-reason">Your project has been terminated.</p>
-    <p id="gameover-metric"></p>
-    <p id="gameover-week"></p>
-    <button class="btn-primary" id="btn-see-debrief">See Full Debrief →</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════════
-     SCREEN 6 — DEBRIEF
-══════════════════════════════════════════════════════════════ -->
-<div id="screen-debrief" class="screen hidden">
-  <div class="debrief-wrapper">
-
-    <div class="debrief-header">
-      <h1>📊 Project Debrief</h1>
-      <div class="grade-row">
-        <div id="debrief-grade">—</div>
-        <div>
-          <div id="debrief-score">—</div>
-          <div id="debrief-result">—</div>
+    <!-- Detail panel: selected scenario info -->
+    <div class="fm-detail">
+      <div class="fm-detail-inner" id="inbox-detail">
+        <div class="detail-placeholder">
+          <div class="ph-icon">📋</div>
+          <p>Oynamak istediğin senaryoyu listeden seç.</p>
         </div>
       </div>
     </div>
 
-    <div class="debrief-grid">
+  </div>
+</div>
 
-      <div class="debrief-card">
-        <h3>Score Breakdown</h3>
-        <div id="debrief-breakdown"><!-- populated --></div>
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 3 — PLAYING (FM inbox gameplay)
+══════════════════════════════════════════════════════════════ -->
+<div id="screen-playing" class="screen hidden">
+  <div class="fm-layout">
+
+    <!-- Left Nav -->
+    <nav class="fm-nav">
+      <div class="fm-nav-section">Senaryo</div>
+      <div class="fm-nav-item active">
+        <span class="nav-icon">📬</span>
+        <span>Gelen Kutusu</span>
+        <span class="nav-badge" id="play-unread-badge">0</span>
       </div>
-
-      <div class="debrief-card">
-        <h3>Final EVM Snapshot</h3>
-        <div id="debrief-evm"><!-- populated --></div>
+      <div class="fm-nav-spacer"></div>
+      <div class="fm-nav-footer">
+        <div class="fm-nav-xp">
+          <span>XP</span>
+          <span id="play-xp-label">0</span>
+        </div>
+        <div class="xp-bar-track">
+          <div class="xp-bar-fill" id="play-xp-bar" style="width:0%"></div>
+        </div>
       </div>
+    </nav>
 
-      <div class="debrief-card">
-        <h3>Decision History</h3>
-        <div id="debrief-decisions"><!-- populated --></div>
+    <!-- List panel: message list -->
+    <div class="fm-list">
+      <div class="fm-list-header">
+        <h2 id="play-scenario-name">Proje Gelen Kutusu</h2>
+        <p id="play-progress-label">0 / 0 mesaj</p>
       </div>
-
-      <div class="debrief-card">
-        <h3>Events That Occurred</h3>
-        <div id="debrief-events"><!-- populated --></div>
+      <div class="fm-list-body" id="play-msg-list">
+        <!-- populated by JS -->
       </div>
-
     </div>
 
-    <div class="debrief-actions">
-      <a href="exam.html" class="btn-secondary">Practice Exam</a>
-      <button class="btn-primary" id="btn-return-lobby">▶ Play Again</button>
+    <!-- Detail panel: current message -->
+    <div class="fm-detail">
+      <div class="fm-detail-inner" id="play-detail">
+        <div class="detail-placeholder">
+          <div class="ph-icon">📬</div>
+          <p>Bir mesajı okumak için listeden tıkla.</p>
+        </div>
+      </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════════
-     ENGINE SCRIPTS (order matters — dependencies first)
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 4 — RESULT
 ══════════════════════════════════════════════════════════════ -->
-<script src="engine/utils.js"></script>
-<script src="engine/event-bus.js"></script>
-<script src="engine/store.js"></script>
-<script src="engine/state-machine.js"></script>
-<script src="engine/metrics-engine.js"></script>
-<script src="engine/scenario-loader.js"></script>
-<script src="engine/decision-resolver.js"></script>
-<script src="engine/consequence-engine.js"></script>
-<script src="engine/notification-manager.js"></script>
-<script src="engine/ui-bridge.js"></script>
-<script src="engine/engine.js"></script>
+<div id="screen-result" class="screen hidden">
+  <div class="result-card">
+    <div class="result-hero">
+      <div class="result-grade-circle" id="result-grade-circle">A</div>
+      <h2 id="result-title">Tebrikler!</h2>
+      <p id="result-subtitle">Senaryo tamamlandı.</p>
+    </div>
+    <div class="result-body">
+      <div class="result-stats">
+        <div class="stat-cell">
+          <div class="stat-val" id="result-xp">0</div>
+          <div class="stat-lbl">XP Kazanıldı</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val" id="result-decisions">0</div>
+          <div class="stat-lbl">Karar Verildi</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val" id="result-unethical">0</div>
+          <div class="stat-lbl">Etik İhlal</div>
+        </div>
+      </div>
+
+      <div class="result-section-title">Karar Geçmişi</div>
+      <div id="result-decision-log"></div>
+
+      <div class="result-actions">
+        <button class="btn-result-primary" id="btn-play-again">Tekrar Oyna</button>
+        <button class="btn-result-secondary" id="btn-back-inbox">Senaryo Seç</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NOTIFICATIONS ═══ -->
+<div id="notif-container"></div>
 
 <script>
-  // Boot the game when DOM is ready
-  document.addEventListener('DOMContentLoaded', () => Engine.init());
+/* ═══════════════════════════════════════════════════════════════
+   GAME ENGINE — self-contained, no external deps
+═══════════════════════════════════════════════════════════════ */
+const Game = (() => {
+
+  // ── State ──────────────────────────────────────────────────
+  const S = {
+    playerName: '',
+    scenario:   null,   // loaded scenario JSON
+    messages:   [],     // resolved + filtered messages array
+    index:      0,      // current message index (cursor)
+    xp:         0,
+    maxXP:      0,
+    unethical:  0,
+    answered:   {},     // { msgId: optionId }
+    decidedAt:  {},     // { msgId: true } — messages where decision was made
+    totalXP:    0,      // cumulative across all plays (localStorage)
+  };
+
+  // ── Screens ───────────────────────────────────────────────
+  const SCREENS = ['screen-welcome','screen-inbox','screen-playing','screen-result'];
+  function _show(id) {
+    SCREENS.forEach(s => {
+      document.getElementById(s).classList.toggle('hidden', s !== id);
+    });
+  }
+
+  // ── Notifications ─────────────────────────────────────────
+  function notif(msg, type = 'info', ms = 3200) {
+    const c = document.getElementById('notif-container');
+    const el = document.createElement('div');
+    el.className = `notif n-${type}`;
+    el.textContent = msg;
+    c.appendChild(el);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('visible')));
+    setTimeout(() => {
+      el.classList.remove('visible');
+      el.classList.add('hiding');
+      setTimeout(() => el.remove(), 300);
+    }, ms);
+  }
+
+  // ── Init ──────────────────────────────────────────────────
+  function init() {
+    const saved = localStorage.getItem('pm_player_name');
+    if (saved) {
+      S.playerName = saved;
+      S.totalXP = parseInt(localStorage.getItem('pm_total_xp') || '0', 10);
+      _showInbox();
+    } else {
+      _show('screen-welcome');
+      _initWelcome();
+    }
+  }
+
+  function _initWelcome() {
+    const inp = document.getElementById('input-name');
+    const btn = document.getElementById('btn-enter');
+    inp.addEventListener('input', () => {
+      btn.disabled = inp.value.trim().length < 2;
+    });
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && inp.value.trim().length >= 2) _onEnterName();
+    });
+    btn.addEventListener('click', _onEnterName);
+  }
+
+  function _onEnterName() {
+    const name = document.getElementById('input-name').value.trim();
+    if (!name) return;
+    S.playerName = name;
+    localStorage.setItem('pm_player_name', name);
+    _showInbox();
+  }
+
+  function changePlayer() {
+    localStorage.removeItem('pm_player_name');
+    S.playerName = '';
+    document.getElementById('input-name').value = '';
+    document.getElementById('btn-enter').disabled = true;
+    _show('screen-welcome');
+    _initWelcome();
+  }
+
+  // ── Topbar helpers ────────────────────────────────────────
+  function _updateTopbar(title) {
+    document.getElementById('topbar-title').textContent = title || 'PM Simülasyonu';
+    const pd = document.getElementById('topbar-player');
+    if (S.playerName) {
+      pd.classList.remove('hidden');
+      document.getElementById('player-name-display').textContent = S.playerName;
+      document.getElementById('player-avatar').textContent = S.playerName.charAt(0).toUpperCase();
+    } else {
+      pd.classList.add('hidden');
+    }
+  }
+
+  // ── Inbox (scenario selection) ────────────────────────────
+  async function _showInbox() {
+    _show('screen-inbox');
+    _updateTopbar('Senaryo Seç');
+    document.getElementById('inbox-greeting').textContent = `Hoş geldin, ${S.playerName}!`;
+    document.getElementById('inbox-total-xp').textContent = S.totalXP;
+    await _loadScenarioIndex();
+  }
+
+  async function _loadScenarioIndex() {
+    try {
+      const resp = await fetch('data/scenario-index.json');
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const data = await resp.json();
+      _renderInboxList(data.scenarios);
+    } catch (e) {
+      console.error('[Game] Failed to load scenario index', e);
+      document.getElementById('inbox-list').innerHTML =
+        '<div style="padding:20px;color:#ef4444;font-size:13px">Senaryolar yüklenemedi. Sayfayı yenileyin.</div>';
+    }
+  }
+
+  function _renderInboxList(scenarios) {
+    const list = document.getElementById('inbox-list');
+    list.innerHTML = '';
+    scenarios.forEach((sc, i) => {
+      const locked = sc.available === false;
+      const row = document.createElement('div');
+      row.className = 'list-msg' + (locked ? ' locked' : '');
+      row.innerHTML = `
+        <div class="msg-from">${_escHtml(sc.title)}</div>
+        <div class="msg-subject">${_escHtml(sc.domain || '')}</div>
+        <div class="msg-meta">
+          <span class="msg-type-badge ${locked ? 'type-locked' : 'type-story'}">${locked ? 'Kilitli' : sc.difficulty || 'Normal'}</span>
+          ${!locked ? '<span class="msg-unread-dot"></span>' : ''}
+        </div>`;
+      if (!locked) {
+        row.addEventListener('click', () => _selectScenarioInInbox(sc, row));
+      }
+      list.appendChild(row);
+    });
+  }
+
+  function _selectScenarioInInbox(sc, row) {
+    document.querySelectorAll('#inbox-list .list-msg').forEach(r => r.classList.remove('active'));
+    row.classList.add('active');
+
+    const diff = sc.difficulty ? sc.difficulty.toLowerCase() : 'easy';
+    const diffClass = diff.includes('beg') || diff === 'easy' ? 'diff-easy'
+                    : diff.includes('int') || diff === 'medium' ? 'diff-med'
+                    : 'diff-hard';
+
+    document.getElementById('inbox-detail').innerHTML = `
+      <div class="inbox-detail-wrap">
+        <div class="inbox-welcome-title">${_escHtml(sc.title)}</div>
+        <div class="inbox-welcome-sub">${_escHtml(sc.description || '')}</div>
+        <div class="scenario-cards">
+          <div class="sc-card">
+            <div class="sc-card-icon">📋</div>
+            <div class="sc-card-body">
+              <div class="sc-card-title">${_escHtml(sc.title)}</div>
+              <div class="sc-card-desc">${_escHtml(sc.description || '')}</div>
+              <div class="sc-card-tags">
+                <span class="diff-badge ${diffClass}">${_escHtml(sc.difficulty || '')}</span>
+                ${(sc.tags || []).map(t => `<span class="sc-tag">${_escHtml(t)}</span>`).join('')}
+                ${sc.weeks ? `<span class="sc-tag">${sc.weeks} hafta</span>` : ''}
+              </div>
+              <button class="btn-play-sc" style="margin-top:14px" data-id="${_escHtml(sc.id)}">Oyna ▶</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    document.querySelector('.btn-play-sc').addEventListener('click', () => _startScenario(sc.id));
+  }
+
+  // ── Start Scenario ────────────────────────────────────────
+  async function _startScenario(scenarioId) {
+    notif('Senaryo yükleniyor…', 'info', 1500);
+    try {
+      const resp = await fetch(`data/scenarios/${scenarioId}.json`);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const sc = await resp.json();
+      _beginPlay(sc);
+    } catch (e) {
+      console.error('[Game] Failed to load scenario', scenarioId, e);
+      notif(`Senaryo yüklenemedi: ${scenarioId}`, 'danger');
+    }
+  }
+
+  function _beginPlay(scenario) {
+    // Reset state
+    S.scenario  = scenario;
+    S.index     = 0;
+    S.xp        = 0;
+    S.unethical = 0;
+    S.answered  = {};
+    S.decidedAt = {};
+
+    // Compute maxXP from all decision options' positive XP values
+    S.maxXP = 0;
+    (scenario.messages || []).forEach(msg => {
+      if (msg.type === 'decision') {
+        const best = Math.max(...(msg.options || []).map(o => o.xp || 0));
+        S.maxXP += best;
+      }
+    });
+
+    // Resolve messages (filter out conditionals based on initial state = always show story/decision)
+    // We rebuild message list each time we need to advance (to respect conditional evaluation)
+    S.messages = _resolveMessages();
+
+    _show('screen-playing');
+    _updateTopbar(scenario.title);
+    document.getElementById('play-scenario-name').textContent = scenario.title;
+    _renderMsgList();
+    _advance();
+  }
+
+  // ── Message Resolution ────────────────────────────────────
+  function _resolveMessages() {
+    const raw = S.scenario.messages || [];
+    const result = [];
+    raw.forEach(msg => {
+      if (msg.type === 'conditional') {
+        const variant = _pickVariant(msg);
+        if (variant) {
+          result.push({ ...variant, _origId: msg.id, type: variant.type || 'story' });
+        }
+      } else {
+        result.push(msg);
+      }
+    });
+    return result;
+  }
+
+  function _pickVariant(msg) {
+    const variants = msg.variants || [];
+    for (const v of variants) {
+      if (v.condition === 'default' || v.condition === 'always') return v;
+      if (_checkCond(v.condition)) return v;
+    }
+    return null;
+  }
+
+  function _checkCond(c) {
+    if (!c || c === 'always') return true;
+    if (c.minXP        !== undefined && S.xp        < c.minXP)        return false;
+    if (c.maxXP        !== undefined && S.xp        > c.maxXP)        return false;
+    if (c.minUnethical !== undefined && S.unethical  < c.minUnethical) return false;
+    if (c.maxUnethical !== undefined && S.unethical  > c.maxUnethical) return false;
+    if (c.answeredClean !== undefined) {
+      // Count clean (non-unethical, positive-XP) decisions made
+      const clean = Object.keys(S.answered).filter(mid => {
+        const sc = S.scenario.messages.find(m => m.id == mid);
+        if (!sc || sc.type !== 'decision') return false;
+        const opt = (sc.options || []).find(o => o.id === S.answered[mid]);
+        return opt && !opt.isUnethical && (opt.xp || 0) > 0;
+      }).length;
+      if (clean < c.answeredClean) return false;
+    }
+    if (c.answeredUnethical !== undefined) {
+      if (S.unethical < c.answeredUnethical) return false;
+    }
+    return true;
+  }
+
+  // ── Advance / Render ──────────────────────────────────────
+  function _advance() {
+    // Re-resolve to pick up any newly-unlocked conditional variants
+    S.messages = _resolveMessages();
+
+    if (S.index >= S.messages.length) {
+      _endScenario();
+      return;
+    }
+    _renderMsgList();
+    _renderCurrentMsg();
+    _scrollToActive();
+  }
+
+  function _renderCurrentMsg() {
+    const msg = S.messages[S.index];
+    if (!msg) return;
+
+    const detail = document.getElementById('play-detail');
+    const body = _replaceName(msg.body || '');
+    const initials = _initials(msg.from || '?');
+    const alreadyAnswered = msg.type === 'decision' && S.answered[msg.id] !== undefined;
+
+    let html = `
+      <div class="email-header">
+        <div class="email-subject">${_escHtml(msg.subject || '(Konu yok)')}</div>
+        <div class="email-meta">
+          <div class="email-avatar">${initials}</div>
+          <div class="email-from-info">
+            <div class="email-from-name">${_escHtml(msg.from || '')}</div>
+            ${msg.role ? `<div class="email-from-role">${_escHtml(msg.role)}</div>` : ''}
+          </div>
+          <div class="email-timestamp">${_msgTimestamp(S.index)}</div>
+        </div>
+      </div>
+      <div class="email-body">${_escHtml(body)}</div>`;
+
+    if (msg.type === 'story') {
+      html += `<button class="btn-story-next" id="btn-story-next">Sonraki Mesaj →</button>`;
+    } else if (msg.type === 'decision') {
+      html += _renderDecisionHTML(msg, alreadyAnswered);
+    }
+
+    detail.innerHTML = html;
+
+    // Bind events
+    if (msg.type === 'story') {
+      document.getElementById('btn-story-next').addEventListener('click', () => {
+        S.index++;
+        _advance();
+      });
+    } else if (msg.type === 'decision' && !alreadyAnswered) {
+      (msg.options || []).forEach(opt => {
+        const btn = document.getElementById('opt-' + opt.id);
+        if (btn) btn.addEventListener('click', () => _onDecide(msg, opt));
+      });
+    } else if (msg.type === 'decision' && alreadyAnswered) {
+      // Already answered — bind next button
+      const nextBtn = document.getElementById('btn-next-decided');
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        S.index++;
+        _advance();
+      });
+    }
+
+    // Update badges
+    _updateBadges();
+  }
+
+  function _renderDecisionHTML(msg, alreadyAnswered) {
+    const chosenId = S.answered[msg.id];
+    let html = `<div class="decision-section"><div class="decision-label">Karar Ver</div><div class="option-list">`;
+    (msg.options || []).forEach(opt => {
+      const xpVal = opt.xp || 0;
+      const xpClass = xpVal > 0 ? 'xp-pos' : xpVal < 0 ? 'xp-neg' : 'xp-zero';
+      const xpText  = xpVal > 0 ? `+${xpVal} XP` : xpVal < 0 ? `${xpVal} XP` : '0 XP';
+      let cls = 'option-btn';
+      if (alreadyAnswered) {
+        cls += chosenId === opt.id ? ' opt-chosen' : ' opt-unchosen';
+      }
+      html += `
+        <button class="${cls}" id="opt-${_escHtml(opt.id)}" ${alreadyAnswered ? 'disabled' : ''}>
+          <span class="opt-key">${_escHtml(opt.id.toUpperCase())}</span>
+          <span class="opt-text">${_escHtml(opt.text)}</span>
+          <span class="xp-badge ${xpClass}">${xpText}</span>
+        </button>`;
+    });
+    html += `</div>`;
+
+    if (alreadyAnswered) {
+      const chosen = (msg.options || []).find(o => o.id === chosenId);
+      if (chosen) {
+        const fbClass = chosen.isUnethical ? 'feedback-box fb-unethical' : 'feedback-box';
+        html += `<div class="${fbClass}">${chosen.isUnethical ? '<strong>⚠️ Etik İhlal — </strong>' : '<strong>Seçimin: </strong>'} ${_escHtml(chosen.feedback || chosen.text)}</div>`;
+      }
+      html += `<button class="btn-next-after" id="btn-next-decided">Sonraki Mesaj →</button>`;
+    }
+
+    html += `</div>`;
+    return html;
+  }
+
+  function _onDecide(msg, opt) {
+    // Record answer
+    S.answered[msg.id] = opt.id;
+
+    // Apply XP
+    const gain = opt.xp || 0;
+    S.xp = Math.max(0, S.xp + gain);
+    if (opt.isUnethical) S.unethical++;
+
+    // Re-render current message with chosen state (shows feedback)
+    _renderCurrentMsg();
+    _renderMsgList();
+    _updateBadges();
+
+    // Notify
+    if (gain > 0) notif(`+${gain} XP kazandın!`, 'success', 2200);
+    else if (gain < 0) notif(`${gain} XP — Dikkatli ol!`, 'warn', 2500);
+    if (opt.isUnethical) notif('⚠️ Etik ihlal kaydedildi!', 'danger', 3000);
+
+    // Check game-over: unethical >= 3
+    if (S.unethical >= 3) {
+      setTimeout(() => _endScenario(true), 2800);
+    }
+  }
+
+  // ── Message List Render ───────────────────────────────────
+  function _renderMsgList() {
+    const list = document.getElementById('play-msg-list');
+    const resolved = S.messages;
+    let lastChapter = null;
+    let html = '';
+
+    resolved.forEach((msg, i) => {
+      const isLocked   = i > S.index;
+      const isActive   = i === S.index;
+      const isDone     = i < S.index || S.answered[msg.id] !== undefined;
+      const isUnread   = i === S.index && !isDone;
+      const chapter    = msg.chapter || msg._chapter || null;
+
+      if (chapter && chapter !== lastChapter) {
+        html += `<div class="list-chapter">${_escHtml(chapter)}</div>`;
+        lastChapter = chapter;
+      }
+
+      let cls = 'list-msg';
+      if (isActive)  cls += ' active';
+      if (isLocked)  cls += ' locked';
+      if (isUnread)  cls += ' unread';
+
+      let typeBadge, typeClass;
+      if (isLocked) {
+        typeBadge = 'Kilitli'; typeClass = 'type-locked';
+      } else if (isDone || S.answered[msg.id] !== undefined) {
+        typeBadge = 'Okundu'; typeClass = 'type-done';
+      } else if (msg.type === 'decision') {
+        typeBadge = 'Karar'; typeClass = 'type-decision';
+      } else {
+        typeBadge = 'Mesaj'; typeClass = 'type-story';
+      }
+
+      html += `
+        <div class="${cls}" data-idx="${i}">
+          <div class="msg-from">${_escHtml(msg.from || 'Sistem')}</div>
+          <div class="msg-subject">${_escHtml(msg.subject || '(Konu yok)')}</div>
+          <div class="msg-meta">
+            <span class="msg-type-badge ${typeClass}">${typeBadge}</span>
+            ${isUnread ? '<span class="msg-unread-dot"></span>' : ''}
+          </div>
+        </div>`;
+    });
+
+    list.innerHTML = html;
+
+    // Bind click only for read/current messages
+    list.querySelectorAll('.list-msg:not(.locked)').forEach(row => {
+      row.addEventListener('click', () => {
+        const idx = parseInt(row.dataset.idx, 10);
+        S.index = idx;
+        _renderCurrentMsg();
+        list.querySelectorAll('.list-msg').forEach(r => r.classList.remove('active'));
+        row.classList.add('active');
+      });
+    });
+
+    // Progress label
+    const total = resolved.length;
+    const done  = Object.keys(S.answered).length + resolved.filter((m, i) => i < S.index && m.type === 'story').length;
+    document.getElementById('play-progress-label').textContent = `${S.index} / ${total} mesaj`;
+  }
+
+  function _scrollToActive() {
+    const list = document.getElementById('play-msg-list');
+    const active = list.querySelector('.active');
+    if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  // ── Badges / XP bar ───────────────────────────────────────
+  function _updateBadges() {
+    const unread = S.messages.length - S.index;
+    document.getElementById('play-unread-badge').textContent = Math.max(0, unread);
+    document.getElementById('play-xp-label').textContent = S.xp;
+    const pct = S.maxXP > 0 ? Math.round((S.xp / S.maxXP) * 100) : 0;
+    document.getElementById('play-xp-bar').style.width = pct + '%';
+  }
+
+  // ── End Scenario ──────────────────────────────────────────
+  function _endScenario(gameOver = false) {
+    const decisionCount = Object.keys(S.answered).length;
+    const grade = _calcGrade();
+
+    // Update total XP in localStorage
+    S.totalXP = (S.totalXP || 0) + S.xp;
+    localStorage.setItem('pm_total_xp', S.totalXP);
+
+    _show('screen-result');
+    _updateTopbar('Sonuç');
+
+    // Grade circle
+    const gradeEl = document.getElementById('result-grade-circle');
+    gradeEl.textContent = grade;
+    gradeEl.className = `result-grade-circle grade-${grade}`;
+
+    document.getElementById('result-title').textContent = gameOver
+      ? '⚠️ Proje Sonlandırıldı!'
+      : grade === 'A' ? '🎉 Mükemmel Performans!'
+      : grade === 'B' ? '👍 İyi İş Çıkardın'
+      : grade === 'C' ? 'Fena Değil'
+      : grade === 'D' ? '😬 Gelişime İhtiyaç Var'
+      : '😔 Daha Çok Çalışmalısın';
+
+    document.getElementById('result-subtitle').textContent = gameOver
+      ? `3 etik ihlal nedeniyle proje durduruldu. Kazanılan XP: ${S.xp}`
+      : `XP: ${S.xp} / ${S.maxXP} — Etik İhlal: ${S.unethical}`;
+
+    document.getElementById('result-xp').textContent = S.xp;
+    document.getElementById('result-decisions').textContent = decisionCount;
+    document.getElementById('result-unethical').textContent = S.unethical;
+
+    // Decision log
+    const logEl = document.getElementById('result-decision-log');
+    const decisionMsgs = S.messages.filter(m => m.type === 'decision');
+    if (decisionMsgs.length === 0) {
+      logEl.innerHTML = '<div style="font-size:13px;color:#94a3b8">Karar verilmedi.</div>';
+    } else {
+      logEl.innerHTML = decisionMsgs.map((m, i) => {
+        const optId = S.answered[m.id];
+        const opt   = optId ? (m.options || []).find(o => o.id === optId) : null;
+        const xpVal = opt ? (opt.xp || 0) : 0;
+        return `<div class="result-decision-row">
+          <span class="rd-num">${i + 1}.</span>
+          <span class="rd-text">${_escHtml(m.subject || m.from || '')}: ${opt ? _escHtml(opt.text.substring(0, 60)) + (opt.text.length > 60 ? '…' : '') : '(cevaplandı)'}</span>
+          <span class="rd-xp ${xpVal >= 0 ? 'pos' : 'neg'}">${xpVal > 0 ? '+' : ''}${xpVal}</span>
+        </div>`;
+      }).join('');
+    }
+
+    // Buttons
+    document.getElementById('btn-play-again').addEventListener('click', () => _beginPlay(S.scenario));
+    document.getElementById('btn-back-inbox').addEventListener('click', () => _showInbox());
+  }
+
+  function _calcGrade() {
+    if (S.maxXP === 0) return 'A';
+    const pct = (S.xp / S.maxXP) * 100;
+    if (pct >= 90) return 'A';
+    if (pct >= 75) return 'B';
+    if (pct >= 60) return 'C';
+    if (pct >= 45) return 'D';
+    return 'F';
+  }
+
+  // ── Helpers ───────────────────────────────────────────────
+  function _replaceName(str) {
+    return str.replace(/\{playerName\}/gi, S.playerName);
+  }
+
+  function _escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function _initials(name) {
+    const parts = name.split(/\s+/).filter(Boolean);
+    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+    return name.substring(0, 2).toUpperCase();
+  }
+
+  function _msgTimestamp(index) {
+    // Generate a fake timestamp based on message index
+    const base = new Date(2025, 0, 13, 9, 0, 0);
+    base.setHours(base.getHours() + index * 2);
+    return base.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })
+      + ' · ' + base.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+  }
+
+  // ── Public ────────────────────────────────────────────────
+  return { init, notif, changePlayer };
+
+})();
+
+document.addEventListener('DOMContentLoaded', () => Game.init());
 </script>
 
 </body>
