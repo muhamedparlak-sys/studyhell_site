@@ -1102,7 +1102,14 @@ var Game; Game = (() => {
     updateAuthButtons();
     const get = g => (document.querySelector('#grp-'+g+' .opt-cell.selected')||{}).dataset?.v || 'random';
     S.setup = {difficulty:get('difficulty'),sector:get('sector'),culture:get('culture'),method:get('method')};
-    loadScenario('star-top-bank');
+    // Zorluk seviyesine göre senaryo seç
+    const diff = S.setup.difficulty;
+    const scenarioMap = { beginner: 'star-top-bank', intermediate: 'star-top-bank', advanced: 'ebabil' };
+    const candidates = diff === 'random'
+      ? ['star-top-bank', 'ebabil']
+      : [scenarioMap[diff] || 'star-top-bank'];
+    const picked = candidates[Math.floor(Math.random() * candidates.length)];
+    loadScenario(picked);
   }
 
   function buildPerfGrid() {
