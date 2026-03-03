@@ -994,14 +994,17 @@ var Game; Game = (() => {
   }
 
   function init() {
-    // ── Auth gate: login required ──────────────────────────────
-    const session = authGetSession();
+    // ── Auth gate: misafir moduna izin ver ────────────────────
+    let session = authGetSession();
     if (!session) {
-      window.location.href = 'index.html?auth=1&return=game.html';
-      return;
+      session = { username: 'guest', displayName: 'Misafir' };
     }
     S.name = session.displayName;
     updateAuthButtons();
+
+    // ?preview=<scenarioId> — mock skorlarla sonuç ekranını göster
+    const previewId = new URLSearchParams(location.search).get('preview');
+    if (previewId) { previewScorecard(previewId); return; }
 
     // Find existing saves and render welcome accordingly
     const saves = findUserSaves();
@@ -1131,6 +1134,31 @@ var Game; Game = (() => {
       S.setup = {area:c.dataset.area, difficulty:c.dataset.diff};
       document.getElementById('btn-perf-go').disabled = false;
     });
+  }
+
+  // ── Preview modu: mock cevaplarla scorecard göster ──────────
+  async function previewScorecard(scenarioId) {
+    try {
+      const r = await fetch(`data/scenarios/${scenarioId}.json`);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      S.scenario = await r.json();
+      S.notifs   = S.scenario.notifications || [];
+      S.name     = 'Test PM';
+      S.xp       = 0; S.dCount = 0; S.answered = {};
+
+      // Mock cevaplar: %70 A, %20 B, %10 C
+      const decisions = S.notifs.filter(n => n.type === 'decision');
+      decisions.forEach((n, i) => {
+        const roll = i % 10;
+        const key  = roll < 7 ? 'A' : roll < 9 ? 'B' : 'C';
+        S.answered[n.id] = key;
+        const opt = n.options?.find(o => o.key === key);
+        if (opt) S.xp += opt.xp || 0;
+      });
+
+      document.title = (S.scenario.title || 'Preview') + ' – Scorecard Preview';
+      showResult();
+    } catch(e) { alert('Preview yüklenemedi: ' + e.message); }
   }
 
   async function loadScenario(id) {
