@@ -8,7 +8,7 @@ Format: [Semantic Versioning](https://semver.org/) · Tarih: GG-AA-YYYY
 ## [1.2.0] — 03-03-2026
 
 ### 🆕 Yeni Senaryo
-- **E-BABİL Otonom İHA Sistemi** senaryosu eklendi
+- **Ebabil Otonom İHA Sistemi** senaryosu eklendi
   - 270 bildirim (B1–B270), 27 bölüm (Faz 1–27)
   - 161 karar bildirimi (her biri 4 şık: A/B/C/D)
   - 109 hikaye/story bildirimi
@@ -36,7 +36,7 @@ Format: [Semantic Versioning](https://semver.org/) · Tarih: GG-AA-YYYY
 - Daha eski bir bildirim seçildiğinde saat geriye gitmiyor — her zaman en güncel bildirimi referans alıyor
 - Mailler geldikleri an cevaplandı gibi gözükmüyor
 
-### 📝 Senaryo İçeriği Düzeltmeleri (E-BABİL)
+### 📝 Senaryo İçeriği Düzeltmeleri (Ebabil)
 - Tümgeneral "Hulusi" → **Şeref KOÇHİSAR** olarak güncellendi (34 bildirim)
 - Askeri rütbelilere hitap: "Generalim" → **"Sayın Komutanım"**
 

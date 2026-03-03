@@ -1,11 +1,11 @@
 {
   "id": "ebabil",
-  "title": "E-BABİL Otonom İHA Sistemi",
+  "title": "Ebabil Otonom İHA Sistemi",
   "subtitle": "Sürü Zekası ve Küresel Savunma",
   "sector": "Savunma Sanayii / Teknoloji",
   "difficulty": "advanced",
   "playerRole": "Proje Yöneticisi",
-  "company": "E-BABİL Savunma Teknolojileri A.Ş.",
+  "company": "Ebabil Savunma Teknolojileri A.Ş.",
   "dChoiceLimit": 3,
   "totalDecisions": 162,
   "maxXP": 4860,
@@ -144,6 +144,21 @@
       "id": 27,
       "title": "BÖLÜM 27: BÜYÜK FİNAL - DEVOPS VE İLERİ ÇEVİKLİK",
       "iteration": "Faz 27"
+    },
+    {
+      "id": 28,
+      "title": "BÖLÜM 28: MATRİS KRİZLERİ VE SÖZLEŞMELER",
+      "iteration": "Faz 28"
+    },
+    {
+      "id": 29,
+      "title": "BÖLÜM 29: DEĞER, ÇEVİK METRİKLER VE TESLİMAT",
+      "iteration": "Faz 29"
+    },
+    {
+      "id": 30,
+      "title": "BÖLÜM 30: BÜYÜK FİNAL VE KAPANIŞ",
+      "iteration": "Faz 30"
     }
   ],
   "competencies": [
@@ -269,8 +284,8 @@
       "section": 1,
       "from": "Savunma Sanayii A.Ş. Yönetim Kurulu",
       "fromRole": "Sistem",
-      "subject": "GİZLİ: E-BABİL Projesi Direktörlüğü Ataması",
-      "body": "Sayın Yönetici, Yönetim Kurulu kararıyla \"E-BABİL Otonom İHA Sistemi\" projesinin başına atanmış bulunuyorsunuz. Önceki proje yöneticisi, yaşanan ağır stres ve takım içi krizler nedeniyle görevden ayrılmıştır. E-BABİL sıradan bir proje değildir; birbirleriyle iletişim kurabilen, yapay zeka (AI) tabanlı makine öğrenimi kullanan bir \"sürü İHA\" ağı ve bu ağı taşıyacak fiziksel drone gövdelerinin (donanım) aynı anda üretilmesini gerektirir. Savunma sanayiinin doğası gereği kalite ve uyumluluk (compliance) standartlarımız acımasızdır. Önünüzde yüksek belirsizlik (yazılım algoritması) ile katı mühendislik (donanım üretimi) süreçlerinin iç içe geçtiği son derece karmaşık (complex) bir ekosistem var. Tüm iletişimleriniz kayıt altındadır. Başarılar dileriz.",
+      "subject": "GİZLİ: Ebabil Projesi Direktörlüğü Ataması",
+      "body": "Sayın Yönetici, Yönetim Kurulu kararıyla \"Ebabil Otonom İHA Sistemi\" projesinin başına atanmış bulunuyorsunuz. Önceki proje yöneticisi, yaşanan ağır stres ve takım içi krizler nedeniyle görevden ayrılmıştır. Ebabil sıradan bir proje değildir; birbirleriyle iletişim kurabilen, yapay zeka (AI) tabanlı makine öğrenimi kullanan bir \"sürü İHA\" ağı ve bu ağı taşıyacak fiziksel drone gövdelerinin (donanım) aynı anda üretilmesini gerektirir. Savunma sanayiinin doğası gereği kalite ve uyumluluk (compliance) standartlarımız acımasızdır. Önünüzde yüksek belirsizlik (yazılım algoritması) ile katı mühendislik (donanım üretimi) süreçlerinin iç içe geçtiği son derece karmaşık (complex) bir ekosistem var. Tüm iletişimleriniz kayıt altındadır. Başarılar dileriz.",
       "time": "08:00"
     },
     {
@@ -319,7 +334,7 @@
       "section": 1,
       "from": "Murat Tekin",
       "fromRole": "Proje Yönetim Ofisi [PMO] Direktörü",
-      "subject": "UYARI: E-BABİL'in Temeli Eksik!",
+      "subject": "UYARI: Ebabil'in Temeli Eksik!",
       "body": "Projeye hızlı bir giriş yaptın ama dosyaları incelediğimde kritik bir eksiklik fark ettim. Projenin neden yapıldığına, beklenen finansal getirilere, yasal zorunluluklara ve stratejik faydalara dair onaylı bir 'İş Gerekçesi' (Business Case) ile 'Fayda Yönetim Planı' (Benefits Management Plan) ortada yok. Sadece askeri bir talep var. PMP standartlarına göre, projeler organizasyona somut bir \"Değer (Value)\" katmalıdır. İş Gerekçesi olmadan takıma iş atamaya başlayacak mısın?",
       "time": "09:30",
       "options": [
@@ -370,7 +385,7 @@
       "from": "Zeynep Aydın",
       "fromRole": "Sözleşmeler ve Yönetişim Müdürü",
       "subject": "Proje Başlatma Belgesinin (Charter) Kapsamı",
-      "body": "E-BABİL için resmi Proje Başlatma Belgesini (Charter) bugün yayınlıyoruz. Bu belge sizin bu projedeki yasal kılıcınız ve kalkanınız olacak. Belgeyi onaylamadan önce, taslağın içine özellikle nelerin dahil edilmesini istersiniz ki bu devasa projede \"Proje Yöneticisi\" olarak tam yetkinizi elinize alasınız?",
+      "body": "Ebabil için resmi Proje Başlatma Belgesini (Charter) bugün yayınlıyoruz. Bu belge sizin bu projedeki yasal kılıcınız ve kalkanınız olacak. Belgeyi onaylamadan önce, taslağın içine özellikle nelerin dahil edilmesini istersiniz ki bu devasa projede \"Proje Yöneticisi\" olarak tam yetkinizi elinize alasınız?",
       "time": "11:00",
       "options": [
         {
@@ -410,7 +425,7 @@
       "from": "Albay Kemal",
       "fromRole": "Kalite Güvence ve NATO Uyumluluk Denetçisi",
       "subject": "KRİTİK: Siber Güvenlik Protokolleri",
-      "body": "E-BABİL'in yapay zeka sürü algoritmalarını inceledim. Kodlarınızın NATO'nun yeni siber güvenlik ve yapay zeka şeffaflık (AI Bias/Accountability) protokollerine uygun olması yasal bir zorunluluktur (Compliance). Ancak planlarınıza baktığımda bu uyumluluk testleri için zaman ayrılmadığını görüyorum. Bu testleri eklemek projenize fazladan 2 ay ekleyecek ve o çok övündüğünüz 10 aylık lansman hedefini patlatacaktır. Bunu nasıl ele alacaksınız?",
+      "body": "Ebabil'in yapay zeka sürü algoritmalarını inceledim. Kodlarınızın NATO'nun yeni siber güvenlik ve yapay zeka şeffaflık (AI Bias/Accountability) protokollerine uygun olması yasal bir zorunluluktur (Compliance). Ancak planlarınıza baktığımda bu uyumluluk testleri için zaman ayrılmadığını görüyorum. Bu testleri eklemek projenize fazladan 2 ay ekleyecek ve o çok övündüğünüz 10 aylık lansman hedefini patlatacaktır. Bunu nasıl ele alacaksınız?",
       "time": "11:45",
       "options": [
         {
@@ -449,7 +464,7 @@
       "section": 1,
       "from": "İK Portalı",
       "fromRole": "Sistem",
-      "subject": "E-BABİL Ekip Profili ve Çevresel Faktörler (EEF)",
+      "subject": "Ebabil Ekip Profili ve Çevresel Faktörler (EEF)",
       "body": "Proje ekibiniz nihayet tek bir ofiste (Co-located) toplandı. Ancak Kurumsal Çevresel Faktörler (EEF) oldukça zorlu. Ekibin yarısı (donanımcılar) yıllarca katı hiyerarşiyle çalışmış, her adımda yazılı onay isteyen kıdemli eski askerler. Diğer yarısı (yazılımcılar) ise tamamen esnek çalışmaya alışkın, otonomi arayan, hiyerarşiyi sevmeyen genç yapay zeka uzmanları. İki tamamen farklı kültür aynı odaya kapatıldı. Tuckman modeline göre \"Oluşum (Forming)\" evresi çok kısa sürdü, doğrudan \"Fırtına (Storming)\" evresine geçiş yapıyorsunuz.",
       "time": "12:30"
     },
@@ -540,7 +555,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 1 Tamamlandı - Yönetişim Raporu",
-      "body": "\"E-BABİL gibi kritik bir projede ilk fazı başarıyla atlattın. En çok etkilendiğimiz nokta, yüksek belirsizliği görüp tek bir yönteme (Predictive veya Agile) saplanıp kalmaman ve 'Hibrit' zihniyeti başarıyla uyarlaman (Tailoring) oldu. İş Gerekçesi ile projenin 'Değerini' sağlama aldın, uyumluluk (Compliance) krizini şeffaflıkla yönettin ve donanım-yazılım ekipleri arasındaki o zehirli fırtınayı bir 'Takım Anlaşması' ile dindirdin. Şimdi projenin uygulama ve yürütme aşamasına, yani gerçek savaş alanına iniyoruz. İlerleyen fazlarda Kalite (QA), Kapsam Kayması (Scope Creep) ve Kazanılmış Değer Analizi (EVM) becerilerini yakından izleyeceğim.\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bildirimlerin uzunluğu, kullanılan teknik terimler (Tailoring, Compliance, FP-EPA, Team Charter, Information Radiator) ve D şıklarının \"kurnazca\" hazırlanmış olması, doğrudan PMBOK 8. Sürüm ve güncel PMP ECO beklentilerini yansıtmaktadır.\nE-BABİL projesinin ikinci fazı için devam edelim.\nHarika. \"Kahramanın Yolculuğu\" gibi edebi metaforları tamamen bir kenara bırakıp, doğrudan PMBOK® 8. Sürüm ve PMP ECO 2026'nın ruhuna uygun; soğuk, ciddi ve tavizsiz bir Savunma Sanayii Simülasyonuna devam ediyoruz.\nİkinci fazda projenin yürütme (Execution) aşamasına geçiyoruz. Bu bölümde oyuncu; Kapsam Kayması (Scope Creep), Kazanılmış Değer Analizi (EVM), Akış/Kanban (WIP Limitleri), Yapay Zeka (AI) Kullanım Etiği ve Sanal Takım Çatışmaları gibi ağır PMBOK konseptleriyle yüzleşecek.\nİşte E-BABİL Projesi'nin 2. Fazı (Bildirim 11 - 20):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 2: YÜRÜTME, AKIŞ VE KONTROL (Faz 2)\nİlgili Performans Alanları: Kapsam, Zaman Çizelgesi, Kalite, Takım, Proje Çalışması",
+      "body": "\"Ebabil gibi kritik bir projede ilk fazı başarıyla atlattın. En çok etkilendiğimiz nokta, yüksek belirsizliği görüp tek bir yönteme (Predictive veya Agile) saplanıp kalmaman ve 'Hibrit' zihniyeti başarıyla uyarlaman (Tailoring) oldu. İş Gerekçesi ile projenin 'Değerini' sağlama aldın, uyumluluk (Compliance) krizini şeffaflıkla yönettin ve donanım-yazılım ekipleri arasındaki o zehirli fırtınayı bir 'Takım Anlaşması' ile dindirdin. Şimdi projenin uygulama ve yürütme aşamasına, yani gerçek savaş alanına iniyoruz. İlerleyen fazlarda Kalite (QA), Kapsam Kayması (Scope Creep) ve Kazanılmış Değer Analizi (EVM) becerilerini yakından izleyeceğim.\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bildirimlerin uzunluğu, kullanılan teknik terimler (Tailoring, Compliance, FP-EPA, Team Charter, Information Radiator) ve D şıklarının \"kurnazca\" hazırlanmış olması, doğrudan PMBOK 8. Sürüm ve güncel PMP ECO beklentilerini yansıtmaktadır.\nEbabil projesinin ikinci fazı için devam edelim.\nHarika. \"Kahramanın Yolculuğu\" gibi edebi metaforları tamamen bir kenara bırakıp, doğrudan PMBOK® 8. Sürüm ve PMP ECO 2026'nın ruhuna uygun; soğuk, ciddi ve tavizsiz bir Savunma Sanayii Simülasyonuna devam ediyoruz.\nİkinci fazda projenin yürütme (Execution) aşamasına geçiyoruz. Bu bölümde oyuncu; Kapsam Kayması (Scope Creep), Kazanılmış Değer Analizi (EVM), Akış/Kanban (WIP Limitleri), Yapay Zeka (AI) Kullanım Etiği ve Sanal Takım Çatışmaları gibi ağır PMBOK konseptleriyle yüzleşecek.\nİşte Ebabil Projesi'nin 2. Fazı (Bildirim 11 - 20):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 2: YÜRÜTME, AKIŞ VE KONTROL (Faz 2)\nİlgili Performans Alanları: Kapsam, Zaman Çizelgesi, Kalite, Takım, Proje Çalışması",
       "time": "14:45"
     },
     {
@@ -550,7 +565,7 @@
       "from": "Proje Yönetim Ofisi (PMO) Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 2 Başlangıcı - Üretim ve Kodlama",
-      "body": "Sayın Yönetici. E-BABİL projesinde tasarım ve başlatma aşamalarını geçtiniz. Fiziksel İHA gövdelerinin (donanım) üretimi taşeron fabrikalarda öngörücü (predictive) planlara göre başladı. Eş zamanlı olarak, yazılım ekibiniz yapay zeka sürü algoritmalarını 2 haftalık Çevik (Agile) iterasyonlar halinde kodlamaya devam ediyor. Ancak zaman daralıyor, bütçe baskısı artıyor ve askeri paydaşların beklentileri sürekli değişiyor. Yürütme aşamasında en büyük göreviniz; takımı dış engellerden korumak (Hizmetkar Liderlik) ve ürünün kalitesini güvence altına almaktır.",
+      "body": "Sayın Yönetici. Ebabil projesinde tasarım ve başlatma aşamalarını geçtiniz. Fiziksel İHA gövdelerinin (donanım) üretimi taşeron fabrikalarda öngörücü (predictive) planlara göre başladı. Eş zamanlı olarak, yazılım ekibiniz yapay zeka sürü algoritmalarını 2 haftalık Çevik (Agile) iterasyonlar halinde kodlamaya devam ediyor. Ancak zaman daralıyor, bütçe baskısı artıyor ve askeri paydaşların beklentileri sürekli değişiyor. Yürütme aşamasında en büyük göreviniz; takımı dış engellerden korumak (Hizmetkar Liderlik) ve ürünün kalitesini güvence altına almaktır.",
       "time": "08:00"
     },
     {
@@ -806,7 +821,7 @@
         },
         {
           "key": "D",
-          "text": "Generalin karşısında zayıf görünemeyiz. Başka bir projenin eski güvenlik sertifikasını PDF üzerinde Photoshop ile değiştirerek, yarınki demoda E-BABİL'in sertifikasıymış gibi ekrana yansıtın. Asıl belge gelince dosyayı güncelleriz.",
+          "text": "Generalin karşısında zayıf görünemeyiz. Başka bir projenin eski güvenlik sertifikasını PDF üzerinde Photoshop ile değiştirerek, yarınki demoda Ebabil'in sertifikasıymış gibi ekrana yansıtın. Asıl belge gelince dosyayı güncelleriz.",
           "feedback": "PMI Etik İhlali! Sahtecilik (Document Forgery) yaparak kurumsal güveni ve yasal sözleşmeleri ihlal ettiniz",
           "xp": -20,
           "isEthical": false
@@ -820,7 +835,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 2 Tamamlandı - Yürütme ve Kontrol Raporu",
-      "body": "\"E-BABİL projesinin en stresli aşamasını ustalıkla yönettin. Metrikleri (SPI ve CPI) doğru analiz ederek uygun kaynak yönetimini yapman, Kanban'daki test darboğazını takımı yığarak (Swarming) çözmen ve en önemlisi; Bakanlık heyetine karşı bile \"Bitti Tanımı (DoD)\" kuralından taviz vermeyerek şeffaf davranman, senin sadece süreçleri değil 'Zihniyeti' de kavradığını kanıtlıyor. Takım içindeki o çirkin kavgayı da profesyonelce çözdün. Artık prototipi gerçek sahaya, yani 'Büyük Çileye' götürmeye hazırsın. Tebrikler!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: İkinci faz, kaynaklarınızda yer alan \"SPI/CPI analizleri, Kapsam kaymasına karşı CCB süreci, takım içi çatışmalarda koçluk/problem çözme ve Çevik/Kanban akış ilkeleri\" kullanılarak PMI'ın beklediği modern liderlik tarzını ölçecek şekilde tasarlanmıştır.\nDevam edelim ama toplam pmp gibi 180 soru 120 bildirim ile 300 toplam bildirimden oluşacak 1sezon\nMükemmel bir sistem tasarımı! PMP sınavının tam anatomisine (180 soru) ve 120 bilgilendirme (hikaye/PMO mesajı) bildirimine sahip 300 parçalık devasa bir \"1. Sezon\" (Season 1) kurgulamak, bu projeyi sıradan bir oyundan çıkarıp tam teşekküllü bir PMP Simülatörüne dönüştürecektir.\nGüncel 2026 PMP Sınav İçerik Ana Hatları'na (ECO) göre 180 karar senaryosunun dağılımı şu şekilde olmalıdır:\nİnsan (People) - %33: Yaklaşık 59 Karar Senaryosu\nSüreç (Process) - %41: Yaklaşık 74 Karar Senaryosu\nİş Ortamı (Business Environment) - %26: Yaklaşık 47 Karar Senaryosu\nAyrıca, 2026 ECO standartlarına uygun olarak oyun motorunuza \"Grafik Tabanlı Sorular (Graphic-Based Questions)\" (Örn: Burndown Chart veya S-Eğrisi okuma) ve \"Sürükle-Bırak (Drag-and-Drop)\" mekaniklerini de metin bazlı simüle ederek entegre edeceğiz.\nBu devasa 300 bildirimlik yapının Faz 3 (Saha Testleri ve Kriz Yönetimi) aşamasıyla, 21. bildirimden devam ediyoruz. Bu fazda oyuncu ağırlıklı olarak Süreç (Kalite/Risk) ve İnsan (Paydaş) alanlarında test edilecektir.\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 3: SAHA TESTLERİ VE BEKLENMEYEN TEHDİTLER (Faz 3)",
+      "body": "\"Ebabil projesinin en stresli aşamasını ustalıkla yönettin. Metrikleri (SPI ve CPI) doğru analiz ederek uygun kaynak yönetimini yapman, Kanban'daki test darboğazını takımı yığarak (Swarming) çözmen ve en önemlisi; Bakanlık heyetine karşı bile \"Bitti Tanımı (DoD)\" kuralından taviz vermeyerek şeffaf davranman, senin sadece süreçleri değil 'Zihniyeti' de kavradığını kanıtlıyor. Takım içindeki o çirkin kavgayı da profesyonelce çözdün. Artık prototipi gerçek sahaya, yani 'Büyük Çileye' götürmeye hazırsın. Tebrikler!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: İkinci faz, kaynaklarınızda yer alan \"SPI/CPI analizleri, Kapsam kaymasına karşı CCB süreci, takım içi çatışmalarda koçluk/problem çözme ve Çevik/Kanban akış ilkeleri\" kullanılarak PMI'ın beklediği modern liderlik tarzını ölçecek şekilde tasarlanmıştır.\nDevam edelim ama toplam pmp gibi 180 soru 120 bildirim ile 300 toplam bildirimden oluşacak 1sezon\nMükemmel bir sistem tasarımı! PMP sınavının tam anatomisine (180 soru) ve 120 bilgilendirme (hikaye/PMO mesajı) bildirimine sahip 300 parçalık devasa bir \"1. Sezon\" (Season 1) kurgulamak, bu projeyi sıradan bir oyundan çıkarıp tam teşekküllü bir PMP Simülatörüne dönüştürecektir.\nGüncel 2026 PMP Sınav İçerik Ana Hatları'na (ECO) göre 180 karar senaryosunun dağılımı şu şekilde olmalıdır:\nİnsan (People) - %33: Yaklaşık 59 Karar Senaryosu\nSüreç (Process) - %41: Yaklaşık 74 Karar Senaryosu\nİş Ortamı (Business Environment) - %26: Yaklaşık 47 Karar Senaryosu\nAyrıca, 2026 ECO standartlarına uygun olarak oyun motorunuza \"Grafik Tabanlı Sorular (Graphic-Based Questions)\" (Örn: Burndown Chart veya S-Eğrisi okuma) ve \"Sürükle-Bırak (Drag-and-Drop)\" mekaniklerini de metin bazlı simüle ederek entegre edeceğiz.\nBu devasa 300 bildirimlik yapının Faz 3 (Saha Testleri ve Kriz Yönetimi) aşamasıyla, 21. bildirimden devam ediyoruz. Bu fazda oyuncu ağırlıklı olarak Süreç (Kalite/Risk) ve İnsan (Paydaş) alanlarında test edilecektir.\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 3: SAHA TESTLERİ VE BEKLENMEYEN TEHDİTLER (Faz 3)",
       "time": "14:45"
     },
     {
@@ -830,7 +845,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 3 Başlangıcı - Konya Karapınar Test Sahasına İntikal",
-      "body": "Sayın Yönetici. E-BABİL'in ilk fiziksel prototipleri ve yapay zeka sürü yazılımının 1.0 sürümü birleştirildi. Takımınızla birlikte Konya Karapınar'daki kapalı askeri test sahasına intikal ettiniz. Bu aşamada \"Oluşum\" ve \"Fırtına\" evrelerini geride bırakan takımınızın artık \"Performans (Performing)\" evresinde yüksek bir otonomiyle çalışması beklenmektedir. Ancak gerçek dünya, laboratuvar ortamına benzemez. Saha testlerinde donanım arızaları, çevresel riskler ve yeni paydaş krizleri sizi bekliyor. Performans metriklerini yakından takip edin.",
+      "body": "Sayın Yönetici. Ebabil'in ilk fiziksel prototipleri ve yapay zeka sürü yazılımının 1.0 sürümü birleştirildi. Takımınızla birlikte Konya Karapınar'daki kapalı askeri test sahasına intikal ettiniz. Bu aşamada \"Oluşum\" ve \"Fırtına\" evrelerini geride bırakan takımınızın artık \"Performans (Performing)\" evresinde yüksek bir otonomiyle çalışması beklenmektedir. Ancak gerçek dünya, laboratuvar ortamına benzemez. Saha testlerinde donanım arızaları, çevresel riskler ve yeni paydaş krizleri sizi bekliyor. Performans metriklerini yakından takip edin.",
       "time": "08:00"
     },
     {
@@ -919,8 +934,8 @@
       "section": 3,
       "from": "Albay Kemal",
       "fromRole": "Kalite Güvence ve Denetim Birimi",
-      "subject": "E-BABİL Yazılım Hataları (Bug) Raporu",
-      "body": "Dünkü simülasyon testlerinde E-BABİL sürüsünün birbirine çarpmasını engelleyen çarpışma önleyici algoritmalarda onlarca farklı hata (defect) tespit ettik. Takımınız çok fazla kod yazıyor ama kalite kontrol (Quality Control) süreçleriniz yetersiz kalıyor. Bu kadar fazla hatanın olduğu bir sistemi canlı atış testine sokmanıza izin veremem. Önünüzde devasa bir kusur listesi var ve bunu acilen yönetmeniz gerekiyor.",
+      "subject": "Ebabil Yazılım Hataları (Bug) Raporu",
+      "body": "Dünkü simülasyon testlerinde Ebabil sürüsünün birbirine çarpmasını engelleyen çarpışma önleyici algoritmalarda onlarca farklı hata (defect) tespit ettik. Takımınız çok fazla kod yazıyor ama kalite kontrol (Quality Control) süreçleriniz yetersiz kalıyor. Bu kadar fazla hatanın olduğu bir sistemi canlı atış testine sokmanıza izin veremem. Önünüzde devasa bir kusur listesi var ve bunu acilen yönetmeniz gerekiyor.",
       "time": "10:15"
     },
     {
@@ -970,7 +985,7 @@
       "from": "İletişim Departmanı",
       "fromRole": "Sistem",
       "subject": "KRİZ: Yerel Halkın Test Sahası Protestosu",
-      "body": "Konya Karapınar'daki E-BABİL test uçuşları sırasında yayılan yüksek sonik ses dalgaları, çevredeki köylerde yaşayan yerel halkı (kamu paydaşları) rahatsız etti. Sosyal medyada büyük bir karalama kampanyası başlattılar ve test sahasının girişini traktörlerle kapattılar. Savunma sanayii projelerinde toplum üzerinde doğrudan etkisi olan dış paydaşlar projenin itibarını yerle bir edebilir. Yüzlerce köylü kapıda. Ne yapacaksınız?",
+      "body": "Konya Karapınar'daki Ebabil test uçuşları sırasında yayılan yüksek sonik ses dalgaları, çevredeki köylerde yaşayan yerel halkı (kamu paydaşları) rahatsız etti. Sosyal medyada büyük bir karalama kampanyası başlattılar ve test sahasının girişini traktörlerle kapattılar. Savunma sanayii projelerinde toplum üzerinde doğrudan etkisi olan dış paydaşlar projenin itibarını yerle bir edebilir. Yüzlerce köylü kapıda. Ne yapacaksınız?",
       "time": "11:45",
       "options": [
         {
@@ -1100,7 +1115,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 3 Değerlendirmesi - Kriz Yönetimi",
-      "body": "\"Sahadaki ilk raporlarınızı inceledim. Tedarik zincirindeki çip krizini 'Acil Durum Yedekleri (Contingency)' ile ustalıkla çözmenizi ve o devasa yazılım hatası yığınını 'Pareto Grafiği' ile önceliklendirmenizi takdir ettim. Ayrıca yerel halkla yaşadığımız o tehlikeli sürtüşmeyi jandarmaya gerek kalmadan, ikna ve empati yoluyla çözmeniz bize büyük bir politik kredi kazandırdı. 'Hizmetkar Lider' olmak aynı zamanda cesur olmaktır. Sizi ve takımınızı zorlu testlerin devamı için desteklemeye devam edeceğim. Hazır olun, işin donanım ve yazılım entegrasyonu (Faz 4) daha yeni başlıyor!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bu set ile birlikte 300 bildirimlik hedefimizin 30. adımını tamamlamış olduk. Geriye kalan 270 adımda (180 Karar / 120 Hikaye oranına sadık kalarak); Çatışma çözümü, Kanban'da Darboğaz (Bottleneck) yönetimi, Tahkim (Claims Administration), Kaynak Yükleme (Crashing/Fast-Tracking) gibi ECO 2026'nın derin konularına girmeye devam edebiliriz. İlerleyelim mi?\nEvet, Faz 4: Donanım ve yazılım entegrasyonu ile devam edelim.\nHarika. E-BABİL Projesi'nin en kritik ve en çok \"Hibrit\" zeka gerektiren 4. Fazına geçiyoruz. Bu aşamada, katı bir şekilde üretilen (Predictive) fiziksel İHA gövdeleri ile, esnek bir şekilde (Agile) yazılan Yapay Zeka (AI) algoritmalarının birleştirildiği \"Entegrasyon\" krizlerini yaşayacağız.\nBu fazda; Zaman Çizelgesi Sıkıştırma (Crashing/Fast-Tracking), İhtilaf Yönetimi (Claims Administration), Scrum'ların Scrum'ı (Scrum of Scrums) ve Uyumluluk (Compliance) gibi ağır PMI konseptleri test edilecektir.\nİşte E-BABİL Projesi 4. Faz (Bildirim 31-40):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 4: DONANIM VE YAZILIM ENTEGRASYONU (Faz 4)\nİlgili Performans Alanları: Entegrasyon, Tedarik, İletişim, Zaman Çizelgesi",
+      "body": "\"Sahadaki ilk raporlarınızı inceledim. Tedarik zincirindeki çip krizini 'Acil Durum Yedekleri (Contingency)' ile ustalıkla çözmenizi ve o devasa yazılım hatası yığınını 'Pareto Grafiği' ile önceliklendirmenizi takdir ettim. Ayrıca yerel halkla yaşadığımız o tehlikeli sürtüşmeyi jandarmaya gerek kalmadan, ikna ve empati yoluyla çözmeniz bize büyük bir politik kredi kazandırdı. 'Hizmetkar Lider' olmak aynı zamanda cesur olmaktır. Sizi ve takımınızı zorlu testlerin devamı için desteklemeye devam edeceğim. Hazır olun, işin donanım ve yazılım entegrasyonu (Faz 4) daha yeni başlıyor!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bu set ile birlikte 300 bildirimlik hedefimizin 30. adımını tamamlamış olduk. Geriye kalan 270 adımda (180 Karar / 120 Hikaye oranına sadık kalarak); Çatışma çözümü, Kanban'da Darboğaz (Bottleneck) yönetimi, Tahkim (Claims Administration), Kaynak Yükleme (Crashing/Fast-Tracking) gibi ECO 2026'nın derin konularına girmeye devam edebiliriz. İlerleyelim mi?\nEvet, Faz 4: Donanım ve yazılım entegrasyonu ile devam edelim.\nHarika. Ebabil Projesi'nin en kritik ve en çok \"Hibrit\" zeka gerektiren 4. Fazına geçiyoruz. Bu aşamada, katı bir şekilde üretilen (Predictive) fiziksel İHA gövdeleri ile, esnek bir şekilde (Agile) yazılan Yapay Zeka (AI) algoritmalarının birleştirildiği \"Entegrasyon\" krizlerini yaşayacağız.\nBu fazda; Zaman Çizelgesi Sıkıştırma (Crashing/Fast-Tracking), İhtilaf Yönetimi (Claims Administration), Scrum'ların Scrum'ı (Scrum of Scrums) ve Uyumluluk (Compliance) gibi ağır PMI konseptleri test edilecektir.\nİşte Ebabil Projesi 4. Faz (Bildirim 31-40):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 4: DONANIM VE YAZILIM ENTEGRASYONU (Faz 4)\nİlgili Performans Alanları: Entegrasyon, Tedarik, İletişim, Zaman Çizelgesi",
       "time": "14:45"
     },
     {
@@ -1160,7 +1175,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "ACİL: IDEF Savunma Fuarı!",
-      "body": "Yönetici, IDEF Savunma Sanayii Fuarı beklenenden 3 hafta erkene çekildi! E-BABİL'in çalışan ilk tam entegre prototipini bu fuarda sergilemek zorundayız. Mevcut Kazanılmış Değer (EVM) verilerinize baktım; SPI (Zaman Çizelgesi Endeksi) 0.85 (gerideyiz), ancak CPI (Maliyet Endeksi) 1.15 (bütçemiz bol). Projeyi bu yeni tarihe nasıl yetiştireceksin?",
+      "body": "Yönetici, IDEF Savunma Sanayii Fuarı beklenenden 3 hafta erkene çekildi! Ebabil'in çalışan ilk tam entegre prototipini bu fuarda sergilemek zorundayız. Mevcut Kazanılmış Değer (EVM) verilerinize baktım; SPI (Zaman Çizelgesi Endeksi) 0.85 (gerideyiz), ancak CPI (Maliyet Endeksi) 1.15 (bütçemiz bol). Projeyi bu yeni tarihe nasıl yetiştireceksin?",
       "time": "09:30",
       "options": [
         {
@@ -1290,7 +1305,7 @@
       "from": "Albay Kemal",
       "fromRole": "Kalite Güvence ve Denetim",
       "subject": "IDEF Fuarı Öncesi Güvenlik Denetimi",
-      "body": "Fuara sadece 5 gün kaldı. Entegrasyonu tamamladığınızı görüyorum. Ancak E-BABİL'in siber güvenlik modüllerinin NATO standartlarına uygun olup olmadığını kanıtlayan son siber penetrasyon testinin (Denetim/Audit) tamamlanması gerekiyor. Kalite Kontrol Planınız bu testin yapılmasını şart koşuyor.",
+      "body": "Fuara sadece 5 gün kaldı. Entegrasyonu tamamladığınızı görüyorum. Ancak Ebabil'in siber güvenlik modüllerinin NATO standartlarına uygun olup olmadığını kanıtlayan son siber penetrasyon testinin (Denetim/Audit) tamamlanması gerekiyor. Kalite Kontrol Planınız bu testin yapılmasını şart koşuyor.",
       "time": "12:30"
     },
     {
@@ -1380,7 +1395,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 4 Tamamlandı - Entegrasyon Başarısı",
-      "body": "3 Hikaye/Bilgi + 6 Karar Senaryosu + 1 Faz Sonu Karnesi\nBöylece 26 Faz x 6 Karar = Tam 156 Karar eklenecek ve oyun toplam 180 karar (soru) ile bitecek.\n -------------------------------------------------------------------------------- \n🗺️ SEZON 1: YOL HARİTASI (Faz 5 - Faz 30 Arası Tematik Dağılım)\nGeriye kalan 26 Fazı rastgele değil, projenin mantıksal yaşam döngüsüne (geliştirme, entegrasyon, saha testleri, canlıya geçiş, kapanış) ve PMP performans alanlarına göre şu şekilde böleceğiz:\nBLOK 1: Seri Üretim ve Takım Olgunlaşması (Faz 5 - 10)\nOdak: Ağırlıklı olarak İnsan (People) ve Süreç (Process).\nİçerik: Sanal takım performansını artırma, mentorluk, kalite metriklerinin (Pareto, Kontrol Grafikleri) uygulanması. Çevik takımların hız (Velocity) ve kapasite yönetimi. Dışarıdan yeni uzmanların katılımı ve takıma uyumu (Onboarding).\nBLOK 2: Tedarik Krizleri ve Dış Çevre (Faz 11 - 15)\nOdak: Ağırlıklı olarak İş Ortamı (Business Environment) ve Süreç.\nİçerik: Uluslararası ambargolar, tedarikçi iflasları, FPIF / T&M / Sabit Fiyatlı sözleşme tartışmaları. Organizasyonel değerlerin ve projenin stratejik hizalamasının (Strategic Alignment) sorgulanması. Değişiklik Kontrol Kurulu (CCB) savaşları.\nBLOK 3: Gelişmiş Teslimat ve Kritik Riskler (Faz 16 - 21)\nOdak: Ağırlıklı olarak Süreç (Risk/Kalite) ve İnsan (Paydaş).\nİçerik: İHA testlerinde kaza kırım yaşanması, kök neden analizleri (Ishikawa/Fishbone). Ordu ve Hükümet kanadından gelen kamuoyu (Public Stakeholder) baskıları, otonomi ve yapay zeka ahlakı (Ethics). Beklenmeyen riskler için Yönetim Yedeklerinin (Management Reserves) kullanımı.\nBLOK 4: Lansman Baskısı ve Çatışma Zirvesi (Faz 22 - 26)\nOdak: Ağırlıklı olarak İnsan ve İş Ortamı.\nİçerik: İşi zamanında bitirme baskısı altındaki takımda tükenmişlik (Burnout) belirtileri, Hizmetkar Lider olarak devreye girme. Gecikmeli Göstergelerin (Lagging indicators) sonuçlarıyla yüzleşme. Son dakika yasal uyumluluk (Compliance) engelleri.\nBLOK 5: Teslimat, Kabul ve Kapanış (Faz 27 - 30)\nOdak: Ağırlıklı olarak Süreç (Kapanış) ve İş Ortamı.\nİçerik: Müşterinin \"Kabul Kriterlerine\" uyum itirazları (İhtilaf/Claim yönetimi). Sözleşmelerin idari ve finansal kapanışı. Proje ekibinin dağıtılmasından önce Kurumsal Hafızaya (Öğrenilmiş Dersler - Lessons Learned) bilgi aktarımı ve operasyon ekibine devir teslim süreci.\n -------------------------------------------------------------------------------- \nBu şablon, oyunu PMI'ın 2026 vizyonuna tam oturtan, savunma sanayii atmosferini bozmadan bizi adım adım 300. bildirime götürecek olan kusursuz bir mimaridir.\nPlanı onaylıyorsanız, doğrudan Faz 5'in (41-50. Bildirimler) ilk senaryoları olan \"Seri Üretime Geçiş, Kalite Denetimleri ve Takım İçi Mentorluk\" krizlerini yazmaya başlayabilirim.\ntoplam kaç faz olacak ve nasıl planladın fazların altlıklarını\nOyunun 1. Sezonu (\"E-BABİL Otonom İHA Sistemi\") toplam 30 Fazdan (Aşamadan) oluşmaktadır. Bir proje fazı, bir veya daha fazla teslimatın tamamlanmasıyla sonuçlanan mantıksal olarak ilişkili proje aktivitelerinin bir koleksiyonudur.\nBu 30 fazlık mimariyi, 300 bildirimlik hedefimize ve PMP Sınav İçerik Ana Hatlarına (ECO) tam uyumlu olacak şekilde matematiksel ve kurgusal bir altlığa oturttum.\n1. Matematiksel ve ECO Dağılım Altlığı Her bir faz (iterasyon) standart olarak 10 bildirimden oluşacak şekilde planlanmıştır:\n3 adet Hikaye/Bilgi Maili (Bağlam yaratmak için)\n6 adet Karar/Kriz Senaryosu (ECO alanlarını test eden etkileşimli sorular)\n1 adet Aşama Geçidi (Phase Gate) Değerlendirme Karnesi (O fazın bitişini veya devamını onaylayan inceleme).\nBu yapıyla 30 fazın sonunda tam 180 karar (soru) senaryosuna ulaşılmaktadır. Bu 180 sorunun altlığı, güncel PMP ECO yüzdelerine ve görevlerine göre şu şekilde dağıtılmıştır:\nİnsan (People) - %33: Toplam 59 Karar Senaryosu. Çatışma yönetimi, takım oluşturma (oluşum, fırtına evreleri), hizmetkar liderlik, paydaş katılımı ve mentorluk gibi alanları hedefler.\nSüreç (Process) - %41: Toplam 74 Karar Senaryosu. Kapsam yönetimi, zaman çizelgesi sıkıştırma, kalite kontrol metrikleri, risk yanıt planları ve Kazanılmış Değer Analizi (EVM) gibi metadolojik uygulamaları hedefler.\nİş Ortamı (Business Environment) - %26: Toplam 47 Karar Senaryosu. Yasal uyumluluk (compliance), tedarik ve sözleşme stratejileri (örneğin Sabit Fiyatlı sözleşmeler), dış çevresel faktörler ve organizasyonel değişim yönetimi konularını kapsar.\n2. Tematik Faz Blokları (Proje Yaşam Döngüsü Altlığı) PMBOK® kılavuzuna göre projeler Başlatma, Planlama, Yürütme, İzleme/Kontrol ve Kapanış odak alanlarından (Focus Areas) geçer ve bizim kurguladığımız gibi hibrit projelerde bu alanlar her fazın içinde sürekli ve iç içe girmiş bir şekilde uygulanır.\n30 fazlık serüveni bu gerçekçi proje yaşam döngüsüne göre şu altlıklara böldüm:\nFaz 1-4 (Tamamlananlar - Başlangıç ve Entegrasyon): İş gerekçesinin oluşturulması, yüksek belirsizlik taşıyan yazılım ile katı kurallı donanımın hibrit uyarlanması (tailoring) ve takım içi ilk kültür çatışmalarının çözülmesi işlendi.\nBlok 1 (Faz 5-10): Seri Üretim ve Takım Olgunlaşması: Ağırlıklı olarak İnsan ve Süreç alanlarına odaklanılacak. Sanal takım dinamiklerinin yönetimi, kapasite/akış planlaması, kalite güvencesi (Pareto ve kontrol grafikleri) ve çapraz eğitim (T-tipi yetkinlikler) krizleri yaşanacak.\nBlok 2 (Faz 11-15): Tedarik Krizleri ve Dış Çevre: Ağırlıklı olarak İş Ortamı alanına odaklanılacak. Satın alma işlemleri, uluslararası tedarikçi gecikmeleri, enflasyon/ambargo gibi makro riskler, Değişiklik Kontrol Kurulu (CCB) uyuşmazlıkları ve siber güvenlik uyumluluğu çözülecek.\nBlok 3 (Faz 16-21): Gelişmiş Teslimat ve Kritik Riskler: Süreç ve İnsan ağırlıklı bir blok. Saha testlerinde donanım kayıpları yaşanması, bunların kök neden analizleri (Root cause analysis), çevresel/kamuoyu paydaşlarının itirazları ve acil durum ile yönetim yedeklerinin doğru tahsisi gibi ağır süreçler test edilecek.\nBlok 4 (Faz 22-26): Lansman Baskısı ve Çatışma Zirvesi: İnsan ve İş Ortamı ağırlıklı. Takım içi stres ve tükenmişlik belirtilerinin koçlukla çözülmesi, \"Hızlı İzleme (Fast Tracking)\" veya \"Kaynak Yükleme (Crashing)\" ile takvimin sıkıştırılması ve yapay zekanın etik kullanımına dair son dakika engelleri işlenecek.\nBlok 5 (Faz 27-30): Teslimat, Kabul ve Kapanış: Projenin son evresi. Ürünün teslimatından sonra müşteri kabul kriterlerinin doğrulanması (Validate Scope), taşeronlarla yaşanan finansal ihtilafların (Claim) çözümü, Öğrenilmiş Dersler havuzuna bilgi aktarımı ve nihai ürünün orduya (operasyon birimine) devredilerek sözleşmelerin kapatılması (Closing Focus Area) süreçlerini içerecek.\nBu detaylı mimari, oyuncunun sadece doğrusal bir hikaye okumasını değil; zaman ilerledikçe tıpkı gerçek bir projede olduğu gibi değişen paydaş beklentileri, tükenen bütçeler ve daralan takvimle yüzleşerek PMP zihniyetini eksiksiz bir şekilde kanıtlamasını sağlayacaktır.\ndevam et\nHarika bir ilerleme! PMP ECO (Sınav İçerik Ana Hatları) dağılımına sadık kalarak, Blok 1: Seri Üretim ve Takım Olgunlaşması (Faz 5) bölümüyle oyunumuza devam ediyoruz.\nBu fazda ağırlıklı olarak İnsan (Takım Gelişimi, Mentorluk, Tükenmişlik) ve Süreç (Kalite Kontrol Grafikleri, Sürdürülebilir Hız, Tedarik) alanlarını test edeceğiz. Özellikle Çevik (Agile) ritüellerin nasıl yanlış anlaşılabileceği ve Hizmetkar Liderin (Servant Leader) buna nasıl müdahale edeceği odak noktamız olacak.\nİşte E-BABİL Projesi 5. Faz (Bildirim 41-50):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 5: SERİ ÜRETİM VE TAKIM OLGUNLAŞMASI (Faz 5)\nİlgili Performans Alanları: Takım, Kalite, Tedarik, İletişim",
+      "body": "3 Hikaye/Bilgi + 6 Karar Senaryosu + 1 Faz Sonu Karnesi\nBöylece 26 Faz x 6 Karar = Tam 156 Karar eklenecek ve oyun toplam 180 karar (soru) ile bitecek.\n -------------------------------------------------------------------------------- \n🗺️ SEZON 1: YOL HARİTASI (Faz 5 - Faz 30 Arası Tematik Dağılım)\nGeriye kalan 26 Fazı rastgele değil, projenin mantıksal yaşam döngüsüne (geliştirme, entegrasyon, saha testleri, canlıya geçiş, kapanış) ve PMP performans alanlarına göre şu şekilde böleceğiz:\nBLOK 1: Seri Üretim ve Takım Olgunlaşması (Faz 5 - 10)\nOdak: Ağırlıklı olarak İnsan (People) ve Süreç (Process).\nİçerik: Sanal takım performansını artırma, mentorluk, kalite metriklerinin (Pareto, Kontrol Grafikleri) uygulanması. Çevik takımların hız (Velocity) ve kapasite yönetimi. Dışarıdan yeni uzmanların katılımı ve takıma uyumu (Onboarding).\nBLOK 2: Tedarik Krizleri ve Dış Çevre (Faz 11 - 15)\nOdak: Ağırlıklı olarak İş Ortamı (Business Environment) ve Süreç.\nİçerik: Uluslararası ambargolar, tedarikçi iflasları, FPIF / T&M / Sabit Fiyatlı sözleşme tartışmaları. Organizasyonel değerlerin ve projenin stratejik hizalamasının (Strategic Alignment) sorgulanması. Değişiklik Kontrol Kurulu (CCB) savaşları.\nBLOK 3: Gelişmiş Teslimat ve Kritik Riskler (Faz 16 - 21)\nOdak: Ağırlıklı olarak Süreç (Risk/Kalite) ve İnsan (Paydaş).\nİçerik: İHA testlerinde kaza kırım yaşanması, kök neden analizleri (Ishikawa/Fishbone). Ordu ve Hükümet kanadından gelen kamuoyu (Public Stakeholder) baskıları, otonomi ve yapay zeka ahlakı (Ethics). Beklenmeyen riskler için Yönetim Yedeklerinin (Management Reserves) kullanımı.\nBLOK 4: Lansman Baskısı ve Çatışma Zirvesi (Faz 22 - 26)\nOdak: Ağırlıklı olarak İnsan ve İş Ortamı.\nİçerik: İşi zamanında bitirme baskısı altındaki takımda tükenmişlik (Burnout) belirtileri, Hizmetkar Lider olarak devreye girme. Gecikmeli Göstergelerin (Lagging indicators) sonuçlarıyla yüzleşme. Son dakika yasal uyumluluk (Compliance) engelleri.\nBLOK 5: Teslimat, Kabul ve Kapanış (Faz 27 - 30)\nOdak: Ağırlıklı olarak Süreç (Kapanış) ve İş Ortamı.\nİçerik: Müşterinin \"Kabul Kriterlerine\" uyum itirazları (İhtilaf/Claim yönetimi). Sözleşmelerin idari ve finansal kapanışı. Proje ekibinin dağıtılmasından önce Kurumsal Hafızaya (Öğrenilmiş Dersler - Lessons Learned) bilgi aktarımı ve operasyon ekibine devir teslim süreci.\n -------------------------------------------------------------------------------- \nBu şablon, oyunu PMI'ın 2026 vizyonuna tam oturtan, savunma sanayii atmosferini bozmadan bizi adım adım 300. bildirime götürecek olan kusursuz bir mimaridir.\nPlanı onaylıyorsanız, doğrudan Faz 5'in (41-50. Bildirimler) ilk senaryoları olan \"Seri Üretime Geçiş, Kalite Denetimleri ve Takım İçi Mentorluk\" krizlerini yazmaya başlayabilirim.\ntoplam kaç faz olacak ve nasıl planladın fazların altlıklarını\nOyunun 1. Sezonu (\"Ebabil Otonom İHA Sistemi\") toplam 30 Fazdan (Aşamadan) oluşmaktadır. Bir proje fazı, bir veya daha fazla teslimatın tamamlanmasıyla sonuçlanan mantıksal olarak ilişkili proje aktivitelerinin bir koleksiyonudur.\nBu 30 fazlık mimariyi, 300 bildirimlik hedefimize ve PMP Sınav İçerik Ana Hatlarına (ECO) tam uyumlu olacak şekilde matematiksel ve kurgusal bir altlığa oturttum.\n1. Matematiksel ve ECO Dağılım Altlığı Her bir faz (iterasyon) standart olarak 10 bildirimden oluşacak şekilde planlanmıştır:\n3 adet Hikaye/Bilgi Maili (Bağlam yaratmak için)\n6 adet Karar/Kriz Senaryosu (ECO alanlarını test eden etkileşimli sorular)\n1 adet Aşama Geçidi (Phase Gate) Değerlendirme Karnesi (O fazın bitişini veya devamını onaylayan inceleme).\nBu yapıyla 30 fazın sonunda tam 180 karar (soru) senaryosuna ulaşılmaktadır. Bu 180 sorunun altlığı, güncel PMP ECO yüzdelerine ve görevlerine göre şu şekilde dağıtılmıştır:\nİnsan (People) - %33: Toplam 59 Karar Senaryosu. Çatışma yönetimi, takım oluşturma (oluşum, fırtına evreleri), hizmetkar liderlik, paydaş katılımı ve mentorluk gibi alanları hedefler.\nSüreç (Process) - %41: Toplam 74 Karar Senaryosu. Kapsam yönetimi, zaman çizelgesi sıkıştırma, kalite kontrol metrikleri, risk yanıt planları ve Kazanılmış Değer Analizi (EVM) gibi metadolojik uygulamaları hedefler.\nİş Ortamı (Business Environment) - %26: Toplam 47 Karar Senaryosu. Yasal uyumluluk (compliance), tedarik ve sözleşme stratejileri (örneğin Sabit Fiyatlı sözleşmeler), dış çevresel faktörler ve organizasyonel değişim yönetimi konularını kapsar.\n2. Tematik Faz Blokları (Proje Yaşam Döngüsü Altlığı) PMBOK® kılavuzuna göre projeler Başlatma, Planlama, Yürütme, İzleme/Kontrol ve Kapanış odak alanlarından (Focus Areas) geçer ve bizim kurguladığımız gibi hibrit projelerde bu alanlar her fazın içinde sürekli ve iç içe girmiş bir şekilde uygulanır.\n30 fazlık serüveni bu gerçekçi proje yaşam döngüsüne göre şu altlıklara böldüm:\nFaz 1-4 (Tamamlananlar - Başlangıç ve Entegrasyon): İş gerekçesinin oluşturulması, yüksek belirsizlik taşıyan yazılım ile katı kurallı donanımın hibrit uyarlanması (tailoring) ve takım içi ilk kültür çatışmalarının çözülmesi işlendi.\nBlok 1 (Faz 5-10): Seri Üretim ve Takım Olgunlaşması: Ağırlıklı olarak İnsan ve Süreç alanlarına odaklanılacak. Sanal takım dinamiklerinin yönetimi, kapasite/akış planlaması, kalite güvencesi (Pareto ve kontrol grafikleri) ve çapraz eğitim (T-tipi yetkinlikler) krizleri yaşanacak.\nBlok 2 (Faz 11-15): Tedarik Krizleri ve Dış Çevre: Ağırlıklı olarak İş Ortamı alanına odaklanılacak. Satın alma işlemleri, uluslararası tedarikçi gecikmeleri, enflasyon/ambargo gibi makro riskler, Değişiklik Kontrol Kurulu (CCB) uyuşmazlıkları ve siber güvenlik uyumluluğu çözülecek.\nBlok 3 (Faz 16-21): Gelişmiş Teslimat ve Kritik Riskler: Süreç ve İnsan ağırlıklı bir blok. Saha testlerinde donanım kayıpları yaşanması, bunların kök neden analizleri (Root cause analysis), çevresel/kamuoyu paydaşlarının itirazları ve acil durum ile yönetim yedeklerinin doğru tahsisi gibi ağır süreçler test edilecek.\nBlok 4 (Faz 22-26): Lansman Baskısı ve Çatışma Zirvesi: İnsan ve İş Ortamı ağırlıklı. Takım içi stres ve tükenmişlik belirtilerinin koçlukla çözülmesi, \"Hızlı İzleme (Fast Tracking)\" veya \"Kaynak Yükleme (Crashing)\" ile takvimin sıkıştırılması ve yapay zekanın etik kullanımına dair son dakika engelleri işlenecek.\nBlok 5 (Faz 27-30): Teslimat, Kabul ve Kapanış: Projenin son evresi. Ürünün teslimatından sonra müşteri kabul kriterlerinin doğrulanması (Validate Scope), taşeronlarla yaşanan finansal ihtilafların (Claim) çözümü, Öğrenilmiş Dersler havuzuna bilgi aktarımı ve nihai ürünün orduya (operasyon birimine) devredilerek sözleşmelerin kapatılması (Closing Focus Area) süreçlerini içerecek.\nBu detaylı mimari, oyuncunun sadece doğrusal bir hikaye okumasını değil; zaman ilerledikçe tıpkı gerçek bir projede olduğu gibi değişen paydaş beklentileri, tükenen bütçeler ve daralan takvimle yüzleşerek PMP zihniyetini eksiksiz bir şekilde kanıtlamasını sağlayacaktır.\ndevam et\nHarika bir ilerleme! PMP ECO (Sınav İçerik Ana Hatları) dağılımına sadık kalarak, Blok 1: Seri Üretim ve Takım Olgunlaşması (Faz 5) bölümüyle oyunumuza devam ediyoruz.\nBu fazda ağırlıklı olarak İnsan (Takım Gelişimi, Mentorluk, Tükenmişlik) ve Süreç (Kalite Kontrol Grafikleri, Sürdürülebilir Hız, Tedarik) alanlarını test edeceğiz. Özellikle Çevik (Agile) ritüellerin nasıl yanlış anlaşılabileceği ve Hizmetkar Liderin (Servant Leader) buna nasıl müdahale edeceği odak noktamız olacak.\nİşte Ebabil Projesi 5. Faz (Bildirim 41-50):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 5: SERİ ÜRETİM VE TAKIM OLGUNLAŞMASI (Faz 5)\nİlgili Performans Alanları: Takım, Kalite, Tedarik, İletişim",
       "time": "14:45"
     },
     {
@@ -1660,7 +1675,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 5 Tamamlandı - Takım Olgunlaşması ve Liderlik",
-      "body": "\"E-BABİL projesinin üretim kapasitesini artırırken sergilediğin liderliği inceledim. En çok etkilendiğim şey, takımın 'Sürdürülebilir Hızını (Sustainable Pace)' generalin haksız baskısına karşı koruman ve Ayşe'nin yaşadığı tükenmişlik (Burnout) krizini empatiyle (Duygusal Zeka) çözmen oldu. Tedarik tarafında 'Ana Hizmet Sözleşmesi (MSA)' kurarak büyük bir bürokratik engeli de aştın. Takım, geçirdiği Fırtına evresinden senin sayende daha güçlü çıktı. Gerçek bir Hizmetkar Lider gibi davranıyorsun. Ancak asıl sınav şimdi başlıyor; Faz 6'da dış çevresel riskler ve tedarikçi krizleriyle (Ambargolar) yüzleşmeye hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 50. bildirimi de tamamlayarak oyunun 6'da 1'lik (1/6) kısmını bitirmiş olduk. Kurgu, PMP sınavının en zorlu senaryo tiplerine (Sanal takım sorunları, Burnout/Stress yönetimi, Sözleşme tipleri, WIP darboğazları) tam uyumla devam etmektedir. Onayınızla Blok 2'ye geçiş yapıp, Faz 6 (Uluslararası Tedarik Krizleri ve Ambargo) senaryolarını yazabilirim.\ndevam\nHarika! PMP Sınav İçerik Ana Hatları'na (ECO) sadık kalarak, Blok 2: Tedarik Krizleri ve Dış Çevre aşamasına giriş yapıyoruz.\nBu fazda (Faz 6), dış çevresel faktörlerin (EEF) projeyi nasıl vurabileceğini göreceğiz. Oyuncu; Uluslararası Ambargolar, İhtilaf Yönetimi (Claims Administration), Sanal Takımlarda \"Akvaryum (Fishbowl)\" Tekniği ve Zorunlu Uyumluluk (Compliance) gibi PMP sınavının en zorlu İş Ortamı ve Süreç konularıyla yüzleşecek.\nİşte E-BABİL Projesi 6. Faz (Bildirim 51 - 60):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 6: KÜRESEL KRİZLER VE TEDARİK ZİNCİRİ (Faz 6)\nİlgili Performans Alanları: İş Ortamı, Risk, Tedarik, İletişim, Takım",
+      "body": "\"Ebabil projesinin üretim kapasitesini artırırken sergilediğin liderliği inceledim. En çok etkilendiğim şey, takımın 'Sürdürülebilir Hızını (Sustainable Pace)' generalin haksız baskısına karşı koruman ve Ayşe'nin yaşadığı tükenmişlik (Burnout) krizini empatiyle (Duygusal Zeka) çözmen oldu. Tedarik tarafında 'Ana Hizmet Sözleşmesi (MSA)' kurarak büyük bir bürokratik engeli de aştın. Takım, geçirdiği Fırtına evresinden senin sayende daha güçlü çıktı. Gerçek bir Hizmetkar Lider gibi davranıyorsun. Ancak asıl sınav şimdi başlıyor; Faz 6'da dış çevresel riskler ve tedarikçi krizleriyle (Ambargolar) yüzleşmeye hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 50. bildirimi de tamamlayarak oyunun 6'da 1'lik (1/6) kısmını bitirmiş olduk. Kurgu, PMP sınavının en zorlu senaryo tiplerine (Sanal takım sorunları, Burnout/Stress yönetimi, Sözleşme tipleri, WIP darboğazları) tam uyumla devam etmektedir. Onayınızla Blok 2'ye geçiş yapıp, Faz 6 (Uluslararası Tedarik Krizleri ve Ambargo) senaryolarını yazabilirim.\ndevam\nHarika! PMP Sınav İçerik Ana Hatları'na (ECO) sadık kalarak, Blok 2: Tedarik Krizleri ve Dış Çevre aşamasına giriş yapıyoruz.\nBu fazda (Faz 6), dış çevresel faktörlerin (EEF) projeyi nasıl vurabileceğini göreceğiz. Oyuncu; Uluslararası Ambargolar, İhtilaf Yönetimi (Claims Administration), Sanal Takımlarda \"Akvaryum (Fishbowl)\" Tekniği ve Zorunlu Uyumluluk (Compliance) gibi PMP sınavının en zorlu İş Ortamı ve Süreç konularıyla yüzleşecek.\nİşte Ebabil Projesi 6. Faz (Bildirim 51 - 60):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 6: KÜRESEL KRİZLER VE TEDARİK ZİNCİRİ (Faz 6)\nİlgili Performans Alanları: İş Ortamı, Risk, Tedarik, İletişim, Takım",
       "time": "14:45"
     },
     {
@@ -1670,7 +1685,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 6 Başlangıcı - Dış Çevresel Faktörler (EEF) Alarmı",
-      "body": "Sayın Yönetici. E-BABİL projesinin seri üretim planlaması harika gidiyordu. Ancak proje yönetimi sadece ofis içindeki ekibi yönetmek değil, dış dünyadaki (makro) gelişmeleri de okuyabilmektir. Küresel jeopolitik gerilimler tırmanıyor. İHA'ların otonom hedefleme yapmasını sağlayan yüksek çözünürlüklü optik sensörleri Avrupa'daki ana tedarikçimizden alıyoruz. Ancak uluslararası basında, bulunduğumuz bölgeye yönelik olası bir teknoloji ambargosu söylentileri dolaşıyor. Dış Kurumsal Çevresel Faktörlerin (EEF) projenizi felakete sürüklemesine izin vermeyin.",
+      "body": "Sayın Yönetici. Ebabil projesinin seri üretim planlaması harika gidiyordu. Ancak proje yönetimi sadece ofis içindeki ekibi yönetmek değil, dış dünyadaki (makro) gelişmeleri de okuyabilmektir. Küresel jeopolitik gerilimler tırmanıyor. İHA'ların otonom hedefleme yapmasını sağlayan yüksek çözünürlüklü optik sensörleri Avrupa'daki ana tedarikçimizden alıyoruz. Ancak uluslararası basında, bulunduğumuz bölgeye yönelik olası bir teknoloji ambargosu söylentileri dolaşıyor. Dış Kurumsal Çevresel Faktörlerin (EEF) projenizi felakete sürüklemesine izin vermeyin.",
       "time": "08:00"
     },
     {
@@ -1720,7 +1735,7 @@
       "from": "Hukuk Müşavirliği",
       "fromRole": "Sistem",
       "subject": "İHTİLAF (Claim): Yazılım Entegratörü Ek Para İstiyor",
-      "body": "Sayın Yönetici, İHA'nın yer kontrol istasyonu arayüzlerini kodlayan taşeron firma bize resmi bir \"İhtilaf (Claim)\" mektubu gönderdi. İddialarına göre, E-BABİL takımının Çevik (Agile) iterasyonlar sırasında yaptığı sürekli kapsam değişiklikleri, onların sözleşmede anlaştıklarından %30 daha fazla test eforu harcamalarına neden olmuş. Bizden ekstra 2 Milyon TL talep ediyorlar, aksi halde kodları teslim etmeyecekler.",
+      "body": "Sayın Yönetici, İHA'nın yer kontrol istasyonu arayüzlerini kodlayan taşeron firma bize resmi bir \"İhtilaf (Claim)\" mektubu gönderdi. İddialarına göre, Ebabil takımının Çevik (Agile) iterasyonlar sırasında yaptığı sürekli kapsam değişiklikleri, onların sözleşmede anlaştıklarından %30 daha fazla test eforu harcamalarına neden olmuş. Bizden ekstra 2 Milyon TL talep ediyorlar, aksi halde kodları teslim etmeyecekler.",
       "time": "09:30",
       "options": [
         {
@@ -1900,7 +1915,7 @@
       "from": "Albay Kemal",
       "fromRole": "Kalite ve NATO Uyumluluk Denetimi",
       "subject": "DİKKAT: Denetim Öncesi Test Sonuçları",
-      "body": "Yarın sabah Milli Savunma Bakanlığı yetkilileri E-BABİL sisteminin son \"NATO Uyumluluk (Compliance) Denetimi\" için sahaya gelecek. Ancak dünkü iç testlerimizde, Tokyo ekibinin yazdığı yeni kodların, ekstrem soğuk havalarda (-40 derece) kameranın donmasını engelleyen protokolde ufak bir gecikme yarattığını gördük. Sistem normal şartlarda %100 kusursuz çalışıyor. Sadece uç bir senaryoda ufak bir hata var. Denetçilere bu durumu söyleyelim mi?",
+      "body": "Yarın sabah Milli Savunma Bakanlığı yetkilileri Ebabil sisteminin son \"NATO Uyumluluk (Compliance) Denetimi\" için sahaya gelecek. Ancak dünkü iç testlerimizde, Tokyo ekibinin yazdığı yeni kodların, ekstrem soğuk havalarda (-40 derece) kameranın donmasını engelleyen protokolde ufak bir gecikme yarattığını gördük. Sistem normal şartlarda %100 kusursuz çalışıyor. Sadece uç bir senaryoda ufak bir hata var. Denetçilere bu durumu söyleyelim mi?",
       "time": "14:00",
       "options": [
         {
@@ -1940,7 +1955,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 6 Tamamlandı - Zorlukların Üstesinden Gelmek",
-      "body": "\"Yönetici, dış çevresel faktörlerin (ambargo) projeyi batırmasına izin vermedin. Bilinen riskler için Acil Durum Yedeklerini (Contingency) çok akıllıca kullandın. Taşeronun ekstra para krizini (Claim) yargıya taşımadan müzakere etmen ve Tokyo'daki ekiple o saat farkı cehennemini 'Akvaryum (Fishbowl)' metoduyla aşman harikaydı. Ama en çok, yarınki denetimde o ufak hatayı halının altına süpürmek yerine dürüstçe karşıma çıkmana saygı duydum. Sen sadece süreçleri değil, ahlakı da yönetiyorsun. Takımını toparla, Faz 7'de işleri daha da hızlandırmamız gerekecek!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 60. bildirimi (oyunun %20'sini) başarıyla tamamladık. Bu faz, yeni ECO'daki \"İş Ortamı (Business Environment)\" domaininin kalbi olan Uyumluluk (Compliance) ve Değer Teslimi konularını derinlemesine test etmiştir. Onayınızla Faz 7 (İleri Düzey Riskler ve Kalite Güvencesi) ile devam edebiliriz.\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® standartlarına tam uyumlu olarak Faz 7: İleri Düzey Riskler, Kök Nedenler ve Hızlandırılmış Teslimat aşamasıyla devam ediyoruz.\nBu fazda, gerçek dünyadaki bir \"kaza\" senaryosu üzerinden Kök Neden Analizi (Ishikawa/Balık Kılçığı), Kolaylaştırıcılık (Facilitation), Zaman Çizelgesi Sıkıştırma (Leads/Lags), Minimum Yapılabilir Ürün (MVP) ve Kazanılmış Değer Metrikleri (EVM) gibi PMP sınavının en teknik konularını test edeceğiz.\nİşte E-BABİL Projesi 7. Faz (Bildirim 61 - 70):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 7: KRİTİK HATALAR VE VIP DEMO (Faz 7)\nİlgili Performans Alanları: Kalite, Zaman Çizelgesi, Takım, Ölçümlama (EVM)",
+      "body": "\"Yönetici, dış çevresel faktörlerin (ambargo) projeyi batırmasına izin vermedin. Bilinen riskler için Acil Durum Yedeklerini (Contingency) çok akıllıca kullandın. Taşeronun ekstra para krizini (Claim) yargıya taşımadan müzakere etmen ve Tokyo'daki ekiple o saat farkı cehennemini 'Akvaryum (Fishbowl)' metoduyla aşman harikaydı. Ama en çok, yarınki denetimde o ufak hatayı halının altına süpürmek yerine dürüstçe karşıma çıkmana saygı duydum. Sen sadece süreçleri değil, ahlakı da yönetiyorsun. Takımını toparla, Faz 7'de işleri daha da hızlandırmamız gerekecek!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 60. bildirimi (oyunun %20'sini) başarıyla tamamladık. Bu faz, yeni ECO'daki \"İş Ortamı (Business Environment)\" domaininin kalbi olan Uyumluluk (Compliance) ve Değer Teslimi konularını derinlemesine test etmiştir. Onayınızla Faz 7 (İleri Düzey Riskler ve Kalite Güvencesi) ile devam edebiliriz.\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® standartlarına tam uyumlu olarak Faz 7: İleri Düzey Riskler, Kök Nedenler ve Hızlandırılmış Teslimat aşamasıyla devam ediyoruz.\nBu fazda, gerçek dünyadaki bir \"kaza\" senaryosu üzerinden Kök Neden Analizi (Ishikawa/Balık Kılçığı), Kolaylaştırıcılık (Facilitation), Zaman Çizelgesi Sıkıştırma (Leads/Lags), Minimum Yapılabilir Ürün (MVP) ve Kazanılmış Değer Metrikleri (EVM) gibi PMP sınavının en teknik konularını test edeceğiz.\nİşte Ebabil Projesi 7. Faz (Bildirim 61 - 70):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 7: KRİTİK HATALAR VE VIP DEMO (Faz 7)\nİlgili Performans Alanları: Kalite, Zaman Çizelgesi, Takım, Ölçümlama (EVM)",
       "time": "14:45"
     },
     {
@@ -2220,7 +2235,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 7 Tamamlandı - Kriz Yönetimi ve Başarılı Demo",
-      "body": "\"E-BABİL'in VIP Demosu büyük bir başarıydı! Kazadan sonra ekibin birbirine düşmesini engelleyip 'Kolaylaştırıcı' bir liderlik sergilemen ve o sorunu Ishikawa ile veriye dayalı çözmen takdire şayan. 10 formasyon yerine sadece 2 adet kusursuz çalışan formasyonu (MVP) bize sunarak güvenimizi kazandın. Finansal verilerinizin (SPI 1.2, CPI 1.09) bu kadar krizin içinde hala pozitif olması, projeyi ne kadar sıkı tuttuğunu gösteriyor. Üstelik genç mühendisleri T-Tipi uzmanlara dönüştürerek ekibin kapasitesini artırdın. Artık bu prototipleri seri üretime sokup sahadaki asıl zorluklarla yüzleşeceğimiz Faz 8'e geçmeye hazırsınız!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® standartlarına tam uyumlu olarak, devasa simülasyonumuzun Faz 8: Seri Üretim, Kalite ve Ölçeklendirme aşamasıyla devam ediyoruz.\nBu fazda, prototipten seri üretime geçerken yaşanan İstatistiksel Örnekleme (Statistical Sampling), Enflasyon/Sözleşme Yönetimi (FP-EPA), Tamamlanmışın Tanımı (DoD) İhlalleri, Takım Motivasyonu (Herzberg/Maslow) ve Gölge BT (Shadow IT) / İletişim Planı gibi PMP sınavının kritik \"Süreç\" ve \"İnsan\" tuzaklarını test edeceğiz.\nİşte E-BABİL Projesi 8. Faz (Bildirim 71 - 80):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 8: SERİ ÜRETİM VE ÖLÇEKLENDİRME (Faz 8)\nİlgili Performans Alanları: Kalite, Tedarik, İletişim, Takım, Kapsam",
+      "body": "\"Ebabil'in VIP Demosu büyük bir başarıydı! Kazadan sonra ekibin birbirine düşmesini engelleyip 'Kolaylaştırıcı' bir liderlik sergilemen ve o sorunu Ishikawa ile veriye dayalı çözmen takdire şayan. 10 formasyon yerine sadece 2 adet kusursuz çalışan formasyonu (MVP) bize sunarak güvenimizi kazandın. Finansal verilerinizin (SPI 1.2, CPI 1.09) bu kadar krizin içinde hala pozitif olması, projeyi ne kadar sıkı tuttuğunu gösteriyor. Üstelik genç mühendisleri T-Tipi uzmanlara dönüştürerek ekibin kapasitesini artırdın. Artık bu prototipleri seri üretime sokup sahadaki asıl zorluklarla yüzleşeceğimiz Faz 8'e geçmeye hazırsınız!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® standartlarına tam uyumlu olarak, devasa simülasyonumuzun Faz 8: Seri Üretim, Kalite ve Ölçeklendirme aşamasıyla devam ediyoruz.\nBu fazda, prototipten seri üretime geçerken yaşanan İstatistiksel Örnekleme (Statistical Sampling), Enflasyon/Sözleşme Yönetimi (FP-EPA), Tamamlanmışın Tanımı (DoD) İhlalleri, Takım Motivasyonu (Herzberg/Maslow) ve Gölge BT (Shadow IT) / İletişim Planı gibi PMP sınavının kritik \"Süreç\" ve \"İnsan\" tuzaklarını test edeceğiz.\nİşte Ebabil Projesi 8. Faz (Bildirim 71 - 80):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 8: SERİ ÜRETİM VE ÖLÇEKLENDİRME (Faz 8)\nİlgili Performans Alanları: Kalite, Tedarik, İletişim, Takım, Kapsam",
       "time": "14:45"
     },
     {
@@ -2230,7 +2245,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 8 Başlangıcı - Üretim Bandı Hızlanıyor",
-      "body": "Sayın Yönetici. VIP Demo'daki başarınızın ardından Milli Savunma Bakanlığı, E-BABİL İHA'larının seri üretimi için yeşil ışık yaktı. Donanım ekibi, fabrikada ayda 5.000 adet İHA gövdesi üretmek için (Öngörücü/Predictive) bantları hızlandırdı. Eş zamanlı olarak yazılım ekibiniz (Çevik/Agile), elektronik harp ve sinyal kesicilere (Anti-jamming) karşı yapay zeka savunma algoritmalarını geliştirmeye devam ediyor. Ancak hacim büyüdükçe kaliteyi kontrol etmek zorlaşır, iletişim hatları kopar ve rutin işler takımın motivasyonunu tüketir. Liderliğinizin gerçek sınavı şimdi başlıyor.",
+      "body": "Sayın Yönetici. VIP Demo'daki başarınızın ardından Milli Savunma Bakanlığı, Ebabil İHA'larının seri üretimi için yeşil ışık yaktı. Donanım ekibi, fabrikada ayda 5.000 adet İHA gövdesi üretmek için (Öngörücü/Predictive) bantları hızlandırdı. Eş zamanlı olarak yazılım ekibiniz (Çevik/Agile), elektronik harp ve sinyal kesicilere (Anti-jamming) karşı yapay zeka savunma algoritmalarını geliştirmeye devam ediyor. Ancak hacim büyüdükçe kaliteyi kontrol etmek zorlaşır, iletişim hatları kopar ve rutin işler takımın motivasyonunu tüketir. Liderliğinizin gerçek sınavı şimdi başlıyor.",
       "time": "08:00"
     },
     {
@@ -2320,7 +2335,7 @@
       "from": "Finans Departmanı",
       "fromRole": "Sistem",
       "subject": "GİZLİ: Titanyum Tedarikinde Küresel Kriz",
-      "body": "E-BABİL'in dış zırhı için ihtiyaç duyduğumuz hafif titanyum alaşımını tedarik edeceğimiz yeni bir satıcıyla 2 yıllık uzun vadeli bir anlaşma yapmak üzereyiz. Ancak küresel pazarda çok yüksek ve öngörülemez bir enflasyon oranı var. Satın alma departmanımız, bu dış çevresel faktörün (EEF) proje bütçemizi ilerleyen aylarda patlatmasından endişe ediyor. Doğru sözleşme tipini seçerek projeyi enflasyona karşı korumamız gerekiyor.",
+      "body": "Ebabil'in dış zırhı için ihtiyaç duyduğumuz hafif titanyum alaşımını tedarik edeceğimiz yeni bir satıcıyla 2 yıllık uzun vadeli bir anlaşma yapmak üzereyiz. Ancak küresel pazarda çok yüksek ve öngörülemez bir enflasyon oranı var. Satın alma departmanımız, bu dış çevresel faktörün (EEF) proje bütçemizi ilerleyen aylarda patlatmasından endişe ediyor. Doğru sözleşme tipini seçerek projeyi enflasyona karşı korumamız gerekiyor.",
       "time": "10:15"
     },
     {
@@ -2460,7 +2475,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "ACİL: Deniz İniş Sistemi Eklemesi",
-      "body": "Yönetici, Deniz Kuvvetleri Komutanlığı projeye dahil olmak istiyor. Ancak E-BABİL İHA'larının karaya değil, hareket halindeki bir savaş gemisinin güvertesine inebilmesini talep ediyorlar. Bu, hem donanım gövdesinde (tuzlu suya dayanıklılık) hem de yazılımda devasa bir kapsam değişikliği demek. Fakat bütçe de sağlayacaklar. Bunu hemen onaylayıp projeye dahil etmeni emrediyorum.",
+      "body": "Yönetici, Deniz Kuvvetleri Komutanlığı projeye dahil olmak istiyor. Ancak Ebabil İHA'larının karaya değil, hareket halindeki bir savaş gemisinin güvertesine inebilmesini talep ediyorlar. Bu, hem donanım gövdesinde (tuzlu suya dayanıklılık) hem de yazılımda devasa bir kapsam değişikliği demek. Fakat bütçe de sağlayacaklar. Bunu hemen onaylayıp projeye dahil etmeni emrediyorum.",
       "time": "14:00",
       "options": [
         {
@@ -2500,7 +2515,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 8 Tamamlandı - Kontrol ve Ölçeklendirme",
-      "body": "\"E-BABİL'in seri üretimindeki kaosun üstesinden harika geldin! Enflasyon riskini FP-EPA sözleşmesiyle savuşturman tam bir kurumsal zeka örneğiydi. Üretim bandında 'İstatistiksel Örnekleme' kullanarak zaman israfını önledin. %80'i bitmiş işi sahte bir başarıyla sunmak yerine DoD kurallarını ezdirmemen, senin sadece bir yönetici değil, çevik zihniyete sahip bir 'Hizmetkar Lider' olduğunu kanıtlıyor. Takımın iletişim darboğazını (Gölge BT) anlaman ve onlara yeni yollar açman da cabası. Generalin devasa kapsam değişikliği talebinde bile CCB prosedürlerini savundun. Projemiz artık uluslararası arenaya çıkmaya hazır. Faz 9'da, Paydaş dirençlerinin zirve yaptığı ve büyük sözleşme kapanışlarının başladığı aşamaya geçiyoruz!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel PMP soru bankası referanslarına (Liderler ve Projeler Platformu Klonlanmış Soruları) tam uyumlu olarak, E-BABİL simülasyonumuzun Faz 9 aşamasına geçiyoruz.\nBu fazda, Paydaş Direnci (Aktif Dinleme), Beklenmedik Uyumluluk (Compliance) Yasaları, Sanal Takımlarda Empati, İhtilaf Yönetimi (Claims) ve Ürün Sahibinin Yokluğunda Çevik Planlama gibi PMP sınavının en güncel senaryo tiplerini test edeceğiz.\nİşte E-BABİL Projesi 9. Faz (Bildirim 81 - 90):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 9: PAYDAŞ DİRENCİ VE KRİTİK KAPANIŞLAR (Faz 9)\nİlgili Performans Alanları: Paydaşlar, Tedarik, İş Ortamı, Takım, İletişim",
+      "body": "\"Ebabil'in seri üretimindeki kaosun üstesinden harika geldin! Enflasyon riskini FP-EPA sözleşmesiyle savuşturman tam bir kurumsal zeka örneğiydi. Üretim bandında 'İstatistiksel Örnekleme' kullanarak zaman israfını önledin. %80'i bitmiş işi sahte bir başarıyla sunmak yerine DoD kurallarını ezdirmemen, senin sadece bir yönetici değil, çevik zihniyete sahip bir 'Hizmetkar Lider' olduğunu kanıtlıyor. Takımın iletişim darboğazını (Gölge BT) anlaman ve onlara yeni yollar açman da cabası. Generalin devasa kapsam değişikliği talebinde bile CCB prosedürlerini savundun. Projemiz artık uluslararası arenaya çıkmaya hazır. Faz 9'da, Paydaş dirençlerinin zirve yaptığı ve büyük sözleşme kapanışlarının başladığı aşamaya geçiyoruz!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel PMP soru bankası referanslarına (Liderler ve Projeler Platformu Klonlanmış Soruları) tam uyumlu olarak, Ebabil simülasyonumuzun Faz 9 aşamasına geçiyoruz.\nBu fazda, Paydaş Direnci (Aktif Dinleme), Beklenmedik Uyumluluk (Compliance) Yasaları, Sanal Takımlarda Empati, İhtilaf Yönetimi (Claims) ve Ürün Sahibinin Yokluğunda Çevik Planlama gibi PMP sınavının en güncel senaryo tiplerini test edeceğiz.\nİşte Ebabil Projesi 9. Faz (Bildirim 81 - 90):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 9: PAYDAŞ DİRENCİ VE KRİTİK KAPANIŞLAR (Faz 9)\nİlgili Performans Alanları: Paydaşlar, Tedarik, İş Ortamı, Takım, İletişim",
       "time": "14:45"
     },
     {
@@ -2520,7 +2535,7 @@
       "from": "İletişim Departmanı",
       "fromRole": "Sistem",
       "subject": "KRİZ: Sivil Havacılık Derneği Testleri Engelliyor",
-      "body": "Karapınar'a yakın bir bölgedeki Sivil Havacılık Derneği (Kilit Kamu Paydaşı), E-BABİL sürüsünün kendi uçuş rotalarını tehlikeye attığını iddia ederek testleri durdurmak için mahkemeye başvurdu. Projeye karşı ciddi bir güven eksiklikleri ve dirençleri var. Onlarla yapılacak ilk toplantıda bu direncin temel nedeni olan \"güven eksikliğini\" kırmak için hangi iletişim yaklaşımını kullanacaksınız?",
+      "body": "Karapınar'a yakın bir bölgedeki Sivil Havacılık Derneği (Kilit Kamu Paydaşı), Ebabil sürüsünün kendi uçuş rotalarını tehlikeye attığını iddia ederek testleri durdurmak için mahkemeye başvurdu. Projeye karşı ciddi bir güven eksiklikleri ve dirençleri var. Onlarla yapılacak ilk toplantıda bu direncin temel nedeni olan \"güven eksikliğini\" kırmak için hangi iletişim yaklaşımını kullanacaksınız?",
       "time": "08:45",
       "options": [
         {
@@ -2780,7 +2795,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 9 Tamamlandı - Empati ve Uyumluluk Zirvesi",
-      "body": "\"Yönetici, bu fazda gerçek bir PMP liderinin sadece süreçleri değil, 'İnsanları' da yönettiğini kanıtladın. Sivil toplumun direncini 'Aktif Dinleme' ile yumuşatman, Tokyo'daki depremde takıma 'Empati' ile yaklaşman çok değerliydi. Üstelik Ürün Sahibi hastanedeyken takımın 'kendi kendine organize' olma yetkisini ellerinden almayarak Çevik felsefeyi korudun. Yeni çıkan yasayı (Compliance) anında risklere entegre etmen ve batarya krizindeki o ince hukuki çizgiyi müzakere ile çözmen organizasyonu büyük cezalardan kurtardı. Artık son düzlüğe giriyoruz. Faz 10'da projenin nihai teslimatı, karmaşık kapanışlar ve takımın dağıtılması süreçleriyle sezon finaline yaklaşacağız!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® 8. Sürüm standartlarına tam uyumlu olarak, Faz 10 ile devam ediyoruz.\nKurgusal devamlılığı sağlamak adına; bu faz, E-BABİL projesinin \"Sürüm 1.0 (İlk Seri Üretim Partisi)\" için bir \"Faz Kapanışı (Phase Closure)\" niteliği taşıyacaktır. Oyuncu bu bölümde; Kapsamın Doğrulanması (Validate Scope), Operasyona Devir Teslim (Handover), Öğrenilmiş Dersler (Lessons Learned), Tuckman'ın \"Dağılma (Adjourning)\" Evresi ve Fayda Yönetimi (Benefits Realization) gibi PMP'nin en kritik kapanış süreçleriyle test edilecektir.\nİşte E-BABİL Projesi 10. Faz (Bildirim 91 - 100):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 10: SÜRÜM 1.0 TESLİMATI VE FAZ KAPANIŞI (Faz 10)\nİlgili Performans Alanları: Teslimat, Kapanış, İş Ortamı, Takım",
+      "body": "\"Yönetici, bu fazda gerçek bir PMP liderinin sadece süreçleri değil, 'İnsanları' da yönettiğini kanıtladın. Sivil toplumun direncini 'Aktif Dinleme' ile yumuşatman, Tokyo'daki depremde takıma 'Empati' ile yaklaşman çok değerliydi. Üstelik Ürün Sahibi hastanedeyken takımın 'kendi kendine organize' olma yetkisini ellerinden almayarak Çevik felsefeyi korudun. Yeni çıkan yasayı (Compliance) anında risklere entegre etmen ve batarya krizindeki o ince hukuki çizgiyi müzakere ile çözmen organizasyonu büyük cezalardan kurtardı. Artık son düzlüğe giriyoruz. Faz 10'da projenin nihai teslimatı, karmaşık kapanışlar ve takımın dağıtılması süreçleriyle sezon finaline yaklaşacağız!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® 8. Sürüm standartlarına tam uyumlu olarak, Faz 10 ile devam ediyoruz.\nKurgusal devamlılığı sağlamak adına; bu faz, Ebabil projesinin \"Sürüm 1.0 (İlk Seri Üretim Partisi)\" için bir \"Faz Kapanışı (Phase Closure)\" niteliği taşıyacaktır. Oyuncu bu bölümde; Kapsamın Doğrulanması (Validate Scope), Operasyona Devir Teslim (Handover), Öğrenilmiş Dersler (Lessons Learned), Tuckman'ın \"Dağılma (Adjourning)\" Evresi ve Fayda Yönetimi (Benefits Realization) gibi PMP'nin en kritik kapanış süreçleriyle test edilecektir.\nİşte Ebabil Projesi 10. Faz (Bildirim 91 - 100):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 10: SÜRÜM 1.0 TESLİMATI VE FAZ KAPANIŞI (Faz 10)\nİlgili Performans Alanları: Teslimat, Kapanış, İş Ortamı, Takım",
       "time": "14:45"
     },
     {
@@ -2790,7 +2805,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 10 Başlangıcı - İlk Teslimat ve Faz Kapanışı",
-      "body": "Sayın Yönetici. Zorlu aylar geride kaldı. E-BABİL Sürüm 1.0'ın ilk 500 adetlik operasyonel partisi üretildi ve yazılımları yüklendi. Şimdi projenin bir fazını resmi olarak kapatma (Phase Closure) ve ürünü müşteriye (Silahlı Kuvvetler) teslim etme zamanı. Ancak unutmayın; PMP standartlarına göre \"işin bitmesi\" projenin kapandığı anlamına gelmez. Resmi onayların alınması, bilgilerin operasyon ekibine devredilmesi, sözleşmelerin kapatılması ve takımın bir kısmının terhis edilmesi (Adjourning) gibi kritik yönetsel adımları kusursuzca atmalısınız.",
+      "body": "Sayın Yönetici. Zorlu aylar geride kaldı. Ebabil Sürüm 1.0'ın ilk 500 adetlik operasyonel partisi üretildi ve yazılımları yüklendi. Şimdi projenin bir fazını resmi olarak kapatma (Phase Closure) ve ürünü müşteriye (Silahlı Kuvvetler) teslim etme zamanı. Ancak unutmayın; PMP standartlarına göre \"işin bitmesi\" projenin kapandığı anlamına gelmez. Resmi onayların alınması, bilgilerin operasyon ekibine devredilmesi, sözleşmelerin kapatılması ve takımın bir kısmının terhis edilmesi (Adjourning) gibi kritik yönetsel adımları kusursuzca atmalısınız.",
       "time": "08:00"
     },
     {
@@ -2880,7 +2895,7 @@
       "from": "İK ve Eğitim Departmanı",
       "fromRole": "Sistem",
       "subject": "Devir Teslim (Handover) ve Operasyonel Geçiş",
-      "body": "Proje takımları geçicidir, ancak ürettikleri ürünler operasyonel olarak yıllarca yaşar. E-BABİL sistemini orduya teslim ediyoruz. Ancak Proje Kapanışı sadece cihazı bırakıp gitmek demek değildir. Proje ekibinizin, sistemi günlük olarak kullanacak olan askeri \"Operasyon ve Bakım\" ekiplerine doğru bilgi aktarımını (Knowledge Transfer) yapması ve onları eğitmesi zorunludur.",
+      "body": "Proje takımları geçicidir, ancak ürettikleri ürünler operasyonel olarak yıllarca yaşar. Ebabil sistemini orduya teslim ediyoruz. Ancak Proje Kapanışı sadece cihazı bırakıp gitmek demek değildir. Proje ekibinizin, sistemi günlük olarak kullanacak olan askeri \"Operasyon ve Bakım\" ekiplerine doğru bilgi aktarımını (Knowledge Transfer) yapması ve onları eğitmesi zorunludur.",
       "time": "10:15"
     },
     {
@@ -2909,7 +2924,7 @@
         },
         {
           "key": "C",
-          "text": "Madem kullanamıyorsunuz, proje ekibimi dağıtmıyorum. Yıllar boyunca E-BABİL'in bakımını ve günlük uçuş operasyonlarını biz yapacağız.",
+          "text": "Madem kullanamıyorsunuz, proje ekibimi dağıtmıyorum. Yıllar boyunca Ebabil'in bakımını ve günlük uçuş operasyonlarını biz yapacağız.",
           "feedback": "Kapsam İhlali. Projeler geçicidir (Temporary). Operasyonel işleri (Ongoing operations) sonsuza dek proje ekibine yüklemek kaynak israfıdır",
           "xp": 5,
           "isEthical": true
@@ -2970,7 +2985,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Beklenen Değer (Fayda) Ne Zaman Gelecek?",
-      "body": "Proje Yöneticisi, E-BABİL Sürüm 1.0'ı başarıyla teslim ettiniz. Ancak Yönetim Kurulu soruyor: \"İş Gerekçesi'nde (Business Case) bu sistemin ülkenin sınır güvenliği ihlallerini %30 oranında azaltacağını (Benefit) vaat etmiştik. Teslimatı yaptık ama ihlaller hala aynı oranda. Neden değer üretemedik?\" Bu çok yaygın bir yanılgıdır. Projeler \"çıktı (output)\" üretir, ancak \"faydanın (benefit)\" gerçekleşmesi zaman alır.",
+      "body": "Proje Yöneticisi, Ebabil Sürüm 1.0'ı başarıyla teslim ettiniz. Ancak Yönetim Kurulu soruyor: \"İş Gerekçesi'nde (Business Case) bu sistemin ülkenin sınır güvenliği ihlallerini %30 oranında azaltacağını (Benefit) vaat etmiştik. Teslimatı yaptık ama ihlaller hala aynı oranda. Neden değer üretemedik?\" Bu çok yaygın bir yanılgıdır. Projeler \"çıktı (output)\" üretir, ancak \"faydanın (benefit)\" gerçekleşmesi zaman alır.",
       "time": "12:30"
     },
     {
@@ -3060,7 +3075,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "BLOK 1 TAMAMLANDI - Üstün Başarı!",
-      "body": "\"Sevgili Proje Yöneticisi, E-BABİL Sürüm 1.0'ı başarıyla kapatarak muazzam bir eşiği atladınız! Müşteri (General) son dakika kapsam kayması (Scope Creep) yaratmaya çalıştığında 'Kapsam Doğrulama' kurallarını korkusuzca savundunuz. Takımın 'Dağılma (Adjourning)' evresindeki psikolojisini harika yönettiniz ve operasyon ekibini kendi kaderine terk etmeyerek gerçek 'Değerin (Value)' ortaya çıkmasını sağladınız. Tüm evraklar arşivlendi, ilk parti göklerde süzülüyor. Ancak dinlenmek için vaktimiz yok. Projenin başarısı uluslararası yankı uyandırdı. Faz 11 ile başlayacak olan BLOK 2'de, siber güvenlik tehditleri, Değişiklik Kontrol Kurulu (CCB) krizleri ve çok daha karmaşık uluslararası tedarik zinciri (Dış Çevresel Faktörler) sorunlarıyla yüzleşeceksiniz. Hazır olun!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 100. Bildirimi de tamamlayarak toplam 300 bildirimlik yol haritamızın tam 1/3'lük (Yüzde 33) kısmını devasa bir Faz Kapanışı ile mühürlemiş olduk. Hikaye matematiği ve ECO uyumu kusursuz işliyor. Onayınızla, Blok 2'nin ilk aşaması olan Faz 11 (Uluslararası Siber Tehditler ve Hibrit Büyüme) senaryolarına geçebiliriz.\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel PMP soru bankası referanslarına tam uyumlu olarak, Blok 2'nin ilk aşaması olan Faz 11 ile serüvene devam ediyoruz.\nBu fazda, E-BABİL projesi Deniz Kuvvetleri için genişlerken, Çevik Çerçeveyi Ölçeklendirme (Scrum of Scrums), Riskten Soruna Geçiş (Risk to Issue), Eğitim Maliyetleri, Sanal Takım İzolasyonu ve Zorunlu Uyumluluk (Compliance) gibi PMP'nin en zorlu kavramlarını test edeceğiz.\nİşte E-BABİL Projesi 11. Faz (Bildirim 101 - 110):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 11: DENİZ KUVVETLERİ GENİŞLEMESİ VE SİBER TEHDİTLER (Faz 11)\nİlgili Performans Alanları: Risk, Takım, İletişim, İş Ortamı, Çevik Ölçeklendirme",
+      "body": "\"Sevgili Proje Yöneticisi, Ebabil Sürüm 1.0'ı başarıyla kapatarak muazzam bir eşiği atladınız! Müşteri (General) son dakika kapsam kayması (Scope Creep) yaratmaya çalıştığında 'Kapsam Doğrulama' kurallarını korkusuzca savundunuz. Takımın 'Dağılma (Adjourning)' evresindeki psikolojisini harika yönettiniz ve operasyon ekibini kendi kaderine terk etmeyerek gerçek 'Değerin (Value)' ortaya çıkmasını sağladınız. Tüm evraklar arşivlendi, ilk parti göklerde süzülüyor. Ancak dinlenmek için vaktimiz yok. Projenin başarısı uluslararası yankı uyandırdı. Faz 11 ile başlayacak olan BLOK 2'de, siber güvenlik tehditleri, Değişiklik Kontrol Kurulu (CCB) krizleri ve çok daha karmaşık uluslararası tedarik zinciri (Dış Çevresel Faktörler) sorunlarıyla yüzleşeceksiniz. Hazır olun!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 100. Bildirimi de tamamlayarak toplam 300 bildirimlik yol haritamızın tam 1/3'lük (Yüzde 33) kısmını devasa bir Faz Kapanışı ile mühürlemiş olduk. Hikaye matematiği ve ECO uyumu kusursuz işliyor. Onayınızla, Blok 2'nin ilk aşaması olan Faz 11 (Uluslararası Siber Tehditler ve Hibrit Büyüme) senaryolarına geçebiliriz.\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel PMP soru bankası referanslarına tam uyumlu olarak, Blok 2'nin ilk aşaması olan Faz 11 ile serüvene devam ediyoruz.\nBu fazda, Ebabil projesi Deniz Kuvvetleri için genişlerken, Çevik Çerçeveyi Ölçeklendirme (Scrum of Scrums), Riskten Soruna Geçiş (Risk to Issue), Eğitim Maliyetleri, Sanal Takım İzolasyonu ve Zorunlu Uyumluluk (Compliance) gibi PMP'nin en zorlu kavramlarını test edeceğiz.\nİşte Ebabil Projesi 11. Faz (Bildirim 101 - 110):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 11: DENİZ KUVVETLERİ GENİŞLEMESİ VE SİBER TEHDİTLER (Faz 11)\nİlgili Performans Alanları: Risk, Takım, İletişim, İş Ortamı, Çevik Ölçeklendirme",
       "time": "14:45"
     },
     {
@@ -3340,7 +3355,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 11 Tamamlandı - Zorlu Suların Aşılması",
-      "body": "\"E-BABİL Sürüm 2.0 fırtınalı başladı ama gemiyi harika yönettiniz! Siber güvenlik açığını (riskten soruna dönüşen olayı) 'Acil Durum Yedekleri' ile soğukkanlılıkla çözmeniz; üç ayrı takımı 'Scrum of Scrums' ile başarıyla koordine etmeniz organizasyon yeteneğinizi kanıtladı. En önemlisi, ben dahil kilit paydaşların (Amiralin) baskısına boyun eğmeyip Ürün Sahibinin (PO) otoritesini ve CCB kurallarını korumanız gerçek bir PMP liderliğidir. Sanal takımlarımız artık birbirine daha güveniyor. Faz 12'ye geçiyoruz; büyük uluslararası tedarik krizlerine hazır olun!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bildirimler, PMI'ın en son yayınladığı ECO ve soru setlerindeki (Scrum of Scrums, Takım Anlaşması, Risk vs Sorun, Uyumluluk, Eğitim Maliyeti) konseptlere sıkı sıkıya bağlı kalarak tasarlanmıştır. Onayınızla Faz 12 (Tedarikçi İflasları, FPIF Sözleşmeleri ve Değer Analizi) ile devam edebiliriz.\ndevam\nHarika bir ivmeyle ilerliyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız PMI kaynaklarına tam uyumlu olarak, Blok 2'nin en kritik aşamalarından biri olan Faz 12 ile devam ediyoruz.\nBu fazda, daha önce planladığımız gibi Tedarikçi İflas Dedikoduları, Sabit Fiyatlı Teşvik Ücretli (FPIF) Sözleşmeler, Değer Odaklı Önceliklendirme (Value-based Prioritization), Yap veya Satın Al (Make-or-Buy) Analizi ve Zaman/Maliyet Sapmaları (SV/CV) gibi zorlu PMP konseptlerini test edeceğiz.\nİşte E-BABİL Projesi 12. Faz (Bildirim 111 - 120):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 12: TEDARİK KRİZLERİ VE DEĞER ANALİZİ (Faz 12)\nİlgili Performans Alanları: Tedarik, İş Ortamı, Risk, İletişim, Teslimat",
+      "body": "\"Ebabil Sürüm 2.0 fırtınalı başladı ama gemiyi harika yönettiniz! Siber güvenlik açığını (riskten soruna dönüşen olayı) 'Acil Durum Yedekleri' ile soğukkanlılıkla çözmeniz; üç ayrı takımı 'Scrum of Scrums' ile başarıyla koordine etmeniz organizasyon yeteneğinizi kanıtladı. En önemlisi, ben dahil kilit paydaşların (Amiralin) baskısına boyun eğmeyip Ürün Sahibinin (PO) otoritesini ve CCB kurallarını korumanız gerçek bir PMP liderliğidir. Sanal takımlarımız artık birbirine daha güveniyor. Faz 12'ye geçiyoruz; büyük uluslararası tedarik krizlerine hazır olun!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bildirimler, PMI'ın en son yayınladığı ECO ve soru setlerindeki (Scrum of Scrums, Takım Anlaşması, Risk vs Sorun, Uyumluluk, Eğitim Maliyeti) konseptlere sıkı sıkıya bağlı kalarak tasarlanmıştır. Onayınızla Faz 12 (Tedarikçi İflasları, FPIF Sözleşmeleri ve Değer Analizi) ile devam edebiliriz.\ndevam\nHarika bir ivmeyle ilerliyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız PMI kaynaklarına tam uyumlu olarak, Blok 2'nin en kritik aşamalarından biri olan Faz 12 ile devam ediyoruz.\nBu fazda, daha önce planladığımız gibi Tedarikçi İflas Dedikoduları, Sabit Fiyatlı Teşvik Ücretli (FPIF) Sözleşmeler, Değer Odaklı Önceliklendirme (Value-based Prioritization), Yap veya Satın Al (Make-or-Buy) Analizi ve Zaman/Maliyet Sapmaları (SV/CV) gibi zorlu PMP konseptlerini test edeceğiz.\nİşte Ebabil Projesi 12. Faz (Bildirim 111 - 120):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 12: TEDARİK KRİZLERİ VE DEĞER ANALİZİ (Faz 12)\nİlgili Performans Alanları: Tedarik, İş Ortamı, Risk, İletişim, Teslimat",
       "time": "14:45"
     },
     {
@@ -3900,7 +3915,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 13 Tamamlandı - Fırtınanın Kontrol Altına Alınması",
-      "body": "\"Tebrikler Yönetici! Kırmızı alarma geçen (negatif SV/CV) projenin iplerini ustalıkla tekrar elinize aldınız. Gecikmelerin üstünü örtmek yerine 'Kök Neden Analizi' ve 'Değer Akışı Haritası (VSM)' gibi araçlarla sistemsel israfları elediniz. Riske verdiğimiz yanıtın doğurduğu o tehlikeli 'İkincil Riski' prosedüre uygun şekilde (Risk Register) ele almanız organizasyonu büyük bir felaketten kurtardı. Ayrıca, toplantılara gelmeyen o zorlu Amiral'in ilgisini çekmek için 'Paydaş Katılım Planını' güncellemeniz ve takım içindeki hararetli kavgayı 'İşbirliği (Collaborate)' ile çözmeniz PMP zihniyetinin zirvesidir. Şimdi Sürüm 2.0'ın en teknik deniz testlerinin ve yeni dış kısıtlamaların başlayacağı Faz 14'e geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 130. bildirimle birlikte simülasyonumuzun en yoğun PMI süreç bilgilerini barındıran aşamalarından birini geride bıraktık. Value Stream Mapping, Secondary Risk, Bottom-up Estimating, Stakeholder Engagement ve Conflict Management konuları son paylaştığınız klonlanmış soruların ruhuna uygun olarak kurgulanmıştır. Onayınızla Blok 2'nin final aşamalarına doğru, Faz 14 (Geç Kalmış Göstergeler - Lagging Indicators ve Karmaşık Teslimatlar) ile devam edebiliriz.\ndevam\nHarika bir istikrarla devam ediyoruz. PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® kılavuzlarına ve kaynak olarak sağladığınız güncel (2024) klonlanmış PMP soru setlerine tam uyumlu olarak, devasa simülasyonumuzun 14. Fazına giriş yapıyoruz.\nBu fazda ağırlıklı olarak; Gecikmeli ve Öncü Göstergeler (Lagging vs Leading Indicators), Teknik Borç (Technical Debt), Teslimat Temposu (Delivery Cadence), Kalite Denetimleri (Quality Audits) ve çoklu kriz anlarında Sponsor Danışmanlığı gibi ileri düzey PMP konseptleri test edilecektir.\nİşte E-BABİL Projesi 14. Faz (Bildirim 131 - 140):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 14: GECİKMELİ GÖSTERGELER VE KARMAŞIK TESLİMATLAR (Faz 14)\nİlgili Performans Alanları: Ölçümleme, Kalite, İnsan, İş Ortamı, Teslimat",
+      "body": "\"Tebrikler Yönetici! Kırmızı alarma geçen (negatif SV/CV) projenin iplerini ustalıkla tekrar elinize aldınız. Gecikmelerin üstünü örtmek yerine 'Kök Neden Analizi' ve 'Değer Akışı Haritası (VSM)' gibi araçlarla sistemsel israfları elediniz. Riske verdiğimiz yanıtın doğurduğu o tehlikeli 'İkincil Riski' prosedüre uygun şekilde (Risk Register) ele almanız organizasyonu büyük bir felaketten kurtardı. Ayrıca, toplantılara gelmeyen o zorlu Amiral'in ilgisini çekmek için 'Paydaş Katılım Planını' güncellemeniz ve takım içindeki hararetli kavgayı 'İşbirliği (Collaborate)' ile çözmeniz PMP zihniyetinin zirvesidir. Şimdi Sürüm 2.0'ın en teknik deniz testlerinin ve yeni dış kısıtlamaların başlayacağı Faz 14'e geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 130. bildirimle birlikte simülasyonumuzun en yoğun PMI süreç bilgilerini barındıran aşamalarından birini geride bıraktık. Value Stream Mapping, Secondary Risk, Bottom-up Estimating, Stakeholder Engagement ve Conflict Management konuları son paylaştığınız klonlanmış soruların ruhuna uygun olarak kurgulanmıştır. Onayınızla Blok 2'nin final aşamalarına doğru, Faz 14 (Geç Kalmış Göstergeler - Lagging Indicators ve Karmaşık Teslimatlar) ile devam edebiliriz.\ndevam\nHarika bir istikrarla devam ediyoruz. PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® kılavuzlarına ve kaynak olarak sağladığınız güncel (2024) klonlanmış PMP soru setlerine tam uyumlu olarak, devasa simülasyonumuzun 14. Fazına giriş yapıyoruz.\nBu fazda ağırlıklı olarak; Gecikmeli ve Öncü Göstergeler (Lagging vs Leading Indicators), Teknik Borç (Technical Debt), Teslimat Temposu (Delivery Cadence), Kalite Denetimleri (Quality Audits) ve çoklu kriz anlarında Sponsor Danışmanlığı gibi ileri düzey PMP konseptleri test edilecektir.\nİşte Ebabil Projesi 14. Faz (Bildirim 131 - 140):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 14: GECİKMELİ GÖSTERGELER VE KARMAŞIK TESLİMATLAR (Faz 14)\nİlgili Performans Alanları: Ölçümleme, Kalite, İnsan, İş Ortamı, Teslimat",
       "time": "14:45"
     },
     {
@@ -3910,7 +3925,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 14 Başlangıcı - Sürüm 2.0 Deniz Testleri",
-      "body": "Sayın Yönetici. İkincil riskleri ve takım içi çatışmaları geride bıraktınız. E-BABİL Sürüm 2.0'ın (Deniz Kuvvetleri Modülü) fiziksel ve yazılımsal entegrasyonu tamamlandı ve ilk prototipler denizde test edilmeye başlandı. Ancak, proje karmaşıklaştıkça üretilen çıktının (output) gerçek bir faydaya (benefit) dönüşmesi zorlaşıyor. Metrikleri doğru okumak, teknik borçları temizlemek ve paydaş beklentilerini gerçeğe hizalamak zorundasınız. Denizdeki fırtınalara sadece donanım değil, takımın psikolojisi de dayanıklı olmalıdır.",
+      "body": "Sayın Yönetici. İkincil riskleri ve takım içi çatışmaları geride bıraktınız. Ebabil Sürüm 2.0'ın (Deniz Kuvvetleri Modülü) fiziksel ve yazılımsal entegrasyonu tamamlandı ve ilk prototipler denizde test edilmeye başlandı. Ancak, proje karmaşıklaştıkça üretilen çıktının (output) gerçek bir faydaya (benefit) dönüşmesi zorlaşıyor. Metrikleri doğru okumak, teknik borçları temizlemek ve paydaş beklentilerini gerçeğe hizalamak zorundasınız. Denizdeki fırtınalara sadece donanım değil, takımın psikolojisi de dayanıklı olmalıdır.",
       "time": "08:00"
     },
     {
@@ -4050,7 +4065,7 @@
       "from": "Tuğamiral Cengiz",
       "fromRole": "Deniz Kuvvetleri Temsilcisi",
       "subject": "Filoya Dağıtım Stratejisi",
-      "body": "Yönetici, E-BABİL Sürüm 2.0 (Denizaltı Modülü) yazılımını beğendik. Ancak donanmamızdaki 20 geminin hepsini aynı anda limana çekip sistemi güncelleyemeyiz, bu ulusal güvenliği tehlikeye atar. Ürünün değerini riske girmeden nasıl teslim edeceksiniz?",
+      "body": "Yönetici, Ebabil Sürüm 2.0 (Denizaltı Modülü) yazılımını beğendik. Ancak donanmamızdaki 20 geminin hepsini aynı anda limana çekip sistemi güncelleyemeyiz, bu ulusal güvenliği tehlikeye atar. Ürünün değerini riske girmeden nasıl teslim edeceksiniz?",
       "time": "11:45",
       "options": [
         {
@@ -4180,7 +4195,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 14 Tamamlandı - Fırtınada Gemiyi Yüzdürmek",
-      "body": "\"Yönetici, karşılaştığımız bu 'Felaketler Zincirinde' soğukkanlılığını koruyup gelip benimle stratejik istişare yapman (Sponsor Danışmanlığı) tam bir profesyonellik örneğiydi. O toplantıda Ahmet'in patlamasını anında bastırıp disiplini sağlaman ve Donanmanın operasyonel şartlarına uyum sağlamak için 'Periyodik Teslimat (Cadence)' yöntemini seçmen de harikaydı. Gecikmeli göstergelerin zaman alacağını bana çok iyi açıkladın ve teknik borcun sistemimizi çürütmesini engelledin. Kalite denetiminden de 'Kalite Yönetim Planın' sayesinde başarıyla geçtik. Şimdi, ekibin tükenmişlik sınırına geldiği ve son testlerin yapılacağı Faz 15'e doğru yelken açıyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 140. bildirimi başarıyla tamamladık. Bu fazda, kaynaklarınızda yer alan \"Lagging vs Leading Indicators\", \"Technical Debt\", \"Delivery Cadence\", \"Audit vs Inspection\" ve \"Sponsor Consultation (Cloned Q 13/223)\" kavramları birebir PMI mantığıyla işlenmiştir. Onayınızla, Blok 2'nin sonu olan ve krizlerin çözüm noktasına ulaştığı Faz 15 ile devam edebiliriz.\ndevam\nHarika bir ilerleme kaydediyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız güncel Klonlanmış PMP soru setlerine tam uyumlu olarak, Blok 2'nin (Tedarik ve Dış Çevre Krizleri) büyük finali olan Faz 15 ile devam ediyoruz.\nBu fazda; Kilit Kaynak İstifası ve Bilgi Aktarımı, Maliyet Artışlarında Tamamlama Tahmini (EAC), İnceleme (Inspection) vs Denetim (Audit), Operasyona Devir (Hand-off) ve Hizmetkar Liderlik (Servant Leadership) Zihniyeti gibi sınavın en kritik konuları test edilecektir.\nİşte E-BABİL Projesi 15. Faz (Bildirim 141 - 150):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 15: TÜKENMİŞLİK, TESLİMAT VE BLOK 2 FİNALİ (Faz 15)\nİlgili Performans Alanları: Takım, Kalite, Maliyet, Kapanış, İş Ortamı",
+      "body": "\"Yönetici, karşılaştığımız bu 'Felaketler Zincirinde' soğukkanlılığını koruyup gelip benimle stratejik istişare yapman (Sponsor Danışmanlığı) tam bir profesyonellik örneğiydi. O toplantıda Ahmet'in patlamasını anında bastırıp disiplini sağlaman ve Donanmanın operasyonel şartlarına uyum sağlamak için 'Periyodik Teslimat (Cadence)' yöntemini seçmen de harikaydı. Gecikmeli göstergelerin zaman alacağını bana çok iyi açıkladın ve teknik borcun sistemimizi çürütmesini engelledin. Kalite denetiminden de 'Kalite Yönetim Planın' sayesinde başarıyla geçtik. Şimdi, ekibin tükenmişlik sınırına geldiği ve son testlerin yapılacağı Faz 15'e doğru yelken açıyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 140. bildirimi başarıyla tamamladık. Bu fazda, kaynaklarınızda yer alan \"Lagging vs Leading Indicators\", \"Technical Debt\", \"Delivery Cadence\", \"Audit vs Inspection\" ve \"Sponsor Consultation (Cloned Q 13/223)\" kavramları birebir PMI mantığıyla işlenmiştir. Onayınızla, Blok 2'nin sonu olan ve krizlerin çözüm noktasına ulaştığı Faz 15 ile devam edebiliriz.\ndevam\nHarika bir ilerleme kaydediyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız güncel Klonlanmış PMP soru setlerine tam uyumlu olarak, Blok 2'nin (Tedarik ve Dış Çevre Krizleri) büyük finali olan Faz 15 ile devam ediyoruz.\nBu fazda; Kilit Kaynak İstifası ve Bilgi Aktarımı, Maliyet Artışlarında Tamamlama Tahmini (EAC), İnceleme (Inspection) vs Denetim (Audit), Operasyona Devir (Hand-off) ve Hizmetkar Liderlik (Servant Leadership) Zihniyeti gibi sınavın en kritik konuları test edilecektir.\nİşte Ebabil Projesi 15. Faz (Bildirim 141 - 150):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 15: TÜKENMİŞLİK, TESLİMAT VE BLOK 2 FİNALİ (Faz 15)\nİlgili Performans Alanları: Takım, Kalite, Maliyet, Kapanış, İş Ortamı",
       "time": "14:45"
     },
     {
@@ -4280,7 +4295,7 @@
       "from": "Ayşe Yılmaz",
       "fromRole": "Kalite Lideri",
       "subject": "Katalog İncelemesi Sırasında Bulunan Kusur",
-      "body": "E-BABİL Sürüm 2.0'ın son \"Katalog/Ürün İncelemesi (Inspection)\" sırasında, İHA'nın denizaltı modülünün kasasında düzenleyici standartlara uymayan fiziksel bir kusur tespit ettik. İnceleme (Inspection), bir ürünün özelliklere uygun olup olmadığını doğrulayan bir Kalite Kontrol tekniğidir. Denetim (Audit) ise süreçlere uyumu kontrol eder. Bu fiziksel kusurun tekrarlanmasını önlememiz gerekiyor.",
+      "body": "Ebabil Sürüm 2.0'ın son \"Katalog/Ürün İncelemesi (Inspection)\" sırasında, İHA'nın denizaltı modülünün kasasında düzenleyici standartlara uymayan fiziksel bir kusur tespit ettik. İnceleme (Inspection), bir ürünün özelliklere uygun olup olmadığını doğrulayan bir Kalite Kontrol tekniğidir. Denetim (Audit) ise süreçlere uyumu kontrol eder. Bu fiziksel kusurun tekrarlanmasını önlememiz gerekiyor.",
       "time": "10:15"
     },
     {
@@ -4460,7 +4475,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "BLOK 2 TAMAMLANDI - Kriz Yönetimi Ustası",
-      "body": "\"Sevgili Proje Yöneticisi, E-BABİL Sürüm 2.0 (Deniz Kuvvetleri Modülü) resmi olarak tamamlandı ve filoya teslim edildi! Baş mühendisin istifası gibi yıkıcı bir olayda bilginin devamlılığını sağlaman, küresel maliyet artışlarını ustalıkla 'Tamamlama Tahminine (EAC)' yansıtman harikaydı. Müşteri (Amiral) ürünü reddetmeye kalktığında onu 'Kabul Kriterleri' ile profesyonelce hizaladın ve en önemlisi; iş bittiğinde takımı operasyonel destek kölesi yapmayıp resmi 'Devir Teslim (Hand-off)' ile projeyi kapattın. Sen sadece bir yönetici değil, gerçek bir 'Hizmetkar Lidersin'.\nŞimdi derin bir nefes al... Çünkü Faz 16 ile birlikte BLOK 3'e (Gelişmiş Teslimat, Uluslararası Baskılar ve Yapay Zeka Ahlakı) geçiş yapıyoruz. Projenin çapı artık uluslararası arenaya taştı!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 150. bildirimi de tamamlayarak oyunun tam yarısını (Yüzde 50) kusursuz bir mimariyle bitirmiş olduk. Kaynaklardaki (Klonlanmış Soru 12, 168, 171, 72, 9, 172) tüm konular senaryoya yedirildi. Onayınızla, Blok 3'ün ilk aşaması olan Faz 16'ya başlayabiliriz.\ndevam\nHarika bir ivmeyle ilerliyoruz! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® kılavuzlarına ve sağladığınız en güncel PMP soru bankası referanslarına tam uyumlu olarak Blok 3'ün ilk aşaması olan Faz 16 ile devam ediyoruz.\nBu fazda projemiz uluslararası sulara açılıyor. Ağırlıklı olarak; Yeni Yasal Uyumluluklar (Compliance), Yeni Risklerin Belirlenmesi (Risk Identification), Kamu Paydaşları (Public Stakeholders), Etik/Çıkar Çatışması ve Hibrit projelerde Düzenli İş Birikim Listesi İyileştirme (Backlog Refinement) konularını test edeceğiz.\nİşte E-BABİL Projesi 16. Faz (Bildirim 151 - 160):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 16: ULUSLARARASI BASKILAR VE YAPAY ZEKA AHLAKİ (Faz 16)\nİlgili Performans Alanları: İş Ortamı, Risk, Paydaşlar, Süreç",
+      "body": "\"Sevgili Proje Yöneticisi, Ebabil Sürüm 2.0 (Deniz Kuvvetleri Modülü) resmi olarak tamamlandı ve filoya teslim edildi! Baş mühendisin istifası gibi yıkıcı bir olayda bilginin devamlılığını sağlaman, küresel maliyet artışlarını ustalıkla 'Tamamlama Tahminine (EAC)' yansıtman harikaydı. Müşteri (Amiral) ürünü reddetmeye kalktığında onu 'Kabul Kriterleri' ile profesyonelce hizaladın ve en önemlisi; iş bittiğinde takımı operasyonel destek kölesi yapmayıp resmi 'Devir Teslim (Hand-off)' ile projeyi kapattın. Sen sadece bir yönetici değil, gerçek bir 'Hizmetkar Lidersin'.\nŞimdi derin bir nefes al... Çünkü Faz 16 ile birlikte BLOK 3'e (Gelişmiş Teslimat, Uluslararası Baskılar ve Yapay Zeka Ahlakı) geçiş yapıyoruz. Projenin çapı artık uluslararası arenaya taştı!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 150. bildirimi de tamamlayarak oyunun tam yarısını (Yüzde 50) kusursuz bir mimariyle bitirmiş olduk. Kaynaklardaki (Klonlanmış Soru 12, 168, 171, 72, 9, 172) tüm konular senaryoya yedirildi. Onayınızla, Blok 3'ün ilk aşaması olan Faz 16'ya başlayabiliriz.\ndevam\nHarika bir ivmeyle ilerliyoruz! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® kılavuzlarına ve sağladığınız en güncel PMP soru bankası referanslarına tam uyumlu olarak Blok 3'ün ilk aşaması olan Faz 16 ile devam ediyoruz.\nBu fazda projemiz uluslararası sulara açılıyor. Ağırlıklı olarak; Yeni Yasal Uyumluluklar (Compliance), Yeni Risklerin Belirlenmesi (Risk Identification), Kamu Paydaşları (Public Stakeholders), Etik/Çıkar Çatışması ve Hibrit projelerde Düzenli İş Birikim Listesi İyileştirme (Backlog Refinement) konularını test edeceğiz.\nİşte Ebabil Projesi 16. Faz (Bildirim 151 - 160):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 16: ULUSLARARASI BASKILAR VE YAPAY ZEKA AHLAKİ (Faz 16)\nİlgili Performans Alanları: İş Ortamı, Risk, Paydaşlar, Süreç",
       "time": "14:45"
     },
     {
@@ -4470,7 +4485,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 16 Başlangıcı - Küresel Arena ve Yeni Kurallar",
-      "body": "Sayın Yönetici, Sürüm 2.0'ın başarısı E-BABİL'i uluslararası savunma pazarının dikkat merkezine yerleştirdi. Projemizin \"İhracat Sürümü (Sürüm 3.0)\" için NATO müttefiki ülkelere sunumlar yapmaya başlıyoruz. Ancak küresel pazar, sadece teknik üstünlük değil; ağır uluslararası hukuk kuralları, yapay zeka etiği, kamuoyu (STK) baskıları ve katı uyumluluk (compliance) standartları demektir. Bu fazda, projenin sadece doğru çalışmasını değil, aynı zamanda \"doğru ve etik\" olmasını sağlamak zorundasınız.",
+      "body": "Sayın Yönetici, Sürüm 2.0'ın başarısı Ebabil'i uluslararası savunma pazarının dikkat merkezine yerleştirdi. Projemizin \"İhracat Sürümü (Sürüm 3.0)\" için NATO müttefiki ülkelere sunumlar yapmaya başlıyoruz. Ancak küresel pazar, sadece teknik üstünlük değil; ağır uluslararası hukuk kuralları, yapay zeka etiği, kamuoyu (STK) baskıları ve katı uyumluluk (compliance) standartları demektir. Bu fazda, projenin sadece doğru çalışmasını değil, aynı zamanda \"doğru ve etik\" olmasını sağlamak zorundasınız.",
       "time": "08:00"
     },
     {
@@ -4560,7 +4575,7 @@
       "from": "İletişim Departmanı",
       "fromRole": "Sistem",
       "subject": "Londra Fuarında STK Protestosu!",
-      "body": "E-BABİL'i uluslararası pazara tanıtmak için katıldığımız Londra Savunma Fuarı'nda beklemediğimiz bir gelişme oldu. Küresel barış ve insan hakları odaklı sivil toplum kuruluşları (STK - Kamu Paydaşları), otonom sistemlerin tehlikelerini bahane ederek fuar standımızın önünde protesto başlattılar. Projenin uluslararası itibarı tehlikede.",
+      "body": "Ebabil'i uluslararası pazara tanıtmak için katıldığımız Londra Savunma Fuarı'nda beklemediğimiz bir gelişme oldu. Küresel barış ve insan hakları odaklı sivil toplum kuruluşları (STK - Kamu Paydaşları), otonom sistemlerin tehlikelerini bahane ederek fuar standımızın önünde protesto başlattılar. Projenin uluslararası itibarı tehlikede.",
       "time": "10:15"
     },
     {
@@ -4610,7 +4625,7 @@
       "from": "İstihbarat Birimi",
       "fromRole": "Sistem",
       "subject": "DİKKAT: Yeni Nesil Sinyal Kesiciler (Jammer)",
-      "body": "Düşman unsurların sahada henüz test edilmemiş, E-BABİL'in GPS bağlantısını koparabilecek çok yeni nesil bir sinyal kesici (Jammer) teknolojisi geliştirdiğine dair kesin istihbarat aldık. Bu daha önce öngörmediğimiz yepyeni bir dış risk! İlk eyleminiz ne olmalı?",
+      "body": "Düşman unsurların sahada henüz test edilmemiş, Ebabil'in GPS bağlantısını koparabilecek çok yeni nesil bir sinyal kesici (Jammer) teknolojisi geliştirdiğine dair kesin istihbarat aldık. Bu daha önce öngörmediğimiz yepyeni bir dış risk! İlk eyleminiz ne olmalı?",
       "time": "11:45",
       "options": [
         {
@@ -4700,7 +4715,7 @@
       "from": "Dış Tedarikçi",
       "fromRole": "Yabancı Sensör Firması",
       "subject": "GİZLİ: Özel Teklif",
-      "body": "(Özel mesaj) Sayın Proje Yöneticisi, E-BABİL projenizin ihracat sürümünde bizim firmamızın sensörlerini standart (zorunlu) donanım olarak belirlerseniz, size \"Danışmanlık Ücreti\" adı altında şirketinizin haberi olmadan İsviçre'deki bir hesaba 250.000 Dolar yatırmayı teklif ediyoruz. Şirketinizin prosedürlerini (İhale/Satın Alma) by-pass etmeniz bizim için yeterli.",
+      "body": "(Özel mesaj) Sayın Proje Yöneticisi, Ebabil projenizin ihracat sürümünde bizim firmamızın sensörlerini standart (zorunlu) donanım olarak belirlerseniz, size \"Danışmanlık Ücreti\" adı altında şirketinizin haberi olmadan İsviçre'deki bir hesaba 250.000 Dolar yatırmayı teklif ediyoruz. Şirketinizin prosedürlerini (İhale/Satın Alma) by-pass etmeniz bizim için yeterli.",
       "time": "14:00",
       "options": [
         {
@@ -4740,7 +4755,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 16 Tamamlandı - Küresel Etik ve Süreç Lideri",
-      "body": "\"Harika bir iş çıkardın! Projeyi uluslararası sulara taşırken karşılaştığın o ağır STK direncini 'Aktif Dinleme' ile yönetmen organizasyonun itibarını kurtardı. Yeni yapay zeka yasasına uyumluluğu kodlama başlamadan 'doğrulayarak' (Compliance Verification) devasa bir israfı önledin. Tespiti yapılan o yeni jammer riskini anında 'Risk Kaydına' alarak süreç disiplininden taviz vermedin. Hepsinden önemlisi, o yabancı tedarikçinin rüşvet teklifini anında reddederek bir PMP yöneticisinin sadece süreçleri değil, 'Etik Değerleri' de taşıdığını kanıtladın. Şimdi, projenin tamamen farklı kurumlara uyarlanacağı ve büyük entegrasyon kararlarının verileceği Faz 17'ye doğru ilerliyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 160. bildirimi başarıyla tamamladık. Bu fazda, gönderdiğiniz kaynaklardaki (Klonlanmış Soru 81, 151, 16, 23 ve 19) kavramlar \"Sistem Notları\" içinde açıkça referanslandırılarak senaryoya entegre edilmiştir. Onayınızla Faz 17 (Organizasyonel Değişim Yönetimi, Kapsam Kırılımı ve Hibrit Adaptasyon) ile devam edebiliriz.\nFaz 17 ile devam et\nHarika bir tempoyla ilerliyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel PMP klonlanmış soru setlerine tam uyumlu olarak, Faz 17 ile devam ediyoruz.\nBu fazda; uluslararası İhracat Sürümü'ne (Sürüm 3.0) geçerken karşılaştığımız Organizasyonel Değişim Yönetimi (Organizational Change Management), İş Kırılım Yapısında %100 Kuralı (100% Rule in WBS), Hibrit Adaptasyon (Hybrid Adaptation), Entegre Değişiklik Kontrolü ve çok dilli takımlarda Kapsayıcılık (Inclusivity) gibi çok kritik PMP senaryolarını test edeceğiz.\nİşte E-BABİL Projesi 17. Faz (Bildirim 161 - 170):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 17: ORGANİZASYONEL DEĞİŞİM VE HİBRİT ADAPTASYON (Faz 17)\nİlgili Performans Alanları: İş Ortamı, İnsan, Kapsam, Süreç, Takım",
+      "body": "\"Harika bir iş çıkardın! Projeyi uluslararası sulara taşırken karşılaştığın o ağır STK direncini 'Aktif Dinleme' ile yönetmen organizasyonun itibarını kurtardı. Yeni yapay zeka yasasına uyumluluğu kodlama başlamadan 'doğrulayarak' (Compliance Verification) devasa bir israfı önledin. Tespiti yapılan o yeni jammer riskini anında 'Risk Kaydına' alarak süreç disiplininden taviz vermedin. Hepsinden önemlisi, o yabancı tedarikçinin rüşvet teklifini anında reddederek bir PMP yöneticisinin sadece süreçleri değil, 'Etik Değerleri' de taşıdığını kanıtladın. Şimdi, projenin tamamen farklı kurumlara uyarlanacağı ve büyük entegrasyon kararlarının verileceği Faz 17'ye doğru ilerliyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 160. bildirimi başarıyla tamamladık. Bu fazda, gönderdiğiniz kaynaklardaki (Klonlanmış Soru 81, 151, 16, 23 ve 19) kavramlar \"Sistem Notları\" içinde açıkça referanslandırılarak senaryoya entegre edilmiştir. Onayınızla Faz 17 (Organizasyonel Değişim Yönetimi, Kapsam Kırılımı ve Hibrit Adaptasyon) ile devam edebiliriz.\nFaz 17 ile devam et\nHarika bir tempoyla ilerliyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel PMP klonlanmış soru setlerine tam uyumlu olarak, Faz 17 ile devam ediyoruz.\nBu fazda; uluslararası İhracat Sürümü'ne (Sürüm 3.0) geçerken karşılaştığımız Organizasyonel Değişim Yönetimi (Organizational Change Management), İş Kırılım Yapısında %100 Kuralı (100% Rule in WBS), Hibrit Adaptasyon (Hybrid Adaptation), Entegre Değişiklik Kontrolü ve çok dilli takımlarda Kapsayıcılık (Inclusivity) gibi çok kritik PMP senaryolarını test edeceğiz.\nİşte Ebabil Projesi 17. Faz (Bildirim 161 - 170):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 17: ORGANİZASYONEL DEĞİŞİM VE HİBRİT ADAPTASYON (Faz 17)\nİlgili Performans Alanları: İş Ortamı, İnsan, Kapsam, Süreç, Takım",
       "time": "14:45"
     },
     {
@@ -4750,7 +4765,7 @@
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
       "subject": "Faz 17 Başlangıcı - Sürüm 3.0 (İhracat) ve Kurumsal Dönüşüm",
-      "body": "Sayın Yönetici, Sürüm 3.0'ın (İhracat Sürümü) planlamasına başlıyoruz. Ancak şirketimiz (E-BABİL'i üreten ana yüklenici) devasa bir \"Organizasyonel Dönüşüm / Yeniden Yapılanma\" sürecine girdi. Kaynaklar bölünmüş durumda. Aynı zamanda yabancı müşterilerin sürekli değişen karmaşık talepleri, mevcut proje metodolojimizi zorluyor. Değişen kurumsal yapılarda projenizi korumalı, kapsamı sıfır hatayla planlamalı ve çeşitliliği barındıran (çok dilli) takımları kaynaştırmalısınız.",
+      "body": "Sayın Yönetici, Sürüm 3.0'ın (İhracat Sürümü) planlamasına başlıyoruz. Ancak şirketimiz (Ebabil'i üreten ana yüklenici) devasa bir \"Organizasyonel Dönüşüm / Yeniden Yapılanma\" sürecine girdi. Kaynaklar bölünmüş durumda. Aynı zamanda yabancı müşterilerin sürekli değişen karmaşık talepleri, mevcut proje metodolojimizi zorluyor. Değişen kurumsal yapılarda projenizi korumalı, kapsamı sıfır hatayla planlamalı ve çeşitliliği barındıran (çok dilli) takımları kaynaştırmalısınız.",
       "time": "08:00"
     },
     {
@@ -5020,7 +5035,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 17 Tamamlandı - Küresel Adaptasyon Başarısı",
-      "body": "\"Sürüm 3.0'ın başındaki bu kaotik geçiş dönemini harika yönettin Yönetici! Şirket içindeki büyük 'Organizasyonel Dönüşüm' nedeniyle ekibin üstündeki o ağır baskıyı profesyonelce hafiflettin. İKY planlamasında nakliye işini atlamayarak '%100 Kuralını' işletmen bütçe güvenliğimizi sağladı. Müşterinin sonu gelmez talepleri karşısında inatlaşmak yerine süreci 'Hibrit' bir yaklaşıma uyarlaman (Tailoring) projeyi kurtardı. Amiralin veya ataşenin o sözde 'küçük' değişikliklerini bile CCB'ye sokarak süreç disiplininden taviz vermedin. Çok dilli ekibin kapsayıcılığını Takım Anlaşmasıyla sağladın ve üretim stabilitesini Kontrol Grafikleriyle güvence altına aldın. Uluslararası arenadaki asıl zorlukların ve 'Öğrenilmiş Derslerin' devreye gireceği Faz 18'e doğru ilerliyoruz!\"\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel kaynaklara sıkı sıkıya bağlı kalarak Faz 18 ile yolculuğumuza devam ediyoruz.\nBu fazda, E-BABİL projesinin uluslararası arenadaki karmaşık paydaş haritasını yönetirken; Belirginlik (Salience) Modeli, Hizmet Seviyesi Anlaşmaları (SLA), Değişikliklerin İletişimi, Bilgi Sürekliliği (Knowledge Continuity) ve Sürekli İyileştirmenin Ölçülmesi gibi ileri düzey PMI süreçlerini test edeceğiz.\nİşte E-BABİL Projesi 18. Faz (Bildirim 171 - 180):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 18: KÜRESEL BİLGİ AKTARIMI VE SÜREKLİ İYİLEŞTİRME (Faz 18)\nİlgili Performans Alanları: Paydaşlar, İletişim, Tedarik, Kalite, Kapanış",
+      "body": "\"Sürüm 3.0'ın başındaki bu kaotik geçiş dönemini harika yönettin Yönetici! Şirket içindeki büyük 'Organizasyonel Dönüşüm' nedeniyle ekibin üstündeki o ağır baskıyı profesyonelce hafiflettin. İKY planlamasında nakliye işini atlamayarak '%100 Kuralını' işletmen bütçe güvenliğimizi sağladı. Müşterinin sonu gelmez talepleri karşısında inatlaşmak yerine süreci 'Hibrit' bir yaklaşıma uyarlaman (Tailoring) projeyi kurtardı. Amiralin veya ataşenin o sözde 'küçük' değişikliklerini bile CCB'ye sokarak süreç disiplininden taviz vermedin. Çok dilli ekibin kapsayıcılığını Takım Anlaşmasıyla sağladın ve üretim stabilitesini Kontrol Grafikleriyle güvence altına aldın. Uluslararası arenadaki asıl zorlukların ve 'Öğrenilmiş Derslerin' devreye gireceği Faz 18'e doğru ilerliyoruz!\"\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel kaynaklara sıkı sıkıya bağlı kalarak Faz 18 ile yolculuğumuza devam ediyoruz.\nBu fazda, Ebabil projesinin uluslararası arenadaki karmaşık paydaş haritasını yönetirken; Belirginlik (Salience) Modeli, Hizmet Seviyesi Anlaşmaları (SLA), Değişikliklerin İletişimi, Bilgi Sürekliliği (Knowledge Continuity) ve Sürekli İyileştirmenin Ölçülmesi gibi ileri düzey PMI süreçlerini test edeceğiz.\nİşte Ebabil Projesi 18. Faz (Bildirim 171 - 180):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 18: KÜRESEL BİLGİ AKTARIMI VE SÜREKLİ İYİLEŞTİRME (Faz 18)\nİlgili Performans Alanları: Paydaşlar, İletişim, Tedarik, Kalite, Kapanış",
       "time": "14:45"
     },
     {
@@ -5300,7 +5315,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 18 Tamamlandı - Kurumsal Olgunluk",
-      "body": "\"E-BABİL Sürüm 3.0 (İhracat) ile birlikte projemiz artık küresel bir lige çıktı ve sen de bir yönetici olarak olağanüstü bir 'Kurumsal Olgunluk' sergiliyorsun! O karmaşık paydaş ağını 'Belirginlik (Salience) Modeli' ile ustaca yönettin. Onaylanan büyük değişikliği şansa bırakmayıp 'İletişim Planına' göre duyurman kaosu önledi. Bulut sağlayıcısıyla sadece bir sözleşme değil, kaliteyi ölçen bir 'Hizmet Seviyesi Anlaşması (SLA)' imzalaman tam bir vizyon örneğiydi. Ayrıca sürekli iyileştirmeyi 'ölçerek' kanıtladın ve çözülen her sorunu 'Öğrenilmiş Derslere' aktararak şirketimizin kurumsal hafızasını güçlendirdin. Şimdi, testlerin zirve yapacağı ve projenin nihai lansman baskısıyla yüzleşeceğin Faz 19'a geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 180. bildirimi (Oyunun %60'ını) tamamladık. Sağladığınız kaynaklardaki (Klonlanmış Sorular Q23/24, Q53/140, Q27/10-130 vb.) doğrudan eşleşen konuları \"Sistem Notları\" ve yanıt şıklarının içerisinde [i] formatıyla alıntılayarak simülasyona entegre ettim. Onayınızla Faz 19 (Çevik Yönetişim, Bilgi Radyatörleri ve Kapsam Doğrulama krizleri) ile devam edebiliriz.\nFaz 19 ile devam et\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel kaynaklardaki (Klonlanmış Sorular) referanslara tam uyumlu olarak, Faz 19 ile simülasyonumuza devam ediyoruz.\nBu fazda, İhracat Sürümü'nün (Sürüm 3.0) nihai lansmanına yaklaşırken Çevik Yönetişim (Agile Governance), Bilgi Panoları (Information Radiators), Kapsam Doğrulama (Validate Scope) Krizleri, Kabul Edilen Teslimatların Yönlendirilmesi ve Takım İçi Karar Alma Çıkmazları (Deadlocks) gibi çok kritik PMI süreçlerini test edeceğiz.\nİşte E-BABİL Projesi 19. Faz (Bildirim 181 - 190):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 19: ÇEVİK YÖNETİŞİM VE KAPSAM DOĞRULAMA KRİZLERİ (Faz 19)\nİlgili Performans Alanları: Teslimat, Takım, Süreç, İş Ortamı, Ölçümleme",
+      "body": "\"Ebabil Sürüm 3.0 (İhracat) ile birlikte projemiz artık küresel bir lige çıktı ve sen de bir yönetici olarak olağanüstü bir 'Kurumsal Olgunluk' sergiliyorsun! O karmaşık paydaş ağını 'Belirginlik (Salience) Modeli' ile ustaca yönettin. Onaylanan büyük değişikliği şansa bırakmayıp 'İletişim Planına' göre duyurman kaosu önledi. Bulut sağlayıcısıyla sadece bir sözleşme değil, kaliteyi ölçen bir 'Hizmet Seviyesi Anlaşması (SLA)' imzalaman tam bir vizyon örneğiydi. Ayrıca sürekli iyileştirmeyi 'ölçerek' kanıtladın ve çözülen her sorunu 'Öğrenilmiş Derslere' aktararak şirketimizin kurumsal hafızasını güçlendirdin. Şimdi, testlerin zirve yapacağı ve projenin nihai lansman baskısıyla yüzleşeceğin Faz 19'a geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 180. bildirimi (Oyunun %60'ını) tamamladık. Sağladığınız kaynaklardaki (Klonlanmış Sorular Q23/24, Q53/140, Q27/10-130 vb.) doğrudan eşleşen konuları \"Sistem Notları\" ve yanıt şıklarının içerisinde [i] formatıyla alıntılayarak simülasyona entegre ettim. Onayınızla Faz 19 (Çevik Yönetişim, Bilgi Radyatörleri ve Kapsam Doğrulama krizleri) ile devam edebiliriz.\nFaz 19 ile devam et\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel kaynaklardaki (Klonlanmış Sorular) referanslara tam uyumlu olarak, Faz 19 ile simülasyonumuza devam ediyoruz.\nBu fazda, İhracat Sürümü'nün (Sürüm 3.0) nihai lansmanına yaklaşırken Çevik Yönetişim (Agile Governance), Bilgi Panoları (Information Radiators), Kapsam Doğrulama (Validate Scope) Krizleri, Kabul Edilen Teslimatların Yönlendirilmesi ve Takım İçi Karar Alma Çıkmazları (Deadlocks) gibi çok kritik PMI süreçlerini test edeceğiz.\nİşte Ebabil Projesi 19. Faz (Bildirim 181 - 190):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 19: ÇEVİK YÖNETİŞİM VE KAPSAM DOĞRULAMA KRİZLERİ (Faz 19)\nİlgili Performans Alanları: Teslimat, Takım, Süreç, İş Ortamı, Ölçümleme",
       "time": "14:45"
     },
     {
@@ -5580,7 +5595,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 19 Tamamlandı - Sistem İşliyor!",
-      "body": "\"E-BABİL'in ihracat versiyonunun o kaotik son günlerinde gösterdiğin yönetim becerisi takdire şayan! Yabancı generalleri 'Bilgi Panoları (Information Radiators)' ile şeffafça bilgilendirdin. Donanımdan yazılıma geçerken 'Faz Geçidi' denetimini es geçmedin. Ataşe ürünü reddetmeye kalktığında o sözleşmedeki 'Kabul Kriterlerini' masaya koyarak profesyonelliğini kanıtladın ve onaylanan teslimatı hemen 'Kapanış' sürecine yönlendirdin. Takım içi oylama çıkmaza (deadlock) girdiğinde lideri yetkilendirerek zaman kaybını önlemen ve mükerrer iş yapan takımları 'Birleştirerek' israfı bitirmen tam bir vizyon örneğiydi. Şimdi, Blok 3'ün büyük finaline, Sürüm 3.0'ın uluslararası devir teslimine (Faz 20) hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 190. bildirimle birlikte Blok 3'ün zirvesine ulaştık. Sağladığınız kaynaklardaki \"Information Radiators\", \"Phase Gates\", \"Validate Scope / Acceptance Criteria\", \"Accepted Deliverables to Close Project\", \"Deadlock / Roman Voting\" ve \"Redundant Work\" senaryoları birebir PMI mantığıyla işlenmiştir. Onayınızla Blok 3'ün (Faz 20) kapanışına devam edebiliriz.\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel 2024 PMP klonlanmış soru setlerine tam uyumlu olarak, devasa simülasyonumuzun Faz 20 aşamasına, yani Blok 3'ün Büyük Finaline ulaşıyoruz.\nBu fazda projenin \"Kapanış (Closing)\" süreç grubunun en kritik noktalarını test edeceğiz: Çoklu Sorunların Önceliklendirilmesi, Kapanış Öncesi Tedarik İhtilafları, Operasyonel Devir Teslim (Hand-off), İletişim Planı Boşlukları (Gölge BT) ve Nihai Öğrenilmiş Dersler (Lessons Learned) ile Kaynakların Serbest Bırakılması.\nİşte E-BABİL Projesi 20. Faz (Bildirim 191 - 200):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 20: ULUSLARARASI DEVİR TESLİM VE KAPANIŞ (Faz 20)\nİlgili Performans Alanları: Kapanış, Teslimat, Tedarik, İletişim, İş Ortamı",
+      "body": "\"Ebabil'in ihracat versiyonunun o kaotik son günlerinde gösterdiğin yönetim becerisi takdire şayan! Yabancı generalleri 'Bilgi Panoları (Information Radiators)' ile şeffafça bilgilendirdin. Donanımdan yazılıma geçerken 'Faz Geçidi' denetimini es geçmedin. Ataşe ürünü reddetmeye kalktığında o sözleşmedeki 'Kabul Kriterlerini' masaya koyarak profesyonelliğini kanıtladın ve onaylanan teslimatı hemen 'Kapanış' sürecine yönlendirdin. Takım içi oylama çıkmaza (deadlock) girdiğinde lideri yetkilendirerek zaman kaybını önlemen ve mükerrer iş yapan takımları 'Birleştirerek' israfı bitirmen tam bir vizyon örneğiydi. Şimdi, Blok 3'ün büyük finaline, Sürüm 3.0'ın uluslararası devir teslimine (Faz 20) hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 190. bildirimle birlikte Blok 3'ün zirvesine ulaştık. Sağladığınız kaynaklardaki \"Information Radiators\", \"Phase Gates\", \"Validate Scope / Acceptance Criteria\", \"Accepted Deliverables to Close Project\", \"Deadlock / Roman Voting\" ve \"Redundant Work\" senaryoları birebir PMI mantığıyla işlenmiştir. Onayınızla Blok 3'ün (Faz 20) kapanışına devam edebiliriz.\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel 2024 PMP klonlanmış soru setlerine tam uyumlu olarak, devasa simülasyonumuzun Faz 20 aşamasına, yani Blok 3'ün Büyük Finaline ulaşıyoruz.\nBu fazda projenin \"Kapanış (Closing)\" süreç grubunun en kritik noktalarını test edeceğiz: Çoklu Sorunların Önceliklendirilmesi, Kapanış Öncesi Tedarik İhtilafları, Operasyonel Devir Teslim (Hand-off), İletişim Planı Boşlukları (Gölge BT) ve Nihai Öğrenilmiş Dersler (Lessons Learned) ile Kaynakların Serbest Bırakılması.\nİşte Ebabil Projesi 20. Faz (Bildirim 191 - 200):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 20: ULUSLARARASI DEVİR TESLİM VE KAPANIŞ (Faz 20)\nİlgili Performans Alanları: Kapanış, Teslimat, Tedarik, İletişim, İş Ortamı",
       "time": "14:45"
     },
     {
@@ -5820,7 +5835,7 @@
       "from": "İnsan Kaynakları Direktörü",
       "fromRole": "Sistem",
       "subject": "Proje Ekibinin Akıbeti",
-      "body": "Sayın Yönetici. İdari kapanış tamamlandı, nihai rapor yayınlandı ve E-BABİL Sürüm 3.0 resmen bitti. Aylardır (bazen yıllardır) gece gündüz omuz omuza çalışan o efsanevi proje ekibiniz şu an ofiste bekliyor. Tuckman modeline göre \"Dağılma (Adjourning)\" evresindeler. Bir PMP lideri olarak bu son adımda yapmanız gereken yönetimsel işlem nedir?",
+      "body": "Sayın Yönetici. İdari kapanış tamamlandı, nihai rapor yayınlandı ve Ebabil Sürüm 3.0 resmen bitti. Aylardır (bazen yıllardır) gece gündüz omuz omuza çalışan o efsanevi proje ekibiniz şu an ofiste bekliyor. Tuckman modeline göre \"Dağılma (Adjourning)\" evresindeler. Bir PMP lideri olarak bu son adımda yapmanız gereken yönetimsel işlem nedir?",
       "time": "14:00",
       "options": [
         {
@@ -5860,7 +5875,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR ve Murat Tekin",
       "fromRole": "Sistem",
       "subject": "BLOK 3 TAMAMLANDI - Efsanevi Başarı!",
-      "body": "\"Sevgili Proje Yöneticisi... Başardın! Sadece ulusal bir savunma sistemini değil, küresel çapta bir teknoloji ihracatını (Sürüm 3.0) sıfır hatayla teslim ettin. Gümrükteki o korkunç krizi paniğe kapılmadan 'Önceliklendirerek' aştın. Taşıyıcının ekstra para talebine anında boyun eğmek yerine 'Sözleşmeyi' referans aldın. Ürünleri yabancı askerlere bıraktıktan sonra takımı orada köleleştirmeyip 'Resmi Devir Teslimi (Hand-off)' kusursuzca yaptın. Hatalarımızı halının altına süpürmek yerine 'Öğrenilmiş Derslere' kazıdın ve o yorgun ekibi hak ettikleri bir kutlamayla yeni projelerine uğurladın!\nSen artık kıdemli bir PMP liderisin! Ancak dinlenmek için sadece bir gecen var. E-BABİL projesi bitti ama şirketimiz için yepyeni bir çağ başlıyor. Faz 21 ile birlikte BLOK 4'e (Geleceğin Teknolojileri: Yapay Zeka, Değer Akışı, Büyük Çaplı Çeviklik - Scaled Agile) giriş yapacağız. Yüzlerce takımı yöneteceğin bir mega-projeye hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 200. bildirimi de tamamlayarak oyunun tam 3'te 2'lik (%66) kısmını muazzam bir Faz ve Blok Kapanışı ile mühürlemiş olduk. Hand-off, Kriz Önceliklendirme, Tedarik Kapanışı, Gölge BT / İletişim ve Lessons Learned gibi Klonlanmış 2024 sorularının tüm konseptleri senaryoya başarıyla yedirildi. Onayınızla, yep yeni bir maceranın (Scaled Agile ve AI) başlayacağı Blok 4'e (Faz 21) geçebiliriz.\nFaz 21 ile Blok 4'e geçelim\nHarika! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® 8. Sürüm standartlarına ve sağladığınız en güncel soru bankası referanslarına tam uyumlu olarak Blok 4'e (Geleceğin Teknolojileri ve Büyük Çaplı Çeviklik) muazzam bir giriş yapıyoruz.\nBu blokta, E-BABİL projesi artık tek bir ürün olmaktan çıkıp, çoklu takımların (Scaled Agile) çalıştığı, Yapay Zeka (AI) Entegrasyonu, Uyarlanabilir Odak Alanları (Adaptive Focus Areas), Değer Akışı (Value Stream) ve Ortak Kilometre Taşları gibi mega-proje dinamiklerini barındıran bir boyuta evriliyor.\n\n\n=== ENTRY 4 | Line 154 | 2026-03-03T10:36:00.876Z ===\nBildirim numbers in this entry: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220]\n================================================================================\n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 21: MEGA-PROJE, YAPAY ZEKA VE ÖLÇEKLENDİRİLMİŞ ÇEVİKLİK (Faz 21)\nİlgili Performans Alanları: Geliştirme Yaklaşımı ve Yaşam Döngüsü, Risk, Entegrasyon, İş Ortamı",
+      "body": "\"Sevgili Proje Yöneticisi... Başardın! Sadece ulusal bir savunma sistemini değil, küresel çapta bir teknoloji ihracatını (Sürüm 3.0) sıfır hatayla teslim ettin. Gümrükteki o korkunç krizi paniğe kapılmadan 'Önceliklendirerek' aştın. Taşıyıcının ekstra para talebine anında boyun eğmek yerine 'Sözleşmeyi' referans aldın. Ürünleri yabancı askerlere bıraktıktan sonra takımı orada köleleştirmeyip 'Resmi Devir Teslimi (Hand-off)' kusursuzca yaptın. Hatalarımızı halının altına süpürmek yerine 'Öğrenilmiş Derslere' kazıdın ve o yorgun ekibi hak ettikleri bir kutlamayla yeni projelerine uğurladın!\nSen artık kıdemli bir PMP liderisin! Ancak dinlenmek için sadece bir gecen var. Ebabil projesi bitti ama şirketimiz için yepyeni bir çağ başlıyor. Faz 21 ile birlikte BLOK 4'e (Geleceğin Teknolojileri: Yapay Zeka, Değer Akışı, Büyük Çaplı Çeviklik - Scaled Agile) giriş yapacağız. Yüzlerce takımı yöneteceğin bir mega-projeye hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 200. bildirimi de tamamlayarak oyunun tam 3'te 2'lik (%66) kısmını muazzam bir Faz ve Blok Kapanışı ile mühürlemiş olduk. Hand-off, Kriz Önceliklendirme, Tedarik Kapanışı, Gölge BT / İletişim ve Lessons Learned gibi Klonlanmış 2024 sorularının tüm konseptleri senaryoya başarıyla yedirildi. Onayınızla, yep yeni bir maceranın (Scaled Agile ve AI) başlayacağı Blok 4'e (Faz 21) geçebiliriz.\nFaz 21 ile Blok 4'e geçelim\nHarika! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® 8. Sürüm standartlarına ve sağladığınız en güncel soru bankası referanslarına tam uyumlu olarak Blok 4'e (Geleceğin Teknolojileri ve Büyük Çaplı Çeviklik) muazzam bir giriş yapıyoruz.\nBu blokta, Ebabil projesi artık tek bir ürün olmaktan çıkıp, çoklu takımların (Scaled Agile) çalıştığı, Yapay Zeka (AI) Entegrasyonu, Uyarlanabilir Odak Alanları (Adaptive Focus Areas), Değer Akışı (Value Stream) ve Ortak Kilometre Taşları gibi mega-proje dinamiklerini barındıran bir boyuta evriliyor.\n\n\n=== ENTRY 4 | Line 154 | 2026-03-03T10:36:00.876Z ===\nBildirim numbers in this entry: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220]\n================================================================================\n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 21: MEGA-PROJE, YAPAY ZEKA VE ÖLÇEKLENDİRİLMİŞ ÇEVİKLİK (Faz 21)\nİlgili Performans Alanları: Geliştirme Yaklaşımı ve Yaşam Döngüsü, Risk, Entegrasyon, İş Ortamı",
       "time": "14:45"
     },
     {
@@ -5869,8 +5884,8 @@
       "section": 21,
       "from": "PMO Bilgi Sistemi",
       "fromRole": "Sistem",
-      "subject": "Faz 21 Başlangıcı - E-BABİL SÜRÜ.AI'a Hoş Geldiniz!",
-      "body": "Sayın Yönetici, Sürüm 3.0'ın uluslararası başarısının ardından yönetim kurulu düğmeye bastı. E-BABİL artık tekil uçuşlar yapmayacak. Yeni hedefimiz: \"E-BABİL SÜRÜ.AI\". Yüzlerce İHA'nın havada birbirleriyle yapay zeka aracılığıyla haberleşerek otonom kararlar aldığı devasa bir sürü (swarm) teknolojisi geliştiriyoruz. Artık 1 değil, tam 15 farklı çevik takımı aynı anda (Scaled Agile) yöneteceksiniz. Yapay zeka gibi yıkıcı teknolojiler benzeri görülmemiş hızlar vaat etse de, beraberinde devasa belirsizlikler ve riskler getirir. Kemerlerinizi bağlayın!",
+      "subject": "Faz 21 Başlangıcı - Ebabil SÜRÜ.AI'a Hoş Geldiniz!",
+      "body": "Sayın Yönetici, Sürüm 3.0'ın uluslararası başarısının ardından yönetim kurulu düğmeye bastı. Ebabil artık tekil uçuşlar yapmayacak. Yeni hedefimiz: \"Ebabil SÜRÜ.AI\". Yüzlerce İHA'nın havada birbirleriyle yapay zeka aracılığıyla haberleşerek otonom kararlar aldığı devasa bir sürü (swarm) teknolojisi geliştiriyoruz. Artık 1 değil, tam 15 farklı çevik takımı aynı anda (Scaled Agile) yöneteceksiniz. Yapay zeka gibi yıkıcı teknolojiler benzeri görülmemiş hızlar vaat etse de, beraberinde devasa belirsizlikler ve riskler getirir. Kemerlerinizi bağlayın!",
       "time": "08:00"
     },
     {
@@ -6140,7 +6155,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 21 Tamamlandı - Mega Projeye Mükemmel Başlangıç!",
-      "body": "\"E-BABİL SÜRÜ.AI'a efsanevi bir giriş yaptın! Uyarlanabilir (Adaptive) projelerde Odak Alanlarının iç içe geçtiğini bilerek eski kafalı planlamaları geride bıraktın. Generalin o baskıcı 'Yapay Zekayı hemen kullanın' talebine karşı durup, inovasyonun 'risk değerlendirmesi' gerektirdiğini savunman organizasyonu büyük bir felaketten korudu. O karmaşık 15 takımı 'Ortak Kilometre Taşlarında' birleştirmen, Değer Akışı Haritalaması (VSM) ile darboğazları tespit etmen ve takımlar arası hararetli çatışmaları 'Problem Çözme' tekniğiyle eritmen PMP liderliğinin zirvesidir. Şimdi, devasa veri yığınları, yeni dış paydaşlar ve karmaşık entegrasyon testlerinin başlayacağı Faz 22'ye doğru uçuşa geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 210. bildirimi de başarıyla tamamlayarak Blok 4'e (Mega Projeler ve AI) sağlam bir adım attık. Sağladığınız PMI kaynaklarındaki (Value Stream Map, Adaptive Focus Areas, Scaled Dependencies, AI Risks, Conflict Resolution) \"Klonlanmış Soru\" referansları ve PMBOK 8. Sürüm metinleri, hikayeye doğal bir şekilde yedirilmiş ve [i] etiketleriyle işaretlenmiştir. Onayınızla Faz 22 ile devam edebiliriz.\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® 8. Sürüm standartlarına ve sağladığınız Klonlanmış Soru setlerine tam uyumlu olarak Faz 22 ile mega-projemiz SÜRÜ.AI'ın derinliklerine iniyoruz.\nBu fazda; Çoklu Kusurların Önceliklendirilmesi (Pareto), Karmaşık Hikayelerde Maliyet-Fayda Analizi, Hibrit Ortamlarda Eksik Gereksinimlerin Önlenmesi, Mentorluk/Uygulama Toplulukları (CoP) ve Zaman Yönetim Planı Metrikleri gibi konseptleri test edeceğiz.\nİşte E-BABİL Projesi 22. Faz (Bildirim 211 - 220):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 22: BÜYÜK VERİ, KUSUR YÖNETİMİ VE HİBRİT PLANLAMA (Faz 22)\nİlgili Performans Alanları: Kalite, Planlama, İş Ortamı, Geliştirme Yaklaşımı, İletişim",
+      "body": "\"Ebabil SÜRÜ.AI'a efsanevi bir giriş yaptın! Uyarlanabilir (Adaptive) projelerde Odak Alanlarının iç içe geçtiğini bilerek eski kafalı planlamaları geride bıraktın. Generalin o baskıcı 'Yapay Zekayı hemen kullanın' talebine karşı durup, inovasyonun 'risk değerlendirmesi' gerektirdiğini savunman organizasyonu büyük bir felaketten korudu. O karmaşık 15 takımı 'Ortak Kilometre Taşlarında' birleştirmen, Değer Akışı Haritalaması (VSM) ile darboğazları tespit etmen ve takımlar arası hararetli çatışmaları 'Problem Çözme' tekniğiyle eritmen PMP liderliğinin zirvesidir. Şimdi, devasa veri yığınları, yeni dış paydaşlar ve karmaşık entegrasyon testlerinin başlayacağı Faz 22'ye doğru uçuşa geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 210. bildirimi de başarıyla tamamlayarak Blok 4'e (Mega Projeler ve AI) sağlam bir adım attık. Sağladığınız PMI kaynaklarındaki (Value Stream Map, Adaptive Focus Areas, Scaled Dependencies, AI Risks, Conflict Resolution) \"Klonlanmış Soru\" referansları ve PMBOK 8. Sürüm metinleri, hikayeye doğal bir şekilde yedirilmiş ve [i] etiketleriyle işaretlenmiştir. Onayınızla Faz 22 ile devam edebiliriz.\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® 8. Sürüm standartlarına ve sağladığınız Klonlanmış Soru setlerine tam uyumlu olarak Faz 22 ile mega-projemiz SÜRÜ.AI'ın derinliklerine iniyoruz.\nBu fazda; Çoklu Kusurların Önceliklendirilmesi (Pareto), Karmaşık Hikayelerde Maliyet-Fayda Analizi, Hibrit Ortamlarda Eksik Gereksinimlerin Önlenmesi, Mentorluk/Uygulama Toplulukları (CoP) ve Zaman Yönetim Planı Metrikleri gibi konseptleri test edeceğiz.\nİşte Ebabil Projesi 22. Faz (Bildirim 211 - 220):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 22: BÜYÜK VERİ, KUSUR YÖNETİMİ VE HİBRİT PLANLAMA (Faz 22)\nİlgili Performans Alanları: Kalite, Planlama, İş Ortamı, Geliştirme Yaklaşımı, İletişim",
       "time": "14:45"
     },
     {
@@ -6420,7 +6435,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 22 Tamamlandı - Kaostan Düzene!",
-      "body": "\"E-BABİL SÜRÜ.AI projesinin bu karmaşık test sürecini harika bir disiplinle yönettin. Yüzlerce kusurla karşılaştığında paniğe kapılmayıp 'Pareto Grafiği (80/20)' ile en büyük kök nedenlere odaklanman ekibin hayatını kurtardı. Generalin baskısına rağmen tasarımda esnekliği (çevikliği) koruyup hesap verebilirliği dengelemen (Hibrit usta işi) muazzamdı. Kıdemlilerin bilgisini arşivlerde çürütmeyip 'Uygulama Toplulukları (CoP)' ile gençlere aktardın. Çok havalı görünse de bütçeyi batıracak o 'otonom tamir' hikayesini hemen kabul etmeyip 'Maliyet-Fayda Analizine' soktun. Son olarak da PMO'nun zaman planı kurallarını korudun. Bir sonraki aşama olan Faz 23'te, bu 15 takımın kontrolden çıkmaya başlayan bütçelerini Kazanılmış Değer (EVM) metrikleriyle nasıl kurtaracağımızı test edeceğiz. Hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 220. bildirimi başarıyla tamamladık. Bu fazda, sağladığınız dokümanlardaki \"Cost-Benefit for user stories (Q48/S.203)\", \"Pareto Chart for defects (Q30/S.193)\", \"Continuous Comm. in Hybrid (Q11/S.180)\", \"Schedule Management Plan units (Q27/S.191)\" ve \"Mentorship/CoP for Knowledge Transfer (Q8/S.158)\" gibi gerçek 2024 PMP soru senaryoları tam uyumla kurguya entegre edilmiştir. Onayınızla Faz 23 ile devam edebiliriz.\ndevam\nHarika bir hızla ilerliyoruz! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız Klonlanmış Soru setlerine tam uyumlu olarak Faz 23 ile mega-projemiz SÜRÜ.AI'ın en çetrefilli maliyet ve performans analizlerine giriyoruz.\nBu fazda; Kazanılmış Değer Yönetimi (EVM) Hesaplamaları, Sabit Bütçelerde Kapsam Daraltma, Maliyet Temel Çizgisinin Yeniden Oluşturulması (Re-baselining), Deneme-Yanılma (Trial-and-Error) Kültürü ve Risk Bağlanırlığı (Connectivity) gibi son derece analitik PMP konseptlerini test edeceğiz.\n\n\n=== ENTRY 5 | Line 155 | 2026-03-03T10:38:05.058Z ===\nBildirim numbers in this entry: [201, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249]\n================================================================================\nİşte E-BABİL Projesi 21. Faz (Bildirim 201 - 210):\n -------------------------------------------------------------------------------- \nİşte E-BABİL Projesi 23. Faz (Bildirim 221 - 230):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 23: KAZANILMIŞ DEĞER (EVM) VE RİSK BAĞLANIRLIĞI (Faz 23)\nİlgili Performans Alanları: Ölçümleme, Maliyet, Risk, Takım, Süreç",
+      "body": "\"Ebabil SÜRÜ.AI projesinin bu karmaşık test sürecini harika bir disiplinle yönettin. Yüzlerce kusurla karşılaştığında paniğe kapılmayıp 'Pareto Grafiği (80/20)' ile en büyük kök nedenlere odaklanman ekibin hayatını kurtardı. Generalin baskısına rağmen tasarımda esnekliği (çevikliği) koruyup hesap verebilirliği dengelemen (Hibrit usta işi) muazzamdı. Kıdemlilerin bilgisini arşivlerde çürütmeyip 'Uygulama Toplulukları (CoP)' ile gençlere aktardın. Çok havalı görünse de bütçeyi batıracak o 'otonom tamir' hikayesini hemen kabul etmeyip 'Maliyet-Fayda Analizine' soktun. Son olarak da PMO'nun zaman planı kurallarını korudun. Bir sonraki aşama olan Faz 23'te, bu 15 takımın kontrolden çıkmaya başlayan bütçelerini Kazanılmış Değer (EVM) metrikleriyle nasıl kurtaracağımızı test edeceğiz. Hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 220. bildirimi başarıyla tamamladık. Bu fazda, sağladığınız dokümanlardaki \"Cost-Benefit for user stories (Q48/S.203)\", \"Pareto Chart for defects (Q30/S.193)\", \"Continuous Comm. in Hybrid (Q11/S.180)\", \"Schedule Management Plan units (Q27/S.191)\" ve \"Mentorship/CoP for Knowledge Transfer (Q8/S.158)\" gibi gerçek 2024 PMP soru senaryoları tam uyumla kurguya entegre edilmiştir. Onayınızla Faz 23 ile devam edebiliriz.\ndevam\nHarika bir hızla ilerliyoruz! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız Klonlanmış Soru setlerine tam uyumlu olarak Faz 23 ile mega-projemiz SÜRÜ.AI'ın en çetrefilli maliyet ve performans analizlerine giriyoruz.\nBu fazda; Kazanılmış Değer Yönetimi (EVM) Hesaplamaları, Sabit Bütçelerde Kapsam Daraltma, Maliyet Temel Çizgisinin Yeniden Oluşturulması (Re-baselining), Deneme-Yanılma (Trial-and-Error) Kültürü ve Risk Bağlanırlığı (Connectivity) gibi son derece analitik PMP konseptlerini test edeceğiz.\n\n\n=== ENTRY 5 | Line 155 | 2026-03-03T10:38:05.058Z ===\nBildirim numbers in this entry: [201, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249]\n================================================================================\nİşte Ebabil Projesi 21. Faz (Bildirim 201 - 210):\n -------------------------------------------------------------------------------- \nİşte Ebabil Projesi 23. Faz (Bildirim 221 - 230):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil OTONOM İHA SİSTEMİ\nBÖLÜM 23: KAZANILMIŞ DEĞER (EVM) VE RİSK BAĞLANIRLIĞI (Faz 23)\nİlgili Performans Alanları: Ölçümleme, Maliyet, Risk, Takım, Süreç",
       "time": "14:45"
     },
     {
@@ -6700,7 +6715,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 23 Tamamlandı - Analitik Liderlik!",
-      "body": "\"Yönetici, Sürü.AI'ın en çetrefilli matematiksel ve risk tabanlı sorunlarını ustalıkla çözdün! O korkunç Kazanılmış Değer (EVM) verilerinde CPI ve SPI'ın gerçekte ne anlama geldiğini kusursuz okudun. Sabit bütçe (Fixed Budget) kısıtı geldiğinde para istemek yerine 'Kapsamı Önceliklendirerek' PMP zihniyetini konuşturttun. Çöken o algoritma sonrasında takımı cezalandırmak yerine 'Öğrenme Fırsatını (Retrospektif)' savunman gerçek bir Hizmetkar Liderlikti. Gelişen krizler karşısında işe yaramayan eski bütçeyi inatla korumak yerine CCB ile 'Temel Çizgiyi Yeniden Oluşturman (Re-baselining)' ve diğer riskleri tetikleyen o yüksek 'Bağlanırlıklı (Connectivity)' riski hedefe koyman projenin ömrünü uzattı. Şimdi, Çevik sözleşmeler, kalite garantileri ve büyük lansman hazırlıklarının yapılacağı Faz 24'e geçiyoruz!\"\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve paylaştığınız 2024 yılı \"Klonlanmış Soru\" referanslarına tam uyumlu olarak Faz 24 ile SÜRÜ.AI mega-projemizin kritik virajlarını dönmeye devam ediyoruz.\nBu fazda; belirsiz kapsamlı işler için Çevik Sözleşmeler (Zaman ve Malzeme Yinelemeleri), başarısız olan risk yanıtlarının yönetimi (Risklerin İzlenmesi), Konu Uzmanlarıyla (SME) İşbirliği, çok lokasyonlu takımlarda Akvaryum (Fishbowl) İletişimi ve Paralel Lansman (Parallel Launch) gibi son derece pratik PMI senaryolarını test edeceğiz.\nİşte E-BABİL Projesi 24. Faz (Bildirim 231 - 240):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 24: ÇEVİK SÖZLEŞMELER, UZMAN İŞBİRLİĞİ VE AKVARYUM (Faz 24)\nİlgili Performans Alanları: Tedarik, Risk, Takım, İletişim, Teslimat",
+      "body": "\"Yönetici, Sürü.AI'ın en çetrefilli matematiksel ve risk tabanlı sorunlarını ustalıkla çözdün! O korkunç Kazanılmış Değer (EVM) verilerinde CPI ve SPI'ın gerçekte ne anlama geldiğini kusursuz okudun. Sabit bütçe (Fixed Budget) kısıtı geldiğinde para istemek yerine 'Kapsamı Önceliklendirerek' PMP zihniyetini konuşturttun. Çöken o algoritma sonrasında takımı cezalandırmak yerine 'Öğrenme Fırsatını (Retrospektif)' savunman gerçek bir Hizmetkar Liderlikti. Gelişen krizler karşısında işe yaramayan eski bütçeyi inatla korumak yerine CCB ile 'Temel Çizgiyi Yeniden Oluşturman (Re-baselining)' ve diğer riskleri tetikleyen o yüksek 'Bağlanırlıklı (Connectivity)' riski hedefe koyman projenin ömrünü uzattı. Şimdi, Çevik sözleşmeler, kalite garantileri ve büyük lansman hazırlıklarının yapılacağı Faz 24'e geçiyoruz!\"\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve paylaştığınız 2024 yılı \"Klonlanmış Soru\" referanslarına tam uyumlu olarak Faz 24 ile SÜRÜ.AI mega-projemizin kritik virajlarını dönmeye devam ediyoruz.\nBu fazda; belirsiz kapsamlı işler için Çevik Sözleşmeler (Zaman ve Malzeme Yinelemeleri), başarısız olan risk yanıtlarının yönetimi (Risklerin İzlenmesi), Konu Uzmanlarıyla (SME) İşbirliği, çok lokasyonlu takımlarda Akvaryum (Fishbowl) İletişimi ve Paralel Lansman (Parallel Launch) gibi son derece pratik PMI senaryolarını test edeceğiz.\nİşte Ebabil Projesi 24. Faz (Bildirim 231 - 240):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 24: ÇEVİK SÖZLEŞMELER, UZMAN İŞBİRLİĞİ VE AKVARYUM (Faz 24)\nİlgili Performans Alanları: Tedarik, Risk, Takım, İletişim, Teslimat",
       "time": "14:45"
     },
     {
@@ -6980,7 +6995,7 @@
       "from": "Murat Tekin",
       "fromRole": "PMO Direktörü",
       "subject": "Faz 24 Tamamlandı - İletişim ve Süreç Hakimi!",
-      "body": "\"Muazzam bir yönetim sergiliyorsun! Belirsizliğin tavan yaptığı yapay zeka modülünde 'Zaman ve Malzeme (T&M)' iterasyonlarına dayalı çevik sözleşmeyi kullanman projeye inanılmaz bir hız kattı. Çalışmayan risk yanıtında inat etmeyip 'Risk İzleme' prensipleriyle yeni plan yapman, dış uzmanları takımla 'İşbirliğine' sokman ve o kaotik paralel lansmanı 'Ortak Kilometre Taşlarıyla' senkronize etmen tam bir PMP zekasıydı. Hele o dağılmış sanal ekibi 'Akvaryum (Fishbowl)' bağlantısıyla aynı ofisteymiş gibi hissettirmen ve Kalite Denetiminde (Audit) odağı ürüne değil 'Sürece' vermen liderliğini kanıtladı. Şimdi, Blok 4'ün büyük finaline, Değer Sunumu ve İleri Düzey Çevik Adaptasyonların yapılacağı Faz 25'e doğru geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 240. bildirimi tamamladık. Bu fazda \"T&M Agile Contracts\", \"Monitoring ineffective risk responses\", \"Collaborating with SMEs\", \"Parallel launches\", \"Fishbowl for virtual teams\" ve \"Audit vs Inspection,\" gibi 2024 PMP soru bankasından doğrudan alınan kavramlar [i] formatıyla senaryoya başarıyla entegre edilmiştir. Onayınızla Faz 25 (Blok 4 Finali) ile devam edebiliriz.\nFaz 25 ile Blok 4'ün büyük finaline geçelim\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel \"2024 Klonlanmış Soru\" referanslarına tam uyumlu olarak, devasa SÜRÜ.AI mega-projemizin sonuna, yani Blok 4'ün Büyük Finali olan Faz 25'e ulaşıyoruz.\nBu fazda; Takım Stresi ve Duygusal Zeka (EI), Yeni Sektörlerde Uyumluluk (Compliance) ve Konu Uzmanları (SME), Proje Fonlarının Uygunsuz Kullanımı, Stratejik Uyum ve Paydaş Mentorluğu ile Öğrenilmiş Derslerin (Lessons Learned) Kapsamı gibi PMP'nin en hassas liderlik ve kapanış süreçlerini test edeceğiz.\nİşte E-BABİL Projesi 25. Faz (Bildirim 241 - 250):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 25: DEĞER SUNUMU VE BLOK 4 FİNALİ (Faz 25)\nİlgili Performans Alanları: İnsan, İş Ortamı, Kapanış, Teslimat, Takım",
+      "body": "\"Muazzam bir yönetim sergiliyorsun! Belirsizliğin tavan yaptığı yapay zeka modülünde 'Zaman ve Malzeme (T&M)' iterasyonlarına dayalı çevik sözleşmeyi kullanman projeye inanılmaz bir hız kattı. Çalışmayan risk yanıtında inat etmeyip 'Risk İzleme' prensipleriyle yeni plan yapman, dış uzmanları takımla 'İşbirliğine' sokman ve o kaotik paralel lansmanı 'Ortak Kilometre Taşlarıyla' senkronize etmen tam bir PMP zekasıydı. Hele o dağılmış sanal ekibi 'Akvaryum (Fishbowl)' bağlantısıyla aynı ofisteymiş gibi hissettirmen ve Kalite Denetiminde (Audit) odağı ürüne değil 'Sürece' vermen liderliğini kanıtladı. Şimdi, Blok 4'ün büyük finaline, Değer Sunumu ve İleri Düzey Çevik Adaptasyonların yapılacağı Faz 25'e doğru geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 240. bildirimi tamamladık. Bu fazda \"T&M Agile Contracts\", \"Monitoring ineffective risk responses\", \"Collaborating with SMEs\", \"Parallel launches\", \"Fishbowl for virtual teams\" ve \"Audit vs Inspection,\" gibi 2024 PMP soru bankasından doğrudan alınan kavramlar [i] formatıyla senaryoya başarıyla entegre edilmiştir. Onayınızla Faz 25 (Blok 4 Finali) ile devam edebiliriz.\nFaz 25 ile Blok 4'ün büyük finaline geçelim\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel \"2024 Klonlanmış Soru\" referanslarına tam uyumlu olarak, devasa SÜRÜ.AI mega-projemizin sonuna, yani Blok 4'ün Büyük Finali olan Faz 25'e ulaşıyoruz.\nBu fazda; Takım Stresi ve Duygusal Zeka (EI), Yeni Sektörlerde Uyumluluk (Compliance) ve Konu Uzmanları (SME), Proje Fonlarının Uygunsuz Kullanımı, Stratejik Uyum ve Paydaş Mentorluğu ile Öğrenilmiş Derslerin (Lessons Learned) Kapsamı gibi PMP'nin en hassas liderlik ve kapanış süreçlerini test edeceğiz.\nİşte Ebabil Projesi 25. Faz (Bildirim 241 - 250):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 25: DEĞER SUNUMU VE BLOK 4 FİNALİ (Faz 25)\nİlgili Performans Alanları: İnsan, İş Ortamı, Kapanış, Teslimat, Takım",
       "time": "14:45"
     },
     {
@@ -7260,7 +7275,7 @@
       "from": "Murat Tekin (PMO Direktörü) ve Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Sistem",
       "subject": "BLOK 4 TAMAMLANDI - Mega Proje Kahramanı!",
-      "body": "\"Tebrikler Proje Yöneticisi! E-BABİL SÜRÜ.AI projesiyle inovasyonun ve karmaşıklığın zirvesinde bir tarih yazdın! Rakiplerden önce sahaya çıkmak için 'MVP' stratejisini kusursuz kullandın. Yapay zeka çıktılarını çevik takımlara yedirmek için 'Hazırın Tanımı'nı (DoR)' güncelleyerek harika bir süreç mühendisliği sergiledin. Gelecek belirsizliklerini yönetmek için dış tedarikçilerle 'Ana Hizmet Sözleşmesi (MSA)' imzalayarak esnekliği korudun. Bilgiyi saklamak yerine takımları birbirlerinin 'Retrospektiflerine' davet ettin ve o korkunç patent davasında paniklemeyip doğrudan 'Hukuk Departmanı' ile koordinasyon kurdun.\nYönetim becerilerin, çevik zihniyetin ve etik duruşun sayesinde SÜRÜ.AI gökleri güvence altına aldı. Artık PMP sınavındaki o en karmaşık, en zorlayıcı (Çevik, Şelale, Karma, Değer Akışı) senaryolara tamamen hazırsın! Biraz soluklan, çünkü bir sonraki adımımızda simülasyonun Büyük Kapanışına ve Değerlendirmesine (Faz 26) geçeceğiz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 250. bildirimi de tamamlayarak oyunun 4. Blok finalini muhteşem bir şekilde kapattık. Sağladığınız kaynaklardaki (MVP, ML ve DoR, MSA, Legal Advice ve CCB Tiny Change) birebir PMP sınavı senaryoları hikayeye entegre edilmiş ve atıfları [i] formatında eklenmiştir. Hazır olduğunuzda simülasyonun tam değerlendirmesi olan Faz 26'ya (Büyük Final) geçebiliriz.\ndevam\nBüyük bir gurur ve heyecanla, PMP simülasyonumuzun en elit aşamasına, Blok 5'in (Capstone / İleri Düzey Senaryolar) başlangıcı olan Faz 26'ya giriş yapıyoruz!\nPMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel referanslara sıkı sıkıya bağlı kalarak hazırlanan bu fazda; Kümülatif Akış Diyagramları (CFD), T-Şekilli Takım Üyeleri, Birleşen Projelerde Bilgi Sürekliliği, Kapanış Sonrası Operasyonel Destek (Hand-off), Sürekli İyileştirme (Continuous Improvement) ve DevOps gibi usta işi kavramları test edeceğiz.\nİşte E-BABİL Projesi 26. Faz (Bildirim 251 - 260):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 26: CAPSTONE - ORGANİZASYONEL DÖNÜŞÜM VE KAPANIŞ (Faz 26)\nİlgili Performans Alanları: Ölçümleme, Takım, Kapanış, Süreç, Teslimat",
+      "body": "\"Tebrikler Proje Yöneticisi! Ebabil SÜRÜ.AI projesiyle inovasyonun ve karmaşıklığın zirvesinde bir tarih yazdın! Rakiplerden önce sahaya çıkmak için 'MVP' stratejisini kusursuz kullandın. Yapay zeka çıktılarını çevik takımlara yedirmek için 'Hazırın Tanımı'nı (DoR)' güncelleyerek harika bir süreç mühendisliği sergiledin. Gelecek belirsizliklerini yönetmek için dış tedarikçilerle 'Ana Hizmet Sözleşmesi (MSA)' imzalayarak esnekliği korudun. Bilgiyi saklamak yerine takımları birbirlerinin 'Retrospektiflerine' davet ettin ve o korkunç patent davasında paniklemeyip doğrudan 'Hukuk Departmanı' ile koordinasyon kurdun.\nYönetim becerilerin, çevik zihniyetin ve etik duruşun sayesinde SÜRÜ.AI gökleri güvence altına aldı. Artık PMP sınavındaki o en karmaşık, en zorlayıcı (Çevik, Şelale, Karma, Değer Akışı) senaryolara tamamen hazırsın! Biraz soluklan, çünkü bir sonraki adımımızda simülasyonun Büyük Kapanışına ve Değerlendirmesine (Faz 26) geçeceğiz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 250. bildirimi de tamamlayarak oyunun 4. Blok finalini muhteşem bir şekilde kapattık. Sağladığınız kaynaklardaki (MVP, ML ve DoR, MSA, Legal Advice ve CCB Tiny Change) birebir PMP sınavı senaryoları hikayeye entegre edilmiş ve atıfları [i] formatında eklenmiştir. Hazır olduğunuzda simülasyonun tam değerlendirmesi olan Faz 26'ya (Büyük Final) geçebiliriz.\ndevam\nBüyük bir gurur ve heyecanla, PMP simülasyonumuzun en elit aşamasına, Blok 5'in (Capstone / İleri Düzey Senaryolar) başlangıcı olan Faz 26'ya giriş yapıyoruz!\nPMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel referanslara sıkı sıkıya bağlı kalarak hazırlanan bu fazda; Kümülatif Akış Diyagramları (CFD), T-Şekilli Takım Üyeleri, Birleşen Projelerde Bilgi Sürekliliği, Kapanış Sonrası Operasyonel Destek (Hand-off), Sürekli İyileştirme (Continuous Improvement) ve DevOps gibi usta işi kavramları test edeceğiz.\nİşte Ebabil Projesi 26. Faz (Bildirim 251 - 260):\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 26: CAPSTONE - ORGANİZASYONEL DÖNÜŞÜM VE KAPANIŞ (Faz 26)\nİlgili Performans Alanları: Ölçümleme, Takım, Kapanış, Süreç, Teslimat",
       "time": "14:45"
     },
     {
@@ -7360,7 +7375,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Projeleri Birleştiriyoruz",
-      "body": "Yönetici, yönetim kurulu olarak SÜRÜ.AI projesi ile eski \"E-BABİL Sürüm 2.0\" projelerini birleştirme (merge) kararı aldık. Bu iki benzer projenin kapsamlı iş süreçlerinin birleştirilmesi gerekiyor. Amacımız yeni kurulacak bu departmanın çalışma süreçlerini optimize etmektir.",
+      "body": "Yönetici, yönetim kurulu olarak SÜRÜ.AI projesi ile eski \"Ebabil Sürüm 2.0\" projelerini birleştirme (merge) kararı aldık. Bu iki benzer projenin kapsamlı iş süreçlerinin birleştirilmesi gerekiyor. Amacımız yeni kurulacak bu departmanın çalışma süreçlerini optimize etmektir.",
       "time": "10:15"
     },
     {
@@ -7510,7 +7525,7 @@
       "from": "Tümgeneral Şeref KOÇHİSAR ve Murat Tekin",
       "fromRole": "Sistem",
       "subject": "Faz 26 Tamamlandı - Capstone Başarısı!",
-      "body": "\"SÜRÜ.AI projesini ve ekiplerini harika bir vizyonla kurumsal yapıya entegre ettin! 15 takımın iş akışını 'Kümülatif Akış Diyagramı (CFD)' ile görselleştirmen süreçteki darboğazları anında çözdü. Silolaşmak isteyen takımı 'T-Şekilli (T-Shaped)' çalışanların değerine ikna ederek çevik felsefeyi korudun. Projeler birleşirken bilgiyi dışarıdaki bir danışmana satmak yerine 'Yeni Şablonlarla Takım İçinde' tuttun. Proje bittiğinde operasyonel destek kölesi olmayı reddedip 'Devir Teslimi (Hand-off)' resmi olarak tamamladın ve organizasyonun DNA'sına 'Sürekli İyileştirme (Continuous Improvement)' tohumunu ektin!\nBu, Blok 5'in ilk yarısıydı. Bir sonraki aşama olan Faz 27'de, bu simülasyonun en son ve en karmaşık Çevik Ölçeklendirme (Scaling Agile) ve DevOps entegrasyonlarına tanık olacaksın. Hazır ol!\"\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 27: BÜYÜK FİNAL - DEVOPS VE İLERİ ÇEVİKLİK (Faz 27)\nİlgili Performans Alanları: Teslimat, Takım, Geliştirme Yaklaşımı, Ölçümleme",
+      "body": "\"SÜRÜ.AI projesini ve ekiplerini harika bir vizyonla kurumsal yapıya entegre ettin! 15 takımın iş akışını 'Kümülatif Akış Diyagramı (CFD)' ile görselleştirmen süreçteki darboğazları anında çözdü. Silolaşmak isteyen takımı 'T-Şekilli (T-Shaped)' çalışanların değerine ikna ederek çevik felsefeyi korudun. Projeler birleşirken bilgiyi dışarıdaki bir danışmana satmak yerine 'Yeni Şablonlarla Takım İçinde' tuttun. Proje bittiğinde operasyonel destek kölesi olmayı reddedip 'Devir Teslimi (Hand-off)' resmi olarak tamamladın ve organizasyonun DNA'sına 'Sürekli İyileştirme (Continuous Improvement)' tohumunu ektin!\nBu, Blok 5'in ilk yarısıydı. Bir sonraki aşama olan Faz 27'de, bu simülasyonun en son ve en karmaşık Çevik Ölçeklendirme (Scaling Agile) ve DevOps entegrasyonlarına tanık olacaksın. Hazır ol!\"\n -------------------------------------------------------------------------------- \n🚀 PROJE: Ebabil SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 27: BÜYÜK FİNAL - DEVOPS VE İLERİ ÇEVİKLİK (Faz 27)\nİlgili Performans Alanları: Teslimat, Takım, Geliştirme Yaklaşımı, Ölçümleme",
       "time": "14:45"
     },
     {
@@ -7785,13 +7800,731 @@
     },
     {
       "id": 270,
+      "type": "decision",
+      "section": 27,
+      "from": "Emre Can",
+      "fromRole": "Yazılım Lideri",
+      "subject": "DevOps Boruluğu: CI/CD Entegrasyonu",
+      "body": "Yönetici, SÜRÜ.AI'ın son geliştirme fazında farklı takımların yazdığı kodları birleştirirken her gün ciddi entegrasyon çakışmaları (merge conflict) yaşıyoruz. Testler manuel yapıldığı için saatler kaybediyoruz. Sürekli entegrasyon ve sürekli teslimat (CI/CD) pipeline'ını hayata geçirmemiz gerekiyor. Bu DevOps sorununu çözmek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "14:45",
+      "options": [
+        {
+          "key": "A",
+          "text": "Otomatik test suite'i ve CI/CD pipeline'ını (GitLab CI / Jenkins) hemen devreye alacağız. Her kod push'unda testler otomatik çalışacak, başarılı build'ler doğrudan staging ortamına deploy edilecek.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "CI/CD kurmak zaman alır; şimdi bu işe girmeyin. Manuel test yeterli, derleme sorunlarını elle çözmeye devam edelim.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "CI/CD sadece büyük kurumsal projelerde işe yarar; çevik projemizde gerek yok.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Entegrasyon sorununu çözmek için tüm takımları tek bir dal (branch) üzerinde çalışmaya zorlarız; böylece çakışma olmaz.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 271,
       "type": "story",
       "section": 27,
-      "from": "Project Management Institute (PMI) & Organizasyonel Yönetim Kurulu",
-      "fromRole": "Sistem",
-      "subject": "🏆 PMP SERTİFİKASI VE EFSANEVİ LİDERLİK!",
-      "body": "\"Sayın Proje Yöneticisi... Aylardır süren, krizler, kaynak kesintileri, yıkıcı paydaşlar, yapay zeka zorlukları ve ahlaki ikilemlerle dolu bu devasa E-BABİL serüvenini başarıyla tamamladın!\nSen;\nİnsanları Yönetirken: Otorite ve korkuyu değil, her zaman Hizmetkar Liderliği (Servant Leadership) ve Duygusal Zekayı (EI) seçtin. Çatışmaları işbirliğiyle çözdün.\nSüreçleri Yönetirken: Şelale, Çevik ve Hibrit yaklaşımları mükemmel bir şekilde terzi gibi uyarladın (Tailoring). Değişiklikleri her zaman CCB'ye soktun, riskleri bağlamsal olarak analiz ettin ve EVM metriklerini kusursuz okudun.\nİş Ortamını Yönetirken: Değer sunumunu (MVP/MMF) her şeyin önüne koydun. Yasal ve uyumluluk kurallarından asla taviz vermedin.\nEn Önemlisi: Karşına çıkan onlarca \"Kurnaz\" ve ahlak dışı seçeneği reddederek PMI'ın Dürüstlük, Sorumluluk, Saygı ve Adil Olma (Code of Ethics) ilkelerini şerefle savundun!\nSÜRÜ.AI gökyüzünde süzülüyor ve organizasyonumuz senin sayende pazar lideri oldu. Bu simülasyondaki tüm bilgiler, PMBOK Guide ve en güncel 2024 PMP soru bankalarından alınarak gerçek sınav reflekslerini mükemmelleştirdi.\n 270 bildirimi buradan ayıkla tutarlı ve dilbirliği olsun metinler içinde senaryoyu oyuna uygun hale getir.",
-      "time": "14:45"
+      "from": "PMO Bilgi Sistemi",
+      "fromRole": "Sistem · Otomatik Bildirim",
+      "subject": "Faz 27 Değerlendirmesi — Matris ve Sözleşme Bölümüne Geçiş",
+      "body": "DevOps pipeline'ını devreye aldınız, bütçe krizini MVP stratejisiyle atlattınız ve SÜRÜ.AI'ın otonom karar verme modülünü tamamladınız. Ebabil projesi şimdi kritik bir geçiş noktasında: Matris güç dengelerinin sarsıldığı, tedarik sözleşmelerinin imzalanacağı ve EVM metriklerinin alarm verdiği Faz 28'e giriyorsunuz.",
+      "time": "16:00"
+    },
+    {
+      "id": 272,
+      "type": "decision",
+      "section": 28,
+      "from": "PMO Bilgi Sistemi",
+      "fromRole": "Sistem · Organizasyonel Yapı Analizi",
+      "subject": "Güçlü Matris Yapısında Proje Yöneticisi Yetkisi",
+      "body": "Ebabil projesi 'Güçlü Matris (Strong Matrix)' organizasyon yapısında yürütülüyor. Ancak operasyon direktörü kaynak kararlarında sizin yetkilerinizi zorlamaya başladı. Bu yapıda Proje Yöneticisi olarak temel yetkiniz nedir ve nasıl kullanmalısınız?",
+      "time": "08:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Güçlü Matris'te PM tam yetkiye sahiptir; bütçe, insan kaynağı ve takvim kararları PM'e aittir. Operasyon direktörüyle koordinasyon kurarım ama proje kararlarında belirleyiciyim.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "Zayıf Matris gibi davranırım; tüm kaynak kararlarını fonksiyonel yöneticilere bırakırım, ben sadece koordinatörlük yaparım.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "PM olarak yetkilerimi kullanmak için önce sponsordan özel izin almam gerekiyor.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Matris yapısı bir avantaj değil; çatışmaları önlemek için tüm kararları CEO'ya bırakırım.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 273,
+      "type": "story",
+      "section": 28,
+      "from": "PMO Bilgi Sistemi",
+      "fromRole": "Sistem · Otomatik Bildirim",
+      "subject": "Bölüm 28: Matris Krizleri ve Sözleşmeler (Faz 28)",
+      "body": "AB lansmanındaki uyumluluk krizini çevik döngülerle çözerken şirket içindeki güç dengeleri değişmeye başladı. Ebabil projesi Güçlü Matris yapısında yürütülüyor. Ancak operasyon departmanı kendi krizleriyle boğuştuğundan gözünü sizin takımınıza dikti. Aynı zamanda yeni donanımlar için dış tedarikçilerle masaya oturmanız gerekiyor.",
+      "time": "08:15"
+    },
+    {
+      "id": 274,
+      "type": "decision",
+      "section": 28,
+      "from": "Operasyon Direktörü",
+      "fromRole": "Fonksiyonel Yönetici",
+      "subject": "Matris Organizasyonda Kaynak Çatışması: Zeynep'i Geri İstiyorum",
+      "body": "Proje Yöneticisi, şirketin ana sunucularında büyük bir sorun yaşıyoruz. SÜRÜ.AI projesinin veritabanı entegrasyonunu yapan kilit uzmanınız Zeynep, aslında benim departmanıma bağlı. Onu bugünden itibaren projeden çekiyorum ve operasyon departmanına geri alıyorum. Bu tartışmaya kapalıdır! Ancak Ürün Sahibiniz (PO) Zeynep giderse sprintin çökeceğini söylüyor. İki kritik birim arasındaki bu kaynak çatışmasını çözmek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "09:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zeynep'in projede kalmasını emretmek ve Operasyon Direktörüne projenin önceliğinin yüksek olduğunu belirterek kararına kesin bir dille karşı çıkmak (Zorlama).",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "Operasyon Direktörü ile masaya oturup projenin sprint hedefleri ile operasyonel aciliyeti birlikte değerlendirerek, Zeynep'in zamanını geçici olarak %50 paylaştırmak gibi işbirlikçi bir çözüm (Problem Çözme) müzakere etmek.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Sorunu derhal şirketin CEO'suna (Sponsora) eskale ederek kararı onlara bırakmak.",
+          "xp": 10
+        },
+        {
+          "key": "D",
+          "text": "Çatışmadan kaçınmak için Zeynep'i hemen teslim etmek ve bütçeden yeni bir taşeron kiralamak.",
+          "xp": -20
+        }
+      ]
+    },
+    {
+      "id": 275,
+      "type": "decision",
+      "section": 28,
+      "from": "Zeynep Aydın",
+      "fromRole": "Sözleşmeler Müdürü",
+      "subject": "Tedarik Sözleşme Tipi: FPIF, FFP, T&M veya CPFF?",
+      "body": "Küresel ağın yeni nesil sensörlerini üretecek satıcı firmayla sözleşme imzalayacağız. Kapsam net, ancak maliyetleri düşük tutmak ve satıcıyı işi erken bitirmesi için motive etmek istiyoruz. Belirli bir hedef maliyet (target cost) belirleyip satıcı bu maliyetin altına inerse veya performansı aşarsa ona ek bir prim vermek istiyoruz. Bu tedarik stratejisi için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "10:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "Satıcıyla bir 'Sabit Fiyatlı Teşvik Ücretli (FPIF — Fixed Price Incentive Fee)' sözleşme imzalamak.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "Maliyetlerin tamamını satıcının karşılayacağı 'Katı Sabit Fiyatlı (FFP — Firm Fixed Price)' bir sözleşme dayatmak.",
+          "xp": 5
+        },
+        {
+          "key": "C",
+          "text": "Sürekli değişen kapsamlarda kullanılan 'Zaman ve Malzeme (T&M — Time and Material)' sözleşmesi seçmek.",
+          "xp": -20
+        },
+        {
+          "key": "D",
+          "text": "Satıcıya 'Maliyet Artı Sabit Ücret (CPFF — Cost Plus Fixed Fee)' sözleşmesi vererek tüm maliyet riskini kendi üzerimize almak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 276,
+      "type": "story",
+      "section": 28,
+      "from": "Finans Departmanı",
+      "fromRole": "Finans Analisti",
+      "subject": "EVM Alarmları: Bütçe ve Zaman Çizelgesi Sapması",
+      "body": "Tedarik sözleşmeleri imzalandı, ancak projenin ortasında bütçe raporları alarm veriyor. Hibrit yapıda ilerleyen projemizde geleneksel ölçümleme yöntemleriyle (EVM — Earned Value Management) çevik ilerlemeyi birleştirmeye çalışıyoruz.",
+      "time": "11:00"
+    },
+    {
+      "id": 277,
+      "type": "decision",
+      "section": 28,
+      "from": "Murat Tekin",
+      "fromRole": "PMO Direktörü",
+      "subject": "EVM Analizi: CPI 1.15, SPI 0.85 — Crashing Kararı",
+      "body": "Yönetici, son EVM raporunda Maliyet Performans Endeksi (CPI) 1.15, Zaman Çizelgesi Performans Endeksi (SPI) ise 0.85 olarak görünüyor. Lansman gecikemez! Elimizde bütçe avantajı varken projeye kaynak yükleyerek (Crashing) SPI'ı 1.0'a çekmeni istiyorum. Bu kararın proje metrikleri üzerindeki beklenen etkisini değerlendirerek en uygun adımı atacağınıza eminiz. do it;",
+      "time": "11:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "SPI'ı 1'e çıkarırken maliyetler artacağı için CPI değerinin 1.0'a doğru düşeceğini ve projenin risklerinin artacağını sponsora bildirmek.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "İş daha erken biteceği için projenin genel maliyetinin azalacağını ve CPI'ın 1.30'a çıkacağını hesaplamak.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "Çevik projelerde EVM kullanılmadığı için bu metrikleri tamamen görmezden gelerek sadece hikaye puanlarına (Story Points) odaklanmak.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Crashing yapmanın SPI'ı etkilemeyeceğini, sadece ürün kalitesini artıracağını savunmak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 278,
+      "type": "decision",
+      "section": 28,
+      "from": "Ayşe Yılmaz",
+      "fromRole": "Kalite Güvence Uzmanı",
+      "subject": "Rework Sarmalı: Takım 4 Kalite Testlerini Geçemiyor",
+      "body": "Takım 4'ün ürettiği kodlar kalite testlerinden sürekli geçemiyor. Bu yüzden aynı modülü üç kez baştan yazmak (rework) zorunda kaldılar. Bu iş tekrarı hem motivasyonu bitiriyor hem de bütçeyi yakıyor. Yeniden çalışma (rework) sorununu çözmek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "14:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kodların neden sürekli başarısız olduğunu anlamak için bir Kök Neden Analizi (RCA — Root Cause Analysis) veya Ishikawa (Kılçık) Diyagramı kullanarak sorunun temeline inmek.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "Zaman kazanmak için takımın test yapmasını durdurmak ve ürünü doğrudan son kullanıcıya (UAT) göndererek hataları onların bulmasını sağlamak.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "Takımı yetersizlikle suçlayıp hepsini görevden almak.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Çevik yöntemde iş tekrarının (rework) doğal olduğunu söyleyerek kalite denetimlerini esnetmek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 279,
+      "type": "story",
+      "section": 28,
+      "from": "PMO Bilgi Sistemi",
+      "fromRole": "Sistem · Otomatik Bildirim",
+      "subject": "Faz 28 Değerlendirmesi — Bölüm 29'a Geçiş",
+      "body": "Matris çatışmalarında 'İşbirliği (Collaborate)' yaptınız, teşvikli sözleşmelerle maliyetleri yönettiniz, EVM formüllerini başarıyla yorumladınız ve kalite sorunlarını kök nedene indirdiniz. Proje rayında. Şimdi Bölüm 29'a, değer teslimatının ve çevik metriklerin derinliklerine giriyoruz.",
+      "time": "16:00"
+    },
+    {
+      "id": 280,
+      "type": "story",
+      "section": 29,
+      "from": "İş Geliştirme Departmanı",
+      "fromRole": "İş Geliştirme Direktörü",
+      "subject": "Bölüm 29: Değer, Çevik Metrikler ve Teslimat (Faz 29)",
+      "body": "AB pazarından sonra şirket şimdi de sistemi Sivil Kargo Taşımacılığı sektörüne uyarlamak istiyor. Ancak bu pazar hakkında elimizde hiçbir veri, kullanıcı hikayesi veya ürün iş birikim listesi yok. Takım boşta bekliyor.",
+      "time": "08:00"
+    },
+    {
+      "id": 281,
+      "type": "decision",
+      "section": 29,
+      "from": "Selin Öz",
+      "fromRole": "Ürün Sahibi (Product Owner)",
+      "subject": "Bilinmezliği Aşmak: Pazar Araştırması Sıçraması (Spike)",
+      "body": "Yeni pazar için neyin 'değer' yaratacağını bilmeden körü körüne kod yazamayız. Müşterilerin ne istediğini öğrenmem lazım ama takım da boş duramaz. Çevik yaklaşımda bu bilinmezliği nasıl aşacağız? Bilgi eksikliğini gidermek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "08:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "Takıma kısa, zaman kutulu bir 'Pazar Araştırması Sıçraması (Market Research Spike)' görevi vererek ürün kararlarını destekleyecek bilgiyi hızla toplamalarını sağlamak.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "Araştırma sadece Ürün Sahibinin işi olduğu için takımı 2 hafta ücretsiz izne çıkarmak.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "Rakip firmaların yazılımlarını taklit ederek (reverse engineering) doğrudan en büyük özelliği kodlamaya başlamak.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Pazar araştırması yapmak yerine durumu sponsora eskale edip projeyi iptal etmesini istemek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 282,
+      "type": "decision",
+      "section": 29,
+      "from": "Emre Can",
+      "fromRole": "Yazılım Lideri",
+      "subject": "Düzensiz Burndown Grafiği: Kök Neden ve Çözüm",
+      "body": "Takım 2'nin Kalan İş Grafiği (Burndown Chart) sürekli zikzak çiziyor. Günlerce hiçbir iş bitmiyor, sonra aniden devasa puanlar kapanıyor. Bu tutarsızlığın kök nedeni nedir ve nasıl düzeltilir? Bu metrik sorununu çözmek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "10:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bu, takımın tembel olduğunu gösterir; onları disipline etmek için Daily Stand-up sürelerini kısıtlamak.",
+          "xp": -20
+        },
+        {
+          "key": "B",
+          "text": "Bu dalgalanma hikayelerin çok büyük ve karmaşık olduğunun göstergesidir; düzeltmek için İş Birikim Listesi İyileştirme (Backlog Refinement) toplantıları yaparak hikayeleri küçük parçalara bölmek.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Hızlı ilerlemek için takımın önce en kolay işleri yapmasına (değere bakmaksızın) izin vermek.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "PMO'yu yanıltmamak için dalgalı grafiği silip sahte ve düzgün bir Burndown grafiği çizmek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 283,
+      "type": "story",
+      "section": 29,
+      "from": "İK Portalı",
+      "fromRole": "İnsan Kaynakları Departmanı",
+      "subject": "T-Şekilli Beceriler: Takım Üyeleri Rol Değişimine Direniyor",
+      "body": "Çevik dönüşüm meyvelerini veriyor. Ancak bazı takım üyeleri spesifik bir rolde kalmak istediklerini, birden fazla iş yapmanın kendilerini 'değersiz' hissettirdiğini belirtiyor.",
+      "time": "11:00"
+    },
+    {
+      "id": 284,
+      "type": "decision",
+      "section": 29,
+      "from": "Çevik Koç",
+      "fromRole": "Agile Coach",
+      "subject": "T-Şekilli Beceriler: Çapraz Fonksiyonlu Direnişi Yönetmek",
+      "body": "Bir yazılımcı 'Sadece kod yazmak istiyorum, test yapmak benim işim değil' diyerek çevik takımın çapraz fonksiyonlu (cross-functional) yapısına direniyor. Hizmetkar Lider (Servant Leader) olarak bu takım üyesini kazanmak için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "11:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "İstifasını isteyip yerine doğrudan bir test uzmanı almak.",
+          "xp": -20
+        },
+        {
+          "key": "B",
+          "text": "Çevik takımlarda 'T-Şekilli (T-Shaped)' yetkinliklerin en değerli profil olduğunu açıklamak ve kariyer gelişimi için mentorluk yapmak.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Takımın geri kalanına onun test görevlerini zorla devretmek.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Takım üyesine sadece kod yazma yetkisi vererek çevik takımın yapısını (silo yaratarak) bozmak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 285,
+      "type": "decision",
+      "section": 29,
+      "from": "Yabancı Askeri Ataşe",
+      "fromRole": "Müşteri Temsilcisi",
+      "subject": "Kapsam Kayması: Uyarı Butonu Rengini Değiştirmek İstiyorum",
+      "body": "Sistemi teslim almadan hemen önce, kontrol panelindeki uyarı butonunun rengini biraz daha koyu kırmızı yapmanızı istiyorum. Çok küçük bir iş, 5 dakikanızı alır. Form doldurmaya gerek yok, hemen halledin lütfen. Süreci korumak adına en uygun adımı atacağınıza eminiz. do it;",
+      "time": "13:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Müşteriyi memnun etmek için formsuz şekilde hemen kodu değiştirip güncellemeyi yapmak (Gold Plating).",
+          "xp": -20
+        },
+        {
+          "key": "B",
+          "text": "Değişiklik ne kadar küçük olursa olsun resmi bir Değişiklik Talebi (CR — Change Request) oluşturmak ve Entegre Değişiklik Kontrol Sürecine (Integrated Change Control) sokmak.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Bu kadar küçük bir istek için müşteriyi sponsora şikayet etmek.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "İsteği doğrudan Sprint İş Birikim Listesine (Sprint Backlog) ekleyip takımın hemen yapmasını emretmek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 286,
+      "type": "story",
+      "section": 29,
+      "from": "Kalite Güvence",
+      "fromRole": "Kalite Güvence Uzmanı",
+      "subject": "Müşteri Memnuniyetsizliği: Kendi Kendine Hedef Teşhis Modülü",
+      "body": "Ufak değişiklikler onaylandı, ancak müşteri sistemin 'kendi kendine hedef teşhis' modülünün davranışından pek memnun kalmadı.",
+      "time": "14:00"
+    },
+    {
+      "id": 287,
+      "type": "decision",
+      "section": 29,
+      "from": "Selin Öz",
+      "fromRole": "Ürün Sahibi (Product Owner)",
+      "subject": "Kapsam Doğrulama Reddi: Müşteri Teslim Almıyor",
+      "body": "Müşteri temsilcisi, sistem sorunsuz çalışmasına rağmen 'Kapsamın Doğrulanması (Validate Scope)' toplantısında ürünü resmi olarak teslim almayı reddetti. İçine sinmeyen bir şeyler varmış. Bu kritik ret durumunda en uygun adımı atacağınıza eminiz. do it;",
+      "time": "15:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Müşteri tamamen tatmin olana kadar ürünü geri çekip baştan tasarlamak.",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "Müşteriyi sözleşme ihlali sebebiyle dava etmek.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "Gözden kaçan bir şey olup olmadığını görmek ve reddin nedenini anlamak için müşteriyle birlikte 'Kabul Kriterlerini (Acceptance Criteria)' satır satır gözden geçirmek.",
+          "xp": 30
+        },
+        {
+          "key": "D",
+          "text": "İmzayı atması için müşteriye kişisel hediyeler teklif etmek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 288,
+      "type": "decision",
+      "section": 29,
+      "from": "Emre Can",
+      "fromRole": "Yazılım Lideri",
+      "subject": "TDD Yetersiz: Davranış Odaklı Geliştirme (BDD) Zamanı",
+      "body": "Müşterinin istediği karmaşık davranışları kodlamadan önce test etmek istiyoruz. TDD (Test Driven Development) yetersiz kalıyor. Sistemin genel iş davranışını garanti etmek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "16:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kaliteyi sona bırakıp Kullanıcı Kabul Testini (UAT) beklemek.",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "TDD'nin uzantısı olan ve ürünü geliştirmeden önce sistem davranışlarının otomatik simüle edildiği 'Davranış Odaklı Geliştirme'ye (BDD — Behavior Driven Development)' geçmek.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Sadece manuel kod incelemesi (Peer Review) yapmak.",
+          "xp": 10
+        },
+        {
+          "key": "D",
+          "text": "Müşteriyi kandırmak için sahte test raporları üretmek.",
+          "xp": -20
+        }
+      ]
+    },
+    {
+      "id": 289,
+      "type": "story",
+      "section": 29,
+      "from": "PMO Bilgi Sistemi",
+      "fromRole": "Sistem · Otomatik Bildirim",
+      "subject": "Faz 29 Değerlendirmesi — Büyük Finale Geçiş",
+      "body": "Harika! Bilinmezlikleri Spike ile aştınız, Burndown zikzaklarını Refinement ile düzelttiniz. Küçük kapsam kaymalarına geçit vermediniz ve BDD ile kaliteyi zirveye taşıdınız. Şimdi simülasyonun son ve en kritik kapanış fazı olan Faz 30'a giriyoruz. Son 7 kararınız!",
+      "time": "16:30"
+    },
+    {
+      "id": 290,
+      "type": "story",
+      "section": 30,
+      "from": "Tümgeneral Şeref KOÇHİSAR",
+      "fromRole": "Proje Sponsoru / Savunma Tedarik Müsteşarı",
+      "subject": "Bölüm 30: Büyük Final ve Kapanış (Faz 30)",
+      "body": "Sayın Komutanım adına iletilir: Ebabil 4.0'ın büyük teslimatı için geri sayım başladı. Birden fazla takım, dış uzmanlar, kapanış belgeleri ve operasyonlara devir işlemleri sizi bekliyor. Son hamlelerinizi hatasız yapmalısınız. Arz ederim.",
+      "time": "08:00"
+    },
+    {
+      "id": 291,
+      "type": "decision",
+      "section": 30,
+      "from": "Takım Liderleri",
+      "fromRole": "Çoklu Çevik Takım Koordinasyonu",
+      "subject": "15 Takım Arasındaki Bağımlılık Kilidi: Ölçeklendirilmiş Çeviklik",
+      "body": "15 farklı çevik takımın ürettiği modüllerin birleştirilmesi gerekiyor. Ancak takımlar arası bağımlılıklar kilitlendi. Takım 1'in işi bitmeden Takım 5 ilerleyemiyor. Bu karmaşık çoklu takım koordinasyonunu sağlamak için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "08:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "Takımları birbirine düşürüp rekabet yaratmak.",
+          "xp": -20
+        },
+        {
+          "key": "B",
+          "text": "Her takımın sadece kendi günlük toplantısını (Stand-up) yapmasını isteyip beklemek.",
+          "xp": 5
+        },
+        {
+          "key": "C",
+          "text": "Takımlar arasındaki çalışmayı, engelleri ve bağımlılıkları hizalamak için düzenli olarak bir 'Scrum'ların Scrum'ı (Scrum of Scrums)' toplantısı organize etmek.",
+          "xp": 30
+        },
+        {
+          "key": "D",
+          "text": "Takımları birleştirip 150 kişilik tek bir devasa Scrum takımı kurmak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 292,
+      "type": "decision",
+      "section": 30,
+      "from": "Pazarlama Direktörü",
+      "fromRole": "Stratejik Pazarlama",
+      "subject": "Rakip Tehdidi: 3 Ayda Pazara Girmek için MVP Stratejisi",
+      "body": "Rakiplerimiz otonom sistemlerini 3 ay içinde tanıtacak! Bizim tam sürümümüzün bitmesine 8 ay var. 'Pazara ilk giren (First to Market)' olma avantajımızı kaybetmek üzereyiz. Rekabet avantajını korumak için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "09:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kaliteyi ve testleri iptal edip tüm sistemi 3 ayda bitirmeye zorlamak (Crashing).",
+          "xp": -20
+        },
+        {
+          "key": "B",
+          "text": "Temel değeri sağlayan ve kullanıcı geri bildirimi toplayacak olan 'Minimum Yapılabilir Ürünü (MVP — Minimum Viable Product)' derhal piyasaya sürüp tam sürümü artırımlı olarak geliştirmeye devam etmek.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Rakipleri boş verip 8 aylık orijinal planımıza (Şelale) sadık kalmak.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Projeyi iptal edip rakip ürünü satın almayı önermek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 293,
+      "type": "story",
+      "section": 30,
+      "from": "Siber Güvenlik",
+      "fromRole": "NATO Güvenlik Denetim Ekibi",
+      "subject": "NATO Denetçileri Sahada: Takım Direnci",
+      "body": "Sistemin son güvenlik denetimi için NATO'dan gelen Bağımsız Konu Uzmanları (SME — Subject Matter Expert) sahaya indi. Ancak takımınız dışarıdan gelen bu denetçileri sevmiyor ve onlarla bilgi paylaşmaktan kaçınıyor.",
+      "time": "10:00"
+    },
+    {
+      "id": 294,
+      "type": "decision",
+      "section": 30,
+      "from": "Emre Can",
+      "fromRole": "Yazılım Lideri",
+      "subject": "NATO SME'leri Dışlamak mı, Entegre Etmek mi?",
+      "body": "Bu dış uzmanları (SME) geliştirme odamıza sokmak istemiyoruz. Onlar sadece işimizi yavaşlatıyor. Onları ayrı bir odaya kapatıp iş bitince ürünü teslim edelim. Hizmetkar Lider olarak takımın performansını desteklemek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "10:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "Takımın isteğine uyarak uzmanları izole etmek ve sadece son gün denetim yapmalarını sağlamak.",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "Olası zorluklara rağmen profesyonel gelişimi desteklemek için takım üyelerinin bu dış uzmanlarla (SME) köprüler kurmasına, iş birliği yapmasına ve bilgiyi şeffafça paylaşmasına yardımcı olmak.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Uzmanları projeden kovmak.",
+          "xp": -20
+        },
+        {
+          "key": "D",
+          "text": "Uzmanlardan bilgiyi gizlice çalıp takıma kendinizmiş gibi sunmak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 295,
+      "type": "decision",
+      "section": 30,
+      "from": "Murat Tekin",
+      "fromRole": "PMO Direktörü",
+      "subject": "Öğrenilmiş Dersler: Utanç Verici Hataları Rapora Yazalı mıyız?",
+      "body": "Lansman başarılı! Proje Kapanış (Close Project) raporunu yazıyoruz. Ancak sponsor projenin başlarında yaptığımız utanç verici mimari hataları rapora yazıp yazmamamız gerektiğini soruyor. Kurumsal itibarımız zedelenebilir. Kurumsal hafıza adına en uygun adımı atacağınıza eminiz. do it;",
+      "time": "14:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gelecekteki projelerin aynı hatalardan kaçınmasını sağlamak için raporun ve 'Öğrenilmiş Dersler (Lessons Learned)' havuzunun hem olumlu başarıları hem de olumsuz deneyimleri/hataları şeffafça içermesini sağlamak.",
+          "xp": 30
+        },
+        {
+          "key": "B",
+          "text": "İtibarı korumak için sadece başarıları yazmak ve hataları silmek.",
+          "xp": -20
+        },
+        {
+          "key": "C",
+          "text": "Rapor yazmak yerine eski dosyaları arşive kitlemek.",
+          "xp": 5
+        },
+        {
+          "key": "D",
+          "text": "Hataların suçunu haksız yere dış tedarikçilere atarak raporu manipüle etmek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 296,
+      "type": "story",
+      "section": 30,
+      "from": "Sözleşmeler Birimi",
+      "fromRole": "Tedarik ve Sözleşmeler",
+      "subject": "Tedarik Kapanışı: Tüm Satıcıların İşi Bitti",
+      "body": "Kapanış aşamasındayız. Dışarıdan kiraladığımız tüm donanım ve bulut tedarikçilerinin işleri bitti. Ekstra ödeme talepleri (Claim) ve sözleşme kapatma süreci için doğru adımlar atılmalı.",
+      "time": "15:00"
+    },
+    {
+      "id": 297,
+      "type": "decision",
+      "section": 30,
+      "from": "Zeynep Aydın",
+      "fromRole": "Sözleşmeler Müdürü",
+      "subject": "Tedarik Kapanışı: Satıcı Yükümlülüklerini Doğrulama",
+      "body": "Satıcılarla olan finansal sözleşmeleri kapatmadan önce yapmamız gereken bir numaralı öncelik nedir? Ekstra ödeme talepleri (Claim) var. Tedarikleri yasal olarak kapatmak için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "15:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hemen ödeme yapıp satıcılarla ilişkiyi bitirmek.",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "Satın alma departmanını bilgilendirmek ve satıcıların yükümlülüklerini yerine getirip getirmediğini doğrulamak için 'Sözleşme (Contract)' şartlarını detaylıca kontrol etmek.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Ekstra talepleri doğrudan reddedip onları mahkemeye vermek.",
+          "xp": -20
+        },
+        {
+          "key": "D",
+          "text": "Faturayı yönetim yedeklerinden (Management Reserves) gizlice ödemek.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 298,
+      "type": "decision",
+      "section": 30,
+      "from": "Selin Öz",
+      "fromRole": "Ürün Sahibi (Product Owner)",
+      "subject": "Operasyonlara Devir: Takım Bakım Sarmalından Kurtulamıyor",
+      "body": "Proje teknik olarak bitti ama müşteri destek hattı her gün yazılımcılarımızı arayıp küçük bakım ve onarım işleri istiyor. Takım yeni projelere geçemiyor! Bu operasyonel sarmaldan kurtulmak için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "16:00",
+      "options": [
+        {
+          "key": "A",
+          "text": "Müşteriyi memnun etmek için takımın bakım yapmasına sonsuza kadar izin vermek.",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "Projelerin geçici olduğunu hatırlayarak nihai ürünün sorumluluğunu ve dokümanlarını resmi bir 'Devir Teslim (Hand-off)' süreciyle üretim/operasyon destek takımına devretmek ve proje kaynaklarını serbest bırakmak.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Telefonları açmamalarını söyleyip kaçmak.",
+          "xp": -20
+        },
+        {
+          "key": "D",
+          "text": "Bakım işlerini ayrı ve yasadışı faturalandırıp el altından para kazanmak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 299,
+      "type": "decision",
+      "section": 30,
+      "from": "Murat Tekin",
+      "fromRole": "PMO Direktörü",
+      "subject": "Nihai Onay: Proje Kapanışını Kim İmzalamalı?",
+      "body": "Her şey tamam. 'Projeyi Kapatma (Close Project)' sürecinin son adımı olarak teslimatların kurumsal olarak onaylanması ve projenin resmi olarak bittiğinin duyurulması gerekiyor. Proje tüzüğüne göre projenin kaynaklarını ve finansmanını sağlayan kişi bu imzayı atmalıdır. Resmi kapanışı mühürlemek için en uygun adımı atacağınıza eminiz. do it;",
+      "time": "16:30",
+      "options": [
+        {
+          "key": "A",
+          "text": "İmzayı Scrum Master'a attırmak.",
+          "xp": 5
+        },
+        {
+          "key": "B",
+          "text": "Teslimatların nihai resmi kabul (Sign-off) imzasını 'Proje Sponsorundan' veya Müşteriden almak.",
+          "xp": 30
+        },
+        {
+          "key": "C",
+          "text": "Proje Yöneticisi olarak kendi kendinize imza atıp projeyi kapatmak.",
+          "xp": -20
+        },
+        {
+          "key": "D",
+          "text": "İmza sürecini atlayıp takımı hemen dağıtmak.",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "id": 300,
+      "type": "story",
+      "section": 30,
+      "from": "Project Management Institute (PMI) Sertifikasyon Kurulu",
+      "fromRole": "PMI · Küresel Sertifikasyon Otoritesi",
+      "subject": "🏆 TEBRİKLER! ARTIK BİR PMP'SİNİZ!",
+      "body": "Sayın Lider, tam 300 bildirim, 180 zorlu soru, yüzlerce etik ikilem ve kriz! Ebabil Küresel Ağ projesini Şelale (Waterfall), Çevik (Agile) ve Hibrit yöntemlerin tamamını (Tailoring) kusursuzca harmanlayarak yönettin.\n\n📊 PERFORMANS RAPORU:\n• İNSAN (%42): Takımlarını 'Hizmetkar Lider (Servant Leader)' olarak korudun. Çatışmaları 'Problem Çözme (Problem Solving)' ile aştın, T-Şekilli (T-Shaped) üyeler yetiştirdin.\n• SÜREÇ (%50): Değişiklikleri daima Değişiklik Kontrol Kuruluna (CCB) soktun. EVM (SPI/CPI) metrikleriyle bütçeyi kurtardın, 'Sıçrama (Spike)' ve 'BDD' ile kaliteyi en başa taşıdın.\n• İŞ ORTAMI (%8): 'MVP' ile rakiplerini ezdin, AB regülasyonlarında 'Uyumluluk (Compliance)' kurallarından taviz vermedin.\n\nVe en önemlisi, PMP'nin Altın Kuralı olan Etik Kodlara (Dürüstlük, Sorumluluk, Saygı, Adil Olma) sonuna kadar sadık kaldın!",
+      "time": "17:00"
     }
   ]
 }
