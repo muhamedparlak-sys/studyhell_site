@@ -277,7 +277,7 @@
       "id": 2,
       "type": "decision",
       "section": 1,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Savunma Tedarik Müsteşarı / Proje Sponsoru",
       "subject": "ACİL: 10 Aylık Teslimat Planı ve Bütçe Kırılımı",
       "body": "Yeni görevin hayırlı olsun. Önceki yönetici işleri fazlasıyla birbirine karıştırdı. Ordunun bu sürü İHA'lara sınır ötesi operasyonlar için acilen ihtiyacı var. Yapay zeka modüllerinin nasıl çalışacağı veya düşman sinyallerine nasıl tepki vereceği henüz netleşmemiş (high-uncertainty) olsa da, zamanımız yok. Senden bu işin komutasını eline almanı ve yarın sabah masama tüm tedarikçileri, bütçe harcamalarını ve 10 ay boyunca kimin hangi gün ne yapacağını gösteren baştan sona eksiksiz, katı bir Proje Planı (Gantt Şeması) koymanı istiyorum.",
@@ -285,14 +285,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, projenin İHA gövdesi ve motoru gibi donanım kısımları net olduğu için buralarda 'Öngörücü (Predictive)' bir planlama yapacağız. Ancak yapay zeka algoritmaları yüksek belirsizlik içerdiğinden, o kısımları tamamen 'Çevik (Agile)' iterasyonlarla deneme-yanılma yoluyla geliştirmeliyiz. Size tek bir katı plan yerine, projenin ihtiyaçlarına göre uyarlanmış (Tailored) bir 'Hibrit' proje yaklaşımı sunacağım.",
+          "text": "Sayın Komutanım, projenin İHA gövdesi ve motoru gibi donanım kısımları net olduğu için buralarda 'Öngörücü (Predictive)' bir planlama yapacağız. Ancak yapay zeka algoritmaları yüksek belirsizlik içerdiğinden, o kısımları tamamen 'Çevik (Agile)' iterasyonlarla deneme-yanılma yoluyla geliştirmeliyiz. Size tek bir katı plan yerine, projenin ihtiyaçlarına göre uyarlanmış (Tailored) bir 'Hibrit' proje yaklaşımı sunacağım.",
           "feedback": "Harika! Karmaşık projelerde Uyarlama (Tailoring) yaparak hem donanımın katı kurallarını hem yazılımın belirsizliğini yönettiniz",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. Öngörücü (Predictive) planı hazırlayacağım ancak takvimi 10 aya sıkıştırmak için, normalde sırayla yapılması gereken bazı test ve üretim aşamalarını aynı anda başlatarak Hızlı İzleme (Fast Tracking) tekniğini uygulayacağım.",
+          "text": "Emredersiniz Sayın Komutanım. Öngörücü (Predictive) planı hazırlayacağım ancak takvimi 10 aya sıkıştırmak için, normalde sırayla yapılması gereken bazı test ve üretim aşamalarını aynı anda başlatarak Hızlı İzleme (Fast Tracking) tekniğini uygulayacağım.",
           "feedback": "Kısmi Doğru. Zamanı sıkıştırdınız ancak belirsizlik olan yerde şelale (waterfall) yöntemi büyük yeniden çalışma (rework) riskleri doğurur",
           "xp": 10,
           "isEthical": true
@@ -306,7 +306,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim, içiniz rahat olsun. 10 ayda bitirme taahhüdünü hemen imzalıyorum. Size görmek istediğiniz o pürüzsüz planı sunacağım. Arka planda geliştiricilere 'Ne yaparsanız yapın, ama kağıt üzerinde her şeyi plana uygun gösterin' talimatı vererek denetimleri atlatacağız.",
+          "text": "Sayın Komutanım, içiniz rahat olsun. 10 ayda bitirme taahhüdünü hemen imzalıyorum. Size görmek istediğiniz o pürüzsüz planı sunacağım. Arka planda geliştiricilere 'Ne yaparsanız yapın, ama kağıt üzerinde her şeyi plana uygun gösterin' talimatı vererek denetimleri atlatacağız.",
           "feedback": "PMI Etik İhlali! Sponsoru yanıltarak Şeffaflık ve Doğruluk ilkesini çiğnediniz. Karpuz Proje (dışı yeşil, içi kırmızı) temelleri atıldı",
           "xp": -20,
           "isEthical": false
@@ -557,7 +557,7 @@
       "id": 12,
       "type": "decision",
       "section": 2,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Lazer İşaretleyici Eklentisi",
       "body": "Yönetici, dün sahadaki özel kuvvetler komutanlarıyla görüştüm. İHA sürüsünün sadece otonom uçmasını değil, aynı zamanda hedefleri yerdeki birlikler için \"lazerle işaretlemesini\" istiyorlar. Geliştirici Emre'ye sordum, \"yazılıma küçük bir modül eklersek donanımla haberleşir, çok vaktimizi almaz\" dedi. Süreci bürokrasiyle uzatmayalım. Bu lazer işaretleme özelliğini hemen mevcut iterasyonun içine ekleyin ve kodlamaya başlasınlar.",
@@ -565,14 +565,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, projenin vizyonunu geliştiren her fikre açığız. Ancak etkisi ne kadar küçük görünürse görünsün, onaylı kapsam temel çizgisinin (Scope Baseline) dışındaki her talep resmi Entegre Değişiklik Kontrol Sürecinden geçmelidir. Emre'den bu talebin donanım ağırlığına, maliyetine ve zaman çizelgesine etkisini analiz etmesini isteyeceğim ve Değişiklik Kontrol Kurulu'na (CCB) sunacağım.",
+          "text": "Sayın Komutanım, projenin vizyonunu geliştiren her fikre açığız. Ancak etkisi ne kadar küçük görünürse görünsün, onaylı kapsam temel çizgisinin (Scope Baseline) dışındaki her talep resmi Entegre Değişiklik Kontrol Sürecinden geçmelidir. Emre'den bu talebin donanım ağırlığına, maliyetine ve zaman çizelgesine etkisini analiz etmesini isteyeceğim ve Değişiklik Kontrol Kurulu'na (CCB) sunacağım.",
           "feedback": "Kapsam Kaymasını (Scope Creep) engellediniz! PMI kurallarına göre hiçbir değişiklik analiz edilmeden ve onaylanmadan yapılamaz",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. Bu talebi Ürün Sahibine (Product Owner) iletiyorum. Mevcut sprinti bozmadan, bu özelliği bir sonraki sprintin iş birikim listesine (Backlog) en üst sıradan ekleyecektir.",
+          "text": "Emredersiniz Sayın Komutanım. Bu talebi Ürün Sahibine (Product Owner) iletiyorum. Mevcut sprinti bozmadan, bu özelliği bir sonraki sprintin iş birikim listesine (Backlog) en üst sıradan ekleyecektir.",
           "feedback": "Kısmi Doğru. Çevik yaklaşımı işlettiniz ancak donanım (hibrit) etkisini tam analiz etmeden bir paydaşın emrini doğrudan kabul ettiniz",
           "xp": 10,
           "isEthical": true
@@ -586,7 +586,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim sizi bürokrasiyle yormayacağım. Bu eklentiyi resmi kayıtlara 'sistem iyileştirmesi' adı altında gizlice sızdıracağım. Fazladan çıkacak maliyeti de donanım test bütçesinden kaydırarak halledeceğim, kimsenin ruhu duymaz.",
+          "text": "Sayın Komutanım sizi bürokrasiyle yormayacağım. Bu eklentiyi resmi kayıtlara 'sistem iyileştirmesi' adı altında gizlice sızdıracağım. Fazladan çıkacak maliyeti de donanım test bütçesinden kaydırarak halledeceğim, kimsenin ruhu duymaz.",
           "feedback": "PMI Etik İhlali! Bütçe sahteciliği ve kayıt dışı iş (Information Manipulation) yaparak dürüstlük ilkesini çiğnediniz",
           "xp": -20,
           "isEthical": false
@@ -1097,7 +1097,7 @@
       "id": 30,
       "type": "story",
       "section": 3,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 3 Değerlendirmesi - Kriz Yönetimi",
       "body": "\"Sahadaki ilk raporlarınızı inceledim. Tedarik zincirindeki çip krizini 'Acil Durum Yedekleri (Contingency)' ile ustalıkla çözmenizi ve o devasa yazılım hatası yığınını 'Pareto Grafiği' ile önceliklendirmenizi takdir ettim. Ayrıca yerel halkla yaşadığımız o tehlikeli sürtüşmeyi jandarmaya gerek kalmadan, ikna ve empati yoluyla çözmeniz bize büyük bir politik kredi kazandırdı. 'Hizmetkar Lider' olmak aynı zamanda cesur olmaktır. Sizi ve takımınızı zorlu testlerin devamı için desteklemeye devam edeceğim. Hazır olun, işin donanım ve yazılım entegrasyonu (Faz 4) daha yeni başlıyor!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bu set ile birlikte 300 bildirimlik hedefimizin 30. adımını tamamlamış olduk. Geriye kalan 270 adımda (180 Karar / 120 Hikaye oranına sadık kalarak); Çatışma çözümü, Kanban'da Darboğaz (Bottleneck) yönetimi, Tahkim (Claims Administration), Kaynak Yükleme (Crashing/Fast-Tracking) gibi ECO 2026'nın derin konularına girmeye devam edebiliriz. İlerleyelim mi?\nEvet, Faz 4: Donanım ve yazılım entegrasyonu ile devam edelim.\nHarika. E-BABİL Projesi'nin en kritik ve en çok \"Hibrit\" zeka gerektiren 4. Fazına geçiyoruz. Bu aşamada, katı bir şekilde üretilen (Predictive) fiziksel İHA gövdeleri ile, esnek bir şekilde (Agile) yazılan Yapay Zeka (AI) algoritmalarının birleştirildiği \"Entegrasyon\" krizlerini yaşayacağız.\nBu fazda; Zaman Çizelgesi Sıkıştırma (Crashing/Fast-Tracking), İhtilaf Yönetimi (Claims Administration), Scrum'ların Scrum'ı (Scrum of Scrums) ve Uyumluluk (Compliance) gibi ağır PMI konseptleri test edilecektir.\nİşte E-BABİL Projesi 4. Faz (Bildirim 31-40):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 4: DONANIM VE YAZILIM ENTEGRASYONU (Faz 4)\nİlgili Performans Alanları: Entegrasyon, Tedarik, İletişim, Zaman Çizelgesi",
@@ -1157,7 +1157,7 @@
       "id": 33,
       "type": "decision",
       "section": 4,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "ACİL: IDEF Savunma Fuarı!",
       "body": "Yönetici, IDEF Savunma Sanayii Fuarı beklenenden 3 hafta erkene çekildi! E-BABİL'in çalışan ilk tam entegre prototipini bu fuarda sergilemek zorundayız. Mevcut Kazanılmış Değer (EVM) verilerinize baktım; SPI (Zaman Çizelgesi Endeksi) 0.85 (gerideyiz), ancak CPI (Maliyet Endeksi) 1.15 (bütçemiz bol). Projeyi bu yeni tarihe nasıl yetiştireceksin?",
@@ -1527,7 +1527,7 @@
       "id": 46,
       "type": "decision",
       "section": 5,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Daha Fazla Kod İstiyorum!",
       "body": "Geçen haftaki iterasyonda (sprint) ekibinizin 50 Hikaye Puanı (Story Point) değerinde iş tamamladığını (Velocity) gördüm. Madem bu tempoya alıştılar ve kapasiteleri var, sıradaki iterasyonda iş listesinden en az 85 Puanlık işi çekmelerini ve bitirmelerini emrediyorum. Onları zorlayın!",
@@ -1535,14 +1535,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, Çevik süreçler kalitenin düşmemesi için 'Sürdürülebilir bir hız' (Sustainable Pace) teşvik eder. Takıma zorla kapasitelerinin üzerinde iş yüklemek, testlerin atlanmasına ve Teknik Borcun (Technical Debt) artmasına neden olur. İterasyona kaç puanlık iş çekileceğine benim veya sizin değil, kendi kapasitelerini bilen geliştirme takımının (Development Team) karar vermesi gerekir.",
+          "text": "Sayın Komutanım, Çevik süreçler kalitenin düşmemesi için 'Sürdürülebilir bir hız' (Sustainable Pace) teşvik eder. Takıma zorla kapasitelerinin üzerinde iş yüklemek, testlerin atlanmasına ve Teknik Borcun (Technical Debt) artmasına neden olur. İterasyona kaç puanlık iş çekileceğine benim veya sizin değil, kendi kapasitelerini bilen geliştirme takımının (Development Team) karar vermesi gerekir.",
           "feedback": "Takım Koruması (Servant Leader)! Sponsorun haksız baskısına göğüs gererek takımın sürdürülebilir hızını ve kalitesini korudunuz",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. Hedefi 85 puana çıkaracağım ancak ekibe gizlice 'siz elinizden geleni yapın, bitmese de ben generali idare ederim' diyeceğim.",
+          "text": "Emredersiniz Sayın Komutanım. Hedefi 85 puana çıkaracağım ancak ekibe gizlice 'siz elinizden geleni yapın, bitmese de ben generali idare ederim' diyeceğim.",
           "feedback": "Zayıf İletişim. Sponsora evet deyip takıma farklı konuşarak beklenti yönetimini (Expectation Management) yanlış kurguladınız",
           "xp": 10,
           "isEthical": true
@@ -1556,7 +1556,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim, işiniz tamam. Geliştiricilere, yapacakları işlerin puan (Story Point) değerlerini suni olarak yüksek tahmin etmelerini (şişirmelerini) söyleyeceğim. Böylece aslında 50 puanlık efor harcasalar bile raporlarda 85 puanlık iş üretmiş gibi destansı görünecekler.",
+          "text": "Sayın Komutanım, işiniz tamam. Geliştiricilere, yapacakları işlerin puan (Story Point) değerlerini suni olarak yüksek tahmin etmelerini (şişirmelerini) söyleyeceğim. Böylece aslında 50 puanlık efor harcasalar bile raporlarda 85 puanlık iş üretmiş gibi destansı görünecekler.",
           "feedback": "PMI Etik İhlali! Metrikleri manipüle ederek projenin şeffaflığını ve dürüstlüğünü yok ettiniz",
           "xp": -20,
           "isEthical": false
@@ -1937,7 +1937,7 @@
       "id": 60,
       "type": "story",
       "section": 6,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 6 Tamamlandı - Zorlukların Üstesinden Gelmek",
       "body": "\"Yönetici, dış çevresel faktörlerin (ambargo) projeyi batırmasına izin vermedin. Bilinen riskler için Acil Durum Yedeklerini (Contingency) çok akıllıca kullandın. Taşeronun ekstra para krizini (Claim) yargıya taşımadan müzakere etmen ve Tokyo'daki ekiple o saat farkı cehennemini 'Akvaryum (Fishbowl)' metoduyla aşman harikaydı. Ama en çok, yarınki denetimde o ufak hatayı halının altına süpürmek yerine dürüstçe karşıma çıkmana saygı duydum. Sen sadece süreçleri değil, ahlakı da yönetiyorsun. Takımını toparla, Faz 7'de işleri daha da hızlandırmamız gerekecek!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 60. bildirimi (oyunun %20'sini) başarıyla tamamladık. Bu faz, yeni ECO'daki \"İş Ortamı (Business Environment)\" domaininin kalbi olan Uyumluluk (Compliance) ve Değer Teslimi konularını derinlemesine test etmiştir. Onayınızla Faz 7 (İleri Düzey Riskler ve Kalite Güvencesi) ile devam edebiliriz.\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® standartlarına tam uyumlu olarak Faz 7: İleri Düzey Riskler, Kök Nedenler ve Hızlandırılmış Teslimat aşamasıyla devam ediyoruz.\nBu fazda, gerçek dünyadaki bir \"kaza\" senaryosu üzerinden Kök Neden Analizi (Ishikawa/Balık Kılçığı), Kolaylaştırıcılık (Facilitation), Zaman Çizelgesi Sıkıştırma (Leads/Lags), Minimum Yapılabilir Ürün (MVP) ve Kazanılmış Değer Metrikleri (EVM) gibi PMP sınavının en teknik konularını test edeceğiz.\nİşte E-BABİL Projesi 7. Faz (Bildirim 61 - 70):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 7: KRİTİK HATALAR VE VIP DEMO (Faz 7)\nİlgili Performans Alanları: Kalite, Zaman Çizelgesi, Takım, Ölçümlama (EVM)",
@@ -2087,7 +2087,7 @@
       "id": 66,
       "type": "decision",
       "section": 7,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Demodaki Gösteri Beklentisi",
       "body": "Yönetici, haftaya yapılacak demoda İHA sürüsünün aynı anda 10 farklı otonom saldırı ve savunma formasyonunu (dağılma, birleşme, kamikaze vb.) yapmasını bekliyorum. Bakanlık tam bir şov görmek istiyor.",
@@ -2095,14 +2095,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, kalite krizini yeni aştık. Çevik ilkeler gereği, 10 formasyonu yarım yamalak yapmak yerine, sadece en kritik ve hatasız çalışan 2 formasyonu içeren 'Minimum Yapılabilir Ürün (MVP)' sürümüyle çıkmalıyız. Bu size erken ve gerçek bir iş değeri (Business Value) sunarken, sistemin temel güvenilirliğini kanıtlayacaktır.",
+          "text": "Sayın Komutanım, kalite krizini yeni aştık. Çevik ilkeler gereği, 10 formasyonu yarım yamalak yapmak yerine, sadece en kritik ve hatasız çalışan 2 formasyonu içeren 'Minimum Yapılabilir Ürün (MVP)' sürümüyle çıkmalıyız. Bu size erken ve gerçek bir iş değeri (Business Value) sunarken, sistemin temel güvenilirliğini kanıtlayacaktır.",
           "feedback": "Değer Odaklılık! Paydaşın aşırı beklentisini MVP kavramıyla yöneterek, kaliteyi düşürmeden projenin başarılı görünmesini sağladınız",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. 10 formasyonu da yetiştirmeye çalışacağız ama bazıları havada tam senkronize olmayabilir, şimdiden uyarayım.",
+          "text": "Emredersiniz Sayın Komutanım. 10 formasyonu da yetiştirmeye çalışacağız ama bazıları havada tam senkronize olmayabilir, şimdiden uyarayım.",
           "feedback": "Riskli Beklenti Yönetimi. Tamamlanmamış (DoD karşılamayan) özellikleri demoya sokmak, müşteri güvenini yerle bir edebilir",
           "xp": 10,
           "isEthical": true
@@ -2116,7 +2116,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim, sistem 10 formasyonu da kusursuz yapıyor diyeceğim. Demo günü gelince sadece 2'sini uçurup, 'Saha hava koşulları diğer 8 formasyon için tehlikeli, komutanlığın güvenliği için iptal ettim' diyerek durumu manipüle edeceğim.",
+          "text": "Sayın Komutanım, sistem 10 formasyonu da kusursuz yapıyor diyeceğim. Demo günü gelince sadece 2'sini uçurup, 'Saha hava koşulları diğer 8 formasyon için tehlikeli, komutanlığın güvenliği için iptal ettim' diyerek durumu manipüle edeceğim.",
           "feedback": "PMI Etik İhlali! Bilgi manipülasyonu (Information Manipulation) ve kasıtlı aldatma",
           "xp": -20,
           "isEthical": false
@@ -2217,7 +2217,7 @@
       "id": 70,
       "type": "story",
       "section": 7,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 7 Tamamlandı - Kriz Yönetimi ve Başarılı Demo",
       "body": "\"E-BABİL'in VIP Demosu büyük bir başarıydı! Kazadan sonra ekibin birbirine düşmesini engelleyip 'Kolaylaştırıcı' bir liderlik sergilemen ve o sorunu Ishikawa ile veriye dayalı çözmen takdire şayan. 10 formasyon yerine sadece 2 adet kusursuz çalışan formasyonu (MVP) bize sunarak güvenimizi kazandın. Finansal verilerinizin (SPI 1.2, CPI 1.09) bu kadar krizin içinde hala pozitif olması, projeyi ne kadar sıkı tuttuğunu gösteriyor. Üstelik genç mühendisleri T-Tipi uzmanlara dönüştürerek ekibin kapasitesini artırdın. Artık bu prototipleri seri üretime sokup sahadaki asıl zorluklarla yüzleşeceğimiz Faz 8'e geçmeye hazırsınız!\"\ndevam\nHarika. PMP Sınav İçerik Ana Hatları'na (ECO) ve PMBOK® standartlarına tam uyumlu olarak, devasa simülasyonumuzun Faz 8: Seri Üretim, Kalite ve Ölçeklendirme aşamasıyla devam ediyoruz.\nBu fazda, prototipten seri üretime geçerken yaşanan İstatistiksel Örnekleme (Statistical Sampling), Enflasyon/Sözleşme Yönetimi (FP-EPA), Tamamlanmışın Tanımı (DoD) İhlalleri, Takım Motivasyonu (Herzberg/Maslow) ve Gölge BT (Shadow IT) / İletişim Planı gibi PMP sınavının kritik \"Süreç\" ve \"İnsan\" tuzaklarını test edeceğiz.\nİşte E-BABİL Projesi 8. Faz (Bildirim 71 - 80):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 8: SERİ ÜRETİM VE ÖLÇEKLENDİRME (Faz 8)\nİlgili Performans Alanları: Kalite, Tedarik, İletişim, Takım, Kapsam",
@@ -2457,7 +2457,7 @@
       "id": 79,
       "type": "decision",
       "section": 8,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "ACİL: Deniz İniş Sistemi Eklemesi",
       "body": "Yönetici, Deniz Kuvvetleri Komutanlığı projeye dahil olmak istiyor. Ancak E-BABİL İHA'larının karaya değil, hareket halindeki bir savaş gemisinin güvertesine inebilmesini talep ediyorlar. Bu, hem donanım gövdesinde (tuzlu suya dayanıklılık) hem de yazılımda devasa bir kapsam değişikliği demek. Fakat bütçe de sağlayacaklar. Bunu hemen onaylayıp projeye dahil etmeni emrediyorum.",
@@ -2465,28 +2465,28 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, projenin değerini artıracak her paydaş talebine açığız. Ancak bu kadar büyük bir kapsam değişikliği mevcut temel çizgilerimizi (Baselines) tamamen değiştirecektir. Etkili bir paydaş (Sponsor) ısrar etse bile, değişikliğin bütçe, zaman ve risk etkilerini analiz edip resmi bir Değişiklik Talebi (Change Request - CR) hazırlayacağım ve onay için Değişiklik Kontrol Kurulu'na (CCB) sunacağım,.",
+          "text": "Sayın Komutanım, projenin değerini artıracak her paydaş talebine açığız. Ancak bu kadar büyük bir kapsam değişikliği mevcut temel çizgilerimizi (Baselines) tamamen değiştirecektir. Etkili bir paydaş (Sponsor) ısrar etse bile, değişikliğin bütçe, zaman ve risk etkilerini analiz edip resmi bir Değişiklik Talebi (Change Request - CR) hazırlayacağım ve onay için Değişiklik Kontrol Kurulu'na (CCB) sunacağım,.",
           "feedback": "Kapsam Yönetimi! Kurumsal yönetişime (Governance) sadık kalarak, hiçbir büyük değişikliğin analiz ve CCB onayı olmadan yapılamayacağı kuralını işlettiniz",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. Bu talebi hemen Çevik takımın Ürün Sahibine (Product Owner) iletiyorum, bir sonraki sprintin iş birikim listesine koysunlar.",
+          "text": "Emredersiniz Sayın Komutanım. Bu talebi hemen Çevik takımın Ürün Sahibine (Product Owner) iletiyorum, bir sonraki sprintin iş birikim listesine koysunlar.",
           "feedback": "Eksik Yönetim. Yazılım kısmı (Çevik) için Backlog güncellenmesi doğru olsa da, donanım (Öngörücü) kısmındaki devasa maliyet ve sözleşme değişikliği için CCB onayı şarttır",
           "xp": 10,
           "isEthical": true
         },
         {
           "key": "C",
-          "text": "Bu imkansız Generalim. Proje Başlatma Belgesinde böyle bir şey yoktu. Projenin sonuna bu kadar yaklaşmışken kapsamı değiştiremeyiz, talebi reddediyorum.",
+          "text": "Bu imkansız Sayın Komutanım. Proje Başlatma Belgesinde böyle bir şey yoktu. Projenin sonuna bu kadar yaklaşmışken kapsamı değiştiremeyiz, talebi reddediyorum.",
           "feedback": "Katılık. Değişime tamamen kapalı olmak, projenin müşteriye sunacağı nihai \"Değeri (Value)\" ve yeni bütçe fırsatını yok eder",
           "xp": 5,
           "isEthical": true
         },
         {
           "key": "D",
-          "text": "Generalim bürokrasiyle uğraşmayalım. Ben bu yeni deniz iniş sistemi maliyetlerini, mevcut raporlarda 'rutin bakım ve arıza giderme' (maintenance) masrafıymış gibi gösterip gizlice arka planda ürettireyim. CCB'nin haberi olmaz.",
+          "text": "Sayın Komutanım bürokrasiyle uğraşmayalım. Ben bu yeni deniz iniş sistemi maliyetlerini, mevcut raporlarda 'rutin bakım ve arıza giderme' (maintenance) masrafıymış gibi gösterip gizlice arka planda ürettireyim. CCB'nin haberi olmaz.",
           "feedback": "PMI Etik İhlali! Bütçe sahteciliği ve fonların amacı dışında kullanılması (Fraud",
           "xp": -20,
           "isEthical": false
@@ -2607,7 +2607,7 @@
       "id": 85,
       "type": "decision",
       "section": 9,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Çok Küçük Bir Rica",
       "body": "Yönetici, MVP testlerini inceledim. Sistem harika. Sizden çok ufak bir ricam var. Kontrol ekranındaki hedef ikonlarının rengini kırmızıdan gece görüş yeşiline çevirin. Bu çok küçük bir değişiklik, etkisi ne kadar küçük olursa olsun beni bürokrasiyle uğraştırmayın, yarınki sürüme ekletin.",
@@ -2615,14 +2615,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, projenin değerini artıracak her fikre açığız. Ancak müşteri/sponsor çok küçük değişiklik talepleri yapsa bile, her bir talep için Entegre Değişiklik Kontrol Sürecinin işletilmesi zorunludur. Hemen bir Değişiklik Talebi (CR) sunacağım ve ardından bu ufak etkinin analizini yaparak hızlıca onaylatacağım.",
+          "text": "Sayın Komutanım, projenin değerini artıracak her fikre açığız. Ancak müşteri/sponsor çok küçük değişiklik talepleri yapsa bile, her bir talep için Entegre Değişiklik Kontrol Sürecinin işletilmesi zorunludur. Hemen bir Değişiklik Talebi (CR) sunacağım ve ardından bu ufak etkinin analizini yaparak hızlıca onaylatacağım.",
           "feedback": "Kapsam Kontrolü! Etkisi ne kadar küçük veya az olursa olsun, değişiklikler entegre değişiklik kontrolünden geçmelidir - Ref: Klonlanmış Soru 19.B / 22.A",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. Bu çok küçük olduğu için doğrudan iterasyon iş birikim listesine (Sprint Backlog) ekleyip takıma yapmalarını söylüyorum.",
+          "text": "Emredersiniz Sayın Komutanım. Bu çok küçük olduğu için doğrudan iterasyon iş birikim listesine (Sprint Backlog) ekleyip takıma yapmalarını söylüyorum.",
           "feedback": "Çevik zihniyette esneklik olsa da, hibrit bir projede sponsorun 'doğrudan' talebi ürün sahibinin (PO) değer analizini ve değişiklik sürecini by-pass edemez",
           "xp": 10,
           "isEthical": true
@@ -2636,7 +2636,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim ayıpsınız, hemen hallediyorum. Ekibe bu değişikliği yapmalarını söyleyeceğim, harcanan saati de 'sistem hata düzeltmesi' adı altında gizleyerek kimseye çaktırmayacağım.",
+          "text": "Sayın Komutanım ayıpsınız, hemen hallediyorum. Ekibe bu değişikliği yapmalarını söyleyeceğim, harcanan saati de 'sistem hata düzeltmesi' adı altında gizleyerek kimseye çaktırmayacağım.",
           "feedback": "PMI Etik İhlali! Kapsam kaymasını (Scope Creep) kayıt dışı yollarla projeye dahil ederek şeffaflığı bitirdiniz",
           "xp": -20,
           "isEthical": false
@@ -2797,7 +2797,7 @@
       "id": 92,
       "type": "decision",
       "section": 10,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Nihai Teslimat Onayı (Sign-off)",
       "body": "İHA'ları sahada bizzat inceledim. Ürünler, Proje Yönetim Planı'ndaki tüm \"Kabul Kriterlerini (Acceptance Criteria)\" %100 karşılıyor. Ancak resmi teslimat belgesine imza atmadan önce küçük bir isteğim var: Gövdenin üzerine yeni bir kamuflaj deseni eklemenizi istiyorum. Bu deseni yaparsanız imzayı hemen atarım, yapmazsanız teslimatı kabul etmem. Nasıl ilerleyelim?",
@@ -2805,7 +2805,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, Kapsamın Doğrulanması (Validate Scope) sürecindeyiz ve ürünler baştan anlaştığımız tüm kabul kriterlerini karşılıyor. Kurallar gereği bu teslimatı resmi olarak onaylamalı ve belgeyi imzalamalısınız. İstediğiniz yeni kamuflaj deseni için derhal yeni bir Değişiklik Talebi (CR) açıp, bunu Sürüm 1.1'in (ikinci fazın) kapsamına dahil edeceğim.",
+          "text": "Sayın Komutanım, Kapsamın Doğrulanması (Validate Scope) sürecindeyiz ve ürünler baştan anlaştığımız tüm kabul kriterlerini karşılıyor. Kurallar gereği bu teslimatı resmi olarak onaylamalı ve belgeyi imzalamalısınız. İstediğiniz yeni kamuflaj deseni için derhal yeni bir Değişiklik Talebi (CR) açıp, bunu Sürüm 1.1'in (ikinci fazın) kapsamına dahil edeceğim.",
           "feedback": "Kapsam Yönetimi Uzmanı! Müşteri kabul kriterleri karşılandığında teslimat onaylanmalıdır; yeni istekler şantaj unsuru olamaz, yeni bir değişiklik (CR) olarak ele alınır",
           "xp": 30,
           "isEthical": true
@@ -2977,7 +2977,7 @@
       "id": 98,
       "type": "decision",
       "section": 10,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Re: Vaat Edilen Faydalar",
       "body": "Yöneticim, hani sınır güvenliği %30 artacaktı? Dün teslim ettik, bugün verilere bakıyorum hiçbir değişiklik yok. Bu proje başarısız mı oldu?",
@@ -2985,14 +2985,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, proje teslimatları (Çıktı/Output) anında gerçekleşse de, stratejik faydaların (Sonuç/Outcome) ölçülebilir hale gelmesi zaman alır. Projenin en başında hazırladığımız Fayda Yönetim Planı'na (Benefits Management Plan) göre, sistemin operasyonel verimliliğe ulaşması ve %30'luk hedefin ölçülmesi için en az 6 aylık bir operasyon döngüsü geçmesi gerekmektedir. Ölçümleri bu plana göre takip edeceğiz.",
+          "text": "Sayın Komutanım, proje teslimatları (Çıktı/Output) anında gerçekleşse de, stratejik faydaların (Sonuç/Outcome) ölçülebilir hale gelmesi zaman alır. Projenin en başında hazırladığımız Fayda Yönetim Planı'na (Benefits Management Plan) göre, sistemin operasyonel verimliliğe ulaşması ve %30'luk hedefin ölçülmesi için en az 6 aylık bir operasyon döngüsü geçmesi gerekmektedir. Ölçümleri bu plana göre takip edeceğiz.",
           "feedback": "İş Zekası (Business Acumen)! Çıktı (Output), Sonuç (Outcome) ve Fayda (Benefit) arasındaki farkı yönetim kuruluna mükemmel açıkladınız",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Haklısınız Generalim, sanırım algoritmamız yeterince iyi değil. Ekibi toplayıp sistemi %30 hedefini anında vuracak şekilde yeniden tasarlamaları için geri çağırıyorum.",
+          "text": "Haklısınız Sayın Komutanım, sanırım algoritmamız yeterince iyi değil. Ekibi toplayıp sistemi %30 hedefini anında vuracak şekilde yeniden tasarlamaları için geri çağırıyorum.",
           "feedback": "Panik Reaksiyonu. Teslim edilmiş ve onaylanmış bir ürünü, sırf gecikmeli göstergeler (lagging indicators) henüz sonuç vermedi diye geri çağırmak israftır",
           "xp": 10,
           "isEthical": true
@@ -3006,7 +3006,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim, projenin başarısız görünmemesi için geçmiş sınır ihlali verilerini değiştirerek (rakamları yükselterek), sistemimiz devredeyken ihlaller %30 düşmüş gibi sahte bir 'Fayda Gerçekleşme Raporu' sunalım.",
+          "text": "Sayın Komutanım, projenin başarısız görünmemesi için geçmiş sınır ihlali verilerini değiştirerek (rakamları yükselterek), sistemimiz devredeyken ihlaller %30 düşmüş gibi sahte bir 'Fayda Gerçekleşme Raporu' sunalım.",
           "feedback": "PMI Etik İhlali! Üst yönetimi ve kamuoyunu sahte istatistiklerle kandırmak (Information Manipulation",
           "xp": -20,
           "isEthical": false
@@ -3337,7 +3337,7 @@
       "id": 110,
       "type": "story",
       "section": 11,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 11 Tamamlandı - Zorlu Suların Aşılması",
       "body": "\"E-BABİL Sürüm 2.0 fırtınalı başladı ama gemiyi harika yönettiniz! Siber güvenlik açığını (riskten soruna dönüşen olayı) 'Acil Durum Yedekleri' ile soğukkanlılıkla çözmeniz; üç ayrı takımı 'Scrum of Scrums' ile başarıyla koordine etmeniz organizasyon yeteneğinizi kanıtladı. En önemlisi, ben dahil kilit paydaşların (Amiralin) baskısına boyun eğmeyip Ürün Sahibinin (PO) otoritesini ve CCB kurallarını korumanız gerçek bir PMP liderliğidir. Sanal takımlarımız artık birbirine daha güveniyor. Faz 12'ye geçiyoruz; büyük uluslararası tedarik krizlerine hazır olun!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: Bildirimler, PMI'ın en son yayınladığı ECO ve soru setlerindeki (Scrum of Scrums, Takım Anlaşması, Risk vs Sorun, Uyumluluk, Eğitim Maliyeti) konseptlere sıkı sıkıya bağlı kalarak tasarlanmıştır. Onayınızla Faz 12 (Tedarikçi İflasları, FPIF Sözleşmeleri ve Değer Analizi) ile devam edebiliriz.\ndevam\nHarika bir ivmeyle ilerliyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız PMI kaynaklarına tam uyumlu olarak, Blok 2'nin en kritik aşamalarından biri olan Faz 12 ile devam ediyoruz.\nBu fazda, daha önce planladığımız gibi Tedarikçi İflas Dedikoduları, Sabit Fiyatlı Teşvik Ücretli (FPIF) Sözleşmeler, Değer Odaklı Önceliklendirme (Value-based Prioritization), Yap veya Satın Al (Make-or-Buy) Analizi ve Zaman/Maliyet Sapmaları (SV/CV) gibi zorlu PMP konseptlerini test edeceğiz.\nİşte E-BABİL Projesi 12. Faz (Bildirim 111 - 120):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 12: TEDARİK KRİZLERİ VE DEĞER ANALİZİ (Faz 12)\nİlgili Performans Alanları: Tedarik, İş Ortamı, Risk, İletişim, Teslimat",
@@ -3637,7 +3637,7 @@
       "id": 122,
       "type": "decision",
       "section": 13,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Bütçe Neden Kırmızıda?!",
       "body": "Yönetici, son finansal raporlarda projenin hem takvimin gerisinde hem de bütçenin üzerinde (Over budget) olduğunu görüyorum. Yönetim Kurulu benden acil bir açıklama bekliyor. Bu durumu nasıl toparlamayı düşünüyorsun?",
@@ -3645,14 +3645,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, sapmaları gizlemek yerine şeffaflıkla ele alıyoruz. Öncelikle bu bütçe ve zaman varyasyonlarının (sapmalarının) arkasındaki temel sebepleri bulmak için Kök Neden Analizi (Root Cause Analysis) yapacağız. Nedenleri tespit ettikten sonra Yönetim Kuruluna durumu ve bu sapmaları düzeltmek için hazırladığımız (Örn: Hızlı İzleme) eylem planını sunacağım.",
+          "text": "Sayın Komutanım, sapmaları gizlemek yerine şeffaflıkla ele alıyoruz. Öncelikle bu bütçe ve zaman varyasyonlarının (sapmalarının) arkasındaki temel sebepleri bulmak için Kök Neden Analizi (Root Cause Analysis) yapacağız. Nedenleri tespit ettikten sonra Yönetim Kuruluna durumu ve bu sapmaları düzeltmek için hazırladığımız (Örn: Hızlı İzleme) eylem planını sunacağım.",
           "feedback": "Süreç Ustalığı! Bütçe/zaman sapmalarında (Variance) doğrudan bütçe istemek veya paniklemek yerine, önce sapmanın nedenini araştırmak (RCA) ve şeffafça bildirmek PMI'ın tercih edilen yaklaşımıdır",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Endişelenmeyin Generalim. Yönetim Kuruluna haber vermeden, projedeki 'Yönetim Yedeklerini (Management Reserves)' kullanarak bütçe açığını hemen kapatacağım.",
+          "text": "Endişelenmeyin Sayın Komutanım. Yönetim Kuruluna haber vermeden, projedeki 'Yönetim Yedeklerini (Management Reserves)' kullanarak bütçe açığını hemen kapatacağım.",
           "feedback": "Kurumsal Yönetişim İhlali. Yönetim yedekleri bilinmeyen riskler içindir ve Yönetim Kurulunun onayı/bilgisi olmadan kullanılamaz",
           "xp": 10,
           "isEthical": true
@@ -3666,7 +3666,7 @@
         },
         {
           "key": "D",
-          "text": "Generalim, takımın raporladığı Gerçek Maliyet (AC) rakamlarıyla oynayarak, bütçeyi henüz aşmamışız gibi sahte bir performans raporu hazırlayacağım. Siz de bunu Kurula sunun.",
+          "text": "Sayın Komutanım, takımın raporladığı Gerçek Maliyet (AC) rakamlarıyla oynayarak, bütçeyi henüz aşmamışız gibi sahte bir performans raporu hazırlayacağım. Siz de bunu Kurula sunun.",
           "feedback": "PMI Etik İhlali! Finansal raporlarda tahrifat yaparak Şeffaflık ve Doğruluk (Honesty) kurallarını doğrudan ihlal ettiniz",
           "xp": -20,
           "isEthical": false
@@ -3917,7 +3917,7 @@
       "id": 132,
       "type": "decision",
       "section": 14,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Radar Gelişimi Neden Görünmüyor?",
       "body": "Yönetici, geçen ay boyunca \"Denizaltı Radarının Tespit Menzilini %20 Artırma\" hedefi için çalıştınız ve bana iterasyonun bittiğini raporladınız. Ancak bu haftaki canlı saha raporlarına bakıyorum, tespit oranlarında henüz %1'lik bile bir artış yok! Bu takım çalışmıyor mu, yoksa metrikleri mi yanlış ölçüyoruz?",
@@ -3925,28 +3925,28 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, takım işi (çıktıyı) başarıyla tamamladı. Ancak 'Tespit Oranı' gibi nihai hedefler Gecikmeli Göstergelerdir (Lagging Indicators); yani iş yapıldıktan çok sonra ölçülebilir hale gelirler. Takımın performansını şu an anlık olarak görebilmek için, 'Başarıyla Geçilen Yazılım Testi Sayısı' gibi Öncü Göstergelere (Leading Indicators) bakmalıyız. Nihai fayda için zamana ihtiyacımız var.",
+          "text": "Sayın Komutanım, takım işi (çıktıyı) başarıyla tamamladı. Ancak 'Tespit Oranı' gibi nihai hedefler Gecikmeli Göstergelerdir (Lagging Indicators); yani iş yapıldıktan çok sonra ölçülebilir hale gelirler. Takımın performansını şu an anlık olarak görebilmek için, 'Başarıyla Geçilen Yazılım Testi Sayısı' gibi Öncü Göstergelere (Leading Indicators) bakmalıyız. Nihai fayda için zamana ihtiyacımız var.",
           "feedback": "Ölçümleme Uzmanı! Projelerde öncü (tahmin edici) ve gecikmeli (geçmişi gösteren) göstergeler arasındaki farkı doğru analiz ederek paydaş beklentisini yönettiniz",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Haklısınız Generalim. Radarın kodlarında bir hata olmalı. Takımı derhal geri çağırıp yeniden kodlama yapmalarını isteyeceğim.",
+          "text": "Haklısınız Sayın Komutanım. Radarın kodlarında bir hata olmalı. Takımı derhal geri çağırıp yeniden kodlama yapmalarını isteyeceğim.",
           "feedback": "Yanlış Teşhis. Ürün bozuk olmayabilir; sadece etkinin (outcome) ölçülmesi için yeterli operasyonel zaman geçmemiştir. Yeniden çalışma (rework) israfı yarattınız",
           "xp": 10,
           "isEthical": true
         },
         {
           "key": "C",
-          "text": "Bizim işimiz İHA'yı teslim etmektir Generalim. Tespit menzilini sahada askeri personelin ayarlaması gerekir, bu bizim kapsamımızda değil.",
+          "text": "Bizim işimiz İHA'yı teslim etmektir Sayın Komutanım. Tespit menzilini sahada askeri personelin ayarlaması gerekir, bu bizim kapsamımızda değil.",
           "feedback": "Sorumluluktan kaçış. Projenin iş gerekçesindeki (Business Case) değere ulaşılıp ulaşılmadığını takip etmek proje yöneticisinin sorumluluğundadır",
           "xp": 5,
           "isEthical": true
         },
         {
           "key": "D",
-          "text": "Generalim, gecikmeli göstergelerin süresi dolana kadar kötü görünmemek için, test verilerindeki standart sapmaları kasıtlı olarak daraltın ve tespit oranını kağıt üzerinde %20 artmış gibi raporlayın.",
+          "text": "Sayın Komutanım, gecikmeli göstergelerin süresi dolana kadar kötü görünmemek için, test verilerindeki standart sapmaları kasıtlı olarak daraltın ve tespit oranını kağıt üzerinde %20 artmış gibi raporlayın.",
           "feedback": "PMI Etik İhlali! Performans metriklerini ve test sonuçlarını manipüle ederek (Fraud) dürüstlük kuralını doğrudan ihlal ettiniz",
           "xp": -20,
           "isEthical": false
@@ -4177,7 +4177,7 @@
       "id": 140,
       "type": "story",
       "section": 14,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 14 Tamamlandı - Fırtınada Gemiyi Yüzdürmek",
       "body": "\"Yönetici, karşılaştığımız bu 'Felaketler Zincirinde' soğukkanlılığını koruyup gelip benimle stratejik istişare yapman (Sponsor Danışmanlığı) tam bir profesyonellik örneğiydi. O toplantıda Ahmet'in patlamasını anında bastırıp disiplini sağlaman ve Donanmanın operasyonel şartlarına uyum sağlamak için 'Periyodik Teslimat (Cadence)' yöntemini seçmen de harikaydı. Gecikmeli göstergelerin zaman alacağını bana çok iyi açıkladın ve teknik borcun sistemimizi çürütmesini engelledin. Kalite denetiminden de 'Kalite Yönetim Planın' sayesinde başarıyla geçtik. Şimdi, ekibin tükenmişlik sınırına geldiği ve son testlerin yapılacağı Faz 15'e doğru yelken açıyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 140. bildirimi başarıyla tamamladık. Bu fazda, kaynaklarınızda yer alan \"Lagging vs Leading Indicators\", \"Technical Debt\", \"Delivery Cadence\", \"Audit vs Inspection\" ve \"Sponsor Consultation (Cloned Q 13/223)\" kavramları birebir PMI mantığıyla işlenmiştir. Onayınızla, Blok 2'nin sonu olan ve krizlerin çözüm noktasına ulaştığı Faz 15 ile devam edebiliriz.\ndevam\nHarika bir ilerleme kaydediyoruz. PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız güncel Klonlanmış PMP soru setlerine tam uyumlu olarak, Blok 2'nin (Tedarik ve Dış Çevre Krizleri) büyük finali olan Faz 15 ile devam ediyoruz.\nBu fazda; Kilit Kaynak İstifası ve Bilgi Aktarımı, Maliyet Artışlarında Tamamlama Tahmini (EAC), İnceleme (Inspection) vs Denetim (Audit), Operasyona Devir (Hand-off) ve Hizmetkar Liderlik (Servant Leadership) Zihniyeti gibi sınavın en kritik konuları test edilecektir.\nİşte E-BABİL Projesi 15. Faz (Bildirim 141 - 150):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 15: TÜKENMİŞLİK, TESLİMAT VE BLOK 2 FİNALİ (Faz 15)\nİlgili Performans Alanları: Takım, Kalite, Maliyet, Kapanış, İş Ortamı",
@@ -4837,7 +4837,7 @@
       "id": 164,
       "type": "story",
       "section": 17,
-      "from": "Tuğgeneral Hulusi",
+      "from": "Tuğgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Müşteri Talepleri ve Yaklaşım Sorunu",
       "body": "Yönetici, uluslararası müşterilerimiz (NATO müttefikleri) o kadar çok şey istiyorlar ki, kapsam sürekli esniyor. Projenin donanım kısmını baştan sona planlamıştık (Öngörücü/Predictive) ancak müşteri her ay yeni bir entegrasyon talep ediyor. Sıkı bütçe kontrollerimiz var ama değişen gereksinimlere de ayak uydurmamız şart. Nasıl bir proje metodolojisi izlemeliyiz?",
@@ -5017,7 +5017,7 @@
       "id": 170,
       "type": "story",
       "section": 17,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 17 Tamamlandı - Küresel Adaptasyon Başarısı",
       "body": "\"Sürüm 3.0'ın başındaki bu kaotik geçiş dönemini harika yönettin Yönetici! Şirket içindeki büyük 'Organizasyonel Dönüşüm' nedeniyle ekibin üstündeki o ağır baskıyı profesyonelce hafiflettin. İKY planlamasında nakliye işini atlamayarak '%100 Kuralını' işletmen bütçe güvenliğimizi sağladı. Müşterinin sonu gelmez talepleri karşısında inatlaşmak yerine süreci 'Hibrit' bir yaklaşıma uyarlaman (Tailoring) projeyi kurtardı. Amiralin veya ataşenin o sözde 'küçük' değişikliklerini bile CCB'ye sokarak süreç disiplininden taviz vermedin. Çok dilli ekibin kapsayıcılığını Takım Anlaşmasıyla sağladın ve üretim stabilitesini Kontrol Grafikleriyle güvence altına aldın. Uluslararası arenadaki asıl zorlukların ve 'Öğrenilmiş Derslerin' devreye gireceği Faz 18'e doğru ilerliyoruz!\"\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel kaynaklara sıkı sıkıya bağlı kalarak Faz 18 ile yolculuğumuza devam ediyoruz.\nBu fazda, E-BABİL projesinin uluslararası arenadaki karmaşık paydaş haritasını yönetirken; Belirginlik (Salience) Modeli, Hizmet Seviyesi Anlaşmaları (SLA), Değişikliklerin İletişimi, Bilgi Sürekliliği (Knowledge Continuity) ve Sürekli İyileştirmenin Ölçülmesi gibi ileri düzey PMI süreçlerini test edeceğiz.\nİşte E-BABİL Projesi 18. Faz (Bildirim 171 - 180):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 18: KÜRESEL BİLGİ AKTARIMI VE SÜREKLİ İYİLEŞTİRME (Faz 18)\nİlgili Performans Alanları: Paydaşlar, İletişim, Tedarik, Kalite, Kapanış",
@@ -5297,7 +5297,7 @@
       "id": 180,
       "type": "story",
       "section": 18,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 18 Tamamlandı - Kurumsal Olgunluk",
       "body": "\"E-BABİL Sürüm 3.0 (İhracat) ile birlikte projemiz artık küresel bir lige çıktı ve sen de bir yönetici olarak olağanüstü bir 'Kurumsal Olgunluk' sergiliyorsun! O karmaşık paydaş ağını 'Belirginlik (Salience) Modeli' ile ustaca yönettin. Onaylanan büyük değişikliği şansa bırakmayıp 'İletişim Planına' göre duyurman kaosu önledi. Bulut sağlayıcısıyla sadece bir sözleşme değil, kaliteyi ölçen bir 'Hizmet Seviyesi Anlaşması (SLA)' imzalaman tam bir vizyon örneğiydi. Ayrıca sürekli iyileştirmeyi 'ölçerek' kanıtladın ve çözülen her sorunu 'Öğrenilmiş Derslere' aktararak şirketimizin kurumsal hafızasını güçlendirdin. Şimdi, testlerin zirve yapacağı ve projenin nihai lansman baskısıyla yüzleşeceğin Faz 19'a geçiyoruz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 180. bildirimi (Oyunun %60'ını) tamamladık. Sağladığınız kaynaklardaki (Klonlanmış Sorular Q23/24, Q53/140, Q27/10-130 vb.) doğrudan eşleşen konuları \"Sistem Notları\" ve yanıt şıklarının içerisinde [i] formatıyla alıntılayarak simülasyona entegre ettim. Onayınızla Faz 19 (Çevik Yönetişim, Bilgi Radyatörleri ve Kapsam Doğrulama krizleri) ile devam edebiliriz.\nFaz 19 ile devam et\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel kaynaklardaki (Klonlanmış Sorular) referanslara tam uyumlu olarak, Faz 19 ile simülasyonumuza devam ediyoruz.\nBu fazda, İhracat Sürümü'nün (Sürüm 3.0) nihai lansmanına yaklaşırken Çevik Yönetişim (Agile Governance), Bilgi Panoları (Information Radiators), Kapsam Doğrulama (Validate Scope) Krizleri, Kabul Edilen Teslimatların Yönlendirilmesi ve Takım İçi Karar Alma Çıkmazları (Deadlocks) gibi çok kritik PMI süreçlerini test edeceğiz.\nİşte E-BABİL Projesi 19. Faz (Bildirim 181 - 190):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 19: ÇEVİK YÖNETİŞİM VE KAPSAM DOĞRULAMA KRİZLERİ (Faz 19)\nİlgili Performans Alanları: Teslimat, Takım, Süreç, İş Ortamı, Ölçümleme",
@@ -5317,7 +5317,7 @@
       "id": 182,
       "type": "decision",
       "section": 19,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Anlık Durum Görmek İstiyoruz!",
       "body": "Yönetici, yabancı generaller ve ben, çevik yazılım ekibinizin ilerlemesini anlık olarak görmek istiyoruz. Takımın çalışma şeklini değiştirmeden ve onları sürekli \"durum raporu\" yazmakla meşgul etmeden (çünkü bu onları yavaşlatıyor), projenin durumunu, kalan işleri ve engelleri bize şeffaf bir şekilde nasıl göstereceksin?",
@@ -5577,7 +5577,7 @@
       "id": 190,
       "type": "story",
       "section": 19,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Faz 19 Tamamlandı - Sistem İşliyor!",
       "body": "\"E-BABİL'in ihracat versiyonunun o kaotik son günlerinde gösterdiğin yönetim becerisi takdire şayan! Yabancı generalleri 'Bilgi Panoları (Information Radiators)' ile şeffafça bilgilendirdin. Donanımdan yazılıma geçerken 'Faz Geçidi' denetimini es geçmedin. Ataşe ürünü reddetmeye kalktığında o sözleşmedeki 'Kabul Kriterlerini' masaya koyarak profesyonelliğini kanıtladın ve onaylanan teslimatı hemen 'Kapanış' sürecine yönlendirdin. Takım içi oylama çıkmaza (deadlock) girdiğinde lideri yetkilendirerek zaman kaybını önlemen ve mükerrer iş yapan takımları 'Birleştirerek' israfı bitirmen tam bir vizyon örneğiydi. Şimdi, Blok 3'ün büyük finaline, Sürüm 3.0'ın uluslararası devir teslimine (Faz 20) hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 190. bildirimle birlikte Blok 3'ün zirvesine ulaştık. Sağladığınız kaynaklardaki \"Information Radiators\", \"Phase Gates\", \"Validate Scope / Acceptance Criteria\", \"Accepted Deliverables to Close Project\", \"Deadlock / Roman Voting\" ve \"Redundant Work\" senaryoları birebir PMI mantığıyla işlenmiştir. Onayınızla Blok 3'ün (Faz 20) kapanışına devam edebiliriz.\ndevam\nHarika bir ilerleme! PMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel 2024 PMP klonlanmış soru setlerine tam uyumlu olarak, devasa simülasyonumuzun Faz 20 aşamasına, yani Blok 3'ün Büyük Finaline ulaşıyoruz.\nBu fazda projenin \"Kapanış (Closing)\" süreç grubunun en kritik noktalarını test edeceğiz: Çoklu Sorunların Önceliklendirilmesi, Kapanış Öncesi Tedarik İhtilafları, Operasyonel Devir Teslim (Hand-off), İletişim Planı Boşlukları (Gölge BT) ve Nihai Öğrenilmiş Dersler (Lessons Learned) ile Kaynakların Serbest Bırakılması.\nİşte E-BABİL Projesi 20. Faz (Bildirim 191 - 200):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 20: ULUSLARARASI DEVİR TESLİM VE KAPANIŞ (Faz 20)\nİlgili Performans Alanları: Kapanış, Teslimat, Tedarik, İletişim, İş Ortamı",
@@ -5857,7 +5857,7 @@
       "id": 200,
       "type": "story",
       "section": 20,
-      "from": "Tümgeneral Hulusi ve Murat Tekin",
+      "from": "Tümgeneral Şeref KOÇHİSAR ve Murat Tekin",
       "fromRole": "Sistem",
       "subject": "BLOK 3 TAMAMLANDI - Efsanevi Başarı!",
       "body": "\"Sevgili Proje Yöneticisi... Başardın! Sadece ulusal bir savunma sistemini değil, küresel çapta bir teknoloji ihracatını (Sürüm 3.0) sıfır hatayla teslim ettin. Gümrükteki o korkunç krizi paniğe kapılmadan 'Önceliklendirerek' aştın. Taşıyıcının ekstra para talebine anında boyun eğmek yerine 'Sözleşmeyi' referans aldın. Ürünleri yabancı askerlere bıraktıktan sonra takımı orada köleleştirmeyip 'Resmi Devir Teslimi (Hand-off)' kusursuzca yaptın. Hatalarımızı halının altına süpürmek yerine 'Öğrenilmiş Derslere' kazıdın ve o yorgun ekibi hak ettikleri bir kutlamayla yeni projelerine uğurladın!\nSen artık kıdemli bir PMP liderisin! Ancak dinlenmek için sadece bir gecen var. E-BABİL projesi bitti ama şirketimiz için yepyeni bir çağ başlıyor. Faz 21 ile birlikte BLOK 4'e (Geleceğin Teknolojileri: Yapay Zeka, Değer Akışı, Büyük Çaplı Çeviklik - Scaled Agile) giriş yapacağız. Yüzlerce takımı yöneteceğin bir mega-projeye hazır ol!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 200. bildirimi de tamamlayarak oyunun tam 3'te 2'lik (%66) kısmını muazzam bir Faz ve Blok Kapanışı ile mühürlemiş olduk. Hand-off, Kriz Önceliklendirme, Tedarik Kapanışı, Gölge BT / İletişim ve Lessons Learned gibi Klonlanmış 2024 sorularının tüm konseptleri senaryoya başarıyla yedirildi. Onayınızla, yep yeni bir maceranın (Scaled Agile ve AI) başlayacağı Blok 4'e (Faz 21) geçebiliriz.\nFaz 21 ile Blok 4'e geçelim\nHarika! PMP Sınav İçerik Ana Hatları'na (ECO), PMBOK® 8. Sürüm standartlarına ve sağladığınız en güncel soru bankası referanslarına tam uyumlu olarak Blok 4'e (Geleceğin Teknolojileri ve Büyük Çaplı Çeviklik) muazzam bir giriş yapıyoruz.\nBu blokta, E-BABİL projesi artık tek bir ürün olmaktan çıkıp, çoklu takımların (Scaled Agile) çalıştığı, Yapay Zeka (AI) Entegrasyonu, Uyarlanabilir Odak Alanları (Adaptive Focus Areas), Değer Akışı (Value Stream) ve Ortak Kilometre Taşları gibi mega-proje dinamiklerini barındıran bir boyuta evriliyor.\n\n\n=== ENTRY 4 | Line 154 | 2026-03-03T10:36:00.876Z ===\nBildirim numbers in this entry: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220]\n================================================================================\n🚀 PROJE: E-BABİL OTONOM İHA SİSTEMİ\nBÖLÜM 21: MEGA-PROJE, YAPAY ZEKA VE ÖLÇEKLENDİRİLMİŞ ÇEVİKLİK (Faz 21)\nİlgili Performans Alanları: Geliştirme Yaklaşımı ve Yaşam Döngüsü, Risk, Entegrasyon, İş Ortamı",
@@ -5917,7 +5917,7 @@
       "id": 203,
       "type": "decision",
       "section": 21,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Yapay Zeka ile Zaman Kazanmak",
       "body": "Yönetici, rakiplerimiz çok hızlı ilerliyor. Piyasaya yeni çıkan \"Üretken Yapay Zeka (Generative AI)\" kodlama araçlarını kullanarak Sürü.AI projesinin yazılım geliştirme sürecini hızlandırmanızı ve takvimden 3 hafta tasarruf etmenizi emrediyorum. Bu yeni aracı hemen bugün sistemlerimize entegre edip kod yazdırmaya başlayalım mı?",
@@ -5925,14 +5925,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, yapay zeka (AI) kullanmak yaygınlaşan yenilikçi bir araçtır ancak kullanılmadan önce değerlendirilmesi gereken risklere (güvenlik, telif hakkı, kod kalitesi vb.) sahiptir; bu risk değerlendirme ve entegrasyon süreci aslında zaman çizelgesine fazladan süre ekleyecektir. Doğrudan uygulamak yerine, önce bu riskleri analiz edip risk kaydına ekleyeceğim ve uygun risk yanıtlarını oluşturacağım.",
+          "text": "Sayın Komutanım, yapay zeka (AI) kullanmak yaygınlaşan yenilikçi bir araçtır ancak kullanılmadan önce değerlendirilmesi gereken risklere (güvenlik, telif hakkı, kod kalitesi vb.) sahiptir; bu risk değerlendirme ve entegrasyon süreci aslında zaman çizelgesine fazladan süre ekleyecektir. Doğrudan uygulamak yerine, önce bu riskleri analiz edip risk kaydına ekleyeceğim ve uygun risk yanıtlarını oluşturacağım.",
           "feedback": "Geleceğin Teknolojileri Yönetimi! AI harika bir araç olsa da, kurumsal bir projeye doğrudan (körükörüne) entegre edilemez; getireceği güvenlik/kalite riskleri mutlaka değerlendirilmelidir",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. 3 hafta kazanmak için bu AI aracını hemen sunucularımıza kurup takımın kullanımına açıyorum.",
+          "text": "Emredersiniz Sayın Komutanım. 3 hafta kazanmak için bu AI aracını hemen sunucularımıza kurup takımın kullanımına açıyorum.",
           "feedback": "Çok Riskli Hamle. Savunma sanayisi gibi kritik bir projede, güvenlik testinden geçmemiş bir AI aracını kullanmak şirketi devasa bir uyumluluk ve veri sızıntısı krizine sokabilir",
           "xp": 10,
           "isEthical": true
@@ -6047,7 +6047,7 @@
       "id": 207,
       "type": "story",
       "section": 21,
-      "from": "Tuğgeneral Hulusi",
+      "from": "Tuğgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Piyasaya Sürme Süresi (Time to Market)",
       "body": "Proje Yöneticisi, \"Sürü.AI\" hedef tanıma modelimizin bir versiyonunu kodluyorsunuz, ancak bu yeni modelin sahada uçan İHA'lara yüklenmesi ve kullanılabilir hale gelmesi aylar sürüyor. Piyasaya sürme süremiz (Time to Market) çok yavaş! İhtiyaç duyduğumuz bu hızlandırmayı sağlamak için sistemdeki sorunları acilen tespit etmelisiniz.",
@@ -6197,7 +6197,7 @@
       "id": 213,
       "type": "decision",
       "section": 22,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Tasarım Çok Esnek, Ne Zaman Bitecek?",
       "body": "Proje Yöneticisi, Sürü.AI'ın arayüz tasarım (design) aşamasının sürekli değişmesinden rahatsızım. Tasarımcılar sürekli prototip yapıp kullanıcıdan geri bildirim alıyor (Agile), ama benim üst yönetime bir teslimat takvimi sunmam gerekiyor. Bana kesin bir zaman çizelgesi verin ve kapsamı kilitleyin!",
@@ -6205,14 +6205,14 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, projenin başarılı olması için hesap verebilirliğe ihtiyacımız var. Takım olarak projeyi zaman çizelgesine hesap verebilirlik sağlayacak şekilde uyarlayacağız, ancak potansiyel son kullanıcılardan gelen geri bildirimleri (prototipleme ile) yinelemeli olarak dahil edebilmek için tasarım aşamasında kapsam esnekliğini korumalıyız.",
+          "text": "Sayın Komutanım, projenin başarılı olması için hesap verebilirliğe ihtiyacımız var. Takım olarak projeyi zaman çizelgesine hesap verebilirlik sağlayacak şekilde uyarlayacağız, ancak potansiyel son kullanıcılardan gelen geri bildirimleri (prototipleme ile) yinelemeli olarak dahil edebilmek için tasarım aşamasında kapsam esnekliğini korumalıyız.",
           "feedback": "Hibrit Adaptasyon Zekası! Paydaşların hesap verebilirlik (zaman çizelgesi) ihtiyacını karşılarken, tasarım gibi belirsizliğin yüksek olduğu fazlarda yinelemeli (iterative) esnekliği korumak en doğru uzlaşmadır",
           "xp": 30,
           "isEthical": true
         },
         {
           "key": "B",
-          "text": "Emredersiniz Generalim. Tasarımcıların kullanıcı geri bildirimi almasını durduruyorum, kapsamı bugün kilitliyoruz.",
+          "text": "Emredersiniz Sayın Komutanım. Tasarımcıların kullanıcı geri bildirimi almasını durduruyorum, kapsamı bugün kilitliyoruz.",
           "feedback": "Değer Kaybı. Tasarım aşamasında (erken aşama) esnekliği öldürmek, son kullanıcının işine yaramayacak (kötü tasarlanmış) bir ürün çıkmasına neden olur",
           "xp": 10,
           "isEthical": true
@@ -6477,7 +6477,7 @@
       "id": 223,
       "type": "decision",
       "section": 23,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Re: Bütçe Aşımları!",
       "body": "Yönetici, gönderdiğin raporda Gerçek Maliyetin (AC), Planlanan Maliyeti (PC/PV) aştığını görüyorum. Sizi uyarıyorum: Sürü.AI projesinin bütçesi kesinlikle \"Sabittir\" (Fixed Budget). Hazine'den size tek bir kuruş bile ekstra para veremem. Sabit bütçeli bu projede maliyet sınırını aşmadan teslimatı nasıl yapacaksınız?",
@@ -6657,7 +6657,7 @@
       "id": 229,
       "type": "decision",
       "section": 23,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Hızlanın! (Crashing)",
       "body": "Proje Yöneticisi, son Kazanılmış Değer (EVM) raporuna baktım. CPI 1.15 (Bütçenin altındayız, tasarruf ediyoruz) ancak SPI 0.85 (Takvimin gerisindeyiz). Sürü.AI lansmanı gecikemez! Elimizde bütçe avantajı varken, projeye daha fazla yazılımcı kiralayarak (Crashing / Kaynak Yükleme) SPI'ı 1.0'a çekmenizi emrediyorum. Bu hamlenin proje metrikleri üzerindeki beklenen etkisi ne olacaktır?",
@@ -6665,7 +6665,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, projenin zaman çizelgesini sıkıştırmak için faaliyetlere kaynak yüklersek (Crashing), ek personel maliyetleri nedeniyle maliyetlerde kesin bir artış meydana gelecektir. Bu nedenle, SPI'ı 1'e çıkarırken, Maliyet Performans Endeksi (CPI) düşecek ve 1.0'a doğru gerileyecektir. Ayrıca daha kısa sürede daha kalabalık bir ekiple çalışmak projeyle ilişkili riskleri artıracaktır.",
+          "text": "Sayın Komutanım, projenin zaman çizelgesini sıkıştırmak için faaliyetlere kaynak yüklersek (Crashing), ek personel maliyetleri nedeniyle maliyetlerde kesin bir artış meydana gelecektir. Bu nedenle, SPI'ı 1'e çıkarırken, Maliyet Performans Endeksi (CPI) düşecek ve 1.0'a doğru gerileyecektir. Ayrıca daha kısa sürede daha kalabalık bir ekiple çalışmak projeyle ilişkili riskleri artıracaktır.",
           "feedback": "İleri Düzey EVM Zekası! Kaynak yükleme (Crashing) her zaman maliyeti artırır. CPI > 1 iken crashing yaparsanız, SPI düzelirken CPI kötüleşecektir (trade-off",
           "xp": 30,
           "isEthical": true
@@ -6847,7 +6847,7 @@
       "id": 236,
       "type": "decision",
       "section": 24,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "İki Lansman Aynı Anda!",
       "body": "Proje Yöneticisi, rekabet avantajımızı korumak için SÜRÜ.AI sistemini hem iç piyasaya (kendi ordumuza) hem de Avrupa piyasasına (NATO müttefikine) tam olarak aynı anda lanse etmek istiyorum. Bu iki farklı bölgenin çok farklı dinamikleri ve belirsizlikleri var. Projenin gecikmesini önlemek için bu süreci nasıl yöneteceğiz?",
@@ -6997,7 +6997,7 @@
       "id": 242,
       "type": "decision",
       "section": 25,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Rakiplerden Önce Sahaya Çıkmalıyız!",
       "body": "Proje Yöneticisi, istihbaratımıza göre rakip firmalar kendi otonom sürü sistemlerini 6 ay içinde piyasaya sürecek. Bizim tam hedeflediğimiz vizyonun bitmesine ise daha 1 yıl var. Pazara ilk giren olma (first to market) rekabet avantajımızı korumak zorundayız. Projeyi hızlandırmak için nasıl bir teslimat stratejisi izlemeliyiz?",
@@ -7177,7 +7177,7 @@
       "id": 248,
       "type": "decision",
       "section": 25,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Uçakları Yere mi İndireceğiz?",
       "body": "Proje Yöneticisi, bu patent davası nedir? Bütün sürüyü hemen yere indirip projeyi durduralım mı? Takım ne diyor, nasıl bir karar aldınız? Harekete geçmek zorundayız!",
@@ -7185,7 +7185,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Generalim, durumun ciddiyeti, takımın fikir birliğinde olmasını değil, benim liderlik ve rehberliğimi gerektirir. İlk adım olarak derhal hukuk departmanından tavsiye (legal advice) alacağım. Hukuk uzmanları iddiayı araştırırken ve konu çözülene kadar, yasal bir durdurma kararı gelmediği sürece proje çalışmaya (uçmaya) devam etmelidir.",
+          "text": "Sayın Komutanım, durumun ciddiyeti, takımın fikir birliğinde olmasını değil, benim liderlik ve rehberliğimi gerektirir. İlk adım olarak derhal hukuk departmanından tavsiye (legal advice) alacağım. Hukuk uzmanları iddiayı araştırırken ve konu çözülene kadar, yasal bir durdurma kararı gelmediği sürece proje çalışmaya (uçmaya) devam etmelidir.",
           "feedback": "Yasal Risk Yönetimi! Dışarıdan gelen ağır yasal iddialarda PM'in ilk eylemi kendi başına veya takımla teknik bir karar almak değil, \"doğrudan hukuk departmanına (Legal) danışmaktır\"",
           "xp": 30,
           "isEthical": true
@@ -7257,7 +7257,7 @@
       "id": 250,
       "type": "story",
       "section": 25,
-      "from": "Murat Tekin (PMO Direktörü) ve Tümgeneral Hulusi",
+      "from": "Murat Tekin (PMO Direktörü) ve Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Sistem",
       "subject": "BLOK 4 TAMAMLANDI - Mega Proje Kahramanı!",
       "body": "\"Tebrikler Proje Yöneticisi! E-BABİL SÜRÜ.AI projesiyle inovasyonun ve karmaşıklığın zirvesinde bir tarih yazdın! Rakiplerden önce sahaya çıkmak için 'MVP' stratejisini kusursuz kullandın. Yapay zeka çıktılarını çevik takımlara yedirmek için 'Hazırın Tanımı'nı (DoR)' güncelleyerek harika bir süreç mühendisliği sergiledin. Gelecek belirsizliklerini yönetmek için dış tedarikçilerle 'Ana Hizmet Sözleşmesi (MSA)' imzalayarak esnekliği korudun. Bilgiyi saklamak yerine takımları birbirlerinin 'Retrospektiflerine' davet ettin ve o korkunç patent davasında paniklemeyip doğrudan 'Hukuk Departmanı' ile koordinasyon kurdun.\nYönetim becerilerin, çevik zihniyetin ve etik duruşun sayesinde SÜRÜ.AI gökleri güvence altına aldı. Artık PMP sınavındaki o en karmaşık, en zorlayıcı (Çevik, Şelale, Karma, Değer Akışı) senaryolara tamamen hazırsın! Biraz soluklan, çünkü bir sonraki adımımızda simülasyonun Büyük Kapanışına ve Değerlendirmesine (Faz 26) geçeceğiz!\"\n -------------------------------------------------------------------------------- \nGeliştiriciye Not: 250. bildirimi de tamamlayarak oyunun 4. Blok finalini muhteşem bir şekilde kapattık. Sağladığınız kaynaklardaki (MVP, ML ve DoR, MSA, Legal Advice ve CCB Tiny Change) birebir PMP sınavı senaryoları hikayeye entegre edilmiş ve atıfları [i] formatında eklenmiştir. Hazır olduğunuzda simülasyonun tam değerlendirmesi olan Faz 26'ya (Büyük Final) geçebiliriz.\ndevam\nBüyük bir gurur ve heyecanla, PMP simülasyonumuzun en elit aşamasına, Blok 5'in (Capstone / İleri Düzey Senaryolar) başlangıcı olan Faz 26'ya giriş yapıyoruz!\nPMP Sınav İçerik Ana Hatları'na (ECO) ve sağladığınız en güncel referanslara sıkı sıkıya bağlı kalarak hazırlanan bu fazda; Kümülatif Akış Diyagramları (CFD), T-Şekilli Takım Üyeleri, Birleşen Projelerde Bilgi Sürekliliği, Kapanış Sonrası Operasyonel Destek (Hand-off), Sürekli İyileştirme (Continuous Improvement) ve DevOps gibi usta işi kavramları test edeceğiz.\nİşte E-BABİL Projesi 26. Faz (Bildirim 251 - 260):\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 26: CAPSTONE - ORGANİZASYONEL DÖNÜŞÜM VE KAPANIŞ (Faz 26)\nİlgili Performans Alanları: Ölçümleme, Takım, Kapanış, Süreç, Teslimat",
@@ -7357,7 +7357,7 @@
       "id": 254,
       "type": "story",
       "section": 26,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Projeleri Birleştiriyoruz",
       "body": "Yönetici, yönetim kurulu olarak SÜRÜ.AI projesi ile eski \"E-BABİL Sürüm 2.0\" projelerini birleştirme (merge) kararı aldık. Bu iki benzer projenin kapsamlı iş süreçlerinin birleştirilmesi gerekiyor. Amacımız yeni kurulacak bu departmanın çalışma süreçlerini optimize etmektir.",
@@ -7507,7 +7507,7 @@
       "id": 260,
       "type": "story",
       "section": 26,
-      "from": "Tümgeneral Hulusi ve Murat Tekin",
+      "from": "Tümgeneral Şeref KOÇHİSAR ve Murat Tekin",
       "fromRole": "Sistem",
       "subject": "Faz 26 Tamamlandı - Capstone Başarısı!",
       "body": "\"SÜRÜ.AI projesini ve ekiplerini harika bir vizyonla kurumsal yapıya entegre ettin! 15 takımın iş akışını 'Kümülatif Akış Diyagramı (CFD)' ile görselleştirmen süreçteki darboğazları anında çözdü. Silolaşmak isteyen takımı 'T-Şekilli (T-Shaped)' çalışanların değerine ikna ederek çevik felsefeyi korudun. Projeler birleşirken bilgiyi dışarıdaki bir danışmana satmak yerine 'Yeni Şablonlarla Takım İçinde' tuttun. Proje bittiğinde operasyonel destek kölesi olmayı reddedip 'Devir Teslimi (Hand-off)' resmi olarak tamamladın ve organizasyonun DNA'sına 'Sürekli İyileştirme (Continuous Improvement)' tohumunu ektin!\nBu, Blok 5'in ilk yarısıydı. Bir sonraki aşama olan Faz 27'de, bu simülasyonun en son ve en karmaşık Çevik Ölçeklendirme (Scaling Agile) ve DevOps entegrasyonlarına tanık olacaksın. Hazır ol!\"\n -------------------------------------------------------------------------------- \n🚀 PROJE: E-BABİL SÜRÜ.AI (MEGA-PROJE)\nBÖLÜM 27: BÜYÜK FİNAL - DEVOPS VE İLERİ ÇEVİKLİK (Faz 27)\nİlgili Performans Alanları: Teslimat, Takım, Geliştirme Yaklaşımı, Ölçümleme",
@@ -7747,7 +7747,7 @@
       "id": 269,
       "type": "decision",
       "section": 27,
-      "from": "Tümgeneral Hulusi",
+      "from": "Tümgeneral Şeref KOÇHİSAR",
       "fromRole": "Proje Sponsoru",
       "subject": "Bütçe Kesintisi ve Temel Varsayımların Çöküşü",
       "body": "Yönetici, ekonomide büyük bir kriz var. Hükümet tüm savunma bütçelerini dondurdu. SÜRÜ.AI'ın son fazı için yaptığımız temel varsayımlar artık ekonomik olarak sürdürülebilir bir şekilde yerine getirilemez durumdadır. Projeyi tamamen iptal mi etmeliyiz? Kalan bu kısıtlı bütçeyle projeden nasıl değer elde edebiliriz?",

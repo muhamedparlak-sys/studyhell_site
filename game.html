@@ -157,6 +157,26 @@ a{color:inherit;text-decoration:none}
 .opt-group.three-col{grid-template-columns:repeat(3,1fr)}
 .scenario-preview{margin:0 30px 16px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:10px 14px;font-size:13px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px}
 .scenario-preview.hidden{display:none}
+/* Dev toolbar */
+.dev-toolbar{display:flex;gap:8px;padding:10px 36px 0;border-top:1px dashed rgba(251,191,36,.2);margin-top:12px}
+.dev-btn{background:none;border:1px solid rgba(251,191,36,.3);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;color:#fbbf24;letter-spacing:.04em;transition:all .15s}
+.dev-btn:hover{background:rgba(251,191,36,.1);border-color:#fbbf24}
+.dev-btn.report{border-color:rgba(239,68,68,.3);color:#f87171}
+.dev-btn.report:hover{background:rgba(239,68,68,.1);border-color:#f87171}
+/* Dev modal */
+.dev-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;display:flex;align-items:center;justify-content:center;padding:20px}
+.dev-modal-overlay.hidden{display:none}
+.dev-modal{background:#1e293b;border:1px solid rgba(255,255,255,.12);border-radius:12px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;padding:24px}
+.dev-modal h3{font-size:16px;font-weight:700;color:#fbbf24;margin-bottom:16px}
+.dev-field{margin-bottom:14px}
+.dev-field label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.4);margin-bottom:5px}
+.dev-field input,.dev-field textarea{width:100%;background:#0f1520;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:8px 10px;color:#e2e8f0;font-size:13px;resize:vertical;font-family:inherit}
+.dev-field textarea{min-height:70px}
+.dev-modal-foot{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)}
+.dev-modal-foot button{padding:8px 18px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none}
+.btn-dev-save{background:#3b82f6;color:#fff}
+.btn-dev-cancel{background:rgba(255,255,255,.07);color:#94a3b8}
+.btn-dev-copy{background:#10b981;color:#fff}
 
 /* PERF AREA */
 #screen-perf{background:linear-gradient(135deg,#0f1520,#141d2e);display:flex;align-items:flex-start;justify-content:center;padding:32px 20px;overflow-y:auto}
@@ -503,11 +523,9 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="setup-row">
       <div class="setup-row-label">Zorluk</div>
-      <div class="opt-group three-col" id="grp-difficulty">
-        <button class="opt-cell" data-v="beginner" disabled>Kolay</button>
-        <button class="opt-cell" data-v="intermediate" disabled>Normal</button>
-        <button class="opt-cell" data-v="advanced" disabled>Zor</button>
-      </div>
+      <select id="sel-difficulty" class="setup-select" disabled>
+        <option value="">— Önce sektör seçin —</option>
+      </select>
     </div>
     <div class="scenario-preview hidden" id="scenario-preview">📋 <span id="scenario-preview-text"></span></div>
     <div class="setup-card-foot">
@@ -559,6 +577,33 @@ a{color:inherit;text-decoration:none}
 
 <!-- TOAST -->
 <div id="toast" class="hidden"></div>
+
+<!-- DEV EDIT MODAL -->
+<div id="dev-edit-overlay" class="dev-modal-overlay hidden">
+  <div class="dev-modal">
+    <h3>✏️ Bildirimi Düzenle <span id="dev-edit-id" style="font-size:12px;color:#94a3b8"></span></h3>
+    <div class="dev-field"><label>Konu (Subject)</label><input id="dev-f-subject" type="text"></div>
+    <div class="dev-field"><label>İçerik (Body)</label><textarea id="dev-f-body" rows="4"></textarea></div>
+    <div id="dev-options-wrap"></div>
+    <div class="dev-modal-foot">
+      <button class="btn-dev-cancel" onclick="Game.closeDevEdit()">İptal</button>
+      <button class="btn-dev-save" onclick="Game.saveDevEdit()">💾 Kaydet (Yerel)</button>
+    </div>
+  </div>
+</div>
+
+<!-- DEV REPORT MODAL -->
+<div id="dev-report-overlay" class="dev-modal-overlay hidden">
+  <div class="dev-modal">
+    <h3>⚠️ Sorun Bildir</h3>
+    <div class="dev-field"><label>Bildirim Bilgisi</label><input id="dev-r-info" type="text" readonly></div>
+    <div class="dev-field"><label>Sorun Açıklaması</label><textarea id="dev-r-desc" rows="4" placeholder="Neyin yanlış olduğunu açıklayın..."></textarea></div>
+    <div class="dev-modal-foot">
+      <button class="btn-dev-cancel" onclick="Game.closeDevReport()">İptal</button>
+      <button class="btn-dev-copy" onclick="Game.copyDevReport()">📋 Panoya Kopyala</button>
+    </div>
+  </div>
+</div>
 
 <!-- UNSAVED DIALOG -->
 <div id="unsaved-overlay" class="hidden">
@@ -631,7 +676,7 @@ a{color:inherit;text-decoration:none}
 <script>
 var Game; Game = (() => {
   const S = {
-    name:'', mode:'', setup:{}, scenario:null, manifest:null,
+    name:'', mode:'', setup:{}, scenario:null, manifest:null, devMode:false,
     notifs:[], answered:{}, xp:0, dCount:0, activeId:null, sectionId:1,
     skipConfirm: false, shuffles:{}, pendingKey:{},
     revealedIds: new Set(), dayBatches: [], dayIndex: 0, gameDate: null,
@@ -986,6 +1031,7 @@ var Game; Game = (() => {
       session = { username: 'guest', displayName: 'Misafir' };
     }
     S.name = session.displayName;
+    S.devMode = session.devMode || false;
     updateAuthButtons();
 
     // ?preview=<scenarioId> — mock skorlarla sonuç ekranını göster
@@ -1012,29 +1058,25 @@ var Game; Game = (() => {
     document.getElementById('btn-career-go').onclick = startCareer;
     document.getElementById('btn-perf-go').onclick = () => loadScenario('star-top-bank');
 
-    // Zorluk seçimi
-    document.getElementById('grp-difficulty').addEventListener('click', e => {
-      const c = e.target.closest('.opt-cell');
-      if (!c || c.disabled) return;
-      document.querySelectorAll('#grp-difficulty .opt-cell').forEach(x => x.classList.remove('selected'));
-      c.classList.add('selected');
-      // Senaryo önizlemesi
+    // Zorluk dropdown değişince senaryo önizlemesi göster
+    document.getElementById('sel-difficulty').addEventListener('change', e => {
       const sector = document.getElementById('sel-sector').value;
-      const diff   = c.dataset.v;
+      const diff   = e.target.value;
       const match  = (S.manifest?.scenarios||[]).find(s => s.sector === sector && s.difficulty === diff);
       const prev   = document.getElementById('scenario-preview');
       const txt    = document.getElementById('scenario-preview-text');
-      if (match && prev && txt) {
+      if (match && diff && prev && txt) {
         txt.textContent = match.title + ' · ' + match.decisions + ' karar';
         prev.classList.remove('hidden');
+      } else {
+        prev?.classList.add('hidden');
       }
       checkCareerReady();
     });
 
-    // Sektör dropdown değişince zorluk butonlarını güncelle
+    // Sektör dropdown değişince zorluk seçeneklerini güncelle
     document.getElementById('sel-sector').addEventListener('change', e => {
-      updateDifficultyButtons(e.target.value);
-      document.querySelectorAll('#grp-difficulty .opt-cell').forEach(x => x.classList.remove('selected'));
+      updateDifficultySelect(e.target.value);
       document.getElementById('scenario-preview')?.classList.add('hidden');
       checkCareerReady();
     });
@@ -1108,26 +1150,33 @@ var Game; Game = (() => {
     const sectors = [...new Set((S.manifest.scenarios||[]).map(s => s.sector).filter(Boolean))];
     sel.innerHTML = '<option value="">— Sektör seçin —</option>' +
       sectors.map(s => `<option value="${s}">${s}</option>`).join('');
-    updateDifficultyButtons('');
+    updateDifficultySelect('');
   }
 
-  function updateDifficultyButtons(sector) {
+  function updateDifficultySelect(sector) {
+    const sel = document.getElementById('sel-difficulty');
+    if (!sel) return;
     const available = (S.manifest?.scenarios||[])
-      .filter(s => !sector || s.sector === sector)
+      .filter(s => sector && s.sector === sector)
       .map(s => s.difficulty);
     const labels = { beginner:'Kolay', intermediate:'Normal', advanced:'Zor' };
-    document.querySelectorAll('#grp-difficulty .opt-cell').forEach(btn => {
-      const v = btn.dataset.v;
-      const on = available.includes(v);
-      btn.disabled = !on;
-      btn.textContent = labels[v] || v;
-    });
+    if (!sector || available.length === 0) {
+      sel.innerHTML = '<option value="">— Önce sektör seçin —</option>';
+      sel.disabled = true;
+    } else {
+      sel.innerHTML = '<option value="">— Zorluk seçin —</option>' +
+        ['beginner','intermediate','advanced']
+          .filter(v => available.includes(v))
+          .map(v => `<option value="${v}">${labels[v]}</option>`)
+          .join('');
+      sel.disabled = false;
+    }
   }
 
   function checkCareerReady() {
     const pmName = (document.getElementById('inp-pm-name')?.value||'').trim();
     const sector = document.getElementById('sel-sector')?.value;
-    const diff   = document.querySelector('#grp-difficulty .opt-cell.selected')?.dataset?.v;
+    const diff   = document.getElementById('sel-difficulty')?.value;
     document.getElementById('btn-career-go').disabled = !(pmName && sector && diff);
   }
 
@@ -1136,11 +1185,120 @@ var Game; Game = (() => {
     S.name = pmName;
     updateAuthButtons();
     const sector = document.getElementById('sel-sector')?.value;
-    const diff   = document.querySelector('#grp-difficulty .opt-cell.selected')?.dataset?.v;
+    const diff   = document.getElementById('sel-difficulty')?.value;
     S.setup = { difficulty: diff, sector: sector };
     const match = (S.manifest?.scenarios||[]).find(s => s.sector === sector && s.difficulty === diff);
     if (!match) { alert('Bu kombinasyon için henüz senaryo yok.'); return; }
     loadScenario(match.id);
+  }
+
+  // ── DEV MODE ──────────────────────────────────────────────────────────────
+  let _devNotifId = null;
+
+  function openDevEdit(id) {
+    const n = S.notifs.find(x => x.id === id);
+    if (!n) return;
+    _devNotifId = id;
+    // Load override if exists
+    const overrides = getDevOverrides();
+    const ov = overrides[id] || {};
+    document.getElementById('dev-edit-id').textContent = `B${id}`;
+    document.getElementById('dev-f-subject').value = ov.subject ?? n.subject ?? '';
+    document.getElementById('dev-f-body').value    = ov.body    ?? n.body    ?? '';
+    // Options
+    const wrap = document.getElementById('dev-options-wrap');
+    if (n.type === 'decision' && n.options?.length) {
+      wrap.innerHTML = n.options.map(o => `
+        <div class="dev-field">
+          <label>${o.key} — Metin</label>
+          <input id="dev-opt-${o.key}-text" type="text" value="${esc((ov[`opt_${o.key}_text`] ?? o.text) || '')}">
+        </div>
+        <div class="dev-field">
+          <label>${o.key} — Geri Bildirim</label>
+          <input id="dev-opt-${o.key}-fb" type="text" value="${esc((ov[`opt_${o.key}_fb`] ?? o.feedback) || '')}">
+        </div>`).join('');
+    } else {
+      wrap.innerHTML = '';
+    }
+    document.getElementById('dev-edit-overlay').classList.remove('hidden');
+  }
+
+  function closeDevEdit() {
+    document.getElementById('dev-edit-overlay').classList.add('hidden');
+    _devNotifId = null;
+  }
+
+  function saveDevEdit() {
+    const id = _devNotifId;
+    if (!id) return;
+    const overrides = getDevOverrides();
+    const entry = overrides[id] || {};
+    entry.subject = document.getElementById('dev-f-subject').value;
+    entry.body    = document.getElementById('dev-f-body').value;
+    const n = S.notifs.find(x => x.id === id);
+    if (n?.options) {
+      n.options.forEach(o => {
+        const t = document.getElementById(`dev-opt-${o.key}-text`);
+        const f = document.getElementById(`dev-opt-${o.key}-fb`);
+        if (t) entry[`opt_${o.key}_text`] = t.value;
+        if (f) entry[`opt_${o.key}_fb`]   = f.value;
+      });
+    }
+    overrides[id] = entry;
+    localStorage.setItem(`pmSim_overrides_${S.scenario?.id}`, JSON.stringify(overrides));
+    applyOverride(id);
+    closeDevEdit();
+    showToast('✓ Düzenleme kaydedildi (yerel)');
+    if (S.activeId === id) renderDetail(n);
+  }
+
+  function applyOverride(id) {
+    const overrides = getDevOverrides();
+    const ov = overrides[id];
+    if (!ov) return;
+    const n = S.notifs.find(x => x.id === id);
+    if (!n) return;
+    if (ov.subject !== undefined) n.subject = ov.subject;
+    if (ov.body    !== undefined) n.body    = ov.body;
+    if (n.options) {
+      n.options.forEach(o => {
+        if (ov[`opt_${o.key}_text`] !== undefined) o.text     = ov[`opt_${o.key}_text`];
+        if (ov[`opt_${o.key}_fb`]   !== undefined) o.feedback = ov[`opt_${o.key}_fb`];
+      });
+    }
+  }
+
+  function getDevOverrides() {
+    try { return JSON.parse(localStorage.getItem(`pmSim_overrides_${S.scenario?.id}`) || '{}'); } catch { return {}; }
+  }
+
+  function loadAllOverrides() {
+    const overrides = getDevOverrides();
+    Object.keys(overrides).forEach(id => applyOverride(parseInt(id)));
+  }
+
+  function openDevReport(id) {
+    const n = S.notifs.find(x => x.id === id);
+    if (!n) return;
+    _devNotifId = id;
+    document.getElementById('dev-r-info').value = `B${id} | Bölüm ${n.section} | ${n.type} | ${n.subject || ''}`;
+    document.getElementById('dev-r-desc').value = '';
+    document.getElementById('dev-report-overlay').classList.remove('hidden');
+  }
+
+  function closeDevReport() {
+    document.getElementById('dev-report-overlay').classList.add('hidden');
+    _devNotifId = null;
+  }
+
+  function copyDevReport() {
+    const info = document.getElementById('dev-r-info').value;
+    const desc = document.getElementById('dev-r-desc').value;
+    const text = `[SORUN BİLDİRİMİ]\nSenaryo: ${S.scenario?.id || '?'}\n${info}\n\nAçıklama:\n${desc}`;
+    navigator.clipboard?.writeText(text).then(() => {
+      showToast('📋 Rapor panoya kopyalandı');
+      closeDevReport();
+    }).catch(() => { alert('Kopyalanamadı:\n\n' + text); });
   }
 
   function buildPerfGrid() {
@@ -1200,6 +1358,7 @@ var Game; Game = (() => {
 
   function beginPlay() {
     S.notifs = S.scenario.notifications || [];
+    if (S.devMode) loadAllOverrides(); // Dev modda yerel düzenlemeleri uygula
     S.answered = {}; S.xp = 0; S.dCount = 0; S.activeId = null;
     S.skipConfirm = false; S.shuffles = {}; S.pendingKey = {};
     S.revealedIds = new Set(); S.dayBatches = []; S.dayIndex = 0;
@@ -1227,7 +1386,16 @@ var Game; Game = (() => {
     const days = ['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'];
     const months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
     dateEl.textContent = `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
-    timeEl.textContent = time || '--:--';
+    // Saati son bildirimin saatinden 30 dk ileride göster
+    if (time && time.includes(':')) {
+      const [h, m] = time.split(':').map(Number);
+      const total = h * 60 + m + 30;
+      const hh = Math.floor(total / 60) % 24;
+      const mm = total % 60;
+      timeEl.textContent = `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+    } else {
+      timeEl.textContent = time || '--:--';
+    }
   }
 
   function advanceGameDate() {
@@ -1337,6 +1505,13 @@ var Game; Game = (() => {
       ${n.fromRole?`<div class="sig-role">${esc(n.fromRole)}</div>`:''}
       ${company?`<div class="sig-company">${esc(company)}</div>`:''}
     </div>`;
+    if (S.devMode) {
+      h += `<div class="dev-toolbar">
+        <button class="dev-btn" onclick="Game.openDevEdit(${n.id})">✏️ Düzenle</button>
+        <button class="dev-btn report" onclick="Game.openDevReport(${n.id})">⚠️ Sorun Bildir</button>
+        <span style="font-size:10px;color:rgba(255,255,255,.25);margin-left:auto">B${n.id} · §${n.section}</span>
+      </div>`;
+    }
     document.getElementById('notif-email').innerHTML = h;
   }
 
@@ -1708,6 +1883,8 @@ var Game; Game = (() => {
     tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart, resumeSave,
     // Auth
     switchAuthTab, doLogin, doRegister, doLogout, openAuthOverlay, closeAuthOverlay,
+    // Dev mode
+    openDevEdit, closeDevEdit, saveDevEdit, openDevReport, closeDevReport, copyDevReport,
     // Save
     saveGame,
     // Unsaved dialog

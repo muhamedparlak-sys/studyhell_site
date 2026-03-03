@@ -703,6 +703,12 @@ footer strong { color: #fff; }
         <label>Şifre</label>
         <input class="auth-input" id="inp-reg-pass" type="password" placeholder="en az 6 karakter" autocomplete="new-password">
       </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;padding:10px 0 2px">
+        <input type="checkbox" id="chk-dev-mode" style="width:16px;height:16px;accent-color:#3b82f6;cursor:pointer">
+        <label for="chk-dev-mode" style="font-size:12px;color:#64748b;cursor:pointer">
+          🛠️ Geliştirici Modu — senaryo içeriklerini düzenleyebilir, sorun bildirebilirsin
+        </label>
+      </div>
       <div class="auth-error hidden" id="err-register"></div>
       <button class="btn-auth-submit" onclick="doRegister()">Kayıt Ol →</button>
       <div style="text-align:center;margin-top:12px;font-size:12px;color:#64748b">
@@ -769,7 +775,7 @@ function authGetSession() {
   try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); } catch { return null; }
 }
 function authSaveSession(user) {
-  localStorage.setItem(SESSION_KEY, JSON.stringify({ username: user.username, displayName: user.displayName }));
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ username: user.username, displayName: user.displayName, devMode: user.devMode || false }));
 }
 
 // ── NAVBAR UPDATE ─────────────────────────────────────────────────────────────
@@ -896,7 +902,8 @@ function doRegister() {
   if (users.find(u => u.email && u.email.toLowerCase() === email.toLowerCase())) {
     showErr('err-register', 'Bu e-posta adresi zaten kayıtlı'); return;
   }
-  const user = { username, displayName, email, password, createdAt: new Date().toISOString() };
+  const devMode = document.getElementById('chk-dev-mode')?.checked || false;
+  const user = { username, displayName, email, password, devMode, createdAt: new Date().toISOString() };
   users.push(user);
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
   hideErr('err-register');
