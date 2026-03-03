@@ -150,6 +150,13 @@ a{color:inherit;text-decoration:none}
 .opt-cell.opt-random{border-style:dashed;color:rgba(255,255,255,.3)}
 .opt-cell.opt-random.selected{background:rgba(139,92,246,.15);border-color:var(--purple);color:#c4b5fd}
 .setup-card-foot{padding:18px 30px;border-top:1px solid rgba(255,255,255,.07)}
+.setup-select{width:100%;padding:10px 14px;background:#1e293b;border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:14px;cursor:pointer;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.setup-select:focus{border-color:#3b82f6}
+.setup-select option{background:#1e293b;color:#fff}
+.opt-cell:disabled{opacity:.3;cursor:not-allowed;pointer-events:none}
+.opt-group.three-col{grid-template-columns:repeat(3,1fr)}
+.scenario-preview{margin:0 30px 16px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:10px 14px;font-size:13px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px}
+.scenario-preview.hidden{display:none}
 
 /* PERF AREA */
 #screen-perf{background:linear-gradient(135deg,#0f1520,#141d2e);display:flex;align-items:flex-start;justify-content:center;padding:32px 20px;overflow-y:auto}
@@ -482,50 +489,29 @@ a{color:inherit;text-decoration:none}
   <div class="setup-card">
     <div class="setup-card-head">
       <h2>Kariyer Kurulumu</h2>
-      <p>Hangi ortamda proje yöneticisi olarak çalışmak istiyorsunuz?</p>
+      <p>Sektörünü ve zorluk seviyeni seç.</p>
     </div>
     <div class="setup-row">
       <div class="setup-row-label">PM Adı</div>
       <input id="inp-pm-name" class="setup-name-input" type="text" placeholder="Adınız..." maxlength="30" autocomplete="off">
     </div>
     <div class="setup-row">
-      <div class="setup-row-label">Zorluk Seviyesi</div>
-      <div class="opt-group" id="grp-difficulty">
-        <button class="opt-cell" data-v="beginner">Başlangıç</button>
-        <button class="opt-cell" data-v="intermediate">Orta</button>
-        <button class="opt-cell" data-v="advanced">İleri</button>
-        <button class="opt-cell opt-random" data-v="random">Rastgele</button>
-      </div>
-    </div>
-    <div class="setup-row">
       <div class="setup-row-label">Sektör</div>
-      <div class="opt-group" id="grp-sector">
-        <button class="opt-cell" data-v="software">Yazılım</button>
-        <button class="opt-cell" data-v="finance">Finans</button>
-        <button class="opt-cell" data-v="construction">İnşaat</button>
-        <button class="opt-cell opt-random" data-v="random">Rastgele</button>
-      </div>
+      <select id="sel-sector" class="setup-select">
+        <option value="">— Sektör seçin —</option>
+      </select>
     </div>
     <div class="setup-row">
-      <div class="setup-row-label">Ekip Kültürü</div>
-      <div class="opt-group" id="grp-culture">
-        <button class="opt-cell" data-v="agile">Çevik</button>
-        <button class="opt-cell" data-v="traditional">Geleneksel</button>
-        <button class="opt-cell" data-v="hybrid">Hibrit</button>
-        <button class="opt-cell opt-random" data-v="random">Rastgele</button>
+      <div class="setup-row-label">Zorluk</div>
+      <div class="opt-group three-col" id="grp-difficulty">
+        <button class="opt-cell" data-v="beginner" disabled>Kolay</button>
+        <button class="opt-cell" data-v="intermediate" disabled>Normal</button>
+        <button class="opt-cell" data-v="advanced" disabled>Zor</button>
       </div>
     </div>
-    <div class="setup-row">
-      <div class="setup-row-label">Çalışma Yöntemi</div>
-      <div class="opt-group" id="grp-method">
-        <button class="opt-cell" data-v="remote">Uzaktan</button>
-        <button class="opt-cell" data-v="hybrid">Hibrit</button>
-        <button class="opt-cell" data-v="onsite">Yüz yüze</button>
-        <button class="opt-cell opt-random" data-v="random">Rastgele</button>
-      </div>
-    </div>
+    <div class="scenario-preview hidden" id="scenario-preview">📋 <span id="scenario-preview-text"></span></div>
     <div class="setup-card-foot">
-      <button id="btn-career-go" class="btn-primary" disabled>Yolculuğa Başla</button>
+      <button id="btn-career-go" class="btn-primary" disabled>Yolculuğa Başla 🚀</button>
     </div>
   </div>
 </div>
@@ -645,7 +631,7 @@ a{color:inherit;text-decoration:none}
 <script>
 var Game; Game = (() => {
   const S = {
-    name:'', mode:'', setup:{}, scenario:null,
+    name:'', mode:'', setup:{}, scenario:null, manifest:null,
     notifs:[], answered:{}, xp:0, dCount:0, activeId:null, sectionId:1,
     skipConfirm: false, shuffles:{}, pendingKey:{},
     revealedIds: new Set(), dayBatches: [], dayIndex: 0, gameDate: null,
@@ -1026,17 +1012,41 @@ var Game; Game = (() => {
     document.getElementById('btn-career-go').onclick = startCareer;
     document.getElementById('btn-perf-go').onclick = () => loadScenario('star-top-bank');
 
-    ['difficulty','sector','culture','method'].forEach(g => {
-      document.getElementById('grp-'+g).addEventListener('click', e => {
-        const c = e.target.closest('.opt-cell'); if(!c) return;
-        document.querySelectorAll('#grp-'+g+' .opt-cell').forEach(x=>x.classList.remove('selected'));
-        c.classList.add('selected');
-        checkCareerReady();
-      });
+    // Zorluk seçimi
+    document.getElementById('grp-difficulty').addEventListener('click', e => {
+      const c = e.target.closest('.opt-cell');
+      if (!c || c.disabled) return;
+      document.querySelectorAll('#grp-difficulty .opt-cell').forEach(x => x.classList.remove('selected'));
+      c.classList.add('selected');
+      // Senaryo önizlemesi
+      const sector = document.getElementById('sel-sector').value;
+      const diff   = c.dataset.v;
+      const match  = (S.manifest?.scenarios||[]).find(s => s.sector === sector && s.difficulty === diff);
+      const prev   = document.getElementById('scenario-preview');
+      const txt    = document.getElementById('scenario-preview-text');
+      if (match && prev && txt) {
+        txt.textContent = match.title + ' · ' + match.decisions + ' karar';
+        prev.classList.remove('hidden');
+      }
+      checkCareerReady();
+    });
+
+    // Sektör dropdown değişince zorluk butonlarını güncelle
+    document.getElementById('sel-sector').addEventListener('change', e => {
+      updateDifficultyButtons(e.target.value);
+      document.querySelectorAll('#grp-difficulty .opt-cell').forEach(x => x.classList.remove('selected'));
+      document.getElementById('scenario-preview')?.classList.add('hidden');
+      checkCareerReady();
     });
 
     // PM name input updates career ready state
     document.getElementById('inp-pm-name')?.addEventListener('input', checkCareerReady);
+
+    // Manifest yükle → sektör dropdown'ı doldur
+    fetch('data/scenarios/manifest.json').then(r => r.json()).then(m => {
+      S.manifest = m;
+      buildSectorDropdown();
+    }).catch(() => {});
 
     // Compose pane: option selection + send (event delegation — no inline onclick needed)
     document.getElementById('notif-compose').addEventListener('click', e => {
@@ -1092,27 +1102,45 @@ var Game; Game = (() => {
     show('screen-mode');
   }
 
+  function buildSectorDropdown() {
+    const sel = document.getElementById('sel-sector');
+    if (!sel || !S.manifest) return;
+    const sectors = [...new Set((S.manifest.scenarios||[]).map(s => s.sector).filter(Boolean))];
+    sel.innerHTML = '<option value="">— Sektör seçin —</option>' +
+      sectors.map(s => `<option value="${s}">${s}</option>`).join('');
+    updateDifficultyButtons('');
+  }
+
+  function updateDifficultyButtons(sector) {
+    const available = (S.manifest?.scenarios||[])
+      .filter(s => !sector || s.sector === sector)
+      .map(s => s.difficulty);
+    const labels = { beginner:'Kolay', intermediate:'Normal', advanced:'Zor' };
+    document.querySelectorAll('#grp-difficulty .opt-cell').forEach(btn => {
+      const v = btn.dataset.v;
+      const on = available.includes(v);
+      btn.disabled = !on;
+      btn.textContent = labels[v] || v;
+    });
+  }
+
   function checkCareerReady() {
-    const ok = ['difficulty','sector','culture','method'].every(g => document.querySelector('#grp-'+g+' .opt-cell.selected'));
-    // Also check pm name is filled
     const pmName = (document.getElementById('inp-pm-name')?.value||'').trim();
-    document.getElementById('btn-career-go').disabled = !(ok && pmName.length > 0);
+    const sector = document.getElementById('sel-sector')?.value;
+    const diff   = document.querySelector('#grp-difficulty .opt-cell.selected')?.dataset?.v;
+    document.getElementById('btn-career-go').disabled = !(pmName && sector && diff);
   }
 
   function startCareer() {
     const pmName = (document.getElementById('inp-pm-name')?.value||'').trim() || S.name || 'PM';
     S.name = pmName;
     updateAuthButtons();
-    const get = g => (document.querySelector('#grp-'+g+' .opt-cell.selected')||{}).dataset?.v || 'random';
-    S.setup = {difficulty:get('difficulty'),sector:get('sector'),culture:get('culture'),method:get('method')};
-    // Zorluk seviyesine göre senaryo seç
-    const diff = S.setup.difficulty;
-    const scenarioMap = { beginner: 'star-top-bank', intermediate: 'star-top-bank', advanced: 'ebabil' };
-    const candidates = diff === 'random'
-      ? ['star-top-bank', 'ebabil']
-      : [scenarioMap[diff] || 'star-top-bank'];
-    const picked = candidates[Math.floor(Math.random() * candidates.length)];
-    loadScenario(picked);
+    const sector = document.getElementById('sel-sector')?.value;
+    const diff   = document.querySelector('#grp-difficulty .opt-cell.selected')?.dataset?.v;
+    S.setup = { difficulty: diff, sector: sector };
+    const match = (S.manifest?.scenarios||[]).find(s => s.sector === sector && s.difficulty === diff);
+    if (!match) { alert('Bu kombinasyon için henüz senaryo yok.'); return; }
+    loadScenario(match.id);
   }
 
   function buildPerfGrid() {

@@ -3,14 +3,18 @@
     {
       "id": "star-top-bank",
       "title": "Star Top Bank",
-      "decisions": 40
+      "decisions": 40,
+      "difficulty": "intermediate",
+      "sector": "Fintech / Bankacılık"
     },
     {
       "id": "ebabil",
       "title": "E-BABİL Otonom İHA Sistemi",
-      "decisions": 162
+      "decisions": 162,
+      "difficulty": "advanced",
+      "sector": "Savunma Sanayii / Teknoloji"
     }
   ],
-  "note": "Add new scenarios here. decisions = total decision-type notifications. universeScore = sum(decisions * 3) computed at runtime.",
+  "note": "Add new scenarios here. difficulty: beginner|intermediate|advanced. universeScore = sum(decisions * 3) computed at runtime.",
   "updatedAt": "2026-03-03"
 }
