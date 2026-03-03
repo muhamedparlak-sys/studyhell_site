@@ -1475,7 +1475,11 @@ var Game; Game = (() => {
     S.activeId = n.id;
     document.querySelectorAll('.notif-item').forEach(el=>el.classList.toggle('active',parseInt(el.dataset.id)===n.id));
     renderDetail(n);
-    updateClockDisplay(n?.time); // show time of selected notification
+    // Clock shows the latest visible notification's time + 30 min, regardless of which is selected
+    const visibleIds = Array.from(document.querySelectorAll('.notif-item')).map(el => parseInt(el.dataset.id));
+    const visibleTimes = S.notifs.filter(x => visibleIds.includes(x.id)).map(x => x.time).filter(Boolean);
+    const maxTime = visibleTimes.reduce((max, t) => t > max ? t : max, n?.time || '00:00');
+    updateClockDisplay(maxTime);
     const el = document.querySelector(`.notif-item[data-id="${n.id}"]`);
     el?.scrollIntoView({block:'nearest'});
   }

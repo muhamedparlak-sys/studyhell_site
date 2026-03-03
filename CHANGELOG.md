@@ -32,7 +32,8 @@ Format: [Semantic Versioning](https://semver.org/) · Tarih: GG-AA-YYYY
   - Sorun raporları panoya kopyalanır
 
 ### 🕐 Saat Düzeltmesi
-- Üst sağ köşedeki oyun saati, ekrandaki son bildirimin saatinden **+30 dakika ileride** gösteriliyor
+- Üst sağ köşedeki oyun saati, ekrandaki **en son bildirimin** saatinden **+30 dakika ileride** gösteriliyor
+- Daha eski bir bildirim seçildiğinde saat geriye gitmiyor — her zaman en güncel bildirimi referans alıyor
 - Mailler geldikleri an cevaplandı gibi gözükmüyor
 
 ### 📝 Senaryo İçeriği Düzeltmeleri (E-BABİL)
