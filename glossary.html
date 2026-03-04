@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Project Management Dictionary — PMP® Study Hell™</title>
+<title>Proje Yönetimi Sözlüğü — PMP® Study Hell™</title>
+<meta name="description" content="Türkçe ve İngilizce PMP® proje yönetimi terimleri sözlüğü. PMBOK® 8. Baskı, Çevik ve hibrit yaklaşım kavramları.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -18,28 +19,27 @@
   --card: #ffffff;
   --border: #e2e8f0;
   --radius: 10px;
+  --en: #1e40af;
+  --tr: #065f46;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Inter, system-ui, sans-serif; color: var(--text); background: var(--bg); }
 
-/* NAV */
+/* ── NAV ── */
 .navbar {
   background: var(--primary);
-  height: 56px;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  gap: 24px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  height: 52px;
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 20px;
+  position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 1px 6px rgba(0,0,0,.18);
 }
-.brand { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; flex-shrink: 0; }
+.brand { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; }
 .brand sup { font-size: 9px; vertical-align: super; }
-.nav-links { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.nav-links { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .nav-links a {
   color: rgba(255,255,255,.85); text-decoration: none;
-  padding: 6px 12px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  padding: 5px 11px; border-radius: 7px; font-size: 13.5px; font-weight: 500;
   transition: background .15s;
 }
 .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,.15); color: #fff; }
@@ -47,157 +47,133 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:transparent; border:none; cursor:pointer; padding:4px; margin-left:auto; }
 .hamburger span { display:block; width:22px; height:2px; background:#fff; border-radius:2px; }
 
-/* HEADER */
+/* ── HEADER ── */
 .page-header {
   background: linear-gradient(135deg, var(--primary) 0%, #1a3a4e 100%);
-  color: #fff;
-  padding: 40px 24px 36px;
+  color: #fff; padding: 28px 24px 24px;
 }
-.page-header .inner { max-width: 1100px; margin: 0 auto; }
-.page-header h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 6px; }
-.page-header p { font-size: 15px; color: rgba(255,255,255,.75); }
+.page-header .inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+.page-header h1 { font-size: clamp(20px, 3.5vw, 28px); font-weight: 800; line-height: 1.2; }
+.page-header h1 .sub { font-size: 13px; font-weight: 400; opacity: .65; display: block; margin-top: 4px; letter-spacing: .01em; }
+.stat-pills { display: flex; gap: 7px; flex-wrap: wrap; }
+.stat-pill { background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.22); border-radius: 999px; padding: 4px 12px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.92); white-space: nowrap; }
 
-/* SEARCH + FILTERS */
+/* ── CONTROLS ── */
 .controls {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 16px 24px;
-  position: sticky;
-  top: 56px;
-  z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--border);
+  padding: 11px 24px;
+  position: sticky; top: 52px; z-index: 100;
 }
-.controls .inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-.search-row { display: flex; align-items: center; gap: 10px; }
-.search-wrap { position: relative; flex: 1; max-width: 480px; }
-.search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--light); }
+.controls .inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.search-wrap { position: relative; flex: 1; min-width: 180px; }
+.search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--light); pointer-events: none; }
 #searchInput {
-  width: 100%;
-  padding: 10px 12px 10px 38px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: inherit;
-  outline: none;
+  width: 100%; padding: 8px 10px 8px 34px;
+  border: 1px solid var(--border); border-radius: 8px;
+  font-size: 13.5px; font-family: inherit; outline: none;
+  transition: border-color .15s;
+  background: #fafbfc;
 }
-#searchInput:focus { border-color: var(--primary-light); }
-.count-badge { font-size: 13px; color: var(--light); white-space: nowrap; }
-
-.filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip {
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  color: var(--muted);
-  transition: all .15s;
-  white-space: nowrap;
+#searchInput:focus { border-color: var(--primary-light); background: #fff; }
+.ctrl-select {
+  padding: 8px 28px 8px 10px;
+  border: 1px solid var(--border); border-radius: 8px;
+  font-size: 13px; font-family: inherit; background: #fafbfc;
+  color: var(--muted); cursor: pointer; outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 8px center;
+  transition: border-color .15s; max-width: 200px;
 }
-.chip:hover { border-color: var(--primary-light); color: var(--primary); }
-.chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
-
-.alpha-row { display: flex; flex-wrap: wrap; gap: 3px; }
-.alpha-btn {
-  width: 28px; height: 28px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--muted);
-  transition: all .15s;
+.ctrl-select:focus { border-color: var(--primary-light); }
+.count-badge { font-size: 12.5px; color: var(--light); white-space: nowrap; flex-shrink: 0; }
+.clear-btn {
+  background: none; border: 1px solid var(--border); border-radius: 7px;
+  padding: 6px 10px; font-size: 12px; color: var(--light); cursor: pointer;
+  display: none; transition: all .15s; white-space: nowrap;
 }
-.alpha-btn:hover { border-color: var(--primary-light); color: var(--primary); }
-.alpha-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.clear-btn:hover { border-color: var(--primary-light); color: var(--primary); }
+.clear-btn.visible { display: block; }
 
-/* MAIN */
-.main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+/* ── MAIN ── */
+.main { max-width: 1100px; margin: 0 auto; padding: 20px 24px 48px; }
 
-/* CATEGORY SECTION HEADINGS */
-.cat-heading {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--primary);
-  margin: 32px 0 12px;
-  padding-bottom: 8px;
+/* ── SECTION HEADING ── */
+.section-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 5px 0 8px;
   border-bottom: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin: 28px 0 12px;
+  font-size: 11.5px; font-weight: 700; color: var(--primary);
+  letter-spacing: .06em; text-transform: uppercase;
 }
-.cat-heading:first-child { margin-top: 0; }
-.cat-count { font-size: 12px; font-weight: 600; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; color: var(--light); }
+.section-head:first-of-type { margin-top: 0; }
+.section-count { font-size: 11px; font-weight: 600; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; color: var(--light); letter-spacing: 0; text-transform: none; }
 
-/* TERM CARDS */
-.term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; margin-bottom: 8px; }
+/* ── TERM GRID ── */
+.term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 9px; }
+
+/* ── TERM CARD ── */
 .term-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  cursor: pointer;
-  transition: border-color .15s, box-shadow .15s;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 13px 15px;
+  cursor: pointer; transition: border-color .15s, box-shadow .15s;
+  position: relative;
 }
-.term-card:hover { border-color: var(--primary-light); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
-.term-card.expanded { border-color: var(--primary); }
-.term-card .term-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-}
-.term-card .cat-tag {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--light);
-  border: 1px solid var(--border);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.term-card .definition {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-  display: none;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border);
-}
-.term-card.expanded .definition { display: block; }
-.related-terms { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
-.related-link {
-  font-size: 12px;
-  color: var(--accent);
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  border-radius: 6px;
-  padding: 2px 8px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.related-link:hover { background: #dbeafe; }
+.term-card:hover { border-color: var(--primary-light); box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+.term-card.open { border-color: var(--primary); box-shadow: 0 3px 12px rgba(47,79,96,.12); }
 
-.empty-msg { text-align: center; padding: 60px 0; color: var(--light); font-size: 15px; }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.card-names { flex: 1; min-width: 0; }
+.card-en { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.card-tr { font-size: 12px; color: var(--light); margin-top: 2px; font-style: italic; }
+.card-meta { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.card-tag {
+  font-size: 10px; font-weight: 600; padding: 2px 7px;
+  border-radius: 999px; background: var(--bg); color: var(--light);
+  border: 1px solid var(--border); white-space: nowrap; line-height: 1.6;
+}
+.card-chevron { color: #cbd5e1; flex-shrink: 0; transition: transform .2s; }
+.term-card.open .card-chevron { transform: rotate(180deg); color: var(--primary); }
+
+/* ── CARD BODY ── */
+.card-body { display: none; margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--border); }
+.term-card.open .card-body { display: block; }
+
+.def-block { margin-bottom: 10px; }
+.def-block:last-of-type { margin-bottom: 0; }
+.lang-badge {
+  display: inline-block; font-size: 9.5px; font-weight: 800;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 1px 6px; border-radius: 4px; margin-bottom: 5px;
+}
+.lang-badge.en { background: #eff6ff; color: var(--en); }
+.lang-badge.tr { background: #ecfdf5; color: var(--tr); }
+.def-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+.related-wrap { margin-top: 11px; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+.related-lbl { font-size: 11px; color: var(--light); margin-right: 2px; }
+.related-tag {
+  font-size: 11px; color: var(--accent); background: #eff6ff;
+  border: 1px solid #bfdbfe; border-radius: 5px; padding: 1px 7px;
+  cursor: pointer; transition: background .12s;
+}
+.related-tag:hover { background: #dbeafe; }
+
+/* ── EMPTY STATE ── */
+.empty { text-align: center; padding: 64px 0; color: var(--light); font-size: 15px; }
+.empty svg { display: block; margin: 0 auto 14px; opacity: .3; }
 
 @media (max-width: 640px) {
-  .nav-links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--primary-dark); flex-direction: column; padding: 12px 16px 16px; gap: 4px; }
+  .nav-links { display: none; position: absolute; top: 52px; left: 0; right: 0; background: var(--primary-dark); flex-direction: column; padding: 10px 16px 14px; gap: 3px; z-index: 999; }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 10px 14px; font-size: 15px; }
   .hamburger { display: flex; }
   .term-grid { grid-template-columns: 1fr; }
-  .controls { padding: 12px 16px; }
-  .main { padding: 16px; }
+  .controls { padding: 10px 14px; }
+  .controls .inner { gap: 7px; }
+  .main { padding: 14px 14px 36px; }
+  .page-header { padding: 20px 16px; }
+  .ctrl-select { max-width: 140px; font-size: 12px; }
 }
 </style>
 </head>
@@ -207,185 +183,207 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
   <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
   <div class="nav-links" id="navLinks">
     <a href="exam.html">Practice Exam</a>
-    <a href="glossary.html" class="active">Dictionary</a>
+    <a href="glossary.html" class="active">Sözlük</a>
     <a href="flashcards.html">Flashcards</a>
     <a href="blog.html">Blog</a>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="page-header">
   <div class="inner">
-    <h1>Project Management Dictionary</h1>
-    <p>150+ PMBOK® Guide 8th edition terms, principles, and performance domains — searchable, filterable, and grouped by topic.</p>
+    <h1>
+      Proje Yönetimi Sözlüğü
+      <span class="sub">Project Management Dictionary</span>
+    </h1>
+    <div class="stat-pills">
+      <span class="stat-pill" id="totalPill">…</span>
+      <span class="stat-pill">TR + EN</span>
+      <span class="stat-pill">PMBOK® 8</span>
+    </div>
   </div>
 </div>
 
 <div class="controls">
   <div class="inner">
-    <div class="search-row">
-      <div class="search-wrap">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input id="searchInput" type="search" placeholder="Search terms…" autocomplete="off" aria-label="Search terms">
-      </div>
-      <span class="count-badge" id="countBadge"></span>
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input id="searchInput" type="search" placeholder="Türkçe veya İngilizce ara…" autocomplete="off" aria-label="Terim ara">
     </div>
-    <div class="filter-chips" id="categoryChips"></div>
-    <div class="alpha-row" id="alphaRow"></div>
+    <select class="ctrl-select" id="catSelect" aria-label="Kategori filtrele">
+      <option value="">Tüm Kategoriler</option>
+    </select>
+    <select class="ctrl-select" id="alphaSelect" aria-label="Harfe göre filtrele">
+      <option value="">A – Z</option>
+    </select>
+    <button class="clear-btn" id="clearBtn" aria-label="Filtreleri temizle">✕ Temizle</button>
+    <span class="count-badge" id="countBadge"></span>
   </div>
 </div>
 
-<main class="main" id="mainContent">
-  <div class="empty-msg" id="emptyMsg" style="display:none">No terms match your search.</div>
+<main class="main" id="main">
+  <div class="empty" id="emptyMsg" style="display:none">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    Arama sonucu bulunamadı.
+  </div>
 </main>
 
 <script>
-// ── NAV HAMBURGER ──
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', String(open));
+// ── NAV ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
 });
 
-// ── CATEGORY COLORS / LABELS ──
-const CAT_INFO = {
-  "PMBOK Principles":             { icon: "⚡", sub: "Principles Dictionary" },
-  "Performance Domains":          { icon: "🎯", sub: "Performance Domains Dictionary" },
-  "Core Concepts":                { icon: "🔑", sub: "Core Concepts Dictionary" },
-  "Agile & Adaptive":             { icon: "🔄", sub: "Agile Dictionary" },
-  "Development Approach":         { icon: "🛤️", sub: "Development Approach Dictionary" },
-  "Earned Value Management":      { icon: "📊", sub: "EVM Dictionary" },
-  "Risk Management":              { icon: "⚠️", sub: "Risk Management Dictionary" },
-  "Quality Management":           { icon: "✅", sub: "Quality Management Dictionary" },
-  "Procurement":                  { icon: "📋", sub: "Procurement Dictionary" },
-  "Stakeholder & Communication":  { icon: "🤝", sub: "Stakeholder Dictionary" },
-  "Team & Leadership":            { icon: "👥", sub: "Leadership Dictionary" },
-  "Schedule Management":          { icon: "📅", sub: "Schedule Dictionary" },
-  "Cost Management":              { icon: "💰", sub: "Cost Management Dictionary" },
-  "Scope Management":             { icon: "📐", sub: "Scope Management Dictionary" },
-  "Planning":                     { icon: "🗺️", sub: "Planning Dictionary" }
+const CAT_ICONS = {
+  "PMBOK Principles":             "⚡",
+  "Performance Domains":          "🎯",
+  "Core Concepts":                "🔑",
+  "Agile & Adaptive":             "🔄",
+  "Development Approach":         "🛤️",
+  "Earned Value Management":      "📊",
+  "Risk Management":              "⚠️",
+  "Quality Management":           "✅",
+  "Procurement":                  "📋",
+  "Stakeholder & Communication":  "🤝",
+  "Team & Leadership":            "👥",
+  "Schedule Management":          "📅",
+  "Cost Management":              "💰",
+  "Scope Management":             "📐",
+  "Planning":                     "🗺️"
 };
+const CAT_ORDER = Object.keys(CAT_ICONS);
 
 let allTerms = [];
-let activeCategory = "All";
-let activeLetter = "All";
-let searchQuery = "";
+let state = { q: '', cat: '', letter: '' };
 
-// ── LOAD DATA ──
-fetch("data/glossary.json")
+fetch('data/glossary.json')
   .then(r => r.json())
   .then(data => {
-    allTerms = data.terms.sort((a, b) => a.term.localeCompare(b.term));
-    buildCategoryChips();
-    buildAlphaRow();
+    allTerms = data.terms.sort((a, b) => a.term.localeCompare(b.term, 'tr'));
+    document.getElementById('totalPill').textContent = allTerms.length + ' terim';
+    buildCatSelect();
+    buildAlphaSelect();
     render();
   });
 
-function buildCategoryChips() {
-  const cats = ["All", ...Object.keys(CAT_INFO).filter(c => allTerms.some(t => t.category === c))];
-  const container = document.getElementById('categoryChips');
-  cats.forEach(cat => {
-    const btn = document.createElement('button');
-    btn.className = 'chip' + (cat === activeCategory ? ' active' : '');
-    btn.textContent = cat === "All" ? "All Topics" : ((CAT_INFO[cat]?.icon || '') + ' ' + cat);
-    btn.addEventListener('click', () => {
-      activeCategory = cat;
-      activeLetter = "All";
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.alpha-btn').forEach(b => b.classList.toggle('active', b.textContent === 'All'));
-      render();
-    });
-    container.appendChild(btn);
+function buildCatSelect() {
+  const cats = [...new Set(allTerms.map(t => t.category))];
+  cats.sort((a, b) => {
+    const ai = CAT_ORDER.indexOf(a), bi = CAT_ORDER.indexOf(b);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
+  const sel = document.getElementById('catSelect');
+  cats.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c;
+    o.textContent = (CAT_ICONS[c] || '📌') + ' ' + c;
+    sel.appendChild(o);
   });
 }
 
-function buildAlphaRow() {
-  const container = document.getElementById('alphaRow');
-  ['All', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')].forEach(letter => {
-    const btn = document.createElement('button');
-    btn.className = 'alpha-btn' + (letter === 'All' ? ' active' : '');
-    btn.textContent = letter;
-    btn.addEventListener('click', () => {
-      activeLetter = letter;
-      document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      render();
-    });
-    container.appendChild(btn);
+function buildAlphaSelect() {
+  const letters = [...new Set(
+    allTerms.flatMap(t => {
+      const ls = [];
+      if (t.term?.[0]) ls.push(t.term[0].toUpperCase());
+      if (t.termTR?.[0]) ls.push(t.termTR[0].toUpperCase());
+      return ls;
+    })
+  )].sort((a, b) => a.localeCompare(b, 'tr'));
+  const sel = document.getElementById('alphaSelect');
+  letters.forEach(l => {
+    const o = document.createElement('option');
+    o.value = l; o.textContent = l;
+    sel.appendChild(o);
   });
 }
 
 document.getElementById('searchInput').addEventListener('input', e => {
-  searchQuery = e.target.value.trim().toLowerCase();
-  render();
+  state.q = e.target.value.trim().toLowerCase();
+  syncClear(); render();
+});
+document.getElementById('catSelect').addEventListener('change', e => {
+  state.cat = e.target.value;
+  syncClear(); render();
+});
+document.getElementById('alphaSelect').addEventListener('change', e => {
+  state.letter = e.target.value;
+  syncClear(); render();
+});
+document.getElementById('clearBtn').addEventListener('click', () => {
+  state = { q: '', cat: '', letter: '' };
+  document.getElementById('searchInput').value = '';
+  document.getElementById('catSelect').value = '';
+  document.getElementById('alphaSelect').value = '';
+  syncClear(); render();
 });
 
-// ── FILTER ──
+function syncClear() {
+  document.getElementById('clearBtn').classList.toggle('visible', !!(state.q || state.cat || state.letter));
+}
+
 function getFiltered() {
   return allTerms.filter(t => {
-    if (activeCategory !== "All" && t.category !== activeCategory) return false;
-    if (activeLetter !== "All" && !t.term.toUpperCase().startsWith(activeLetter)) return false;
-    if (searchQuery) {
-      const q = searchQuery;
-      return t.term.toLowerCase().includes(q) || t.definition.toLowerCase().includes(q);
+    if (state.cat && t.category !== state.cat) return false;
+    if (state.letter) {
+      const enOk = (t.term?.[0] || '').toUpperCase() === state.letter;
+      const trOk = (t.termTR?.[0] || '').toUpperCase() === state.letter;
+      if (!enOk && !trOk) return false;
+    }
+    if (state.q) {
+      const q = state.q;
+      return (t.term || '').toLowerCase().includes(q)
+          || (t.termTR || '').toLowerCase().includes(q)
+          || (t.definition || '').toLowerCase().includes(q)
+          || (t.definitionTR || '').toLowerCase().includes(q);
     }
     return true;
   });
 }
 
-// ── RENDER ──
 function render() {
   const filtered = getFiltered();
-  const main = document.getElementById('mainContent');
-  const emptyMsg = document.getElementById('emptyMsg');
-  const countBadge = document.getElementById('countBadge');
+  const main = document.getElementById('main');
+  const empty = document.getElementById('emptyMsg');
+  document.getElementById('countBadge').textContent = filtered.length + ' terim';
 
-  countBadge.textContent = `${filtered.length} term${filtered.length !== 1 ? 's' : ''}`;
+  Array.from(main.children).forEach(c => { if (c !== empty) c.remove(); });
 
-  // Clear existing content (except emptyMsg)
-  Array.from(main.children).forEach(c => { if (c !== emptyMsg) c.remove(); });
+  if (filtered.length === 0) { empty.style.display = ''; return; }
+  empty.style.display = 'none';
 
-  if (filtered.length === 0) { emptyMsg.style.display = ''; return; }
-  emptyMsg.style.display = 'none';
-
-  // Group by category
-  const grouped = {};
-  filtered.forEach(t => {
-    if (!grouped[t.category]) grouped[t.category] = [];
-    grouped[t.category].push(t);
-  });
-
-  // Render categories in a defined order
-  const catOrder = Object.keys(CAT_INFO);
-  const sortedCats = [...Object.keys(grouped)].sort((a, b) => {
-    const ai = catOrder.indexOf(a), bi = catOrder.indexOf(b);
-    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
-  });
-
-  sortedCats.forEach(cat => {
-    const info = CAT_INFO[cat] || { icon: '📌', sub: cat + ' Dictionary' };
-    const section = document.createElement('div');
-
-    const heading = document.createElement('div');
-    heading.className = 'cat-heading';
-    const isFiltered = activeCategory !== "All" && activeCategory === cat;
-    heading.innerHTML = `<span>${info.icon} ${isFiltered ? info.sub : cat}</span><span class="cat-count">${grouped[cat].length}</span>`;
-    section.appendChild(heading);
-
+  if (!state.cat) {
+    // Group by category
+    const groups = {};
+    filtered.forEach(t => {
+      (groups[t.category] = groups[t.category] || []).push(t);
+    });
+    const sortedCats = Object.keys(groups).sort((a, b) => {
+      const ai = CAT_ORDER.indexOf(a), bi = CAT_ORDER.indexOf(b);
+      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+    });
+    sortedCats.forEach(cat => {
+      const sec = document.createElement('div');
+      const head = document.createElement('div');
+      head.className = 'section-head';
+      head.innerHTML = `<span>${CAT_ICONS[cat] || '📌'} ${cat}</span><span class="section-count">${groups[cat].length}</span>`;
+      sec.appendChild(head);
+      const grid = document.createElement('div');
+      grid.className = 'term-grid';
+      groups[cat].forEach(t => grid.appendChild(makeCard(t)));
+      sec.appendChild(grid);
+      main.appendChild(sec);
+    });
+  } else {
     const grid = document.createElement('div');
     grid.className = 'term-grid';
-    grouped[cat].forEach(t => {
-      grid.appendChild(makeCard(t));
-    });
-    section.appendChild(grid);
-    main.appendChild(section);
-  });
+    filtered.forEach(t => grid.appendChild(makeCard(t)));
+    main.appendChild(grid);
+  }
 }
 
 function makeCard(t) {
@@ -393,63 +391,65 @@ function makeCard(t) {
   card.className = 'term-card';
   card.id = 'term-' + t.term.replace(/[^a-z0-9]/gi, '-').toLowerCase();
 
-  const nameRow = document.createElement('div');
-  nameRow.className = 'term-name';
-  nameRow.innerHTML = `<span>${t.term}</span><span class="cat-tag">${t.category}</span>`;
+  const headHTML = `
+    <div class="card-head">
+      <div class="card-names">
+        <div class="card-en">${esc(t.term)}</div>
+        ${t.termTR ? `<div class="card-tr">${esc(t.termTR)}</div>` : ''}
+      </div>
+      <div class="card-meta">
+        <span class="card-tag">${esc(t.category)}</span>
+        <svg class="card-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>`;
 
-  const def = document.createElement('div');
-  def.className = 'definition';
-  def.textContent = t.definition;
-
+  const bodyParts = [];
+  if (t.definition) {
+    bodyParts.push(`<div class="def-block"><span class="lang-badge en">EN</span><p class="def-text">${esc(t.definition)}</p></div>`);
+  }
+  if (t.definitionTR) {
+    bodyParts.push(`<div class="def-block"><span class="lang-badge tr">TR</span><p class="def-text">${esc(t.definitionTR)}</p></div>`);
+  }
   if (t.related && t.related.length) {
-    const rel = document.createElement('div');
-    rel.className = 'related-terms';
-    rel.innerHTML = '<span style="font-size:12px;color:var(--light);margin-right:2px;">See also:</span>';
-    t.related.forEach(r => {
-      const a = document.createElement('span');
-      a.className = 'related-link';
-      a.textContent = r;
-      a.addEventListener('click', e => {
-        e.stopPropagation();
-        jumpToTerm(r);
-      });
-      rel.appendChild(a);
-    });
-    def.appendChild(rel);
+    const tags = t.related.map(r => `<span class="related-tag" data-term="${esc(r)}">${esc(r)}</span>`).join('');
+    bodyParts.push(`<div class="related-wrap"><span class="related-lbl">İlgili:</span>${tags}</div>`);
   }
 
-  card.appendChild(nameRow);
-  card.appendChild(def);
+  card.innerHTML = headHTML + (bodyParts.length ? `<div class="card-body">${bodyParts.join('')}</div>` : '');
 
-  card.addEventListener('click', () => {
-    const wasExpanded = card.classList.contains('expanded');
-    document.querySelectorAll('.term-card.expanded').forEach(c => c.classList.remove('expanded'));
-    if (!wasExpanded) card.classList.add('expanded');
+  card.querySelector('.card-head').addEventListener('click', () => {
+    const was = card.classList.contains('open');
+    document.querySelectorAll('.term-card.open').forEach(c => c.classList.remove('open'));
+    if (!was) card.classList.add('open');
+  });
+
+  card.querySelectorAll('.related-tag').forEach(tag => {
+    tag.addEventListener('click', e => { e.stopPropagation(); jumpTo(tag.dataset.term); });
   });
 
   return card;
 }
 
-function jumpToTerm(termName) {
-  // Find and scroll to term, clearing filters if needed
-  const el = document.getElementById('term-' + termName.replace(/[^a-z0-9]/gi, '-').toLowerCase());
+function esc(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function jumpTo(name) {
+  const id = 'term-' + name.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+  const el = document.getElementById(id);
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    el.classList.add('expanded');
-    el.style.animation = 'highlight .6s ease';
+    el.classList.add('open');
   } else {
-    // Term not in current filter — reset and search
-    document.getElementById('searchInput').value = termName;
-    searchQuery = termName.toLowerCase();
-    activeCategory = "All";
-    activeLetter = "All";
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    document.querySelector('.chip').classList.add('active');
-    document.querySelectorAll('.alpha-btn').forEach(b => b.classList.toggle('active', b.textContent === 'All'));
-    render();
+    state.q = name.toLowerCase();
+    state.cat = ''; state.letter = '';
+    document.getElementById('searchInput').value = name;
+    document.getElementById('catSelect').value = '';
+    document.getElementById('alphaSelect').value = '';
+    syncClear(); render();
     setTimeout(() => {
-      const found = document.getElementById('term-' + termName.replace(/[^a-z0-9]/gi, '-').toLowerCase());
-      if (found) { found.scrollIntoView({ behavior: 'smooth', block: 'center' }); found.classList.add('expanded'); }
+      const found = document.getElementById('term-' + name.replace(/[^a-z0-9]/gi, '-').toLowerCase());
+      if (found) { found.scrollIntoView({ behavior: 'smooth', block: 'center' }); found.classList.add('open'); }
     }, 100);
   }
 }
