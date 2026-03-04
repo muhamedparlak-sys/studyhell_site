@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PM Simülasyonu – PMP Study Hell</title>
+<title>PM Liderlik Simülasyonu — YetkinLider</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -397,6 +397,23 @@ a{color:inherit;text-decoration:none}
 .c-bar-wrap{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
 .c-bar{height:4px;border-radius:2px}
 .c-score{font-size:12px;font-weight:700;color:#93c5fd;margin-top:4px}
+/* 3-Domain PMP Competency Cards */
+.domain-card{width:100%;max-width:760px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.domain-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07)}
+.domain-icon{font-size:18px}
+.domain-title{font-size:12px;font-weight:800;color:#f1f5f9;flex:1;text-transform:uppercase;letter-spacing:.08em}
+.domain-weight{font-size:11px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.07);padding:2px 9px;border-radius:10px;font-weight:600}
+.domain-score-big{font-size:22px;font-weight:900}
+.comp-row{display:flex;align-items:center;gap:8px;padding:6px 0}
+.comp-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,.04)}
+.comp-row-lbl{font-size:12px;color:rgba(255,255,255,.65);min-width:175px;flex-shrink:0;font-weight:500}
+.comp-row-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.comp-row-bar{height:100%;border-radius:3px;transition:width .4s ease}
+.comp-row-pct{font-size:12px;font-weight:700;width:36px;text-align:right;flex-shrink:0}
+.comp-lvl{font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;flex-shrink:0;text-transform:uppercase;letter-spacing:.07em;width:42px;text-align:center;cursor:help}
+.lvl-giris{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.25)}
+.lvl-orta{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.25)}
+.lvl-ileri{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
 /* Footer */
 .karne-footer{width:100%;max-width:760px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn-restart{background:var(--accent);color:#fff;font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;transition:background .15s}
@@ -417,7 +434,7 @@ a{color:inherit;text-decoration:none}
   <button id="btn-hamburger" class="btn-hamburger">
     <span></span><span></span><span></span>
   </button>
-  <a class="brand" href="index.html">PMP<sup>®</sup> Study Hell<sup>™</sup></a>
+  <a class="brand" href="index.html">YetkinLider</a>
   <div class="topbar-right">
     <div id="game-clock" class="game-clock hidden">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -662,7 +679,7 @@ a{color:inherit;text-decoration:none}
       <div class="karne-stat"><div class="karne-stat-val" id="karne-decisions">0</div><div class="karne-stat-label">Karar Verildi</div></div>
       <div class="karne-stat"><div class="karne-stat-val" id="karne-ethics">0</div><div class="karne-stat-label">Etik İhlali</div></div>
     </div>
-    <div class="karne-tt-title">PMI Yetenek Üçgeni — Talent Triangle</div>
+    <div class="karne-tt-title" id="karne-tt-title">Yetkinlik Profili</div>
     <div class="karne-tt-grid" id="karne-tt-grid"></div>
     <div class="karne-comp-title" id="karne-comp-label" style="display:none">Senaryo Yetkinlik Alanları</div>
     <div class="comp-grid" id="comp-grid"></div>
@@ -960,7 +977,7 @@ var Game; Game = (() => {
       S.activeId    = saveData.activeId || null;
       S.hasUnsavedChanges = false;
       S.skipConfirm = false;
-      document.title = (S.scenario.title || 'Simülasyon') + ' – PMP Study Hell™';
+      document.title = (S.scenario.title || 'Simülasyon') + ' — YetkinLider';
       document.getElementById('game-clock').classList.remove('hidden');
       updateXP(); updateAuthButtons();
       const visible = S.notifs.filter(n => S.revealedIds.has(n.id));
@@ -1364,7 +1381,7 @@ var Game; Game = (() => {
     S.revealedIds = new Set(); S.dayBatches = []; S.dayIndex = 0;
     S.hasUnsavedChanges = false;
     S.gameDate = new Date(2025, 0, 6); // Mon Jan 6 2025
-    document.title = (S.scenario.title||'Simülasyon') + ' – PMP Study Hell™';
+    document.title = (S.scenario.title||'Simülasyon') + ' — YetkinLider';
     document.getElementById('game-clock').classList.remove('hidden');
     updateXP();
     loadSection((S.scenario.sections||[{id:1}])[0].id);
@@ -1807,11 +1824,68 @@ var Game; Game = (() => {
     return { grade:'F', color:'#ef4444' };
   }
 
+  function computeComponentScore(c) {
+    const decs = (c.decisionIds||[]).map(id => S.notifs.find(n => n.id === id)).filter(Boolean);
+    const answered = decs.filter(n => S.answered[n.id]);
+    if (!answered.length) return 0;
+    const correct = answered.filter(n => {
+      const o = (n.options||[]).find(o => o.key === S.answered[n.id]);
+      return o && o.xp >= 25;
+    }).length;
+    return Math.round(correct / answered.length * 100);
+  }
+
+  function renderDomainCards(domains) {
+    return domains.map(domain => {
+      const compScores = domain.components.map(c => ({ c, pct: computeComponentScore(c) }));
+      const domainPct = compScores.length ? Math.round(compScores.reduce((s,x)=>s+x.pct,0)/compScores.length) : 0;
+      const domainColor = domainPct>=80?'#4ade80':domainPct>=50?'#fbbf24':'#f87171';
+      const rows = compScores.map(({c, pct}) => {
+        const barColor = pct>=80?'#4ade80':pct>=50?'#fbbf24':'#f87171';
+        const [lvlKey, lvlClass, lvlLabel] = pct>=80?['ileri','lvl-ileri','İleri']:pct>=50?['orta','lvl-orta','Orta']:['giris','lvl-giris','Giriş'];
+        const lvlDesc = c.levels ? c.levels[lvlKey] : '';
+        return `<div class="comp-row">
+          <div class="comp-row-lbl">${c.label}</div>
+          <div class="comp-row-bar-wrap"><div class="comp-row-bar" style="width:${pct}%;background:${barColor}"></div></div>
+          <div class="comp-row-pct" style="color:${barColor}">${pct}%</div>
+          <div class="comp-lvl ${lvlClass}" title="${lvlDesc}">${lvlLabel}</div>
+        </div>`;
+      }).join('');
+      return `<div class="domain-card">
+        <div class="domain-hdr">
+          <span class="domain-icon">${domain.icon||'📋'}</span>
+          <span class="domain-title">${domain.domain}</span>
+          <span class="domain-weight">%${domain.weight} Ağırlık</span>
+          <span class="domain-score-big" style="color:${domainColor}">${domainPct}%</span>
+        </div>
+        ${rows}
+      </div>`;
+    }).join('');
+  }
+
   function showResult(){
     const gameOver=S.dCount>=(S.scenario.dChoiceLimit||3);
     S.hasUnsavedChanges = false;
-    const ttScores = computeTalentScores();
-    const avgScore = Math.round(Object.values(ttScores).reduce((a,b)=>a+b,0)/5);
+    const comps = S.scenario.competencies || [];
+    const isNewFormat = comps.length && comps[0].components;
+    let avgScore;
+
+    if (isNewFormat) {
+      // Compute weighted domain score for grade
+      const domainScores = comps.map(domain => {
+        const compPcts = domain.components.map(c => computeComponentScore(c));
+        return compPcts.length ? compPcts.reduce((a,b)=>a+b,0)/compPcts.length : 0;
+      });
+      avgScore = Math.round(
+        (domainScores[0]||0) * ((comps[0]?.weight||42)/100) +
+        (domainScores[1]||0) * ((comps[1]?.weight||50)/100) +
+        (domainScores[2]||0) * ((comps[2]?.weight||8)/100)
+      );
+    } else {
+      const ttScores = computeTalentScores();
+      avgScore = Math.round(Object.values(ttScores).reduce((a,b)=>a+b,0)/5);
+    }
+
     const {grade, color} = gameOver ? {grade:'F',color:'#ef4444'} : gradeFromAvg(avgScore);
     const totalDecisions = S.notifs.filter(n => n.type==='decision' && S.answered[n.id]).length;
 
@@ -1827,41 +1901,51 @@ var Game; Game = (() => {
     document.getElementById('karne-decisions').textContent = totalDecisions;
     document.getElementById('karne-ethics').textContent = S.dCount;
 
-    // Talent Triangle
-    document.getElementById('karne-tt-grid').innerHTML = TALENT_AREAS.map(a => {
-      const pct = ttScores[a.id] || 0;
-      return `<div class="tt-area">
-        <div class="tt-icon">${a.icon}</div>
-        <div class="tt-info">
-          <div class="tt-name">${a.label}</div>
-          <div class="tt-desc">${a.desc}</div>
-          <div class="tt-bar-wrap" style="margin-top:6px">
-            <div class="tt-bar-fill" style="width:${pct}%;background:${a.color}"></div>
+    if (isNewFormat) {
+      // New 3-domain PMP format — hide Talent Triangle, show domain cards
+      document.getElementById('karne-tt-title').textContent = 'Liderlik Yetkinlik Matrisi';
+      document.getElementById('karne-tt-grid').style.cssText = 'display:flex;flex-direction:column;align-items:center;padding:0;gap:0;margin-bottom:12px';
+      document.getElementById('karne-tt-grid').innerHTML = renderDomainCards(comps);
+      document.getElementById('karne-comp-label').style.display = 'none';
+      document.getElementById('comp-grid').innerHTML = '';
+    } else {
+      // Classic Talent Triangle
+      document.getElementById('karne-tt-title').textContent = 'Yetkinlik Profili';
+      document.getElementById('karne-tt-grid').style.cssText = '';
+      const ttScores = computeTalentScores();
+      document.getElementById('karne-tt-grid').innerHTML = TALENT_AREAS.map(a => {
+        const pct = ttScores[a.id] || 0;
+        return `<div class="tt-area">
+          <div class="tt-icon">${a.icon}</div>
+          <div class="tt-info">
+            <div class="tt-name">${a.label}</div>
+            <div class="tt-desc">${a.desc}</div>
+            <div class="tt-bar-wrap" style="margin-top:6px">
+              <div class="tt-bar-fill" style="width:${pct}%;background:${a.color}"></div>
+            </div>
           </div>
-        </div>
-        <div class="tt-bar-col">
-          <div class="tt-pct" style="color:${a.color}">${pct}%</div>
-        </div>
-      </div>`;
-    }).join('');
-
-    // Scenario competencies
-    const comps=S.scenario.competencies||[];
-    if(comps.length) {
-      document.getElementById('karne-comp-label').style.display='';
-      document.getElementById('comp-grid').innerHTML=comps.map(c=>{
-        const decs=c.decisionIds.map(id=>S.notifs.find(n=>n.id===id)).filter(Boolean);
-        const pct=decs.length?Math.round(decs.filter(n=>{
-          const o=n.options?.find(o=>o.key===S.answered[n.id]);
-          return o&&o.xp>=25;
-        }).length/decs.length*100):0;
-        const barColor = pct>=70?'#22c55e':pct>=50?'#f59e0b':'#ef4444';
-        return `<div class="comp-item">
-          <div class="c-label">${c.label}</div>
-          <div class="c-bar-wrap"><div class="c-bar" style="width:${pct}%;background:${barColor}"></div></div>
-          <div class="c-score" style="color:${barColor}">${pct}%</div>
+          <div class="tt-bar-col">
+            <div class="tt-pct" style="color:${a.color}">${pct}%</div>
+          </div>
         </div>`;
       }).join('');
+      // Old flat competencies
+      if(comps.length) {
+        document.getElementById('karne-comp-label').style.display='';
+        document.getElementById('comp-grid').innerHTML=comps.map(c=>{
+          const decs=c.decisionIds.map(id=>S.notifs.find(n=>n.id===id)).filter(Boolean);
+          const pct=decs.length?Math.round(decs.filter(n=>{
+            const o=n.options?.find(o=>o.key===S.answered[n.id]);
+            return o&&o.xp>=25;
+          }).length/decs.length*100):0;
+          const barColor = pct>=70?'#22c55e':pct>=50?'#f59e0b':'#ef4444';
+          return `<div class="comp-item">
+            <div class="c-label">${c.label}</div>
+            <div class="c-bar-wrap"><div class="c-bar" style="width:${pct}%;background:${barColor}"></div></div>
+            <div class="c-score" style="color:${barColor}">${pct}%</div>
+          </div>`;
+        }).join('');
+      }
     }
     show('screen-result');
   }
@@ -1886,7 +1970,7 @@ var Game; Game = (() => {
   return {
     tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart, resumeSave,
     // Auth
-    switchAuthTab, doLogin, doRegister, doLogout, openAuthOverlay, closeAuthOverlay,
+    doLogout, openAuthOverlay, closeAuthOverlay,
     // Dev mode
     openDevEdit, closeDevEdit, saveDevEdit, openDevReport, closeDevReport, copyDevReport,
     // Save
@@ -1896,7 +1980,7 @@ var Game; Game = (() => {
     // Menu
     toggleMenu, closeMenu,
     // Result
-    buildKarne
+    showResult
   };
 })();
 window.Game = Game;

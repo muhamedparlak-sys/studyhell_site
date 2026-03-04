@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Exam Results | PMP Study Hell</title>
+  <title>Sınav Sonuçları | YetkinLider</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -344,7 +344,7 @@
 <body>
 
 <div class="topbar">
-  PMP<span class="mark">®</span>&nbsp;Study Hell<span class="mark">™</span>
+  YetkinLider
 </div>
 
 <div class="page">
@@ -417,8 +417,7 @@
   <!-- Disclaimer -->
   <div class="sectionCard disclaimer">
     Score is calculated based on the number of correctly answered questions.
-    This practice exam is prepared by PMP® credential holders and is intended for preparation purposes only.
-    Results do not guarantee performance on the actual PMI® PMP exam.
+    Bu alıştırma sınavı yalnızca eğitim amaçlıdır.
   </div>
 
   <!-- Share & Save -->
@@ -594,10 +593,10 @@ Object.values(data.domains).forEach(dom => {
 });
 
 // ── Share helpers ──────────────────────────────────────────────────────
-const siteUrl  = 'https://studyhell.com/exam.html';
+const siteUrl  = 'https://yetkinlider.com/exam.html';
 const verdict  = passed ? 'PASS ✅' : 'FAIL ❌';
-const shareText = `I scored ${score}% (${verdict}) on the PMP® Practice Exam! 🎯 Free simulator: ${siteUrl} #PMP #ProjectManagement #PMStudy`;
-const shareTitle = `My PMP® Practice Exam Score: ${score}% — ${passed ? 'PASS' : 'FAIL'}`;
+const shareText = `Proje yönetimi sınavında ${score}% (${verdict}) aldım! 🎯 ${siteUrl} #LiderlikYetkinlikleri #ProjeYönetimi`;
+const shareTitle = `Sınav Sonucu: ${score}% — ${passed ? 'BAŞARILI' : 'BAŞARISIZ'}`;
 
 // ── Canvas image generator ─────────────────────────────────────────────
 function rrect(ctx, x, y, w, h, r) {
@@ -639,13 +638,13 @@ async function generateShareImage() {
   c.fillStyle = '#ffffff';
   c.font = 'bold 20px Inter, sans-serif';
   c.textAlign = 'left';
-  c.fillText('PMP\u00ae Study Hell\u2122', 110, 58);
+  c.fillText('PMP\u00ae YetkinLider\u2122', 110, 58);
 
   // ── URL (top-right) ──
   c.fillStyle = 'rgba(255,255,255,0.4)';
   c.font = '15px Inter, sans-serif';
   c.textAlign = 'right';
-  c.fillText('studyhell.com', W - 44, 58);
+  c.fillText('yetkinlider.com', W - 44, 58);
 
   // ── Big score ──
   c.fillStyle = '#ffffff';
@@ -712,7 +711,7 @@ async function generateShareImage() {
   c.fillText('\u015eimdi sen de kendini test et', W/2, H - 52);
   c.fillStyle = '#7dc4e4';
   c.font = 'bold 19px Inter, sans-serif';
-  c.fillText('studyhell.com/exam.html', W/2, H - 24);
+  c.fillText('yetkinlider.com/exam.html', W/2, H - 24);
 
   return new Promise(res => canvas.toBlob(res, 'image/png'));
 }
@@ -785,7 +784,7 @@ const emailModalBack = document.getElementById('emailModalBack');
 const domainLines = Object.values(data.domains)
   .map(d => `  • ${d.label}: ${Math.round(d.score)}%`).join('\n');
 const previewHtml = `
-  <strong>PMP® Practice Exam Score Report</strong><br>
+  <strong>Proje Yönetimi Sınav Raporu</strong><br>
   Date: ${d.toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}<br><br>
   <strong>Score: ${score}%</strong> — <strong>${passed ? 'PASS ✅' : 'FAIL ❌'}</strong><br>
   Correct: ${data.correct ?? '--'} &nbsp;|&nbsp; Incorrect: ${data.incorrect ?? '--'} &nbsp;|&nbsp; Unanswered: ${data.unanswered ?? '--'}<br><br>
