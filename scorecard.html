@@ -30,7 +30,8 @@ button{border:none;cursor:pointer;font-family:inherit}
   background:var(--bg);border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:10px;padding:0 20px;z-index:100
 }
-.brand{font-weight:700;font-size:14px}
+  .brand-logo { width: 26px; height: 26px; border-radius: 5px; flex-shrink: 0; filter: brightness(0) invert(1); }
+  .brand{font-weight:700;font-size:14px}
 .t-sep{width:1px;height:16px;background:var(--border);flex-shrink:0}
 .t-title{font-size:12px;color:var(--muted)}
 .btn-back{
@@ -223,7 +224,7 @@ button{border:none;cursor:pointer;font-family:inherit}
 <body>
 
 <div id="topbar">
-  <a class="brand" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="26" height="26" style="flex-shrink:0;margin-right:7px"><polygon points="14,6 18,8 14,10 10,8" fill="rgba(255,255,255,.90)"/><polygon points="18,20 18,12 14,14 14,22" fill="rgba(255,255,255,.55)"/><polygon points="10,20 14,22 14,10 10,8" fill="rgba(255,255,255,.30)"/><polygon points="18,8 26,12 22,14 14,10" fill="rgba(255,255,255,.90)"/><polygon points="26,16 26,12 22,14 22,18" fill="rgba(255,255,255,.55)"/><polygon points="14,14 22,18 22,14 14,10" fill="rgba(255,255,255,.30)"/><polygon points="18,16 26,20 22,22 14,18" fill="rgba(255,255,255,.90)"/><polygon points="26,24 26,20 22,22 22,26" fill="rgba(255,255,255,.55)"/><polygon points="14,22 22,26 22,22 14,18" fill="rgba(255,255,255,.30)"/></svg>YetkinLider<sup style="font-size:9px;vertical-align:super">&#8482;</sup></a>
+  <a class="brand" href="index.html"><img src="logo.png" class="brand-logo" alt="YetkinLider">YetkinLider<sup style="font-size:.55em;vertical-align:super;opacity:.8">&#8482;</sup></a>
   <div class="t-sep"></div>
   <span class="t-title">Yetkinlik Kartı</span>
   <button class="btn-back" onclick="history.back()">Geri</button>
