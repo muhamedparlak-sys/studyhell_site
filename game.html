@@ -23,8 +23,9 @@ a{color:inherit;text-decoration:none}
 
 /* TOPBAR */
 #topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--nav-bg);border-bottom:1px solid var(--nav-border);display:flex;align-items:center;gap:10px;padding:0 14px;z-index:100}
-.brand{font-weight:700;font-size:15px}
-.brand sup{font-size:9px;opacity:.6}
+  .brand-logo { width: 26px; height: 26px; border-radius: 5px; flex-shrink: 0; filter: brightness(0) invert(1); }
+  .brand{font-weight:700;font-size:15px}
+.brand sup{font-size:.55em;vertical-align:super;opacity:.8}
 .topbar-right{display:flex;align-items:center;gap:8px;margin-left:auto}
 .btn-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;padding:6px;background:transparent;border:none;cursor:pointer;border-radius:6px;transition:background .15s;flex-shrink:0}
 .btn-hamburger:hover{background:rgba(255,255,255,.1)}
@@ -178,21 +179,43 @@ a{color:inherit;text-decoration:none}
 .btn-dev-cancel{background:rgba(255,255,255,.07);color:#94a3b8}
 .btn-dev-copy{background:#10b981;color:#fff}
 
-/* PERF AREA */
+/* YETKİNLİK ALANI WIZARD */
 #screen-perf{background:linear-gradient(135deg,#0f1520,#141d2e);display:flex;align-items:flex-start;justify-content:center;padding:32px 20px;overflow-y:auto}
-.perf-wrap{width:100%;max-width:700px}
-.perf-wrap h2{font-size:20px;font-weight:700;margin-bottom:6px}
-.perf-wrap>p{font-size:13px;color:var(--dim);margin-bottom:24px}
-.perf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.perf-area{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;cursor:pointer;transition:all .15s}
-.perf-area:hover{border-color:var(--accent);background:rgba(59,130,246,.06)}
-.perf-area.selected{border-color:var(--accent);background:rgba(59,130,246,.1)}
-.perf-area h3{font-size:14px;font-weight:700;margin-bottom:4px}
-.perf-area p{font-size:12px;color:var(--dim);line-height:1.5}
-.diff-row{display:flex;gap:8px;margin-top:10px}
-.diff-chip{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 8px;font-size:11px;text-align:center;cursor:pointer;transition:all .15s;color:var(--dim)}
-.diff-chip:hover{border-color:var(--accent);color:#93c5fd}
-.diff-chip.selected{background:rgba(59,130,246,.15);border-color:var(--accent);color:#93c5fd}
+.comp-wizard{width:100%;max-width:680px}
+.wizard-steps{display:flex;align-items:center;gap:6px;margin-bottom:28px}
+.wizard-step{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:5px 14px;border-radius:20px;color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);transition:all .2s}
+.wizard-step.active{background:var(--accent);color:#fff}
+.wizard-step.done{background:rgba(16,185,129,.2);color:#6ee7b7}
+.wizard-sep{color:rgba(255,255,255,.2);font-size:14px}
+.comp-wizard h2{font-size:20px;font-weight:700;margin-bottom:6px}
+.comp-wizard>div>p{font-size:13px;color:var(--dim);margin-bottom:22px}
+.wiz-back{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);font-size:12px;font-weight:600;padding:5px 14px;border-radius:6px;cursor:pointer;margin-bottom:18px;transition:all .15s}
+.wiz-back:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8)}
+/* Domain cards */
+.domain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:12px}
+.domain-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);border-radius:14px;padding:22px 16px;text-align:left;cursor:pointer;transition:all .15s}
+.domain-card:hover{border-color:var(--accent);background:rgba(59,130,246,.08)}
+.domain-card.selected{border-color:var(--accent);background:rgba(59,130,246,.12)}
+.domain-icon{font-size:28px;margin-bottom:10px}
+.domain-title{font-size:15px;font-weight:700;color:var(--text-inv);margin-bottom:5px}
+.domain-sub{font-size:11px;color:var(--dim);line-height:1.5;margin-bottom:8px}
+.domain-count{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+/* Competency grid */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-bottom:12px}
+.comp-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);border-radius:10px;padding:16px 14px;text-align:left;cursor:pointer;transition:all .15s}
+.comp-card:hover{border-color:var(--accent);background:rgba(59,130,246,.07)}
+.comp-card.selected{border-color:var(--accent);background:rgba(59,130,246,.12)}
+.comp-icon{font-size:22px;margin-bottom:8px}
+.comp-title{font-size:13px;font-weight:700;color:var(--text-inv);margin-bottom:3px}
+.comp-dec-count{font-size:11px;color:var(--dim)}
+/* Difficulty cards */
+.diff-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.diff-card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.09);border-radius:12px;padding:20px 16px;text-align:center;cursor:pointer;transition:all .15s}
+.diff-card:hover{border-color:var(--accent);background:rgba(59,130,246,.07)}
+.diff-card.selected{border-color:var(--accent);background:rgba(59,130,246,.12)}
+.diff-icon{font-size:28px;margin-bottom:10px}
+.diff-name{font-size:15px;font-weight:700;color:var(--text-inv);margin-bottom:5px}
+.diff-sub{font-size:11px;color:var(--dim);line-height:1.5}
 
 /* FM 3-PANEL */
 .fm-layout{display:grid;grid-template-columns:var(--list-w) 1fr;height:100%;overflow:hidden}
@@ -434,7 +457,7 @@ a{color:inherit;text-decoration:none}
   <button id="btn-hamburger" class="btn-hamburger">
     <span></span><span></span><span></span>
   </button>
-  <a class="brand" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="26" height="26" style="flex-shrink:0;margin-right:7px"><polygon points="14,6 18,8 14,10 10,8" fill="rgba(255,255,255,.90)"/><polygon points="18,20 18,12 14,14 14,22" fill="rgba(255,255,255,.55)"/><polygon points="10,20 14,22 14,10 10,8" fill="rgba(255,255,255,.30)"/><polygon points="18,8 26,12 22,14 14,10" fill="rgba(255,255,255,.90)"/><polygon points="26,16 26,12 22,14 22,18" fill="rgba(255,255,255,.55)"/><polygon points="14,14 22,18 22,14 14,10" fill="rgba(255,255,255,.30)"/><polygon points="18,16 26,20 22,22 14,18" fill="rgba(255,255,255,.90)"/><polygon points="26,24 26,20 22,22 22,26" fill="rgba(255,255,255,.55)"/><polygon points="14,22 22,26 22,22 14,18" fill="rgba(255,255,255,.30)"/></svg>YetkinLider<sup style="font-size:9px;vertical-align:super">&#8482;</sup></a>
+  <a class="brand" href="index.html"><img src="logo.png" class="brand-logo" alt="YetkinLider">YetkinLider<sup style="font-size:.55em;vertical-align:super;opacity:.8">&#8482;</sup></a>
   <div class="topbar-right">
     <div id="game-clock" class="game-clock hidden">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -514,8 +537,8 @@ a{color:inherit;text-decoration:none}
       </button>
       <button class="mode-btn" id="btn-perf">
         <div class="m-icon">🎯</div>
-        <div class="m-title">Performans Alanı</div>
-        <div class="m-desc">PMI'nın 8 performans alanından birini seç. Odaklı senaryolarla pratik yap.</div>
+        <div class="m-title">Yetkinlik Alanı</div>
+        <div class="m-desc">İnsan, Süreç veya İş Çevresi alanında odaklı bir yetkinlik simülasyonu başlat.</div>
       </button>
     </div>
   </div>
@@ -551,13 +574,75 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- PERF AREA -->
+<!-- YETKİNLİK ALANI WIZARD -->
 <div id="screen-perf" class="screen hidden">
-  <div class="perf-wrap">
-    <h2>Performans Alanı Seçin</h2>
-    <p>PMI'nın 8 Performans Alanından birini ve zorluk seviyesini seçin.</p>
-    <div class="perf-grid" id="perf-grid"></div>
-    <button id="btn-perf-go" class="btn-primary" style="max-width:320px;margin-top:20px" disabled>Yolculuğa Başla 🚀</button>
+  <div class="comp-wizard">
+    <div class="wizard-steps">
+      <div class="wizard-step active" id="wstep-1">1 Alan</div>
+      <div class="wizard-sep">›</div>
+      <div class="wizard-step" id="wstep-2">2 Yetkinlik</div>
+      <div class="wizard-sep">›</div>
+      <div class="wizard-step" id="wstep-3">3 Seviye</div>
+    </div>
+
+    <!-- Step 1: Domain -->
+    <div id="wiz-step-1">
+      <h2>Yetkinlik Alanı Seçin</h2>
+      <p>Hangi alanda kendinizi geliştirmek istiyorsunuz?</p>
+      <div class="domain-grid">
+        <button class="domain-card" data-domain="people">
+          <div class="domain-icon">👥</div>
+          <div class="domain-title">İnsan</div>
+          <div class="domain-sub">Liderlik, çatışma yönetimi, takım gelişimi ve duygusal zeka</div>
+          <div class="domain-count">4 yetkinlik</div>
+        </button>
+        <button class="domain-card" data-domain="process">
+          <div class="domain-icon">⚙️</div>
+          <div class="domain-title">Süreç</div>
+          <div class="domain-sub">Entegrasyon, kapsam, zaman, maliyet, kalite, risk ve tedarik</div>
+          <div class="domain-count">8 yetkinlik</div>
+        </button>
+        <button class="domain-card" data-domain="business">
+          <div class="domain-icon">🌍</div>
+          <div class="domain-title">İş Çevresi</div>
+          <div class="domain-sub">Uyumluluk, fayda/değer yönetimi ve kurumsal değişim</div>
+          <div class="domain-count">4 yetkinlik</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Competency -->
+    <div id="wiz-step-2" class="hidden">
+      <button class="wiz-back" id="wiz-back-1">← Geri</button>
+      <h2 id="wiz-comp-title">Yetkinlik Seçin</h2>
+      <p>Bu alanda odaklanmak istediğiniz yetkinliği seçin.</p>
+      <div class="comp-grid" id="comp-grid"></div>
+    </div>
+
+    <!-- Step 3: Difficulty -->
+    <div id="wiz-step-3" class="hidden">
+      <button class="wiz-back" id="wiz-back-2">← Geri</button>
+      <h2 id="wiz-diff-title">Seviye Seçin</h2>
+      <p id="wiz-diff-sub">Hangi seviyede simülasyon yapmak istiyorsunuz?</p>
+      <div class="diff-cards">
+        <button class="diff-card" data-diff="beginner">
+          <div class="diff-icon">🌱</div>
+          <div class="diff-name">Aday</div>
+          <div class="diff-sub">Temel kavramlar ve standart senaryolar</div>
+        </button>
+        <button class="diff-card" data-diff="intermediate">
+          <div class="diff-icon">⚡</div>
+          <div class="diff-name">Yetkin</div>
+          <div class="diff-sub">Karmaşık durumlar ve baskı altında karar verme</div>
+        </button>
+        <button class="diff-card" data-diff="advanced">
+          <div class="diff-icon">🏆</div>
+          <div class="diff-name">Lider</div>
+          <div class="diff-sub">Kritik kriz yönetimi ve stratejik liderlik</div>
+        </button>
+      </div>
+      <button id="btn-comp-go" class="btn-primary" disabled>Simülasyonu Başlat 🚀</button>
+    </div>
   </div>
 </div>
 
@@ -916,16 +1001,39 @@ var Game; Game = (() => {
     return result;
   }
 
-  const PERF_AREAS = [
-    {id:'stakeholder',icon:'🤝',title:'Paydaş',desc:'Paydaşları dahil etme ve beklenti yönetimi.'},
-    {id:'team',icon:'👥',title:'Ekip',desc:'Yüksek performanslı ekip kurma ve liderlik.'},
-    {id:'dev-approach',icon:'🔄',title:'Geliştirme Yaklaşımı',desc:'Agile, tahmine dayalı ve hibrit yöntemler.'},
-    {id:'planning',icon:'📋',title:'Planlama',desc:'Kapsam, zamanlama ve bütçe yönetimi.'},
-    {id:'project-work',icon:'⚙️',title:'Proje İşleri',desc:'Yürütme, kalite ve süreç verimliliği.'},
-    {id:'delivery',icon:'🚀',title:'Teslimat',desc:'Değer teslimi ve paydaş onayı.'},
-    {id:'measurement',icon:'📊',title:'Ölçüm',desc:'Metrikler, EVM ve performans analizi.'},
-    {id:'uncertainty',icon:'🌩️',title:'Belirsizlik',desc:'Risk yönetimi ve adaptif planlama.'},
-  ];
+  const COMPETENCY_DOMAINS = {
+    people: {
+      title: 'İnsan', icon: '👥',
+      comps: [
+        { id:'catisma',          title:'Çatışma Yönetimi',   icon:'🤝', decisions:10 },
+        { id:'liderlik',         title:'Liderlik',            icon:'🎯', decisions:5  },
+        { id:'takim_gelisimi',   title:'Takım Gelişimi',      icon:'🏅', decisions:10 },
+        { id:'eq',               title:'Duygusal Zeka',       icon:'💡', decisions:6  },
+      ]
+    },
+    process: {
+      title: 'Süreç', icon: '⚙️',
+      comps: [
+        { id:'entegrasyon', title:'Entegrasyon Yönetimi', icon:'🔗', decisions:23 },
+        { id:'kapsam',      title:'Kapsam Yönetimi',      icon:'📋', decisions:17 },
+        { id:'zaman',       title:'Zaman Yönetimi',       icon:'⏰', decisions:16 },
+        { id:'maliyet',     title:'Maliyet Yönetimi',     icon:'💰', decisions:11 },
+        { id:'kalite',      title:'Kalite Yönetimi',      icon:'✅', decisions:12 },
+        { id:'risk',        title:'Risk Yönetimi',        icon:'⚠️', decisions:9  },
+        { id:'tedarik',     title:'Tedarik Yönetimi',     icon:'📦', decisions:19 },
+        { id:'kapanis',     title:'Kapanış Süreçleri',    icon:'🏁', decisions:14 },
+      ]
+    },
+    business: {
+      title: 'İş Çevresi', icon: '🌍',
+      comps: [
+        { id:'uyumluluk',          title:'Uyumluluk & Etik',    icon:'⚖️', decisions:15 },
+        { id:'fayda_deger',        title:'Fayda & Değer',        icon:'📈', decisions:4  },
+        { id:'kurumsal_degisim',   title:'Kurumsal Değişim',     icon:'🔄', decisions:3  },
+        { id:'dis_cevre',          title:'Dış Çevre',            icon:'🌐', decisions:6  },
+      ]
+    }
+  };
 
   function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
@@ -1060,9 +1168,8 @@ var Game; Game = (() => {
 
     document.getElementById('btn-continue-top').onclick = advance;
     document.getElementById('btn-career').onclick = () => { S.mode='career'; show('screen-career'); };
-    document.getElementById('btn-perf').onclick = () => { S.mode='perf'; buildPerfGrid(); show('screen-perf'); };
+    document.getElementById('btn-perf').onclick = () => { S.mode='perf'; initCompWizard(); show('screen-perf'); };
     document.getElementById('btn-career-go').onclick = startCareer;
-    document.getElementById('btn-perf-go').onclick = () => loadScenario('star-top-bank');
 
     // Zorluk dropdown değişince senaryo önizlemesi göster
     document.getElementById('sel-difficulty').addEventListener('change', e => {
@@ -1307,25 +1414,98 @@ var Game; Game = (() => {
     }).catch(() => { alert('Kopyalanamadı:\n\n' + text); });
   }
 
-  function buildPerfGrid() {
-    document.getElementById('perf-grid').innerHTML = PERF_AREAS.map(a=>`
-      <div class="perf-area" data-id="${a.id}">
-        <h3>${a.icon} ${a.title}</h3><p>${a.desc}</p>
-        <div class="diff-row">
-          <button class="diff-chip" data-area="${a.id}" data-diff="beginner">🟢 Başlangıç</button>
-          <button class="diff-chip" data-area="${a.id}" data-diff="intermediate">🟡 Orta</button>
-          <button class="diff-chip" data-area="${a.id}" data-diff="advanced">🔴 İleri</button>
-        </div>
-      </div>`).join('');
-    document.getElementById('perf-grid').addEventListener('click', e => {
-      const c = e.target.closest('.diff-chip'); if(!c) return;
-      document.querySelectorAll('.diff-chip').forEach(x=>x.classList.remove('selected'));
-      document.querySelectorAll('.perf-area').forEach(x=>x.classList.remove('selected'));
-      c.classList.add('selected');
-      c.closest('.perf-area').classList.add('selected');
-      S.setup = {area:c.dataset.area, difficulty:c.dataset.diff};
-      document.getElementById('btn-perf-go').disabled = false;
+  /* ── Yetkinlik Alanı Wizard ────────────────────────────────── */
+  function initCompWizard() {
+    // Reset to step 1
+    showWizStep(1);
+    S.wizDomain = null; S.wizComp = null; S.wizDiff = null;
+
+    // Domain card clicks → go to step 2
+    document.querySelectorAll('.domain-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        S.wizDomain = btn.dataset.domain;
+        document.querySelectorAll('.domain-card').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        const dom = COMPETENCY_DOMAINS[S.wizDomain];
+        document.getElementById('wiz-comp-title').textContent = dom.title + ' — Yetkinlik Seçin';
+        document.getElementById('comp-grid').innerHTML = dom.comps.map(c => `
+          <button class="comp-card" data-comp="${c.id}">
+            <div class="comp-icon">${c.icon}</div>
+            <div class="comp-title">${c.title}</div>
+            <div class="comp-dec-count">${c.decisions} karar</div>
+          </button>`).join('');
+        document.querySelectorAll('.comp-card').forEach(cb => {
+          cb.addEventListener('click', () => {
+            S.wizComp = cb.dataset.comp;
+            document.querySelectorAll('.comp-card').forEach(x => x.classList.remove('selected'));
+            cb.classList.add('selected');
+            const compDef = dom.comps.find(x => x.id === S.wizComp);
+            document.getElementById('wiz-diff-title').textContent = (compDef?.title || '') + ' — Seviye Seçin';
+            document.getElementById('wiz-diff-sub').textContent = `${compDef?.decisions || 0} kararı ${compDef?.title || ''} simülasyonunda değerlendirin.`;
+            showWizStep(3);
+          });
+        });
+        showWizStep(2);
+      });
     });
+
+    // Back buttons
+    document.getElementById('wiz-back-1').onclick = () => showWizStep(1);
+    document.getElementById('wiz-back-2').onclick = () => showWizStep(2);
+
+    // Difficulty card clicks
+    document.querySelectorAll('.diff-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        S.wizDiff = btn.dataset.diff;
+        document.querySelectorAll('.diff-card').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        document.getElementById('btn-comp-go').disabled = false;
+      });
+    });
+
+    // Start button
+    document.getElementById('btn-comp-go').onclick = startCompetency;
+  }
+
+  function showWizStep(n) {
+    [1,2,3].forEach(i => {
+      const step = document.getElementById(`wiz-step-${i}`);
+      const ind  = document.getElementById(`wstep-${i}`);
+      if (!step || !ind) return;
+      step.classList.toggle('hidden', i !== n);
+      ind.classList.remove('active','done');
+      if (i === n) ind.classList.add('active');
+      else if (i < n) ind.classList.add('done');
+    });
+    // Reset difficulty selection when returning to step 3
+    if (n === 3) {
+      S.wizDiff = null;
+      document.querySelectorAll('.diff-card').forEach(b => b.classList.remove('selected'));
+      document.getElementById('btn-comp-go').disabled = true;
+    }
+  }
+
+  async function startCompetency() {
+    if (!S.wizDomain || !S.wizComp || !S.wizDiff) return;
+    const dom = COMPETENCY_DOMAINS[S.wizDomain];
+    const compDef = dom?.comps.find(c => c.id === S.wizComp);
+    S.setup = { mode:'competency', domain: S.wizDomain, competencyId: S.wizComp, difficulty: S.wizDiff };
+    try {
+      const r = await fetch('data/scenarios/ebabil.json');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      S.scenario = await r.json();
+      // Filter notifications to selected competency's decisions + all story notifications
+      const allNotifs = S.scenario.notifications || [];
+      const compEntry = (S.scenario.competencies || [])
+        .flatMap(d => d.components || [])
+        .find(c => c.id === S.wizComp);
+      const decisionIds = new Set(compEntry?.decisionIds || []);
+      if (decisionIds.size > 0) {
+        S.scenario.notifications = allNotifs.filter(n => n.type === 'story' || decisionIds.has(n.id));
+      }
+      S.scenario.title = (compDef?.title || S.wizComp) + ' Simülasyonu';
+      beginPlay();
+    } catch(e) { alert('Senaryo yüklenemedi: ' + e.message); }
   }
 
   // ── Preview modu: mock cevaplarla scorecard göster ──────────
