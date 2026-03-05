@@ -414,6 +414,25 @@ a{color:inherit;text-decoration:none}
 .lvl-giris{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.25)}
 .lvl-orta{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.25)}
 .lvl-ileri{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
+/* ── INTRO SCREENS ──────────────────────────────────────────────────────── */
+#screen-intro{background:#080c14;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px}
+.intro-stage{max-width:520px;width:100%;display:flex;flex-direction:column}
+.intro-step-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.18);text-align:center;margin-bottom:44px}
+.intro-body{display:flex;flex-direction:column;gap:18px;min-height:240px;animation:introFadeIn .45s ease}
+@keyframes introFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.intro-p{font-size:15px;line-height:1.75;color:rgba(255,255,255,.8);font-weight:400}
+.intro-p.inner{font-style:italic;color:rgba(255,255,255,.38);font-size:14px}
+.intro-p.question{font-size:17px;font-weight:600;color:#f1f5f9;margin-top:4px}
+.intro-p.strong{color:rgba(255,255,255,.92);font-weight:500}
+.intro-dots{display:flex;gap:6px;justify-content:center;margin:36px 0 28px}
+.intro-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.12);transition:background .3s}
+.intro-dot.active{background:rgba(255,255,255,.55)}
+.intro-btn-wrap{display:flex;justify-content:center}
+.btn-intro-next{background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);font-size:13px;font-weight:600;padding:11px 36px;border-radius:8px;cursor:pointer;letter-spacing:.04em;transition:all .2s}
+.btn-intro-next:hover{border-color:rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.05)}
+.btn-intro-next.final{border-color:rgba(99,179,237,.4);color:#90cdf4}
+.btn-intro-next.final:hover{border-color:#63b3ed;color:#fff;background:rgba(99,179,237,.08)}
+
 /* Footer */
 .karne-footer{width:100%;max-width:760px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn-restart{background:var(--accent);color:#fff;font-size:14px;font-weight:700;padding:13px 28px;border-radius:8px;transition:background .15s}
@@ -690,6 +709,18 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
+<!-- INTRO SCREENS -->
+<div id="screen-intro" class="screen hidden">
+  <div class="intro-stage">
+    <div class="intro-step-label" id="intro-step-label"></div>
+    <div class="intro-body" id="intro-body"></div>
+    <div class="intro-dots" id="intro-dots"></div>
+    <div class="intro-btn-wrap">
+      <button class="btn-intro-next" id="btn-intro-next" onclick="Game.introNext()">Devam</button>
+    </div>
+  </div>
+</div>
+
 <script>
 var Game; Game = (() => {
   const S = {
@@ -701,7 +732,7 @@ var Game; Game = (() => {
   };
   let _pendingChoose = null;
   let _pendingLeave = null;
-  const SCREENS = ['screen-welcome','screen-mode','screen-career','screen-perf','screen-inbox','screen-result'];
+  const SCREENS = ['screen-welcome','screen-mode','screen-career','screen-perf','screen-inbox','screen-result','screen-intro'];
   const show = id => {
     SCREENS.forEach(s => {
       const el = document.getElementById(s);
@@ -1385,7 +1416,103 @@ var Game; Game = (() => {
     document.getElementById('game-clock').classList.remove('hidden');
     updateXP();
     loadSection((S.scenario.sections||[{id:1}])[0].id);
-    show('screen-inbox');
+    showIntro();
+  }
+
+  // ── INTRO SCREENS ─────────────────────────────────────────────────────────
+  const INTRO_SCREENS = [
+    { label: 'Karşılama', lines: [
+      { t: 'Liderlik Simülasyonuna hoş geldiniz.' },
+      { t: 'Birçok istekli arasından sıyrıldınız ve hayal ettiğiniz o pozisyonu elde ettiniz. Tebrikler.' },
+      { t: 'Heyecanınızı anlıyoruz. Hayallerinizi de…' },
+      { t: 'Belki ilk aracınızı alacaksınız. Belki model yükselteceksiniz. Belki de daha iyi bir evin ilanlarına çoktan bakmaya başladınız.' },
+      { t: 'Her şey gönlünüzce olsun.' },
+      { t: 'Ama artık pozisyonun gereklilikleri ile yüzleşme vakti.' },
+      { t: 'Aah… işe başladığım o ilk gün geldi aklıma. Farklı olduğumu sanmıştım. Ve o sektörü fethetmeye hazırdım.', c: 'inner' },
+      { t: 'Hazır mısınız?', c: 'question' },
+    ]},
+    { label: 'Gerçekler', lines: [
+      { t: 'Biraz ciddileşelim.' },
+      { t: 'Sınavlardan yüksek skorlar almış olabilirsiniz. Ama burada test yapmayız.' },
+      { t: 'Burada aldığınız kararların sonuçları olur. Gerçek sonuçları.', c: 'strong' },
+    ]},
+    { label: 'Kurallar', lines: [
+      { t: 'Bu maddeleri iyi dinleyin.' },
+      { t: 'Hayır, istediğiniz sorudan başlayamazsınız.' },
+      { t: 'Hayır, karar almanız gerektiğinde boş bırakıp geçemezsiniz. Sonra o soruna tekrar da dönemezsiniz.' },
+      { t: 'Yüzleştiğiniz sorunla ne yapmanız gerektiği hakkında bir fikriniz yoksa tecrübeli bir yöneticimiz müdahale eder. Ama bunu çok sevmeyiz.' },
+    ]},
+    { label: 'Kararlar', lines: [
+      { t: 'Hiçbir zaman tek doğru cevap yoktur. Olası seçenekler arasında en iyisi vardır. Tabii en kötüsü de.' },
+      { t: 'Aradaki farkı ayırt edebilirsiniz.' },
+      { t: 'Doğal olarak kararlarınızın sonuçları olur.' },
+      { t: 'Ama gerçekçi olalım. Doğru kararları alacağınıza inandığımız için maaş alıyorsunuz.' },
+      { t: 'Bunun için madalya beklemiyorsunuz umarım?', c: 'question' },
+      { t: 'Farkındayım. Bu biraz acıttı.', c: 'inner' },
+    ]},
+    { label: 'Doğrular ve Yanlışlar', lines: [
+      { t: 'Doğrularınız için madalya takmıyoruz. Ama yanlışlarınız da doğrularınızı götürmez. Merak etmeyin.' },
+      { t: 'Tabii yanlış var, yanlış var.' },
+      { t: 'Yeteri kadar yanlış yapanların ise sadece doğruları değil… kendileri de gitti.', c: 'strong' },
+    ]},
+    { label: 'Etik ve Zaman', lines: [
+      { t: 'Etik ihlallerin sonuçları olur. Bazen bu sonuçlar filmin sonunu görmenize bile engel olabilir.' },
+      { t: 'Ama sizinle böyle bir sorun yaşayacağımızı sanmıyorum.' },
+      { t: 'Her işimiz acil değildir. Ama işlerin doğal bir süresi vardır.' },
+      { t: 'Bir mesele ile ne zaman yüzleşirseniz, çözüm için size o anda bir süre tanınır.' },
+      { t: 'Bu süre size yeterli gelmezse, yine tecrübeli bir yöneticimiz müdahale eder.' },
+      { t: 'Ama sürekli başkaları müdahale edecekse… sizi neden işe aldık?', c: 'strong' },
+    ]},
+    { label: 'Kültür', lines: [
+      { t: 'Hiçbirimiz mükemmel değiliz. Ama sürekli gelişime inanıyoruz.' },
+      { t: 'Bu yüzden burada eksik yönlerimizi açık yüreklilikle birbirimize söyleriz.' },
+      { t: 'Ve yetkinliklerimizi sürekli geliştirmeyi hedefleriz.' },
+    ]},
+    { label: 'Son', lines: [
+      { t: 'Başka sorunuz?', c: 'question' },
+      { t: 'Ben de öyle tahmin etmiştim.', c: 'inner' },
+      { t: 'Başarılar.' },
+      { t: 'Kariyeriniz sizi bekliyor.', c: 'strong' },
+    ]},
+  ];
+  let _introStep = 0;
+
+  function showIntro() {
+    _introStep = 0;
+    _renderIntroStep();
+    show('screen-intro');
+  }
+
+  function _renderIntroStep() {
+    const s = INTRO_SCREENS[_introStep];
+    const total = INTRO_SCREENS.length;
+    document.getElementById('intro-step-label').textContent = s.label;
+    document.getElementById('intro-body').innerHTML = s.lines
+      .map(l => `<p class="intro-p${l.c ? ' '+l.c : ''}">${l.t}</p>`)
+      .join('');
+    // Dots
+    document.getElementById('intro-dots').innerHTML = INTRO_SCREENS
+      .map((_,i) => `<div class="intro-dot${i===_introStep?' active':''}"></div>`)
+      .join('');
+    // Button
+    const btn = document.getElementById('btn-intro-next');
+    const isLast = _introStep === total - 1;
+    btn.textContent = isLast ? 'Simülasyona Başla' : 'Devam';
+    btn.className = 'btn-intro-next' + (isLast ? ' final' : '');
+    // Restart animation
+    const body = document.getElementById('intro-body');
+    body.style.animation = 'none';
+    body.offsetHeight; // reflow
+    body.style.animation = '';
+  }
+
+  function introNext() {
+    if (_introStep < INTRO_SCREENS.length - 1) {
+      _introStep++;
+      _renderIntroStep();
+    } else {
+      show('screen-inbox');
+    }
   }
 
   // Calendar helpers
@@ -1968,7 +2095,7 @@ var Game; Game = (() => {
 
   document.addEventListener('DOMContentLoaded', init);
   return {
-    tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart, resumeSave,
+    tryChoose, closeConfirm, confirmSend, selectOption, sendSelected, advance, restart, resumeSave, introNext,
     // Auth
     doLogout, openAuthOverlay, closeAuthOverlay,
     // Dev mode
