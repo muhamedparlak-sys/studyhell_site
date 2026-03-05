@@ -452,7 +452,7 @@ toggle.addEventListener('change', () => {
     hamburger.setAttribute('aria-expanded', String(open));
   });
   document.addEventListener('click', e => {
-    if (\!hamburger.contains(e.target) && \!menuPanel.contains(e.target)) {
+    if (!hamburger.contains(e.target) && !menuPanel.contains(e.target)) {
       menuPanel.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
     }

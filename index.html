@@ -31,8 +31,9 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
   position: sticky; top: 0; z-index: 1000;
   box-shadow: 0 1px 6px rgba(0,0,0,.18);
 }
-.brand { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; }
+.brand { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
 .brand sup { font-size: 9px; vertical-align: super; }
+.brand-logo { width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0; }
 .nav-spacer { flex: 1; }
 .nav-user { display: flex; align-items: center; gap: 8px; margin-right: 10px; }
 .nav-av {
@@ -238,7 +239,7 @@ footer strong { color: rgba(255,255,255,.85); }
 <body>
 
 <nav class="navbar">
-  <a class="brand" href="index.html">YetkinLider</a>
+  <a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="">YetkinLider</a>
   <div class="nav-spacer"></div>
   <div class="nav-user" id="navUser"></div>
   <button class="hamburger" id="hamburger" aria-label="Menü" aria-expanded="false">
