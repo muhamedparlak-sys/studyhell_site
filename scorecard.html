@@ -755,8 +755,8 @@ function renderTab(tab) {
 
   const emptyHTML = !hasData ? `<div class="empty-note">
     <h3>Bu seviyede veri yok</h3>
-    <p>${tab==='capm'?'Kolay':tab==='pmp'?'Normal':'Zor'} zorluktaki senaryo oynayarak bu karneyi doldur.</p>
-    <a href="game.html" class="btn-play">Oyunu Başlat</a>
+    <p>${tab==='capm'?'Kolay':tab==='pmp'?'Normal':'Zor'} zorluktaki senaryoyu simüle ederek bu karneyi doldur.</p>
+    <a href="game.html" class="btn-play">Simülasyonu Başlat</a>
   </div>` : '';
 
   document.getElementById('main-grid').innerHTML = `
