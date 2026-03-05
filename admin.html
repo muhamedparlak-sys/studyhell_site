@@ -42,7 +42,8 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 .sidebar-link { display: flex; align-items: center; gap: 10px; padding: 9px 16px; font-size: 13px; color: rgba(255,255,255,.55); cursor: pointer; transition: all .12s; border-left: 2px solid transparent; text-decoration: none; }
 .sidebar-link:hover { background: rgba(255,255,255,.04); color: #fff; }
 .sidebar-link.active { background: rgba(59,130,246,.1); color: #93c5fd; border-left-color: var(--accent); }
-.sidebar-icon { font-size: 16px; width: 20px; text-align: center; }
+.sidebar-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: .7; transition: opacity .12s; }
+.sidebar-link:hover .sidebar-icon, .sidebar-link.active .sidebar-icon { opacity: 1; }
 
 /* CONTENT */
 .admin-content { padding: 28px 32px; overflow-y: auto; }
@@ -122,7 +123,7 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 /* UPLOAD */
 .upload-drop { border: 2px dashed rgba(255,255,255,.15); border-radius: 10px; padding: 32px; text-align: center; cursor: pointer; transition: all .2s; font-size: 13px; color: var(--dim); }
 .upload-drop:hover, .upload-drop.drag-over { border-color: var(--accent); background: rgba(59,130,246,.06); color: var(--text); }
-.upload-icon { font-size: 32px; margin-bottom: 8px; }
+.upload-icon { width: 36px; height: 36px; margin: 0 auto 10px; opacity: .5; }
 .upload-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
 .upload-tab { padding: 9px 16px; font-size: 13px; font-weight: 600; color: var(--dim); cursor: pointer; border-bottom: 2px solid transparent; transition: all .15s; margin-bottom: -1px; }
 .upload-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
@@ -160,7 +161,7 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 <body>
 
 <div id="access-denied">
-  <h2>🔒 Erişim Reddedildi</h2>
+  <h2>Erişim Reddedildi</h2>
   <p>Bu sayfaya erişmek için yönetici yetkisi gereklidir.</p>
   <a href="index.html" style="color:#93c5fd;font-size:13px">← Ana Sayfaya Dön</a>
 </div>
@@ -182,27 +183,27 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
   <nav class="sidebar">
     <div class="sidebar-section">İçerik</div>
     <a class="sidebar-link active" data-page="dashboard" onclick="switchPage('dashboard')">
-      <span class="sidebar-icon">📊</span> Genel Bakış
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/></svg> Genel Bakış
     </a>
     <a class="sidebar-link" data-page="matrix" onclick="switchPage('matrix')">
-      <span class="sidebar-icon">🗂️</span> Senaryo Matrisi
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Senaryo Matrisi
     </a>
     <div class="sidebar-section">Yönetim</div>
     <a class="sidebar-link" data-page="scenarios" onclick="switchPage('scenarios')">
-      <span class="sidebar-icon">🗃️</span> Senaryolar
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="14" y2="18"/></svg> Senaryolar
     </a>
     <a class="sidebar-link" data-page="upload" onclick="switchPage('upload')">
-      <span class="sidebar-icon">📤</span> Senaryo Yükle
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg> Senaryo Yükle
     </a>
     <a class="sidebar-link" data-page="glossary" onclick="switchPage('glossary')">
-      <span class="sidebar-icon">📖</span> Sözlük Ekle
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Sözlük Ekle
     </a>
     <a class="sidebar-link" data-page="add-scenario" onclick="switchPage('add-scenario')">
-      <span class="sidebar-icon">➕</span> Senaryo Planla
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg> Senaryo Planla
     </a>
     <div class="sidebar-section">Sistem</div>
     <a class="sidebar-link" href="game.html">
-      <span class="sidebar-icon">🚀</span> Simülasyona Git
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Simülasyona Git
     </a>
   </nav>
 
@@ -235,7 +236,7 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
       </div>
 
       <div class="form-card">
-        <h2>📋 Özet</h2>
+        <h2>Özet</h2>
         <p>Senaryo matrisinde kaç yetkinlik için içerik var, kaçı eksik.</p>
         <div id="dashboard-summary" style="margin-top:14px;font-size:13px;line-height:1.8;color:var(--dim)">
           Yükleniyor...
@@ -254,9 +255,9 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
           <thead>
             <tr>
               <th class="row-head">Yetkinlik</th>
-              <th>🌱 Aday<br><small style="font-size:9px;opacity:.6;font-weight:400">Temel</small></th>
-              <th>⚡ Yetkin<br><small style="font-size:9px;opacity:.6;font-weight:400">Orta</small></th>
-              <th>🏆 Lider<br><small style="font-size:9px;opacity:.6;font-weight:400">İleri</small></th>
+              <th>Aday<br><small style="font-size:9px;opacity:.6;font-weight:400">Temel</small></th>
+              <th>Yetkin<br><small style="font-size:9px;opacity:.6;font-weight:400">Orta</small></th>
+              <th>Lider<br><small style="font-size:9px;opacity:.6;font-weight:400">İleri</small></th>
               <th style="width:80px">Toplam</th>
             </tr>
           </thead>
@@ -331,11 +332,11 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 
       <!-- Step 1: Template -->
       <div class="form-card" style="margin-bottom:20px">
-        <h2>1️⃣ Boş Şablon İndir</h2>
+        <h2>1. Boş Şablon İndir</h2>
         <p>Excel şablonunu indirin, Google Sheets'e aktarın, doldurun — ardından aşağıdan yükleyin.</p>
         <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn-submit" onclick="downloadExcelTemplate()">📥 Excel Şablonu İndir (.xlsx)</button>
-          <button class="btn-secondary" onclick="downloadJsonTemplate()">📋 JSON Şablonu İndir</button>
+          <button class="btn-submit" onclick="downloadExcelTemplate()">Excel Şablonu İndir (.xlsx)</button>
+          <button class="btn-secondary" onclick="downloadJsonTemplate()">JSON Şablonu İndir</button>
         </div>
         <div style="margin-top:12px;padding:10px 14px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:7px;font-size:12px;color:#93c5fd;line-height:1.7">
           <strong>Nasıl kullanılır:</strong><br>
@@ -349,12 +350,12 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 
       <!-- Step 2: Upload tabs -->
       <div class="form-card">
-        <h2>2️⃣ Senaryo Yükle</h2>
+        <h2>2. Senaryo Yükle</h2>
         <p style="margin-bottom:16px">Doldurulmuş Excel veya hazır JSON dosyasını yükleyin.</p>
 
         <div class="upload-tabs">
-          <div class="upload-tab active" onclick="switchUploadTab('excel')">📊 Excel / Google Sheets</div>
-          <div class="upload-tab" onclick="switchUploadTab('json')">📄 JSON Dosyası</div>
+          <div class="upload-tab active" onclick="switchUploadTab('excel')">Excel / Google Sheets</div>
+          <div class="upload-tab" onclick="switchUploadTab('json')">JSON Dosyası</div>
         </div>
 
         <!-- Excel tab -->
@@ -365,7 +366,7 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
                ondragleave="this.classList.remove('drag-over')"
                ondrop="handleExcelDrop(event)">
             <input type="file" id="excel-input" accept=".xlsx,.xls,.csv" style="display:none" onchange="handleExcelFile(this.files[0])">
-            <div class="upload-icon">📊</div>
+            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/><line x1="15" y1="9" x2="15" y2="21"/></svg>
             <div style="font-weight:600;margin-bottom:4px">Excel dosyasını seçin veya sürükleyin</div>
             <div style="font-size:11px">.xlsx · .xls · .csv</div>
           </div>
@@ -380,7 +381,7 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
                ondragleave="this.classList.remove('drag-over')"
                ondrop="handleJsonDrop(event)">
             <input type="file" id="json-input" accept=".json" style="display:none" onchange="handleJsonFile(this.files[0])">
-            <div class="upload-icon">📄</div>
+            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
             <div style="font-weight:600;margin-bottom:4px">JSON dosyasını seçin veya sürükleyin</div>
             <div style="font-size:11px">.json</div>
           </div>
@@ -390,14 +391,14 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 
       <!-- Step 3: File system access (optional) -->
       <div class="form-card" style="margin-top:20px">
-        <h2>3️⃣ Klasör Bağlantısı (İsteğe Bağlı)</h2>
+        <h2>3. Klasör Bağlantısı (İsteğe Bağlı)</h2>
         <p>Tarayıcı üzerinden doğrudan <code>data/scenarios/</code> klasörüne yazın. Chrome/Edge'de çalışır.</p>
         <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button class="btn-action purple" onclick="openScenariosFolder()">📂 Klasörü Seç</button>
+          <button class="btn-action purple" onclick="openScenariosFolder()">Klasörü Seç</button>
           <span id="folder-status" style="font-size:12px;color:var(--dim)">Klasör seçilmedi</span>
         </div>
         <div id="folder-hint" style="display:none;margin-top:10px;padding:10px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:7px;font-size:12px;color:#6ee7b7">
-          ✅ Klasör bağlandı. Artık yüklenen senaryolar otomatik olarak klasöre kaydedilir.
+          Klasör bağlandı. Artık yüklenen senaryolar otomatik olarak klasöre kaydedilir.
         </div>
       </div>
     </div>
@@ -480,7 +481,7 @@ function isAdmin(session) {
 // ── CONSTANTS ────────────────────────────────────────────────────────────────
 const COMP_DOMAINS = {
   people: {
-    title: 'İnsan', icon: '👥',
+    title: 'İnsan', icon: '',
     comps: [
       { id:'catisma',        title:'Çatışma Yönetimi',  decisions:10 },
       { id:'liderlik',       title:'Liderlik',           decisions:5  },
@@ -489,7 +490,7 @@ const COMP_DOMAINS = {
     ]
   },
   process: {
-    title: 'Süreç', icon: '⚙️',
+    title: 'Süreç', icon: '',
     comps: [
       { id:'entegrasyon', title:'Entegrasyon Yönetimi', decisions:23 },
       { id:'kapsam',      title:'Kapsam Yönetimi',      decisions:17 },
@@ -502,7 +503,7 @@ const COMP_DOMAINS = {
     ]
   },
   business: {
-    title: 'İş Çevresi', icon: '🌍',
+    title: 'İş Çevresi', icon: '',
     comps: [
       { id:'uyumluluk',        title:'Uyumluluk & Etik',  decisions:15 },
       { id:'fayda_deger',      title:'Fayda & Değer',      decisions:4  },
@@ -634,7 +635,7 @@ function addGlossaryTerm() {
   document.getElementById('gl-def').value = '';
   showMsg('gl-msg', `"${en}" terimi eklendi. Kalıcı hale getirmek için glossary.json dosyasına ekleyin.`, 'ok');
   renderGlossaryList();
-  showToast('✅ Terim eklendi');
+  showToast('Terim eklendi');
 }
 
 function renderGlossaryList() {
@@ -697,7 +698,7 @@ function saveScenarioPlan() {
   renderPlanList();
   buildMatrix();
   buildDashboard();
-  showToast('📋 Plan kaydedildi');
+  showToast('Plan kaydedildi');
 }
 
 function renderPlanList() {
@@ -791,7 +792,7 @@ async function buildScenariosList() {
             </div>
           </div>
           <div style="display:flex;gap:6px">
-            <button class="btn-secondary" style="font-size:11px;padding:6px 12px" onclick="previewScenario('${s.id}')">👁 Önizle</button>
+            <button class="btn-secondary" style="font-size:11px;padding:6px 12px" onclick="previewScenario('${s.id}')">Önizle</button>
           </div>
         </div>`).join('')}`;
   } catch (e) {
@@ -806,7 +807,7 @@ async function previewScenario(id) {
     const weeks = data.weeks?.length || 0;
     const decisions = data.weeks?.reduce((a, w) => a + (w.decisions?.length || 0), 0) || 0;
     const opts = data.weeks?.reduce((a, w) => a + w.decisions?.reduce((b, d) => b + (d.options?.length || 0), 0), 0) || 0;
-    alert(`📋 ${data.title}\n\nHafta: ${weeks}\nKarar: ${decisions}\nSeçenek: ${opts}\nZorluk: ${data.difficulty}\nBütçe: ${(data.budget||0).toLocaleString('tr-TR')} ₺`);
+    alert(`${data.title}\n\nHafta: ${weeks}\nKarar: ${decisions}\nSeçenek: ${opts}\nZorluk: ${data.difficulty}\nBütçe: ${(data.budget||0).toLocaleString('tr-TR')} ₺`);
   } catch { alert('Senaryo dosyası yüklenemedi.'); }
 }
 
@@ -884,7 +885,7 @@ function downloadExcelTemplate() {
 
   // Sheet 3: Talimatlar
   const instrSheet = [
-    ['📋 YetkinLider Senaryo Şablonu — Kullanım Talimatları'],
+    ['YetkinLider Senaryo Şablonu — Kullanım Talimatları'],
     [''],
     ['Senaryo Sayfası:'],
     ['  • Her satır bir Alan=Değer çiftidir'],
@@ -909,7 +910,7 @@ function downloadExcelTemplate() {
   XLSX.utils.book_append_sheet(wb, ws3, 'Talimatlar');
 
   XLSX.writeFile(wb, 'yetkinlider-senaryo-sablonu.xlsx');
-  showToast('📥 Excel şablonu indirildi');
+  showToast('Excel şablonu indirildi');
 }
 
 function downloadJsonTemplate() {
@@ -954,7 +955,7 @@ function downloadJsonTemplate() {
   const blob = new Blob([JSON.stringify(template, null, 2)], {type:'application/json'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
   a.download = 'senaryo-sablonu.json'; a.click();
-  showToast('📋 JSON şablonu indirildi');
+  showToast('JSON şablonu indirildi');
 }
 
 // ── EXCEL UPLOAD ──────────────────────────────────────────────────────────────
@@ -976,7 +977,7 @@ function handleExcelFile(file) {
       showExcelResult(scenario);
     } catch(err) {
       document.getElementById('excel-result').style.display = 'block';
-      document.getElementById('excel-result').innerHTML = `<div class="preview-box"><p style="color:#fca5a5;font-size:13px">❌ Dosya okunamadı: ${err.message}</p></div>`;
+      document.getElementById('excel-result').innerHTML = `<div class="preview-box"><p style="color:#fca5a5;font-size:13px">Dosya okunamadı: ${err.message}</p></div>`;
     }
   };
   reader.readAsBinaryString(file);
@@ -1102,7 +1103,7 @@ function showExcelResult(scenario) {
 
   el.innerHTML = `
     <div class="preview-box">
-      <h3>📋 Önizleme: ${scenario.title}</h3>
+      <h3>Önizleme: ${scenario.title}</h3>
       <div class="preview-row"><span class="preview-label">ID</span><span class="preview-val"><code>${scenario.id}</code></span></div>
       <div class="preview-row"><span class="preview-label">Zorluk</span><span class="preview-val">${scenario.difficulty}</span></div>
       <div class="preview-row"><span class="preview-label">Toplam Hafta</span><span class="preview-val">${scenario.weeks.length} / ${scenario.totalWeeks}</span></div>
@@ -1111,15 +1112,15 @@ function showExcelResult(scenario) {
       <div class="preview-row"><span class="preview-label">Bütçe</span><span class="preview-val">${(scenario.budget||0).toLocaleString('tr-TR')}</span></div>
     </div>
     <div class="preview-box" style="margin-top:10px">
-      <h3>✅ Doğrulama</h3>
+      <h3>Doğrulama</h3>
       <div class="validation-list">
         ${validation.map(v => `<div class="validation-item ${v.ok?'ok':'err'}">${v.ok?'✓':'✗'} ${v.msg}</div>`).join('')}
       </div>
     </div>
     <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn-action" onclick="downloadGeneratedJson(${JSON.stringify(JSON.stringify(scenario)).replace(/</g,'\\u003c')})">💾 JSON İndir</button>
-      <button class="btn-action purple" onclick="saveToFsApi(${JSON.stringify(JSON.stringify(scenario)).replace(/</g,'\\u003c')})">📂 Klasöre Kaydet</button>
-      <button class="btn-secondary" onclick="copyToClipboard(${JSON.stringify(JSON.stringify(scenario)).replace(/</g,'\\u003c')})">📋 Panoya Kopyala</button>
+      <button class="btn-action" onclick="downloadGeneratedJson(${JSON.stringify(JSON.stringify(scenario)).replace(/</g,'\\u003c')})">JSON İndir</button>
+      <button class="btn-action purple" onclick="saveToFsApi(${JSON.stringify(JSON.stringify(scenario)).replace(/</g,'\\u003c')})">Klasöre Kaydet</button>
+      <button class="btn-secondary" onclick="copyToClipboard(${JSON.stringify(JSON.stringify(scenario)).replace(/</g,'\\u003c')})">Panoya Kopyala</button>
     </div>`;
 
   window._lastGeneratedScenario = scenario;
@@ -1142,7 +1143,7 @@ function handleJsonFile(file) {
       showJsonResult(scenario);
     } catch(err) {
       document.getElementById('json-result').style.display = 'block';
-      document.getElementById('json-result').innerHTML = `<div class="preview-box"><p style="color:#fca5a5;font-size:13px">❌ Geçersiz JSON: ${err.message}</p></div>`;
+      document.getElementById('json-result').innerHTML = `<div class="preview-box"><p style="color:#fca5a5;font-size:13px">Geçersiz JSON: ${err.message}</p></div>`;
     }
   };
   reader.readAsText(file, 'UTF-8');
@@ -1158,7 +1159,7 @@ function showJsonResult(scenario) {
 
   el.innerHTML = `
     <div class="preview-box">
-      <h3>📋 Önizleme: ${scenario.title || '(başlık yok)'}</h3>
+      <h3>Önizleme: ${scenario.title || '(başlık yok)'}</h3>
       <div class="preview-row"><span class="preview-label">ID</span><span class="preview-val"><code>${scenario.id || '?'}</code></span></div>
       <div class="preview-row"><span class="preview-label">Zorluk</span><span class="preview-val">${scenario.difficulty || '?'}</span></div>
       <div class="preview-row"><span class="preview-label">Hafta</span><span class="preview-val">${(scenario.weeks||[]).length}</span></div>
@@ -1166,14 +1167,14 @@ function showJsonResult(scenario) {
       <div class="preview-row"><span class="preview-label">Seçenek</span><span class="preview-val">${totalOptions}</span></div>
     </div>
     <div class="preview-box" style="margin-top:10px">
-      <h3>✅ Doğrulama</h3>
+      <h3>Doğrulama</h3>
       <div class="validation-list">
         ${validation.map(v => `<div class="validation-item ${v.ok?'ok':'err'}">${v.ok?'✓':'✗'} ${v.msg}</div>`).join('')}
       </div>
     </div>
     <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-      ${allOk ? `<button class="btn-action purple" onclick="saveToFsApi('${encodeURIComponent(JSON.stringify(scenario))}', true)">📂 Klasöre Kaydet</button>` : ''}
-      <button class="btn-secondary" onclick="copyToClipboard('${encodeURIComponent(JSON.stringify(scenario))}', true)">📋 Panoya Kopyala</button>
+      ${allOk ? `<button class="btn-action purple" onclick="saveToFsApi('${encodeURIComponent(JSON.stringify(scenario))}', true)">Klasöre Kaydet</button>` : ''}
+      <button class="btn-secondary" onclick="copyToClipboard('${encodeURIComponent(JSON.stringify(scenario))}', true)">Panoya Kopyala</button>
     </div>`;
 
   window._lastGeneratedScenario = scenario;
@@ -1204,11 +1205,11 @@ async function openScenariosFolder() {
   }
   try {
     _fsHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-    document.getElementById('folder-status').textContent = `✅ "${_fsHandle.name}" klasörü bağlandı`;
+    document.getElementById('folder-status').textContent = `"${_fsHandle.name}" klasörü bağlandı`;
     document.getElementById('folder-hint').style.display = 'block';
-    showToast('📂 Klasör bağlandı');
+    showToast('Klasör bağlandı');
   } catch(e) {
-    if (e.name !== 'AbortError') showToast('❌ Klasör seçilemedi');
+    if (e.name !== 'AbortError') showToast('Klasör seçilemedi');
   }
 }
 
@@ -1225,7 +1226,7 @@ async function saveToFsApi(jsonStrOrEncoded, encoded) {
 
       // Update manifest
       await updateManifestFile(scenario);
-      showToast(`✅ ${scenario.id}.json kaydedildi`);
+      showToast(`${scenario.id}.json kaydedildi`);
       buildScenariosList();
       return;
     } catch(e) {
@@ -1235,7 +1236,7 @@ async function saveToFsApi(jsonStrOrEncoded, encoded) {
 
   // Fallback: download
   downloadGeneratedJson(jsonStrOrEncoded, encoded);
-  showToast('📁 Klasör seçilmedi — JSON indirildi. data/scenarios/ klasörüne kopyalayın.');
+  showToast('Klasör seçilmedi — JSON indirildi. data/scenarios/ klasörüne kopyalayın.');
 }
 
 async function updateManifestFile(scenario) {
@@ -1259,7 +1260,7 @@ async function updateManifestFile(scenario) {
     const writable = await mHandle.createWritable();
     await writable.write(JSON.stringify(manifest, null, 2));
     await writable.close();
-    showToast('✅ manifest.json güncellendi');
+    showToast('manifest.json güncellendi');
   } catch(e) { console.warn('manifest güncellenemedi', e); }
 }
 
@@ -1269,12 +1270,12 @@ function downloadGeneratedJson(jsonStrOrEncoded, encoded) {
   const blob = new Blob([JSON.stringify(scenario, null, 2)], {type:'application/json'});
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
   a.download = `${scenario.id || 'senaryo'}.json`; a.click();
-  showToast(`💾 ${scenario.id}.json indirildi`);
+  showToast(`${scenario.id}.json indirildi`);
 }
 
 function copyToClipboard(jsonStrOrEncoded, encoded) {
   const jsonStr = encoded ? decodeURIComponent(jsonStrOrEncoded) : jsonStrOrEncoded;
-  navigator.clipboard.writeText(jsonStr).then(() => showToast('📋 Panoya kopyalandı'));
+  navigator.clipboard.writeText(jsonStr).then(() => showToast('Panoya kopyalandı'));
 }
 
 // ── HELPERS ──────────────────────────────────────────────────────────────────

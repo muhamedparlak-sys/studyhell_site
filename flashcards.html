@@ -4,7 +4,7 @@
 <meta charset="utf-8">
   <link rel="icon" href="favicon.png" type="image/png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Flashcards — YetkinLider</title>
+<title>Öğrenme Kartları — YetkinLider</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -310,18 +310,18 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
 
 <div class="page-header">
   <div class="inner">
-    <h1>🃏 Flashcards</h1>
-    <p>Click any card to reveal the definition. Mark what you know — what you don't will come back.</p>
+    <h1>Öğrenme Kartları</h1>
+    <p>Karta tıklayarak tanımı görün. Bildiğinizi işaretleyin — bilmedikleriniz tekrar gelecek.</p>
   </div>
 </div>
 
 <div class="controls">
   <div class="inner">
-    <select id="catSelect" aria-label="Filter by category">
-      <option value="All">All Categories</option>
+    <select id="catSelect" aria-label="Kategoriye göre filtrele">
+      <option value="All">Tüm Kategoriler</option>
     </select>
-    <button class="ctrl-btn" id="shuffleBtn">🔀 Shuffle</button>
-    <button class="ctrl-btn" id="restartBtn">↩ Restart</button>
+    <button class="ctrl-btn" id="shuffleBtn">Karıştır</button>
+    <button class="ctrl-btn" id="restartBtn">Yeniden Başla</button>
     <span class="progress-text" id="progressText"></span>
   </div>
 </div>
@@ -335,27 +335,27 @@ body { font-family: Inter, system-ui, sans-serif; color: var(--text); background
   <div class="card-scene" id="cardScene" role="button" aria-label="Flip card" tabindex="0">
     <div class="card-flip" id="cardFlip">
       <div class="card-face card-front">
-        <div class="face-label">Term</div>
-        <div class="term-text" id="termText">Loading…</div>
+        <div class="face-label">Terim</div>
+        <div class="term-text" id="termText">Yükleniyor…</div>
         <div class="cat-badge" id="catBadge"></div>
-        <div class="flip-hint">Click to reveal definition</div>
+        <div class="flip-hint">Tanımı görmek için tıklayın</div>
       </div>
       <div class="card-face card-back">
-        <div class="face-label" style="color:rgba(255,255,255,.5)">Definition</div>
+        <div class="face-label" style="color:rgba(255,255,255,.5)">Tanım</div>
         <div class="def-text" id="defText"></div>
       </div>
     </div>
   </div>
 
   <div class="mark-row" id="markRow" style="display:none">
-    <button class="mark-btn know" id="knowBtn">✓ Got it</button>
-    <button class="mark-btn review" id="reviewCardBtn">✗ Review again</button>
+    <button class="mark-btn know" id="knowBtn">✓ Bildim</button>
+    <button class="mark-btn review" id="reviewCardBtn">✗ Tekrar bak</button>
   </div>
 
   <div class="nav-row">
-    <button class="nav-card-btn" id="prevCard">← Prev</button>
-    <button class="flip-btn" id="flipBtn">Flip</button>
-    <button class="nav-card-btn" id="nextCard">Next →</button>
+    <button class="nav-card-btn" id="prevCard">← Önceki</button>
+    <button class="flip-btn" id="flipBtn">Çevir</button>
+    <button class="nav-card-btn" id="nextCard">Sonraki →</button>
   </div>
 </div>
 
@@ -453,9 +453,9 @@ function render() {
   const done = known.size + toReview.size;
   const pct = deck.length ? (done / deck.length * 100) : 0;
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressLeft').textContent = `${idx + 1} of ${deck.length}`;
+  document.getElementById('progressLeft').textContent = `${idx + 1} / ${deck.length}`;
   document.getElementById('progressRight').textContent = `✓ ${known.size}  ✗ ${toReview.size}`;
-  document.getElementById('progressText').textContent = `${deck.length} cards`;
+  document.getElementById('progressText').textContent = `${deck.length} kart`;
 
   document.getElementById('prevCard').disabled = idx === 0;
   document.getElementById('nextCard').disabled = idx === deck.length - 1;
@@ -499,13 +499,13 @@ function renderComplete() {
   const stage = document.getElementById('stage');
   stage.innerHTML = `
     <div class="complete-card">
-      <h2>🎉 Deck Complete!</h2>
-      <p>You've gone through all ${deck.length} cards.</p>
+      <h2>Tebrikler!</h2>
+      <p>Tüm ${deck.length} kartı tamamladınız.</p>
       <div class="score-row">
-        <div class="score-box"><div class="num green">${known.size}</div><div class="lbl">Got it</div></div>
-        <div class="score-box"><div class="num red">${toReview.size}</div><div class="lbl">Review again</div></div>
+        <div class="score-box"><div class="num green">${known.size}</div><div class="lbl">Bildim</div></div>
+        <div class="score-box"><div class="num red">${toReview.size}</div><div class="lbl">Tekrar bak</div></div>
       </div>
-      <button class="restart-btn" id="doRestart">Start Over</button>
+      <button class="restart-btn" id="doRestart">Yeniden Başla</button>
     </div>`;
   document.getElementById('doRestart').addEventListener('click', () => location.reload());
 }
