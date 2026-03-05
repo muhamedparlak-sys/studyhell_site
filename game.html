@@ -872,32 +872,20 @@ var Game; Game = (() => {
     else window.location.href = 'index.html';
   }
 
-  const GLOSSARY = {
-    'Sprint': 'Sprint – Agile\'de 1-4 haftalık kısa çalışma döngüsü.',
-    'Kapsam Kayması': 'Scope Creep – Proje kapsamının kontrolsüz genişlemesi.',
-    'Scope Creep': 'Scope Creep – Proje kapsamının kontrolsüz genişlemesi.',
-    'EVM': 'Kazanılan Değer Yönetimi – Maliyet ve zaman performansını ölçer.',
-    'WBS': 'Work Breakdown Structure – Projeyi hiyerarşik iş paketlerine bölen yapı.',
-    'MVP': 'Minimum Viable Product – Müşteriye sunulabilecek en küçük çalışan ürün.',
-    'Sprint Review': 'Sprint Review – Sprint sonunda paydaşlara yapılan sunum toplantısı.',
-    'Retrospektif': 'Retrospektif – Ekibin bir sonraki sprint için iyileştirme toplantısı.',
-    'Burndown': 'Burndown Chart – Sprintteki kalan iş miktarını gösteren grafik.',
-    'Velocity': 'Velocity – Ekibin her sprintte tamamladığı ortalama iş miktarı.',
-    'DoD': 'Definition of Done – Bir işin tamamlanmış sayılmasının kriterleri.',
-    'Kanban': 'Kanban – Görsel iş akışı yönetim sistemi; sütunlarla iş durumunu gösterir.',
-    'Agile': 'Agile – Esneklik ve iteratif teslimata dayalı çevik yönetim metodolojisi.',
-    'Product Owner': 'Product Owner – Ürün sahibi; backlog\'u yönetir ve öncelikleri belirler.',
-    'Backlog': 'Product Backlog – Yapılacak işlerin öncelik sırasına göre düzenlenmiş listesi.',
-    'Paydaş': 'Paydaş (Stakeholder) – Projeden etkilenen ya da projeyi etkileyen taraf.',
-    'Risk': 'Risk – Projeyi olumsuz etkileyebilecek belirsiz olay veya durum.',
-    'Milestone': 'Milestone – Proje takvimindeki kritik tamamlanma noktası.',
-    'Scrum': 'Scrum – Kısa sprintler ve günlük stand-up\'larla yönetilen Agile çerçevesi.',
-    'Stakeholder': 'Stakeholder – Proje çıktılarından etkilenen kişi veya organizasyon.',
-    'PMO': 'Project Management Office – Kuruluş içi proje yönetimi rehberlik birimi.',
-    'ROI': 'Return on Investment – Yatırımın geri dönüşü; kazanç/maliyet oranı.',
-    'KPI': 'Key Performance Indicator – Başarıyı ölçen kritik performans göstergesi.',
-    'SLA': 'Service Level Agreement – Hizmet düzeyi anlaşması; kalite taahhütleri.',
-  };
+  let GLOSSARY = {};
+
+  async function loadGlossary() {
+    try {
+      const r = await fetch('data/glossary.json');
+      if (!r.ok) return;
+      const terms = await r.json();
+      const list = Array.isArray(terms) ? terms : (terms.terms || []);
+      list.forEach(t => {
+        if (t.term) GLOSSARY[t.term] = `${t.term}${t.termTR ? ' ('+t.termTR+')' : ''} – ${t.definitionTR || t.definition || ''}`;
+        if (t.termTR && t.termTR !== t.term) GLOSSARY[t.termTR] = `${t.termTR} (${t.term}) – ${t.definitionTR || t.definition || ''}`;
+      });
+    } catch(e) {}
+  }
 
   function planeSVG(sz=15) {
     return `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
@@ -1042,6 +1030,7 @@ var Game; Game = (() => {
   }
 
   function init() {
+    loadGlossary();
     // ── Auth gate: misafir moduna izin ver ────────────────────
     let session = authGetSession();
     if (!session) {
